@@ -1,0 +1,174 @@
+.creators-marquee-section {
+  padding: 2rem 0;
+  background-color: var(--color-bg-darker);
+  /* Matches the bottom of hero section */
+  overflow: hidden;
+  position: relative;
+}
+
+/* Optional subtle fading edges */
+.creators-marquee-section::before,
+.creators-marquee-section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.creators-marquee-section::before {
+  left: 0;
+  background: linear-gradient(to right, var(--color-bg-darker), transparent);
+}
+
+.creators-marquee-section::after {
+  right: 0;
+  background: linear-gradient(to left, var(--color-bg-darker), transparent);
+}
+
+.marquee-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.marquee-row {
+  display: flex;
+  overflow: hidden;
+  user-select: none;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  animation: scroll-left 40s linear infinite;
+}
+
+.marquee-track-reverse {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+  animation: scroll-right 40s linear infinite;
+}
+
+/* Pause on hover */
+.marquee-track:hover,
+.marquee-track-reverse:hover {
+  animation-play-state: paused;
+}
+
+.creator-card {
+  position: relative;
+  width: 280px;
+  height: 380px;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.creator-card:hover {
+  transform: translateY(-10px);
+}
+
+.creator-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.creator-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 3rem 1.5rem 1.5rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.6) 50%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.creator-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+  margin: 0;
+}
+
+.creator-stats {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.creator-platform {
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.creator-dot {
+  color: #4b5563;
+}
+
+@keyframes scroll-left {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    /* Translate left by 50% of the width (since we duplicated the array) */
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .creator-card {
+    width: 220px;
+    height: 300px;
+  }
+
+  .creator-name {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .creator-card {
+    width: 180px;
+    height: 250px;
+    border-radius: 1rem;
+  }
+
+  .creator-overlay {
+    padding: 2rem 1rem 1rem;
+  }
+
+  .creator-name {
+    font-size: 1rem;
+  }
+
+  .creator-stats {
+    font-size: 0.75rem;
+  }
+}

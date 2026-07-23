@@ -1,0 +1,441 @@
+.dt-section {
+  width: 100%;
+  background-color: #040f0c; /* Deepest dark green, almost black */
+  position: relative;
+  padding: 8rem 0;
+  font-family: var(--font-sans);
+  color: white;
+  overflow: hidden;
+  
+  /* Seamless overlapping rounded corners */
+  border-top-left-radius: 48px;
+  border-top-right-radius: 48px;
+  margin-top: -48px;
+  z-index: 4; /* Higher z-index to overlap the slate section */
+}
+
+.dt-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* ==================== HEADER AREA ==================== */
+.dt-header-area {
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dt-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #64748b;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  align-self: flex-start;
+}
+
+.dt-line {
+  width: 40px;
+  height: 1px;
+  background-color: #64748b;
+}
+
+.dt-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  line-height: 1.1;
+  margin: 0 0 2.5rem 0;
+  color: white;
+  text-align: center;
+}
+
+.dt-highlight {
+  color: #059669; /* Dark Teal/Green highlight matching screenshot */
+}
+
+/* Profile Switcher Pills */
+.dt-profile-switcher {
+  display: flex;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 8px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dt-profile-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  padding: 6px 16px 6px 6px;
+  border-radius: 24px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dt-profile-pill:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.dt-profile-pill.active {
+  background: rgba(5, 150, 105, 0.15); /* Green tint */
+  color: #10b981;
+}
+
+.dt-pill-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ==================== SPLIT CONTENT ==================== */
+.dt-content-split {
+  display: flex;
+  gap: 2.5rem;
+  align-items: stretch;
+}
+
+/* LEFT: Portrait Panel */
+.dt-portrait-panel {
+  flex: 0 0 450px;
+  position: relative;
+  height: 600px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.dt-portrait-card {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.dt-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dt-live-badge {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(239, 68, 68, 0.2);
+  backdrop-filter: blur(8px);
+  color: #ef4444;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.dt-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ef4444;
+  box-shadow: 0 0 8px #ef4444;
+  animation: dt-pulse 2s infinite;
+}
+
+@keyframes dt-pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.dt-portrait-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 3rem 2rem 2rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+}
+
+.dt-stars {
+  color: #10b981;
+  display: flex;
+  gap: 2px;
+  margin-bottom: 0.75rem;
+}
+
+.dt-tags {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.dt-tag {
+  background: rgba(5, 150, 105, 0.2);
+  color: #10b981;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.dt-portrait-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  margin: 0 0 0.25rem 0;
+  color: white;
+}
+
+.dt-portrait-handle {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin: 0;
+}
+
+/* RIGHT: Details Panel */
+.dt-details-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.dt-details-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Metrics Row */
+.dt-metrics-row {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.dt-metric-card {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dt-metric-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #64748b;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+.dt-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.dt-dot.before {
+  background: #64748b;
+}
+
+.dt-dot.after {
+  background: #10b981;
+}
+
+.dt-metric-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  margin: 0 0 0.25rem 0;
+  line-height: 1.2;
+}
+
+.dt-metric-value.muted {
+  color: #94a3b8;
+  font-size: 1.4rem;
+  font-family: var(--font-sans);
+}
+
+.dt-metric-value.highlight {
+  color: #10b981;
+}
+
+.dt-metric-sub {
+  color: #059669;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+/* Quote Card */
+.dt-quote-card {
+  flex-grow: 1;
+  background: rgba(16, 185, 129, 0.05);
+  border: 1px solid rgba(16, 185, 129, 0.1);
+  border-radius: 16px;
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.dt-quote-icon {
+  color: #059669;
+  margin-bottom: 1.5rem;
+}
+
+.dt-quote-text {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #cbd5e1;
+  font-style: italic;
+  margin: 0 0 3rem 0;
+  flex-grow: 1;
+}
+
+.dt-quote-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.dt-quote-author h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: white;
+  margin: 0 0 0.25rem 0;
+}
+
+.dt-quote-author span {
+  font-size: 0.85rem;
+  color: #059669;
+}
+
+.dt-apply-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dt-apply-btn:hover {
+  background: rgba(16, 185, 129, 0.25);
+  gap: 12px;
+}
+
+/* Bottom Navigation */
+.dt-navigation {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.dt-nav-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.dt-nav-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.dt-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dt-progress-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dt-dot-indicator {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dt-dot-indicator.active {
+  background: #10b981;
+  width: 20px;
+  border-radius: 4px;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 1024px) {
+  .dt-content-split {
+    flex-direction: column;
+  }
+  .dt-portrait-panel {
+    flex: none;
+    width: 100%;
+    height: 500px;
+  }
+  .dt-quote-card {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .dt-title {
+    font-size: 2.5rem;
+  }
+  .dt-metrics-row {
+    flex-direction: column;
+  }
+  .dt-quote-text {
+    font-size: 1.1rem;
+  }
+  .dt-quote-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+}

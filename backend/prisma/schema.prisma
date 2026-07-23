@@ -1,0 +1,185 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String   @id @default(uuid())
+  email      String   @unique
+  password   String
+  fullName   String
+  whatsapp   String?
+  platform   String?
+  age        Int?
+  country    String?
+  experience String?
+  socialUrl  String?
+  bio        String?
+  role             String   @default("user")
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  
+  // Relations for Live Streaming
+  youtubeConnection YouTubeConnection?
+  streamingSettings CreatorStreamingSetting?
+  liveSessions      LiveSession[]
+  scheduledStreams  ScheduledStream[]
+}
+
+model AuthenticationSession {
+  id          String   @id @default(uuid())
+  sessionId   String   @unique
+  flowType    String
+  currentStep String
+  progress    Int      @default(0)
+  answers     String?  @default("{}")
+  ipAddress   String?
+  userAgent   String?
+  status      String   @default("active")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model YouTubeConnection {
+  id           String   @id @default(uuid())
+  userId       String   @unique
+  accessToken  String
+  refreshToken String?
+  channelId    String?
+  channelTitle String?
+  connectedAt  DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model CreatorStreamingSetting {
+  id                String   @id @default(uuid())
+  userId            String   @unique
+  rtmpUrl           String?
+  streamKey         String?
+  latencyMode       String   @default("normal") // normal, low, ultra_low
+  resolution        String   @default("1080p")
+  fps               Int      @default(60)
+  autoStart         Boolean  @default(false)
+  autoStop          Boolean  @default(false)
+  saveRecordings    Boolean  @default(true)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model LiveSession {
+  id              String   @id @default(uuid())
+  userId          String
+  title           String
+  description     String?
+  category        String?
+  visibility      String   @default("public")
+  youtubeBroadcastId String?
+  youtubeStreamId String?
+  status          String   @default("created") // created, starting, live, ending, ended, error
+  startTime       DateTime?
+  endTime         DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  analytics       LiveAnalytics[]
+  recordings      LiveRecording[]
+  events          LiveEvent[]
+  logs            StreamLog[]
+}
+
+model LiveAnalytics {
+  id              String   @id @default(uuid())
+  sessionId       String
+  timestamp       DateTime @default(now())
+  viewers         Int      @default(0)
+  likes           Int      @default(0)
+  bitrate         Float?
+  fps             Float?
+  droppedFrames   Int?
+  cpuUsage        Float?
+  memoryUsage     Float?
+  session         LiveSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+}
+
+model LiveRecording {
+  id              String   @id @default(uuid())
+  sessionId       String
+  url             String
+  duration        Int?
+  size            BigInt?
+  resolution      String?
+  createdAt       DateTime @default(now())
+  session         LiveSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+}
+
+model LiveEvent {
+  id              String   @id @default(uuid())
+  sessionId       String
+  eventType       String   // e.g., 'started', 'paused', 'resumed', 'stopped', 'error', 'warning'
+  payload         String?
+  createdAt       DateTime @default(now())
+  session         LiveSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+}
+
+model ScheduledStream {
+  id              String   @id @default(uuid())
+  userId          String
+  title           String
+  description     String?
+  scheduledFor    DateTime
+  youtubeBroadcastId String?
+  status          String   @default("scheduled")
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model StreamLog {
+  id              String   @id @default(uuid())
+  sessionId       String
+  level           String   @default("info") // info, warn, error
+  message         String
+  details         String?
+  createdAt       DateTime @default(now())
+  session         LiveSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+}
+
+model FeaturedVideo {
+  id              String   @id @default(uuid())
+  youtubeUrl      String
+  title           String?
+  isActive        Boolean  @default(true)
+  updatedAt       DateTime @updatedAt
+}
+
+model FeaturedCreator {
+  id        String   @id @default(uuid())
+  name      String
+  handle    String
+  followers String
+  imageUrl  String
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model FeaturedTalent {
+  id        String   @id @default(uuid())
+  name      String
+  handle    String
+  category  String
+  platform  String
+  followers String
+  badges    String?  @default("[]") // JSON string of labels like 'Forbes 30U30'
+  imageUrl  String
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+

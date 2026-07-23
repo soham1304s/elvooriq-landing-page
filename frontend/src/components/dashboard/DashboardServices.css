@@ -1,0 +1,194 @@
+.ds-services-section {
+  width: 100%;
+  background-color: #0d0914; /* Deep dark purple-black background */
+  position: relative;
+  padding: 6rem 0 8rem 0;
+  font-family: var(--font-sans);
+  color: white;
+  overflow: hidden;
+  border-top-left-radius: 48px;
+  border-top-right-radius: 48px;
+  margin-top: -48px;
+  z-index: 2;
+}
+
+/* Ambient glow matching the screenshot */
+.ds-services-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 400px;
+  background: linear-gradient(to top, rgba(109, 40, 217, 0.4) 0%, rgba(109, 40, 217, 0.1) 40%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ds-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* ==================== HEADER AREA ==================== */
+.ds-header-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 4rem;
+  gap: 2rem;
+}
+
+.ds-header-left {
+  max-width: 600px;
+}
+
+.ds-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #a78bfa;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.ds-line {
+  width: 40px;
+  height: 1px;
+  background-color: #a78bfa;
+}
+
+.ds-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  line-height: 1.1;
+  margin: 0;
+  color: white;
+}
+
+.ds-title .ds-highlight {
+  color: #c084fc; /* Lighter purple for highlight */
+}
+
+.ds-header-right {
+  max-width: 450px;
+  padding-bottom: 0.5rem;
+}
+
+.ds-header-right p {
+  color: #9ca3af;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ==================== GRID AREA ==================== */
+.ds-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+/* ==================== CARD ==================== */
+.ds-card {
+  background: linear-gradient(145deg, #6b438d 0%, #5a3778 100%);
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.ds-card:hover {
+  background: linear-gradient(145deg, #784ca0 0%, #663f88 100%);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(109, 40, 217, 0.3);
+}
+
+.ds-card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+.ds-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  color: white;
+  line-height: 1.3;
+}
+
+.ds-card-desc {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  margin: 0 0 2rem 0;
+  flex-grow: 1;
+}
+
+.ds-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: gap 0.2s ease;
+  margin-top: auto;
+}
+
+.ds-card-link span {
+  transition: transform 0.2s ease;
+}
+
+.ds-card:hover .ds-card-link {
+  gap: 10px;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 1200px) {
+  .ds-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .ds-header-area {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .ds-header-right {
+    padding-bottom: 0;
+  }
+  .ds-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .ds-grid {
+    grid-template-columns: 1fr;
+  }
+  .ds-title {
+    font-size: 2.5rem;
+  }
+}

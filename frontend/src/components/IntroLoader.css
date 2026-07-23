@@ -1,0 +1,158 @@
+.intro-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at 50% 50%, #15102A 0%, #0B0B0E 80%);
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.intro-ambient-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0, 201, 136, 0.25) 0%, rgba(138, 43, 226, 0.2) 40%, rgba(0,0,0,0) 70%);
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+  animation: pulseGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% { transform: scale(0.85); opacity: 0.6; }
+  100% { transform: scale(1.15); opacity: 0.9; }
+}
+
+.intro-content-wrapper {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.lottie-container-box {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lottie-animation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.intro-logo-img {
+  width: 140px;
+  height: auto;
+  z-index: 3;
+  filter: drop-shadow(0 0 20px rgba(0, 201, 136, 0.6));
+  animation: floatLogo 3s ease-in-out infinite alternate;
+}
+
+@keyframes floatLogo {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-8px); }
+}
+
+.intro-title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: 2px;
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+.intro-subtitle {
+  font-size: 0.95rem;
+  color: #00C988;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.intro-progress-container {
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.intro-progress-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.intro-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00C988 0%, #8A2BE2 100%);
+  border-radius: 10px;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 12px rgba(0, 201, 136, 0.8);
+}
+
+.intro-progress-text {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #A0A0B0;
+  font-family: monospace;
+}
+
+.intro-skip-btn {
+  position: absolute;
+  bottom: 40px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #D0D0E0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 8px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  pointer-events: auto;
+}
+
+.intro-skip-btn:hover {
+  background: rgba(0, 201, 136, 0.2);
+  border-color: #00C988;
+  color: #FFFFFF;
+}
+
+@media (max-width: 768px) {
+  .lottie-container-box {
+    width: 240px;
+    height: 240px;
+  }
+  .intro-logo-img {
+    width: 100px;
+  }
+  .intro-title {
+    font-size: 1.5rem;
+  }
+}

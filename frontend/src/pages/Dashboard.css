@@ -1,0 +1,8 @@
+.dashboard-container {
+  min-height: 100vh;
+  width: 100%;
+  background-color: #0d0f12;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
