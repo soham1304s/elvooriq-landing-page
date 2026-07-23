@@ -1,1 +1,0 @@
-/home/soham-momdal/Documents/freelearncing/elvooriq-landing-page-main/backend/node_modules/@embedded-postgres/linux-x64/native/bin/postgres "-D" "/home/soham-momdal/Documents/freelearncing/elvooriq-landing-page-main/backend/.pgdata" "-p" "5432"
