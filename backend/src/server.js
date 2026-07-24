@@ -106,7 +106,6 @@ server.on('error', (err) => {
   }
 });
 
-const EmbeddedPostgres = require('embedded-postgres').default || require('embedded-postgres');
 const path = require('path');
 
 const startServer = async () => {
@@ -117,6 +116,7 @@ const startServer = async () => {
     if (error.code === 'P1001' || error.message?.includes("Can't reach database")) {
       try {
         console.log('🔄 Starting user-space Embedded PostgreSQL instance...');
+        const EmbeddedPostgres = require('embedded-postgres').default || require('embedded-postgres');
         const pg = new EmbeddedPostgres({
           port: 5432,
           databaseDir: path.join(__dirname, '../.pgdata'),
