@@ -108,7 +108,7 @@ const AdminDashboard = () => {
 
   const fetchPartnerRequests = async () => {
     try {
-      const API_URL = import.meta.env.PROD ? '' : 'http://localhost:5000';
+      const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? '' : 'http://localhost:5000');
       const res = await axios.get(`${API_URL}/api/admin/partner-requests`);
       if (res.data.success) {
         setPartnerRequestsList(res.data.partnerRequests);
@@ -120,7 +120,7 @@ const AdminDashboard = () => {
 
   const handleUpdatePartnerStatus = async (id, status) => {
     try {
-      const API_URL = import.meta.env.PROD ? '' : 'http://localhost:5000';
+      const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? '' : 'http://localhost:5000');
       const res = await axios.put(`${API_URL}/api/admin/partner-requests/${id}/status`, { status });
       if (res.data.success) {
         setPartnerRequestsList(prev => prev.map(req => req.id === id ? { ...req, status } : req));

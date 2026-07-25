@@ -68,25 +68,24 @@ const ContactPage = () => {
             setStatus(req.status);
             
             const restoredData = {
-              name: req.name,
-              email: req.email,
-              subject: req.subject,
-              message: req.message
+              name: req.name || '',
+              email: req.email || '',
+              subject: req.subject || 'Creator Application',
+              message: req.message || ''
             };
             setFormData(restoredData);
             setSubmitted(true);
 
             // Persist the verified values locally
             localStorage.setItem('elvooriq_partner_request_status', req.status);
-            localStorage.setItem('elvooriq_partner_request_name', req.name);
-            localStorage.setItem('elvooriq_partner_request_email', req.email);
-            localStorage.setItem('elvooriq_partner_request_subject', req.subject);
-            localStorage.setItem('elvooriq_partner_request_message', req.message);
+            if (req.name) localStorage.setItem('elvooriq_partner_request_name', req.name);
+            if (req.email) localStorage.setItem('elvooriq_partner_request_email', req.email);
+            if (req.subject) localStorage.setItem('elvooriq_partner_request_subject', req.subject);
+            if (req.message) localStorage.setItem('elvooriq_partner_request_message', req.message);
           }
         })
         .catch(err => {
           console.warn('Backend request verification status check failed:', err);
-          // If the database responds with 404 (manually cleared or wiped), reset the local form
           if (err.response?.status === 404) {
             handleResetForm();
           }
@@ -97,10 +96,11 @@ const ContactPage = () => {
     }
   }, []);
 
-  // Connect to rooms and listen for live admin choices (Accept / Decline)
+  // Connect to room & poll status so admin approval/rejection updates instantly to "Coming Soon"
   useEffect(() => {
     if (!requestId || status !== 'pending') return;
 
+    // 1. WebSocket listener for live socket pushes
     socket.emit('partner_request:join', { requestId });
 
     const handleStatusUpdate = (data) => {
@@ -112,8 +112,28 @@ const ContactPage = () => {
 
     socket.on('partner_request:status_update', handleStatusUpdate);
 
+    // 2. High-frequency polling (every 3s) for serverless resilience on Vercel
+    const checkStatusFromBackend = () => {
+      axios.get(`${API_URL}/api/admin/partner-requests/${requestId}`)
+        .then(response => {
+          if (response.data.success && response.data.partnerRequest) {
+            const currentStatus = response.data.partnerRequest.status;
+            if (currentStatus && currentStatus !== status) {
+              setStatus(currentStatus);
+              localStorage.setItem('elvooriq_partner_request_status', currentStatus);
+            }
+          }
+        })
+        .catch(err => {
+          console.warn('Status poll error:', err);
+        });
+    };
+
+    const pollInterval = setInterval(checkStatusFromBackend, 3000);
+
     return () => {
       socket.off('partner_request:status_update', handleStatusUpdate);
+      clearInterval(pollInterval);
     };
   }, [requestId, status]);
 
