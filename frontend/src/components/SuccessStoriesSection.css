@@ -1,10 +1,12 @@
 .success-section {
-  background-color: var(--color-bg-darker); /* #121212 */
+  background-color: var(--color-bg-darker);
+  /* #121212 */
   color: var(--color-text-main);
   padding: 8rem 0;
   border-top-left-radius: 4rem;
   border-top-right-radius: 4rem;
-  margin-top: -2rem; /* Overlap the light section */
+  margin-top: -2rem;
+  /* Overlap the light section */
   position: relative;
   z-index: 50;
 }
@@ -271,7 +273,7 @@
     grid-template-columns: 1fr;
     gap: 3rem;
   }
-  
+
   .success-image-wrapper {
     max-width: 500px;
     margin: 0 auto;
@@ -282,12 +284,12 @@
   .success-section {
     padding: 5rem 0;
   }
-  
+
   .success-header {
     flex-direction: column;
     align-items: flex-start;
   }
-  
+
   .success-title {
     font-size: 2.5rem;
   }
@@ -301,15 +303,15 @@
   .success-title {
     font-size: 2rem;
   }
-  
+
   .success-name {
     font-size: 2rem;
   }
-  
+
   .toggle-pills {
     flex-wrap: wrap;
   }
-  
+
   .toggle-pill {
     flex: 1;
     text-align: center;

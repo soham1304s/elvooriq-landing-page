@@ -1,10 +1,12 @@
 .results-section {
-  background-color: var(--color-primary); /* #189380 */
+  background-color: var(--color-primary);
+  /* #189380 */
   color: white;
   padding: 8rem 0;
   border-top-left-radius: 4rem;
   border-top-right-radius: 4rem;
-  margin-top: -2rem; /* Overlap the previous light section slightly */
+  margin-top: -2rem;
+  /* Overlap the previous light section slightly */
 
   position: relative;
   z-index: 30;
@@ -55,13 +57,15 @@
 .title-highlight-light {
   color: rgba(255, 255, 255, 0.6);
   font-weight: 400;
-  font-style: italic; /* Optional, adds to the serif aesthetic in some designs */
+  font-style: italic;
+  /* Optional, adds to the serif aesthetic in some designs */
 }
 
 /* Statistics Banner */
 .stats-banner {
   display: flex;
-  background-color: rgba(255, 255, 255, 0.05); /* Slight lightening for the whole row */
+  background-color: rgba(255, 255, 255, 0.05);
+  /* Slight lightening for the whole row */
   border-radius: 1.5rem;
   padding: 3rem 2rem;
   justify-content: space-between;
@@ -116,7 +120,8 @@
 }
 
 .result-feature-card {
-  background-color: rgba(255, 255, 255, 0.08); /* Transparent white for slightly lighter green */
+  background-color: rgba(255, 255, 255, 0.08);
+  /* Transparent white for slightly lighter green */
   border-radius: 1.5rem;
   padding: 2.5rem 2rem;
   display: flex;
@@ -161,18 +166,19 @@
   .results-features-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .stats-banner {
     flex-wrap: wrap;
     gap: 2rem;
   }
-  
+
   .stat-item {
     min-width: 40%;
   }
-  
+
   .stat-divider {
-    display: none; /* Hide dividers when wrapping */
+    display: none;
+    /* Hide dividers when wrapping */
   }
 }
 
@@ -180,7 +186,7 @@
   .results-section {
     padding: 5rem 0;
   }
-  
+
   .results-title {
     font-size: 2.5rem;
   }
@@ -188,7 +194,7 @@
   .results-features-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .stat-item {
     min-width: 100%;
   }
@@ -198,11 +204,11 @@
   .results-title {
     font-size: 2rem;
   }
-  
+
   .stat-number {
     font-size: 2.5rem;
   }
-  
+
   .stats-banner {
     padding: 2rem 1.5rem;
   }

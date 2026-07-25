@@ -1,10 +1,13 @@
 .about-section {
-  background-color: #f8f9fa; /* Light off-white background */
-  color: #1f2937; /* Dark gray text for light mode */
+  background-color: #f8f9fa;
+  /* Light off-white background */
+  color: #1f2937;
+  /* Dark gray text for light mode */
   padding: 8rem 0;
   border-top-left-radius: 4rem;
   border-top-right-radius: 4rem;
-  margin-top: -2rem; /* Overlap previous section */
+  margin-top: -2rem;
+  /* Overlap previous section */
   position: relative;
   z-index: 20;
 }
@@ -80,7 +83,8 @@
   width: 50%;
   height: auto;
   border-radius: 1rem;
-  border: 8px solid #f8f9fa; /* Matches section background to create a cutout effect */
+  border: 8px solid #f8f9fa;
+  /* Matches section background to create a cutout effect */
   z-index: 4;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
   transform: translateY(10%) translateX(20%);
@@ -141,7 +145,8 @@
 
 .block-mission,
 .block-vision {
-  background-color: #f3f4f6; /* slightly darker than bg */
+  background-color: #f3f4f6;
+  /* slightly darker than bg */
   padding: 1.5rem;
   border-radius: 0.75rem;
 }
@@ -215,7 +220,7 @@
     grid-template-columns: 1fr;
     gap: 4rem;
   }
-  
+
   .about-img-secondary {
     width: 60%;
     transform: translateY(10%) translateX(10%);
@@ -230,7 +235,7 @@
   .about-title {
     font-size: 2.5rem;
   }
-  
+
   .about-paragraph {
     font-size: 1rem;
   }
@@ -239,11 +244,11 @@
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  
+
   .about-images {
     padding: 1rem 1rem 3rem 1rem;
   }
-  
+
   .about-img-secondary {
     transform: translateY(15%) translateX(0%);
     width: 55%;
@@ -254,12 +259,12 @@
   .about-title {
     font-size: 2rem;
   }
-  
+
   .about-badge {
     padding: 0.75rem;
     transform: translateX(10%);
   }
-  
+
   .badge-year {
     font-size: 1.25rem;
   }
