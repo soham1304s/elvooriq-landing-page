@@ -25,8 +25,11 @@ const AdminDashboard = () => {
   const [talentForm, setTalentForm] = useState({ name: '', handle: '', category: '', platform: '', followers: '', badges: '', image: null });
   const [isUploadingTalent, setIsUploadingTalent] = useState(false);
   
+  // New state for Partner Requests
+  const [partnerRequestsList, setPartnerRequestsList] = useState([]);
+
   // New state for tabs
-  const [activeTab, setActiveTab] = useState('overview'); // 'overview', 'featured', 'auth', 'users', 'creators', 'talent'
+  const [activeTab, setActiveTab] = useState('overview'); // 'overview', 'featured', 'auth', 'users', 'creators', 'talent', 'partners'
 
   const getYouTubeVideoId = (urlOrId) => {
     if (!urlOrId) return null;
@@ -103,6 +106,31 @@ const AdminDashboard = () => {
     }
   };
 
+  const fetchPartnerRequests = async () => {
+    try {
+      const API_URL = import.meta.env.PROD ? '' : 'http://localhost:5000';
+      const res = await axios.get(`${API_URL}/api/admin/partner-requests`);
+      if (res.data.success) {
+        setPartnerRequestsList(res.data.partnerRequests);
+      }
+    } catch (error) {
+      console.error('Unable to fetch partner requests', error);
+    }
+  };
+
+  const handleUpdatePartnerStatus = async (id, status) => {
+    try {
+      const API_URL = import.meta.env.PROD ? '' : 'http://localhost:5000';
+      const res = await axios.put(`${API_URL}/api/admin/partner-requests/${id}/status`, { status });
+      if (res.data.success) {
+        setPartnerRequestsList(prev => prev.map(req => req.id === id ? { ...req, status } : req));
+      }
+    } catch (error) {
+      console.error('Error updating partner status', error);
+      alert('Failed to update status.');
+    }
+  };
+
   const handlePushFeatured = async () => {
     const API_URL = import.meta.env.PROD ? '' : 'http://localhost:5000';
     const normalizedUrl = normalizeYouTubeUrl(featuredUrl);
@@ -160,6 +188,18 @@ const AdminDashboard = () => {
     fetchAllUsers();
     fetchCreators();
     fetchTalent();
+    fetchPartnerRequests();
+
+    socket.on('admin:new_partner_request', (data) => {
+      setPartnerRequestsList(prev => {
+        if (prev.some(r => r.id === data.id)) return prev;
+        return [data, ...prev];
+      });
+    });
+
+    socket.on('admin:partner_request_updated', (data) => {
+      setPartnerRequestsList(prev => prev.map(req => req.id === data.id ? data : req));
+    });
 
     socket.on('admin:auth_start', (data) => {
       setActiveSessions(prev => ({
@@ -211,6 +251,8 @@ const AdminDashboard = () => {
       socket.off('admin:auth_progress');
       socket.off('admin:auth_success');
       socket.off('admin:user_login');
+      socket.off('admin:new_partner_request');
+      socket.off('admin:partner_request_updated');
     };
   }, []);
 
@@ -375,6 +417,18 @@ const AdminDashboard = () => {
         >
           <span className="nav-icon">⭐</span>
           Featured Talent
+        </button>
+        <button 
+          className={`nav-item ${activeTab === 'partners' ? 'active' : ''}`}
+          onClick={() => setActiveTab('partners')}
+        >
+          <span className="nav-icon">🤝</span>
+          Partner Requests
+          {partnerRequestsList.filter(r => r.status === 'pending').length > 0 && (
+            <span className="tab-badge" style={{ marginLeft: 'auto', background: '#EF4444', color: '#FFF', fontSize: '0.75rem', padding: '2px 6px', borderRadius: '10px', fontWeight: 'bold' }}>
+              {partnerRequestsList.filter(r => r.status === 'pending').length}
+            </span>
+          )}
         </button>
       </nav>
       
@@ -793,6 +847,105 @@ const AdminDashboard = () => {
     </motion.div>
   );
 
+  const renderPartnerRequests = () => (
+    <motion.div 
+      className="tab-content"
+      key="partners"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.3 }}
+    >
+      <div className="page-header">
+        <h1>Partner Requests</h1>
+        <p>Live administration review panel for brand partnerships and inquiries.</p>
+      </div>
+
+      <div className="users-layout" style={{ gridTemplateColumns: '1fr' }}>
+        <div className="users-table-container session-card">
+          <div className="table-header">
+            <h3>Incoming Requests ({partnerRequestsList.length})</h3>
+            <button className="admin-btn-secondary" onClick={fetchPartnerRequests}>Refresh</button>
+          </div>
+          <div className="table-scroll-area">
+            <table className="admin-table">
+              <thead>
+                <tr>
+                  <th>Partner Name</th>
+                  <th>Email</th>
+                  <th>Subject</th>
+                  <th>Message</th>
+                  <th>Submitted At</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {partnerRequestsList.length > 0 ? (
+                  partnerRequestsList.map(req => (
+                    <tr key={req.id}>
+                      <td className="font-medium text-white">{req.name}</td>
+                      <td>{req.email}</td>
+                      <td>
+                        <span className="platform-badge" style={{ background: 'rgba(255,255,255,0.05)', color: '#FFF' }}>{req.subject}</span>
+                      </td>
+                      <td style={{ maxWidth: '300px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} title={req.message}>
+                        {req.message}
+                      </td>
+                      <td>{new Date(req.createdAt).toLocaleString()}</td>
+                      <td>
+                        <span className={`status-badge ${req.status}`} style={{
+                          textTransform: 'uppercase',
+                          fontWeight: 700,
+                          fontSize: '0.75rem',
+                          padding: '4px 8px',
+                          borderRadius: '6px',
+                          backgroundColor: req.status === 'approved' ? 'rgba(16, 185, 129, 0.15)' : req.status === 'rejected' ? 'rgba(239, 68, 68, 0.15)' : 'rgba(245, 158, 11, 0.15)',
+                          color: req.status === 'approved' ? '#10b981' : req.status === 'rejected' ? '#ef4444' : '#f59e0b'
+                        }}>
+                          {req.status}
+                        </span>
+                      </td>
+                      <td>
+                        <div style={{ display: 'flex', gap: '8px' }}>
+                          {req.status === 'pending' && (
+                            <>
+                              <button 
+                                onClick={() => handleUpdatePartnerStatus(req.id, 'approved')} 
+                                className="admin-btn-primary"
+                                style={{ padding: '6px 12px', fontSize: '0.80rem', background: '#10b981', borderColor: '#10b981', boxShadow: 'none' }}
+                              >
+                                Approve
+                              </button>
+                              <button 
+                                onClick={() => handleUpdatePartnerStatus(req.id, 'rejected')} 
+                                className="admin-btn-danger"
+                                style={{ padding: '6px 12px', fontSize: '0.80rem', margin: 0 }}
+                              >
+                                Reject
+                              </button>
+                            </>
+                          )}
+                          {req.status !== 'pending' && (
+                            <span style={{ color: '#555', fontSize: '0.85rem' }}>Decision Final</span>
+                          )}
+                        </div>
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="7" className="text-center py-8 text-gray-400">No partner requests received.</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+
   return (
     <div className="admin-layout">
       {renderSidebar()}
@@ -816,6 +969,7 @@ const AdminDashboard = () => {
             {activeTab === 'users' && renderUsersManagement()}
             {activeTab === 'creators' && renderCreatorsManagement()}
             {activeTab === 'talent' && renderFeaturedTalent()}
+            {activeTab === 'partners' && renderPartnerRequests()}
           </AnimatePresence>
         </div>
       </main>

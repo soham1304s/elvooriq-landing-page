@@ -73,6 +73,14 @@ io.on('connection', (socket) => {
     io.to('admin_room').emit('admin:auth_success', data);
   });
 
+  // Client joins their partner request room
+  socket.on('partner_request:join', (data) => {
+    if (data && data.requestId) {
+      socket.join('partner_request_' + data.requestId);
+      console.log(`Client joined room for partner request: partner_request_${data.requestId}`);
+    }
+  });
+
   socket.on('disconnect', () => {
     console.log('Client disconnected:', socket.id);
   });

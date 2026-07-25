@@ -35,7 +35,7 @@ const Header = () => {
         {/* Desktop Actions */}
         <div className="header-actions">
           {isLandingPage && (
-            <Link to="/company/contact" className="btn-text">
+            <Link to="/company/contact?subject=Brand%20Partnership%20Inquiry" className="btn-text">
               Partner With Us
             </Link>
           )}
@@ -57,7 +57,7 @@ const Header = () => {
             <Link to="/company/contact" onClick={toggleMenu}>Contact</Link>
             <div className="mobile-nav-actions">
               {isLandingPage && (
-                <Link to="/company/contact" className="btn-text" onClick={toggleMenu} style={{ textAlign: 'center', marginBottom: '0.5rem' }}>
+                <Link to="/company/contact?subject=Brand%20Partnership%20Inquiry" className="btn-text" onClick={toggleMenu} style={{ textAlign: 'center', marginBottom: '0.5rem' }}>
                   Partner With Us
                 </Link>
               )}

@@ -183,3 +183,14 @@ model FeaturedTalent {
   updatedAt DateTime @updatedAt
 }
 
+model PartnerRequest {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  subject   String
+  message   String
+  status    String   @default("pending") // pending, reviewed, accepted, rejected
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
