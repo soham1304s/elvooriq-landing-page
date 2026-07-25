@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import logoImg from '../assets/logo.png';
 import './Header.css';
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
+
+  const isLandingPage = location.pathname === '/';
 
   return (
     <header className="header">
@@ -31,6 +34,11 @@ const Header = () => {
 
         {/* Desktop Actions */}
         <div className="header-actions">
+          {isLandingPage && (
+            <Link to="/company/contact" className="btn-text">
+              Partner With Us
+            </Link>
+          )}
           <Link to="/login" className="btn-primary">Become a Creator</Link>
         </div>
 
@@ -48,6 +56,11 @@ const Header = () => {
             <Link to="/company/blog" onClick={toggleMenu}>Blog</Link>
             <Link to="/company/contact" onClick={toggleMenu}>Contact</Link>
             <div className="mobile-nav-actions">
+              {isLandingPage && (
+                <Link to="/company/contact" className="btn-text" onClick={toggleMenu} style={{ textAlign: 'center', marginBottom: '0.5rem' }}>
+                  Partner With Us
+                </Link>
+              )}
               <Link to="/login" className="btn-primary" onClick={toggleMenu}>Become a Creator</Link>
             </div>
           </nav>

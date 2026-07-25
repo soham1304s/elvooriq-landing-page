@@ -451,18 +451,60 @@
   text-decoration: underline;
 }
 
+.sr-mobile-logo {
+  display: none;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .split-reg-container {
     flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
   }
   .split-reg-left {
-    padding: 3rem 2rem;
+    padding: 4rem 2rem;
   }
   .split-reg-right {
-    padding: 3rem 2rem;
+    padding: 4rem 2rem;
   }
   .sr-heading {
     font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .split-reg-left {
+    display: none; /* Auto hide left-side content to highlight registration flow on mobile */
+  }
+  .split-reg-right {
+    padding: 2.5rem 1.5rem;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background-image: radial-gradient(circle at top right, rgba(16, 185, 129, 0.05) 0%, transparent 60%);
+  }
+  .sr-form-container {
+    padding: 0;
+  }
+  .sr-mobile-logo {
+    display: block;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  .sr-form-title {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+  .sr-form-subtitle {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .sr-top-stepper {
+    font-size: 0.75rem;
+  }
+  .ts-line {
+    margin: 0 0.5rem;
   }
 }

@@ -245,6 +245,9 @@ const SplitRegister = () => {
       {/* RIGHT PANEL (FORM) */}
       <div className="split-reg-right">
         <div className="sr-form-container">
+          <div className="sr-mobile-logo">
+            <img src={logoImg} alt="ELVOORIQ Logo" style={{ height: '64px' }} />
+          </div>
           <h2 className="sr-form-title">Create your account</h2>
           <p className="sr-form-subtitle">Start your creator journey with ELVOORIQ</p>
 

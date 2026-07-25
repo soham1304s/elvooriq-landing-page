@@ -146,6 +146,9 @@ const SplitLogin = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
+            <div className="sl-mobile-logo">
+              <img src={logoImg} alt="ELVOORIQ Logo" style={{ height: '64px' }} />
+            </div>
             <h2 className="sl-form-title">Welcome back</h2>
             <p className="sl-form-subtitle">Sign in to your creator account</p>
 

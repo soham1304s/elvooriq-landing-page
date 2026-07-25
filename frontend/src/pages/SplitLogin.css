@@ -383,16 +383,23 @@
   color: #4a5568;
 }
 
+.sl-mobile-logo {
+  display: none;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .split-login-container {
     flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
   }
   .split-login-left {
-    padding: 3rem 2rem;
+    padding: 4rem 2rem;
   }
   .split-login-right {
-    padding: 3rem 2rem;
+    padding: 4rem 2rem;
   }
   .sl-heading {
     font-size: 2.5rem;
@@ -400,7 +407,34 @@
 }
 
 @media (max-width: 768px) {
-  .sl-stats-row {
-    flex-direction: column;
+  .split-login-left {
+    display: none; /* Auto hide left-side content to highlight credentials flow on mobile */
+  }
+  .split-login-right {
+    padding: 2.5rem 1.5rem;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background-image: radial-gradient(circle at top right, rgba(16, 185, 129, 0.05) 0%, transparent 60%);
+  }
+  .sl-form-container {
+    padding: 0;
+  }
+  .sl-mobile-logo {
+    display: block;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  .sl-form-title {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+  .sl-form-subtitle {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .sl-form-footer {
+    flex-wrap: wrap;
+    gap: 0.75rem 1.25rem;
   }
 }
