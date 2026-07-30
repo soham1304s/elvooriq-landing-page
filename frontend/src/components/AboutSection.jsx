@@ -63,7 +63,7 @@ const AboutSection = () => {
           </motion.p>
           
           <motion.p variants={fadeInUp} className="about-paragraph">
-            Today we manage 5,000+ creators across 50+ countries, with a team of industry veterans from YouTube, LVMH, McKinsey, Twitch, and leading global creative agencies.
+            Today we manage 1,500+ creators across 50+ countries, with a team of industry veterans from YouTube, LVMH, McKinsey, Twitch, and leading global creative agencies.
           </motion.p>
           
           {/* Mission & Vision Blocks */}

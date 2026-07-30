@@ -59,11 +59,11 @@ const Hero = ({ animateHero }) => {
           animate={animateHero ? "visible" : "hidden"}
         >
           <motion.div variants={fadeInUp} className="stat-item">
-            <h3 className="stat-value">5,000<span className="stat-plus">+</span></h3>
+            <h3 className="stat-value">1,500<span className="stat-plus">+</span></h3>
             <p className="stat-label">Creators</p>
           </motion.div>
           <motion.div variants={fadeInUp} className="stat-item">
-            <h3 className="stat-value">200M<span className="stat-plus">+</span></h3>
+            <h3 className="stat-value">35M<span className="stat-plus">+</span></h3>
             <p className="stat-label">Views</p>
           </motion.div>
           <motion.div variants={fadeInUp} className="stat-item">

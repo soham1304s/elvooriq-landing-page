@@ -124,7 +124,7 @@ const DashboardHero = () => {
         transition={{ duration: 0.8, delay: 0.6 }}
       >
         <div className="dh-stat-item">
-          <h2>5,000+</h2>
+          <h2>1,500+</h2>
           <p>ACTIVE STREAMERS</p>
         </div>
         <div className="dh-stat-divider"></div>
@@ -134,7 +134,7 @@ const DashboardHero = () => {
         </div>
         <div className="dh-stat-divider"></div>
         <div className="dh-stat-item">
-          <h2>200M+</h2>
+          <h2>35M+</h2>
           <p>LIVE VIEWS/MO</p>
         </div>
         <div className="dh-stat-divider"></div>

@@ -156,7 +156,7 @@ const SplitRegister = () => {
               <circle cx="8.5" cy="7" r="4"></circle>
               <polyline points="17 11 19 13 23 9"></polyline>
             </svg>
-            JOIN 5,000+ CREATORS
+            JOIN 1,500+ CREATORS
           </div>
 
           <h1 className="sr-heading">
@@ -217,7 +217,7 @@ const SplitRegister = () => {
             </div>
             <div className="sr-trust-text">
               <div className="stars">★★★★★</div>
-              <p>Trusted by 5,000+ creators</p>
+              <p>Trusted by 1,500+ creators</p>
             </div>
           </div>
 

@@ -37,7 +37,7 @@ const ResultsSection = () => {
           viewport={{ once: true, margin: "-100px" }}
         >
           <motion.div variants={fadeInUp} className="stat-item">
-            <h3 className="stat-number">5,000<span className="stat-plus">+</span></h3>
+            <h3 className="stat-number">1,500<span className="stat-plus">+</span></h3>
             <p className="stat-label">CREATORS MANAGED</p>
           </motion.div>
           <motion.div variants={fadeInUp} className="stat-divider"></motion.div>
@@ -47,7 +47,7 @@ const ResultsSection = () => {
           </motion.div>
           <motion.div variants={fadeInUp} className="stat-divider"></motion.div>
           <motion.div variants={fadeInUp} className="stat-item">
-            <h3 className="stat-number">200M<span className="stat-plus">+</span></h3>
+            <h3 className="stat-number">35M<span className="stat-plus">+</span></h3>
             <p className="stat-label">VIEWS GENERATED</p>
           </motion.div>
           <motion.div variants={fadeInUp} className="stat-divider"></motion.div>
