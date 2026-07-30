@@ -14,7 +14,7 @@ const CreatorStoriesPage = () => {
 
   return (
     <PageLayout>
-      <div className="page-hero">
+      <div className="page-hero hero-creator-stories">
         <div className="page-hero-badge">CREATOR SUCCESS</div>
         <h1 className="page-hero-title">Real <span className="title-accent">Creator Stories</span></h1>
         <p className="page-hero-subtitle">

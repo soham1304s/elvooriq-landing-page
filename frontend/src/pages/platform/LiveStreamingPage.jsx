@@ -16,7 +16,7 @@ const LiveStreamingPage = () => {
 
   return (
     <PageLayout>
-      <div className="page-hero">
+      <div className="page-hero hero-live-streaming">
         <div className="page-hero-badge">PLATFORM FEATURE</div>
         <h1 className="page-hero-title">Next-Gen <span className="title-accent">Live Streaming</span> Engine</h1>
         <p className="page-hero-subtitle">

@@ -15,7 +15,7 @@ const TechnicalSupportPage = () => {
 
   return (
     <PageLayout>
-      <div className="page-hero">
+      <div className="page-hero hero-technical-support">
         <div className="page-hero-badge">SERVICES</div>
         <h1 className="page-hero-title">24/7 <span className="title-accent">Technical Support</span></h1>
         <p className="page-hero-subtitle">

@@ -15,7 +15,7 @@ const BrandMarketplacePage = () => {
 
   return (
     <PageLayout>
-      <div className="page-hero">
+      <div className="page-hero hero-brand-marketplace">
         <div className="page-hero-badge">PLATFORM FEATURE</div>
         <h1 className="page-hero-title">Exclusive <span className="title-accent">Brand Marketplace</span></h1>
         <p className="page-hero-subtitle">

@@ -15,7 +15,7 @@ const MobileAppPage = () => {
 
   return (
     <PageLayout>
-      <div className="page-hero">
+      <div className="page-hero hero-mobile-app">
         <div className="page-hero-badge">MOBILE PLATFORM</div>
         <h1 className="page-hero-title">ELVOORIQ <span className="title-accent">Mobile Studio</span></h1>
         <p className="page-hero-subtitle">

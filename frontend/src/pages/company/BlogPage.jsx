@@ -14,7 +14,7 @@ const BlogPage = () => {
 
   return (
     <PageLayout>
-      <div className="page-hero">
+      <div className="page-hero hero-blog">
         <div className="page-hero-badge">CREATOR INSIGHTS</div>
         <h1 className="page-hero-title">The ELVOORIQ <span className="title-accent">Journal & Blog</span></h1>
         <p className="page-hero-subtitle">

@@ -15,7 +15,7 @@ const AboutUsPage = () => {
 
   return (
     <PageLayout>
-      <div className="page-hero">
+      <div className="page-hero hero-about">
         <div className="page-hero-badge">ABOUT ELVOORIQ</div>
         <h1 className="page-hero-title">Championing the <span className="title-accent">Future of Creators</span></h1>
         <p className="page-hero-subtitle">

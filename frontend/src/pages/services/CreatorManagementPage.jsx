@@ -16,7 +16,7 @@ const CreatorManagementPage = () => {
 
   return (
     <PageLayout>
-      <div className="page-hero">
+      <div className="page-hero hero-creator-management">
         <div className="page-hero-badge">OUR CORE SERVICE</div>
         <h1 className="page-hero-title">Premier <span className="title-accent">Creator Management</span></h1>
         <p className="page-hero-subtitle">

@@ -7,7 +7,7 @@ import '../PageStyles.css';
 const TermsOfServicePage = () => {
   return (
     <PageLayout>
-      <div className="page-hero">
+      <div className="page-hero hero-terms">
         <div className="page-hero-badge">LEGAL TERMS</div>
         <h1 className="page-hero-title">Terms of <span className="title-accent">Service</span></h1>
         <p className="page-hero-subtitle">

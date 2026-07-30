@@ -15,7 +15,7 @@ const CareersPage = () => {
 
   return (
     <PageLayout>
-      <div className="page-hero">
+      <div className="page-hero hero-careers">
         <div className="page-hero-badge">CAREERS AT ELVOORIQ</div>
         <h1 className="page-hero-title">Build the Future of <span className="title-accent">Creator Tech</span></h1>
         <p className="page-hero-subtitle">

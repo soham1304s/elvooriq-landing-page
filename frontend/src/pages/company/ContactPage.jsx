@@ -191,7 +191,7 @@ const ContactPage = () => {
 
   return (
     <PageLayout>
-      <div className="page-hero">
+      <div className="page-hero hero-contact">
         <div className="page-hero-badge">GET IN TOUCH</div>
         <h1 className="page-hero-title">Contact <span className="title-accent">ELVOORIQ Team</span></h1>
         <p className="page-hero-subtitle">

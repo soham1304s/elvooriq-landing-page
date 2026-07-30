@@ -16,7 +16,7 @@ const AnalyticsPage = () => {
 
   return (
     <PageLayout>
-      <div className="page-hero">
+      <div className="page-hero hero-analytics">
         <div className="page-hero-badge">PLATFORM FEATURE</div>
         <h1 className="page-hero-title">Real-Time <span className="title-accent">Creator Analytics</span></h1>
         <p className="page-hero-subtitle">

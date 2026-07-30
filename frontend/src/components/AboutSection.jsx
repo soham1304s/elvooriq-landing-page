@@ -2,6 +2,8 @@ import React from 'react';
 import { Heart, Sparkles, Shield, Globe2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { fadeInUp, staggerContainer, fadeInLeft, fadeInRight } from '../utils/animations';
+import aboutMainImg from '../assets/1.png';
+import aboutSecondaryImg from '../assets/2.png';
 import './AboutSection.css';
 
 const AboutSection = () => {
@@ -20,8 +22,8 @@ const AboutSection = () => {
           <div className="about-decorative-circle"></div>
           
           <img 
-            src="/about/laptop.png" 
-            alt="Person pointing at laptop screen" 
+            src={aboutMainImg} 
+            alt="Elvooriq team" 
             className="about-img-main"
           />
           
@@ -31,7 +33,7 @@ const AboutSection = () => {
           </div>
 
           <img 
-            src="/about/meeting.png" 
+            src={aboutSecondaryImg} 
             alt="Team meeting" 
             className="about-img-secondary"
           />

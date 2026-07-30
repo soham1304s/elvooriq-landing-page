@@ -15,7 +15,7 @@ const TrainingMentorshipPage = () => {
 
   return (
     <PageLayout>
-      <div className="page-hero">
+      <div className="page-hero hero-training-mentorship">
         <div className="page-hero-badge">SERVICES</div>
         <h1 className="page-hero-title">Training & <span className="title-accent">Creator Mentorship</span></h1>
         <p className="page-hero-subtitle">

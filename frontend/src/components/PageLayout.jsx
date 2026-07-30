@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from './Header';
 import FooterSection from './FooterSection';
-import FloatingChat from './FloatingChat';
 
 const PageLayout = ({ children }) => {
   const { pathname } = useLocation();
@@ -18,7 +17,6 @@ const PageLayout = ({ children }) => {
         {children}
       </main>
       <FooterSection />
-      <FloatingChat />
     </div>
   );
 };

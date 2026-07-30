@@ -15,7 +15,7 @@ const PressKitPage = () => {
 
   return (
     <PageLayout>
-      <div className="page-hero">
+      <div className="page-hero hero-press-kit">
         <div className="page-hero-badge">PRESS & MEDIA</div>
         <h1 className="page-hero-title">Official <span className="title-accent">Press Kit</span> & Assets</h1>
         <p className="page-hero-subtitle">

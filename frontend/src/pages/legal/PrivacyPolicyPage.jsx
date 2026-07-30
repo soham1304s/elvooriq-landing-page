@@ -7,7 +7,7 @@ import '../PageStyles.css';
 const PrivacyPolicyPage = () => {
   return (
     <PageLayout>
-      <div className="page-hero">
+      <div className="page-hero hero-privacy">
         <div className="page-hero-badge">LEGAL & PRIVACY</div>
         <h1 className="page-hero-title">Privacy <span className="title-accent">Policy</span></h1>
         <p className="page-hero-subtitle">

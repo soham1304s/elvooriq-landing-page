@@ -16,7 +16,6 @@ import JournalSection from '../components/JournalSection';
 import FAQSection from '../components/FAQSection';
 import ContactSection from '../components/ContactSection';
 import FooterSection from '../components/FooterSection';
-import FloatingChat from '../components/FloatingChat';
 
 function LandingPage() {
   const [introComplete, setIntroComplete] = useState(false);
@@ -57,7 +56,6 @@ function LandingPage() {
         <ContactSection />
       </main>
       <FooterSection />
-      <FloatingChat />
     </>
   );
 }

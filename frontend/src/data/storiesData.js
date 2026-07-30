@@ -1,11 +1,15 @@
+import mayaImg from '../assets/5.png';
+import zaraImg from '../assets/7.png';
+import niaImg from '../assets/8.png';
+
 export const storiesDetails = [
   {
     id: 'maya',
-    name: 'Maya Lin',
-    handle: '@mayastreams',
+    name: 'Aishwarya Harishankar',
+    handle: '@aishwarishankar',
     category: 'LIFESTYLE CREATOR',
     journey: '18 Months Journey',
-    image: '/creators/maya.png',
+    image: mayaImg,
     badge: '44x REVENUE EXPANSION',
     before: {
       followers: '8.2K',
@@ -22,13 +26,13 @@ export const storiesDetails = [
       details: 'Multi-platform media brand, 44x revenue growth, featured in Vogue India & Forbes Creator 30 Under 30.'
     },
     quote: "ELVOORIQ gave me the infrastructure I didn't know I needed. Within a year my revenue grew 44x and I quit my 9-to-5.",
-    summary: 'Maya Lin transformed from an overworked part-time lifestyle vlogger into a full-time digital powerhouse with 1.4M followers and $18.5k/mo recurring revenue.',
-    challenge: 'Maya was trapped in the classic creator treadmill: producing high volumes of lifestyle vlogs after her corporate job, yet earning under $450/month with zero brand sponsorship inquiries. Her audience growth had plateaued at 8.2k followers due to unoptimized title hooks and lack of monetization structure.',
+    summary: 'Aishwarya Harishankar transformed from an overworked part-time lifestyle vlogger into a full-time digital powerhouse with 1.4M followers and $18.5k/mo recurring revenue.',
+    challenge: 'Aishwarya was trapped in the classic creator treadmill: producing high volumes of lifestyle vlogs after her corporate job, yet earning under $450/month with zero brand sponsorship inquiries. Her audience growth had plateaued at 8.2k followers due to unoptimized title hooks and lack of monetization structure.',
     strategy: [
       {
         iconName: 'TrendingUp',
         title: 'Retention & Hook Optimization',
-        description: 'Overhauled Maya’s opening 15-second hooks and thumbnail pacing, increasing viewer watch time retention by 280% within 60 days.'
+        description: 'Overhauled Aishwarya’s opening 15-second hooks and thumbnail pacing, increasing viewer watch time retention by 280% within 60 days.'
       },
       {
         iconName: 'Handshake',
@@ -38,7 +42,7 @@ export const storiesDetails = [
       {
         iconName: 'Sparkles',
         title: 'Direct-To-Consumer Product Launch',
-        description: 'Co-developed Maya’s signature physical wellness planner and aesthetic desk line, generating over $120,000 in debut launch sales.'
+        description: 'Co-developed Aishwarya’s signature physical wellness planner and aesthetic desk line, generating over $120,000 in debut launch sales.'
       },
       {
         iconName: 'ShieldCheck',
@@ -55,11 +59,11 @@ export const storiesDetails = [
   },
   {
     id: 'zara',
-    name: 'Zara Williams',
-    handle: '@zaracreates',
+    name: 'Sunita Bera',
+    handle: '@sunitabera',
     category: 'FASHION & BEAUTY',
     journey: '24 Months Journey',
-    image: '/creators/zara.png',
+    image: zaraImg,
     badge: 'GLOBAL LUXURY ICON',
     before: {
       followers: '15K',
@@ -76,13 +80,13 @@ export const storiesDetails = [
       details: 'Front-row Paris Fashion Week attendee, 6-figure global ambassador contracts, 2.7M loyal fashion followers.'
     },
     quote: "The strategic guidance from ELVOORIQ transformed my channel from a hobby into a multi-million dollar business empire.",
-    summary: 'Zara Williams turned her fashion lookbooks into a global luxury media empire, generating $32,000/mo and partnering with the world’s top luxury fashion houses.',
-    challenge: 'Despite producing high-end fashion lookbooks, Zara was severely under-monetizing her content. She was accepting free clothing items in exchange for permanent social posts, giving away valuable commercial usage rights without legal defense or financial compensation.',
+    summary: 'Sunita Bera turned her fashion lookbooks into a global luxury media empire, generating $32,000/mo and partnering with the world’s top luxury fashion houses.',
+    challenge: 'Despite producing high-end fashion lookbooks, Sunita was severely under-monetizing her content. She was accepting free clothing items in exchange for permanent social posts, giving away valuable commercial usage rights without legal defense or financial compensation.',
     strategy: [
       {
         iconName: 'Crown',
         title: 'Luxury Press Kit & Agency Pitching',
-        description: 'Created an executive electronic press kit (EPK) and pitched Zara directly to Paris, Milan, and New York fashion agency heads.'
+        description: 'Created an executive electronic press kit (EPK) and pitched Sunita directly to Paris, Milan, and New York fashion agency heads.'
       },
       {
         iconName: 'DollarSign',
@@ -109,11 +113,11 @@ export const storiesDetails = [
   },
   {
     id: 'nia',
-    name: 'Nia Osei',
-    handle: '@niatech',
+    name: 'Jyoti Roy',
+    handle: '@jyotiroy',
     category: 'TECH & GAMING',
     journey: '12 Months Journey',
-    image: '/creators/priya.png',
+    image: niaImg,
     badge: '99.9% STREAM UPTIME & 22X GROWTH',
     before: {
       followers: '45K',
@@ -130,8 +134,8 @@ export const storiesDetails = [
       details: 'Freed from MCN contract, co-creator of custom hardware line, 980K subscribers, 99.9% stream stability.'
     },
     quote: "They negotiated contracts I didn't even know were possible. I can finally focus just on creating content while they handle the business.",
-    summary: 'Nia Osei broke free from a predatory MCN contract and scaled her tech & gaming channel to 980K subscribers while building a recurring $14.5k/mo revenue stream.',
-    challenge: 'Nia was streaming 10+ hours a day but suffering from severe creator burnout. Technical stream lag, audio desync, and a predatory MCN contract taking 30% of her earnings prevented her from scaling her tech review brand.',
+    summary: 'Jyoti Roy broke free from a predatory MCN contract and scaled her tech & gaming channel to 980K subscribers while building a recurring $14.5k/mo revenue stream.',
+    challenge: 'Jyoti was streaming 10+ hours a day but suffering from severe creator burnout. Technical stream lag, audio desync, and a predatory MCN contract taking 30% of her earnings prevented her from scaling her tech review brand.',
     strategy: [
       {
         iconName: 'Wrench',
@@ -141,7 +145,7 @@ export const storiesDetails = [
       {
         iconName: 'ShieldCheck',
         title: 'MCN Contract Buyout & Legal Freedom',
-        description: 'ELVOORIQ’s legal team identified contract breaches in Nia’s legacy MCN contract, successfully liberating her without penalty.'
+        description: 'ELVOORIQ’s legal team identified contract breaches in Jyoti’s legacy MCN contract, successfully liberating her without penalty.'
       },
       {
         iconName: 'Video',

@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '../utils/animations';
+import sephoraImg from '../assets/9.png';
+import spotifyImg from '../assets/10.png';
 import './BrandCollabsSection.css';
 
 const brands = ['Apple', 'Dior', 'Chanel', 'Samsung', 'Gucci', 'Amazon', 'H&M', 'Sephora', 'Nike', 'LVMH'];
@@ -8,7 +10,7 @@ const brands = ['Apple', 'Dior', 'Chanel', 'Samsung', 'Gucci', 'Amazon', 'H&M', 
 const campaigns = [
   {
     id: 1,
-    image: '/campaigns/sephora.png',
+    image: sephoraImg,
     title: 'SEPHORA × ELVOORIQ',
     description: '12 creators, ₹2.4M campaign reach, 340% ROAS'
   },
@@ -20,7 +22,7 @@ const campaigns = [
   },
   {
     id: 3,
-    image: '/campaigns/spotify.png',
+    image: spotifyImg,
     title: 'SPOTIFY × ELVOORIQ',
     description: 'Creator podcast series, 5M listeners, 6 markets'
   }
