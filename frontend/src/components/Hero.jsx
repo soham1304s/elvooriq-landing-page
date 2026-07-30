@@ -67,7 +67,7 @@ const Hero = ({ animateHero }) => {
             <p className="stat-label">Views</p>
           </motion.div>
           <motion.div variants={fadeInUp} className="stat-item">
-            <h3 className="stat-value">35<span className="stat-plus">+</span></h3>
+            <h3 className="stat-value">32<span className="stat-plus">+</span></h3>
             <p className="stat-label">Brand Partners</p>
           </motion.div>
           <motion.div variants={fadeInUp} className="stat-item">
