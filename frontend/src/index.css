@@ -48,7 +48,8 @@ button {
 
 @media (max-width: 768px) {
   .container {
-    padding: 0 1.25rem; /* Slightly tighter padding on mobile */
+    padding: 0 1.25rem;
+    /* Slightly tighter padding on mobile */
   }
 }
 
@@ -58,6 +59,7 @@ button {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -68,6 +70,14 @@ button {
   animation: fade-in-up 0.8s ease-out forwards;
 }
 
-.delay-100 { animation-delay: 100ms; }
-.delay-200 { animation-delay: 200ms; }
-.delay-300 { animation-delay: 300ms; }
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
