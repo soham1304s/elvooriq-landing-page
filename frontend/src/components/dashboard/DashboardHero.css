@@ -154,10 +154,16 @@
 
 .dh-logo {
   font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
+  font-size: 2.2rem;
   font-weight: 700;
   color: white;
   letter-spacing: 2px;
+  text-shadow: 0 0 16px rgba(16, 185, 129, 0.35);
+  transition: transform 0.3s ease;
+}
+
+.dh-logo:hover {
+  transform: scale(1.05);
 }
 
 .dh-logo span {

@@ -14,11 +14,27 @@
 }
 
 .logo {
+  display: flex;
+  align-items: center;
   font-family: var(--font-serif);
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   color: var(--color-text-main);
+  text-decoration: none;
+}
+
+.logo-img {
+  height: 88px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: drop-shadow(0 0 10px rgba(0, 229, 153, 0.2));
+}
+
+.logo-img:hover {
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 16px rgba(0, 229, 153, 0.45));
 }
 
 .logo-accent {

@@ -20,7 +20,7 @@ const Header = () => {
         
         {/* Logo */}
         <Link to="/" className="logo">
-          <img src={logoImg} alt="ELVOORIQ Logo" style={{ height: '64px' }} />
+          <img src={logoImg} alt="ELVOORIQ Logo" className="logo-img" />
         </Link>
 
         {/* Desktop Navigation */}
