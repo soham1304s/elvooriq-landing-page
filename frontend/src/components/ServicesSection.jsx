@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '../utils/animations';
 import { 
   Users, 
@@ -13,57 +13,45 @@ import {
   Radio,
   ArrowRight
 } from 'lucide-react';
+import { servicesDetails } from '../data/servicesData';
+import ServiceModal from './ServiceModal';
 import './ServicesSection.css';
 
-const services = [
-  {
-    title: 'Creator Management',
-    description: 'Full-spectrum creator representation including contract negotiations, career roadmapping, and revenue optimization.',
-    icon: <Users size={20} />
-  },
-  {
-    title: 'Talent Representation',
-    description: 'Elite-tier talent placement and brand positioning for creators ready to move from content to cultural icon.',
-    icon: <Award size={20} />
-  },
-  {
-    title: 'Brand Collaborations',
-    description: 'Curated brand deals with 500+ premium partners across fashion, beauty, tech, wellness, and lifestyle.',
-    icon: <Handshake size={20} />
-  },
-  {
-    title: 'Growth Strategy',
-    description: 'Proprietary analytics and algorithm intelligence to compound audience growth and maximize platform performance.',
-    icon: <TrendingUp size={20} />
-  },
-  {
-    title: 'Creator Onboarding',
-    description: 'White-glove 90-day onboarding with platform audit, audience analysis, brand kit creation, and launch planning.',
-    icon: <UserPlus size={20} />
-  },
-  {
-    title: 'Digital Marketing',
-    description: 'Multi-channel campaigns spanning social media, email, paid media, and SEO with luxury-grade production values.',
-    icon: <Megaphone size={20} />
-  },
-  {
-    title: 'Training & Mentorship',
-    description: 'One-on-one mentorship from industry veterans who have built and scaled seven-figure creator businesses.',
-    icon: <GraduationCap size={20} />
-  },
-  {
-    title: 'Technical Support',
-    description: '24/7 engineering support for streaming, platform integrations, equipment consulting, and broadcast troubleshooting.',
-    icon: <Wrench size={20} />
-  },
-  {
-    title: 'Live Streaming',
-    description: 'End-to-end streaming operations from scheduling to real-time moderation, analytics, and simulcast infrastructure.',
-    icon: <Radio size={20} />
-  }
-];
+const iconMap = {
+  Users,
+  Award,
+  Handshake,
+  TrendingUp,
+  UserPlus,
+  Megaphone,
+  GraduationCap,
+  Wrench,
+  Radio
+};
 
 const ServicesSection = () => {
+  const [activeModalIndex, setActiveModalIndex] = useState(null);
+
+  const handleOpenModal = (index) => {
+    setActiveModalIndex(index);
+  };
+
+  const handleCloseModal = () => {
+    setActiveModalIndex(null);
+  };
+
+  const handlePrevModal = () => {
+    setActiveModalIndex((prevIndex) => 
+      prevIndex === 0 ? servicesDetails.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleNextModal = () => {
+    setActiveModalIndex((prevIndex) => 
+      prevIndex === servicesDetails.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
   return (
     <section className="services-section" id="all-services">
       <div className="services-container container">
@@ -94,23 +82,53 @@ const ServicesSection = () => {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          {services.map((service, index) => (
-            <motion.div variants={fadeInUp} className="service-card" key={index}>
-              <div className="service-icon-wrapper">
-                {service.icon}
-              </div>
-              <h3 className="service-card-title">{service.title}</h3>
-              <p className="service-card-desc">{service.description}</p>
-              <a href="#" className="service-read-more">
-                Read More <ArrowRight size={14} className="arrow-icon" />
-              </a>
-            </motion.div>
-          ))}
+          {servicesDetails.map((service, index) => {
+            const IconComponent = iconMap[service.iconName] || Users;
+            return (
+              <motion.div 
+                variants={fadeInUp} 
+                className="service-card" 
+                key={service.id || index}
+                onClick={() => handleOpenModal(index)}
+              >
+                <div className="service-icon-wrapper">
+                  <IconComponent size={20} />
+                </div>
+                <h3 className="service-card-title">{service.title}</h3>
+                <p className="service-card-desc">{service.subtitle}</p>
+                <button 
+                  type="button" 
+                  className="service-read-more"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleOpenModal(index);
+                  }}
+                >
+                  Read More <ArrowRight size={14} className="arrow-icon" />
+                </button>
+              </motion.div>
+            );
+          })}
         </motion.div>
 
       </div>
+
+      {/* Interactive Popup Modal for all 9 sections */}
+      <AnimatePresence>
+        {activeModalIndex !== null && (
+          <ServiceModal
+            service={servicesDetails[activeModalIndex]}
+            currentIndex={activeModalIndex}
+            totalServices={servicesDetails.length}
+            onClose={handleCloseModal}
+            onPrev={handlePrevModal}
+            onNext={handleNextModal}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 };
 
 export default ServicesSection;
+

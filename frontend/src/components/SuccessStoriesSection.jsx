@@ -1,73 +1,27 @@
 import React, { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { fadeInUp, staggerContainer, fadeInLeft, fadeInRight } from '../utils/animations';
+import { fadeInUp, staggerContainer, fadeInLeft } from '../utils/animations';
+import { storiesDetails } from '../data/storiesData';
+import StoryModal from './StoryModal';
 import './SuccessStoriesSection.css';
-
-const successStories = [
-  {
-    id: 'maya',
-    name: 'Maya Lin',
-    handle: '@mayastreams',
-    category: 'LIFESTYLE CREATOR',
-    journey: '18 months journey',
-    image: '/creators/maya.png',
-    before: {
-      followers: '8.2K',
-      revenue: '₹420/mo',
-      brandDeals: '0'
-    },
-    after: {
-      followers: '1.4M',
-      revenue: '₹18,500/mo',
-      brandDeals: '12'
-    },
-    quote: "ELVOORIQ gave me the infrastructure I didn't know I needed. Within a year my revenue grew 44x and I quit my 9-to-5."
-  },
-  {
-    id: 'zara',
-    name: 'Zara Williams',
-    handle: '@zaracreates',
-    category: 'FASHION & BEAUTY',
-    journey: '24 months journey',
-    image: '/creators/zara.png',
-    before: {
-      followers: '15K',
-      revenue: '₹800/mo',
-      brandDeals: '1'
-    },
-    after: {
-      followers: '2.7M',
-      revenue: '₹32,000/mo',
-      brandDeals: '25'
-    },
-    quote: "The strategic guidance from ELVOORIQ transformed my channel from a hobby into a multi-million dollar business empire."
-  },
-  {
-    id: 'nia',
-    name: 'Nia Osei',
-    handle: '@niatech',
-    category: 'TECH & GAMING',
-    journey: '12 months journey',
-    image: '/creators/priya.png', // Reusing Priya's image for Nia
-    before: {
-      followers: '45K',
-      revenue: '₹1,200/mo',
-      brandDeals: '2'
-    },
-    after: {
-      followers: '980K',
-      revenue: '₹14,500/mo',
-      brandDeals: '8'
-    },
-    quote: "They negotiated contracts I didn't even know were possible. I can finally focus just on creating content while they handle the business."
-  }
-];
 
 const SuccessStoriesSection = () => {
   const [activeStoryId, setActiveStoryId] = useState('maya');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const activeStory = successStories.find(story => story.id === activeStoryId);
+  const activeStoryIndex = storiesDetails.findIndex(story => story.id === activeStoryId);
+  const activeStory = storiesDetails[activeStoryIndex >= 0 ? activeStoryIndex : 0];
+
+  const handlePrevStory = () => {
+    const nextIndex = activeStoryIndex === 0 ? storiesDetails.length - 1 : activeStoryIndex - 1;
+    setActiveStoryId(storiesDetails[nextIndex].id);
+  };
+
+  const handleNextStory = () => {
+    const nextIndex = activeStoryIndex === storiesDetails.length - 1 ? 0 : activeStoryIndex + 1;
+    setActiveStoryId(storiesDetails[nextIndex].id);
+  };
 
   return (
     <section className="success-section" id="success">
@@ -94,7 +48,7 @@ const SuccessStoriesSection = () => {
           
           <motion.div variants={fadeInUp} className="success-header-right">
             <div className="toggle-pills">
-              {successStories.map((story) => (
+              {storiesDetails.map((story) => (
                 <button
                   key={story.id}
                   className={`toggle-pill ${activeStoryId === story.id ? 'active' : ''}`}
@@ -126,6 +80,8 @@ const SuccessStoriesSection = () => {
                 exit={{ opacity: 0, scale: 1.05 }}
                 transition={{ duration: 0.5 }}
                 className="success-image-wrapper"
+                onClick={() => setIsModalOpen(true)}
+                style={{ cursor: 'pointer' }}
               >
                 <img src={activeStory.image} alt={activeStory.name} className="success-image" />
                 <div className="journey-badge">{activeStory.journey}</div>
@@ -209,7 +165,11 @@ const SuccessStoriesSection = () => {
                     "{activeStory.quote}"
                   </blockquote>
                   
-                  <button className="read-story-btn">
+                  <button 
+                    type="button" 
+                    className="read-story-btn"
+                    onClick={() => setIsModalOpen(true)}
+                  >
                     Read Full Story <ArrowRight size={16} />
                   </button>
                 </div>
@@ -221,8 +181,23 @@ const SuccessStoriesSection = () => {
         </div>
 
       </div>
+
+      {/* Story Popup Modal */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <StoryModal
+            story={activeStory}
+            currentIndex={activeStoryIndex}
+            totalStories={storiesDetails.length}
+            onClose={() => setIsModalOpen(false)}
+            onPrev={handlePrevStory}
+            onNext={handleNextStory}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 };
 
 export default SuccessStoriesSection;
+

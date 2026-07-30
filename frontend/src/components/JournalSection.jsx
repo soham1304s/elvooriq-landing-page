@@ -1,37 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Clock, ArrowRight } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '../utils/animations';
+import { articlesData } from '../data/articlesData';
+import JournalArticlesModal from './JournalArticlesModal';
 import './JournalSection.css';
 
-const articles = [
-  {
-    id: 1,
-    category: 'CREATOR ECONOMY',
-    title: 'How Women Creators Are Rewriting the Rules of Digital Media in 2026',
-    date: 'Jan 12, 2026',
-    readTime: '5 min read',
-    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 2,
-    category: 'GROWTH STRATEGY',
-    title: 'The 7 Revenue Streams Every Creator Must Activate This Year',
-    date: 'Jan 8, 2026',
-    readTime: '7 min read',
-    image: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    id: 3,
-    category: 'LIVE STREAMING',
-    title: 'Mastering Viewer Engagement: Techniques That Convert Viewers to Loyal Fans',
-    date: 'Dec 28, 2025',
-    readTime: '6 min read',
-    image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
-  }
-];
-
 const JournalSection = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedArticleId, setSelectedArticleId] = useState(null);
+
+  const featuredArticles = articlesData.slice(0, 3);
+
+  const handleOpenAll = (e) => {
+    if (e) e.preventDefault();
+    setSelectedArticleId(null);
+    setIsModalOpen(true);
+  };
+
+  const handleOpenArticle = (id) => {
+    setSelectedArticleId(id);
+    setIsModalOpen(true);
+  };
+
   return (
     <section className="journal-section" id="journal">
       <div className="journal-container container">
@@ -56,9 +47,13 @@ const JournalSection = () => {
           </motion.div>
           
           <motion.div variants={fadeInUp} className="journal-header-right">
-            <a href="#" className="all-articles-link">
+            <button 
+              type="button"
+              className="all-articles-link"
+              onClick={handleOpenAll}
+            >
               All Articles <ArrowRight size={16} />
-            </a>
+            </button>
           </motion.div>
         </motion.div>
 
@@ -70,8 +65,14 @@ const JournalSection = () => {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
         >
-          {articles.map((article) => (
-            <motion.div variants={fadeInUp} className="article-card" key={article.id}>
+          {featuredArticles.map((article) => (
+            <motion.div 
+              variants={fadeInUp} 
+              className="article-card" 
+              key={article.id}
+              onClick={() => handleOpenArticle(article.id)}
+              style={{ cursor: 'pointer' }}
+            >
               
               <div className="article-image-wrapper">
                 <img src={article.image} alt={article.title} className="article-image" />
@@ -95,8 +96,19 @@ const JournalSection = () => {
         </motion.div>
 
       </div>
+
+      {/* Articles Modal */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <JournalArticlesModal
+            initialArticleId={selectedArticleId}
+            onClose={() => setIsModalOpen(false)}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 };
 
 export default JournalSection;
+

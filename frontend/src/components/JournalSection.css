@@ -40,16 +40,20 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  background: transparent;
+  border: none;
   color: rgba(0, 0, 0, 0.4);
   font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
-  transition: color 0.3s ease;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
   margin-bottom: 0.5rem; /* Optical alignment with the baseline of the large text */
 }
 
 .all-articles-link:hover {
   color: var(--color-primary);
+  transform: translateX(3px);
 }
 
 /* Article Grid */

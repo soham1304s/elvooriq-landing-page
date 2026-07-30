@@ -53,6 +53,7 @@
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   height: 100%;
+  cursor: pointer;
 }
 
 .service-card:hover {
@@ -99,8 +100,14 @@
   font-weight: 600;
   color: #9ca3af;
   text-decoration: none;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
   transition: color 0.3s ease;
   margin-top: auto;
+  width: fit-content;
 }
 
 .service-read-more:hover {
@@ -111,9 +118,11 @@
   transition: transform 0.3s ease;
 }
 
-.service-read-more:hover .arrow-icon {
+.service-read-more:hover .arrow-icon,
+.service-card:hover .arrow-icon {
   transform: translateX(4px);
 }
+
 
 /* Responsive */
 @media (max-width: 1024px) {
