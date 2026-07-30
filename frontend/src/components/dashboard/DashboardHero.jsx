@@ -134,12 +134,12 @@ const DashboardHero = () => {
         </div>
         <div className="dh-stat-divider"></div>
         <div className="dh-stat-item">
-          <h2>35M+</h2>
+          <h2>65M+</h2>
           <p>LIVE VIEWS/MO</p>
         </div>
         <div className="dh-stat-divider"></div>
         <div className="dh-stat-item">
-          <h2>98%</h2>
+          <h2>96%</h2>
           <p>RETENTION RATE</p>
         </div>
       </motion.div>

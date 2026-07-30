@@ -63,15 +63,15 @@ const Hero = ({ animateHero }) => {
             <p className="stat-label">Creators</p>
           </motion.div>
           <motion.div variants={fadeInUp} className="stat-item">
-            <h3 className="stat-value">35M<span className="stat-plus">+</span></h3>
+            <h3 className="stat-value">65M<span className="stat-plus">+</span></h3>
             <p className="stat-label">Views</p>
           </motion.div>
           <motion.div variants={fadeInUp} className="stat-item">
-            <h3 className="stat-value">50<span className="stat-plus">+</span></h3>
+            <h3 className="stat-value">35<span className="stat-plus">+</span></h3>
             <p className="stat-label">Brand Partners</p>
           </motion.div>
           <motion.div variants={fadeInUp} className="stat-item">
-            <h3 className="stat-value">98<span className="stat-plus">%</span></h3>
+            <h3 className="stat-value">96<span className="stat-plus">%</span></h3>
             <p className="stat-label">Satisfaction</p>
           </motion.div>
         </motion.div>

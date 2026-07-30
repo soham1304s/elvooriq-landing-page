@@ -42,17 +42,17 @@ const ResultsSection = () => {
           </motion.div>
           <motion.div variants={fadeInUp} className="stat-divider"></motion.div>
           <motion.div variants={fadeInUp} className="stat-item">
-            <h3 className="stat-number">98<span className="stat-plus">%</span></h3>
+            <h3 className="stat-number">96<span className="stat-plus">%</span></h3>
             <p className="stat-label">SATISFACTION RATE</p>
           </motion.div>
           <motion.div variants={fadeInUp} className="stat-divider"></motion.div>
           <motion.div variants={fadeInUp} className="stat-item">
-            <h3 className="stat-number">35M<span className="stat-plus">+</span></h3>
+            <h3 className="stat-number">65M<span className="stat-plus">+</span></h3>
             <p className="stat-label">VIEWS GENERATED</p>
           </motion.div>
           <motion.div variants={fadeInUp} className="stat-divider"></motion.div>
           <motion.div variants={fadeInUp} className="stat-item">
-            <h3 className="stat-number">50<span className="stat-plus">+</span></h3>
+            <h3 className="stat-number">35<span className="stat-plus">+</span></h3>
             <p className="stat-label">BRAND PARTNERS</p>
           </motion.div>
         </motion.div>
