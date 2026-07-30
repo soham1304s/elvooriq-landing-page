@@ -12,9 +12,9 @@ const testimonials = [
     image: amaraPortrait,
     avatar: 'https://i.pravatar.cc/150?u=amara', // Placeholder generic avatars for pills
     beforeMetrics: '8K followers, zero revenue',
-    afterMetrics: '$24,000/mo',
+    afterMetrics: '₹2,40,000/mo',
     afterSub: '3.2M followers',
-    quote: 'ELVOORIQ transformed my live streams from hobby sessions to a full-time business generating $24K a month. My manager handled brand deals while I focused on connecting with my audience.'
+    quote: 'ELVOORIQ transformed my live streams from hobby sessions to a full-time business generating ₹2.4 Lakhs a month. My manager handled brand deals while I focused on connecting with my audience.'
   },
   {
     id: 'sofia',
@@ -24,7 +24,7 @@ const testimonials = [
     image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop', // Temporary placeholder
     avatar: 'https://i.pravatar.cc/150?u=sofia',
     beforeMetrics: 'Struggling to monetize 500 viewers',
-    afterMetrics: '$12,500/mo',
+    afterMetrics: '₹1,25,000/mo',
     afterSub: 'Partnered Status',
     quote: 'The technical assistance and brand connections provided by ELVOORIQ completely leveled up my stream quality. I finally secured the sponsorships I had been dreaming of.'
   },

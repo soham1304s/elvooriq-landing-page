@@ -49,7 +49,7 @@ export const servicesDetails = [
     title: 'Talent Representation',
     badge: 'ELITE PLACEMENT',
     subtitle: 'Elite-tier talent placement and brand positioning for creators ready to move from content to cultural icon.',
-    stat: '$50M+ Negotiated Brand Contracts',
+    stat: '₹500Cr+ Negotiated Brand Contracts',
     iconName: 'Award',
     overview: 'Designed for top-tier creators looking to cross over into mainstream media, fashion, Hollywood, and global brand ambassadorships. We position you as a premium media brand and negotiate industry-defining deals.',
     features: [

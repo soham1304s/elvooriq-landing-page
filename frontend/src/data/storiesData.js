@@ -26,8 +26,8 @@ export const storiesDetails = [
       details: 'Multi-platform media brand, 44x revenue growth, featured in Vogue India & Forbes Creator 30 Under 30.'
     },
     quote: "ELVOORIQ gave me the infrastructure I didn't know I needed. Within a year my revenue grew 44x and I quit my 9-to-5.",
-    summary: 'Aishwarya Harishankar transformed from an overworked part-time lifestyle vlogger into a full-time digital powerhouse with 1.4M followers and $18.5k/mo recurring revenue.',
-    challenge: 'Aishwarya was trapped in the classic creator treadmill: producing high volumes of lifestyle vlogs after her corporate job, yet earning under $450/month with zero brand sponsorship inquiries. Her audience growth had plateaued at 8.2k followers due to unoptimized title hooks and lack of monetization structure.',
+    summary: 'Aishwarya Harishankar transformed from an overworked part-time lifestyle vlogger into a full-time digital powerhouse with 1.4M followers and ₹18,500/mo recurring revenue.',
+    challenge: 'Aishwarya was trapped in the classic creator treadmill: producing high volumes of lifestyle vlogs after her corporate job, yet earning under ₹420/month with zero brand sponsorship inquiries. Her audience growth had plateaued at 8.2k followers due to unoptimized title hooks and lack of monetization structure.',
     strategy: [
       {
         iconName: 'TrendingUp',
@@ -42,7 +42,7 @@ export const storiesDetails = [
       {
         iconName: 'Sparkles',
         title: 'Direct-To-Consumer Product Launch',
-        description: 'Co-developed Aishwarya’s signature physical wellness planner and aesthetic desk line, generating over $120,000 in debut launch sales.'
+        description: 'Co-developed Aishwarya’s signature physical wellness planner and aesthetic desk line, generating over ₹12,00,000 in debut launch sales.'
       },
       {
         iconName: 'ShieldCheck',
@@ -80,7 +80,7 @@ export const storiesDetails = [
       details: 'Front-row Paris Fashion Week attendee, 6-figure global ambassador contracts, 2.7M loyal fashion followers.'
     },
     quote: "The strategic guidance from ELVOORIQ transformed my channel from a hobby into a multi-million dollar business empire.",
-    summary: 'Sunita Bera turned her fashion lookbooks into a global luxury media empire, generating $32,000/mo and partnering with the world’s top luxury fashion houses.',
+    summary: 'Sunita Bera turned her fashion lookbooks into a global luxury media empire, generating ₹32,000/mo and partnering with the world’s top luxury fashion houses.',
     challenge: 'Despite producing high-end fashion lookbooks, Sunita was severely under-monetizing her content. She was accepting free clothing items in exchange for permanent social posts, giving away valuable commercial usage rights without legal defense or financial compensation.',
     strategy: [
       {
@@ -105,7 +105,7 @@ export const storiesDetails = [
       }
     ],
     milestones: [
-      '40x Monthly Revenue Increase to ₹32,000/mo ($32k+)',
+      '40x Monthly Revenue Increase to ₹32,000/mo',
       '25 Global Brand Partnerships including Sephora & Balmain',
       'Exclusive Runway Access & Front-Row Invitations at Paris Fashion Week',
       'Amassed 2.7M highly-engaged global fashion followers'
@@ -134,7 +134,7 @@ export const storiesDetails = [
       details: 'Freed from MCN contract, co-creator of custom hardware line, 980K subscribers, 99.9% stream stability.'
     },
     quote: "They negotiated contracts I didn't even know were possible. I can finally focus just on creating content while they handle the business.",
-    summary: 'Jyoti Roy broke free from a predatory MCN contract and scaled her tech & gaming channel to 980K subscribers while building a recurring $14.5k/mo revenue stream.',
+    summary: 'Jyoti Roy broke free from a predatory MCN contract and scaled her tech & gaming channel to 980K subscribers while building a recurring ₹14,500/mo revenue stream.',
     challenge: 'Jyoti was streaming 10+ hours a day but suffering from severe creator burnout. Technical stream lag, audio desync, and a predatory MCN contract taking 30% of her earnings prevented her from scaling her tech review brand.',
     strategy: [
       {

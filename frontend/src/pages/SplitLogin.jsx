@@ -110,7 +110,7 @@ const SplitLogin = () => {
                 <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
                 <polyline points="16 7 22 7 22 13"></polyline>
               </svg>
-              <h3>$12M+</h3>
+              <h3>₹100Cr+</h3>
               <p>Revenue Generated</p>
             </div>
             <div className="sl-stat-card">

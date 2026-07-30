@@ -104,7 +104,7 @@ const DashboardHero = () => {
             transition={{ duration: 1, delay: 0.4, type: "spring" }}
           >
             <p className="subtitle">THIS MONTH</p>
-            <h3 className="amount">$24,180</h3>
+            <h3 className="amount">₹2,41,800</h3>
             <p className="growth">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
@@ -129,7 +129,7 @@ const DashboardHero = () => {
         </div>
         <div className="dh-stat-divider"></div>
         <div className="dh-stat-item">
-          <h2>$12M+</h2>
+          <h2>₹100Cr+</h2>
           <p>CREATOR REVENUE</p>
         </div>
         <div className="dh-stat-divider"></div>

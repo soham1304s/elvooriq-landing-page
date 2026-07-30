@@ -8,7 +8,7 @@ import '../PageStyles.css';
 const CreatorStoriesPage = () => {
   const stories = [
     { name: "Elena Rostova", metric: "+450K Subscribers", category: "Digital Art & VTubing", desc: "Elena scaled from a part-time illustrator into a top VTuber with ELVOORIQ's multi-platform strategy and tech support." },
-    { name: "Marcus Vance", metric: "$120K Sponsorship Deals", category: "Tech & AI Streaming", desc: "Marcus secured exclusive brand partnerships with major hardware vendors through ELVOORIQ Brand Marketplace." },
+    { name: "Marcus Vance", metric: "₹12 Lakh Sponsorship Deals", category: "Tech & AI Streaming", desc: "Marcus secured exclusive brand partnerships with major hardware vendors through ELVOORIQ Brand Marketplace." },
     { name: "Sarah Chen", metric: "3.2M Monthly Views", category: "IRL Vlogging & Lifestyle", desc: "Sarah expanded her live broadcasts across Asia and North America with ELVOORIQ 24/7 technical fallback ingest." }
   ];
 
