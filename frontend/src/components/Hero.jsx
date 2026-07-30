@@ -47,9 +47,6 @@ const Hero = ({ animateHero }) => {
               Become a Creator
               <ArrowRight size={18} className="btn-icon" />
             </Link>
-            <a href="#partner" className="btn-outline btn-large">
-              Partner With Us
-            </a>
           </motion.div>
 
         </motion.div>
