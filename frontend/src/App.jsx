@@ -33,6 +33,7 @@ import ContactPage from './pages/company/ContactPage';
 import PrivacyPolicyPage from './pages/legal/PrivacyPolicyPage';
 import TermsOfServicePage from './pages/legal/TermsOfServicePage';
 
+import WhatsAppButton from './components/WhatsAppButton';
 import './App.css';
 
 const AdminProtectedRoute = ({ children }) => {
@@ -44,6 +45,7 @@ function App() {
   return (
     <Router>
       <div className="app-container">
+        <WhatsAppButton />
         <Routes>
           {/* Main Pages */}
           <Route path="/" element={<LandingPage />} />

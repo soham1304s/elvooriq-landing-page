@@ -75,14 +75,20 @@ const ContactSection = () => {
             viewport={{ once: true, margin: "-100px" }}
           >
             
-            <motion.a variants={fadeInRight} href="#" className="info-card">
+            <motion.a 
+              variants={fadeInRight} 
+              href="https://wa.me/917665761616?text=Hi%20ELVOORIQ%2C%20I%20would%20like%20to%20get%20in%20touch!" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="info-card"
+            >
               <div className="info-icon-wrapper whatsapp">
                 <MessageCircle size={20} />
               </div>
               <div className="info-text">
                 <span className="info-label">WHATSAPP</span>
-                <span className="info-value">+1 (213) 555-0199</span>
-                <span className="info-subtext">Typically replies in 2 hours</span>
+                <span className="info-value">+91 7665761616</span>
+                <span className="info-subtext">Typically replies instantly</span>
               </div>
               <ArrowRight size={16} className="info-arrow" />
             </motion.a>
