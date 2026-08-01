@@ -10,7 +10,6 @@ import PillarsSection from '../components/PillarsSection';
 import ServicesSection from '../components/ServicesSection';
 import ResultsSection from '../components/ResultsSection';
 import SuccessStoriesSection from '../components/SuccessStoriesSection';
-import BrandCollabsSection from '../components/BrandCollabsSection';
 import LearningCenterSection from '../components/LearningCenterSection';
 import JournalSection from '../components/JournalSection';
 import FAQSection from '../components/FAQSection';
@@ -49,7 +48,6 @@ function LandingPage() {
         <ServicesSection />
         <ResultsSection />
         <SuccessStoriesSection />
-        <BrandCollabsSection />
         <LearningCenterSection />
         <JournalSection />
         <FAQSection />
