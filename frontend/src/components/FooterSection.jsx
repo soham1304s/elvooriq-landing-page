@@ -1,5 +1,5 @@
 import React from 'react';
-import { Camera, Hash, Video, Briefcase, MapPin } from 'lucide-react';
+import { Camera, Hash, Video, Briefcase, MapPin, Code } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { fadeInUp, staggerContainer } from '../utils/animations';
@@ -92,6 +92,19 @@ const FooterSection = () => {
             <span className="footer-location">
               <MapPin size={14} className="location-icon" /> Global HQ
             </span>
+          </div>
+
+          <div className="footer-developer-credit">
+            <span className="credit-label">Designed &amp; Maintained by</span>
+            <a 
+              href="https://soham-portfolio-present.netlify.app/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="developer-badge"
+            >
+              <Code size={13} className="dev-icon" />
+              <span className="developer-name">Soham Mondal</span>
+            </a>
           </div>
           
           <div className="footer-bottom-right">

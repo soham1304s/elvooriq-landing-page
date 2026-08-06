@@ -154,6 +154,62 @@
   font-size: 0.85rem;
 }
 
+/* Developer Credit Styling */
+.footer-developer-credit {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.developer-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.8rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(8px);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.developer-badge .dev-icon {
+  color: var(--color-primary);
+  transition: transform 0.3s ease;
+}
+
+.developer-badge .developer-name {
+  font-weight: 600;
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.developer-badge:hover {
+  background: rgba(24, 147, 128, 0.1);
+  border-color: rgba(24, 147, 128, 0.4);
+  box-shadow: 0 0 16px rgba(24, 147, 128, 0.2);
+  transform: translateY(-2px);
+}
+
+.developer-badge:hover .dev-icon {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+.developer-badge:hover .developer-name {
+  background: linear-gradient(135deg, #ffffff 0%, var(--color-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .footer-links-wrapper {
@@ -184,6 +240,11 @@
   .footer-bottom {
     flex-direction: column;
     align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .footer-developer-credit {
+    flex-wrap: wrap;
   }
 }
 
