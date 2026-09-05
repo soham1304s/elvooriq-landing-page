@@ -1,0 +1,311 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: 5rem;
+  background-image: url('../assets/hero_creator_network_bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Dark ambient overlay to ensure maximum text readability and rich depth */
+.hero-bg-graphic {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 75% 30%, rgba(0, 229, 153, 0.15) 0%, transparent 65%),
+    linear-gradient(to right, rgba(11, 12, 16, 0.92) 0%, rgba(11, 12, 16, 0.7) 60%, rgba(11, 12, 16, 0.35) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+/* 2-Column Split: Content Left + Animated Visual Right */
+.hero-grid-split {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 3.5rem;
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.hero-content {
+  max-width: 680px;
+}
+
+.hero-visual-column {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1.2rem;
+  background: rgba(0, 245, 155, 0.08);
+  border: 1px solid rgba(0, 245, 155, 0.28);
+  border-radius: 9999px;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 20px rgba(0, 245, 155, 0.15);
+  backdrop-filter: blur(10px);
+}
+
+.badge-icon {
+  color: #00f59b;
+}
+
+.hero-badge span {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #00f59b;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: 4.8rem;
+  line-height: 1.1;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+}
+
+.title-accent {
+  background: linear-gradient(135deg, #00f59b 0%, #00e5ff 60%, #9D4EDD 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-style: italic;
+  font-weight: 600;
+  filter: drop-shadow(0 0 25px rgba(0, 245, 155, 0.25));
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: #cbd5e1;
+  line-height: 1.65;
+  margin-bottom: 2.8rem;
+  max-width: 620px;
+}
+
+.hero-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.btn-large {
+  padding: 1.1rem 2.4rem;
+  border-radius: 9999px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  letter-spacing: 0.02em;
+}
+
+.btn-large.btn-primary {
+  background: linear-gradient(135deg, #00f59b 0%, #10b981 100%);
+  color: #030712;
+  box-shadow: 0 4px 20px rgba(0, 245, 155, 0.35);
+}
+
+.btn-large.btn-primary:hover {
+  background: linear-gradient(135deg, #00ffaa 0%, #059669 100%);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 30px rgba(0, 245, 155, 0.5);
+}
+
+.btn-large.btn-outline {
+  background-color: transparent;
+  color: white;
+  border: 1px solid var(--color-border);
+}
+
+.btn-large.btn-outline:hover {
+  border-color: white;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Stylish, High-Impact Stats Bar */
+.hero-stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2.2rem 3.5rem;
+  background: rgba(11, 15, 25, 0.7);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  margin-top: 1rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4rem;
+  flex: 1;
+}
+
+.stat-vertical-divider {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 245, 155, 0.3) 50%, transparent 100%);
+}
+
+.stat-value {
+  font-family: var(--font-serif);
+  font-size: 3.6rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #ffffff;
+  display: flex;
+  align-items: baseline;
+  letter-spacing: -0.02em;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.stat-plus {
+  font-size: 2.4rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  color: #00f59b;
+  margin-left: 4px;
+  text-shadow: 0 0 14px rgba(0, 245, 155, 0.5);
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: #cbd5e1;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stat-label::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00f59b;
+  box-shadow: 0 0 8px #00f59b;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .hero-title {
+    font-size: 4.2rem;
+  }
+  .stat-value {
+    font-size: 3rem;
+  }
+  .stat-plus {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-grid-split {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .hero-content {
+    max-width: 100%;
+    text-align: center;
+  }
+  .hero-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-buttons {
+    justify-content: center;
+  }
+  .hero-stats {
+    flex-wrap: wrap;
+    padding: 2rem;
+    gap: 2rem;
+  }
+  .stat-vertical-divider {
+    display: none;
+  }
+  .stat-item {
+    align-items: center;
+    min-width: 40%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 6rem;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .btn-large {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-stats {
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-top: none;
+    padding-top: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  .hero-stats {
+    gap: 1.5rem;
+  }
+}

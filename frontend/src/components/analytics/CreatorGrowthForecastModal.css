@@ -1,0 +1,262 @@
+/* =========================================================================
+   ELVOORIQ ENTERPRISE v5.0 - PREDICTIVE CREATOR GROWTH FORECAST MODAL STYLES
+   ========================================================================= */
+
+.forecast-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.forecast-modal-box {
+  background: #0d1113;
+  border: 1px solid rgba(25, 149, 128, 0.35);
+  border-radius: 18px;
+  width: 100%;
+  max-width: 780px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(25, 149, 128, 0.15);
+  color: #f1f5f9;
+  display: flex;
+  flex-direction: column;
+}
+
+.forecast-modal-header {
+  padding: 20px 24px;
+  background: rgba(3, 5, 6, 0.7);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.forecast-header-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #f8fafc;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.forecast-header-sub {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  margin-top: 4px;
+}
+
+.forecast-close-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.forecast-close-btn:hover {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: #ef4444;
+  color: #f87171;
+}
+
+.forecast-modal-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* Talent Tier Hero Card */
+.forecast-tier-hero {
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  border: 1px solid;
+}
+
+.tier-hero-breakout {
+  background: radial-gradient(circle at top left, rgba(25, 149, 128, 0.25), rgba(3, 5, 6, 0.8));
+  border-color: #2dd4bf;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(45, 212, 191, 0.25);
+}
+
+.tier-hero-steady {
+  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.25), rgba(3, 5, 6, 0.8));
+  border-color: #60a5fa;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(59, 130, 246, 0.25);
+}
+
+.tier-hero-standard {
+  background: radial-gradient(circle at top left, rgba(245, 158, 11, 0.15), rgba(3, 5, 6, 0.8));
+  border-color: rgba(245, 158, 11, 0.5);
+}
+
+.tier-badge-pill {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+.tier-title-h3 {
+  font-size: 1.35rem;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  color: #f8fafc;
+  margin: 0;
+}
+
+.tier-slope-stat {
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: #2dd4bf;
+}
+
+.tier-slope-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: #94a3b8;
+}
+
+/* Forecasting KPI Strip */
+.forecast-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.forecast-kpi-box {
+  background: rgba(3, 5, 6, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.forecast-kpi-lbl {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #64748b;
+}
+
+.forecast-kpi-val {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #f1f5f9;
+}
+
+/* Forecasted Projections Table / Cards */
+.forecast-table-wrapper {
+  background: rgba(3, 5, 6, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.forecast-table-title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #199580;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.forecast-cards-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+}
+
+.forecast-projection-card {
+  background: rgba(25, 149, 128, 0.06);
+  border: 1px solid rgba(25, 149, 128, 0.2);
+  border-radius: 10px;
+  padding: 12px 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.proj-session-tag {
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
+.proj-viewers-val {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #2dd4bf;
+}
+
+.proj-duration-tag {
+  font-size: 0.65rem;
+  color: #64748b;
+}
+
+/* Insufficient data state */
+.forecast-empty-state {
+  background: rgba(3, 5, 6, 0.5);
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  padding: 30px;
+  text-align: center;
+  color: #94a3b8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.seed-streams-btn {
+  background: linear-gradient(135deg, #199580, #0d9488);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(25, 149, 128, 0.3);
+  transition: all 0.2s;
+}
+
+.seed-streams-btn:hover {
+  background: linear-gradient(135deg, #14b8a6, #199580);
+  box-shadow: 0 0 25px rgba(25, 149, 128, 0.5);
+  transform: translateY(-1px);
+}

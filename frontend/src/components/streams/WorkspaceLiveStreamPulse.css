@@ -1,0 +1,361 @@
+/* =========================================================================
+   ELVOORIQ ENTERPRISE v5.0 - REAL-TIME STREAM MONITORING DESK (Wireframe B)
+   ========================================================================= */
+
+.stream-pulse-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+/* Header bar */
+.stream-pulse-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: rgba(13, 17, 19, 0.75);
+  border: 1px solid rgba(25, 149, 128, 0.2);
+  border-radius: 14px;
+  padding: 16px 20px;
+  backdrop-filter: blur(12px);
+}
+
+.stream-pulse-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stream-live-indicator-ring {
+  position: relative;
+  width: 14px;
+  height: 14px;
+}
+
+.stream-live-indicator-core {
+  width: 10px;
+  height: 10px;
+  background: #2dd4bf;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+}
+
+.stream-live-indicator-wave {
+  width: 14px;
+  height: 14px;
+  background: rgba(45, 212, 191, 0.4);
+  border-radius: 50%;
+  animation: streamWavePing 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes streamWavePing {
+  75%, 100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.stream-pulse-main-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #f1f5f9;
+  margin: 0;
+}
+
+.stream-pulse-kpi-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.stream-kpi-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+.stream-kpi-val {
+  color: #2dd4bf;
+  font-weight: 800;
+}
+
+/* Platform Filter Tabs */
+.stream-platform-filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.stream-filter-btn {
+  background: rgba(13, 17, 19, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.stream-filter-btn:hover {
+  border-color: #199580;
+  color: #f1f5f9;
+}
+
+.stream-filter-btn.active {
+  background: rgba(25, 149, 128, 0.2);
+  border-color: #199580;
+  color: #2dd4bf;
+  box-shadow: 0 0 12px rgba(25, 149, 128, 0.2);
+}
+
+/* Monitoring Grid */
+.stream-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.stream-monitor-card {
+  background: rgba(13, 17, 19, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(10px);
+}
+
+.stream-monitor-card.is-live {
+  border-color: rgba(45, 212, 191, 0.4);
+  background: radial-gradient(circle at top right, rgba(25, 149, 128, 0.12), rgba(13, 17, 19, 0.9));
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(25, 149, 128, 0.15);
+}
+
+.stream-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.stream-creator-name {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #f8fafc;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stream-platform-pill {
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 3px 8px;
+  border-radius: 6px;
+  margin-top: 4px;
+  display: inline-block;
+}
+
+.platform-pill-twitch {
+  background: rgba(168, 85, 247, 0.15);
+  color: #c084fc;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+.platform-pill-youtube {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.platform-pill-bigo {
+  background: rgba(6, 182, 212, 0.15);
+  color: #22d3ee;
+  border: 1px solid rgba(6, 182, 212, 0.3);
+}
+
+.platform-pill-tiktok {
+  background: rgba(236, 72, 153, 0.15);
+  color: #f472b6;
+  border: 1px solid rgba(236, 72, 153, 0.3);
+}
+
+.stream-status-tag {
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.stream-status-tag.live {
+  background: rgba(45, 212, 191, 0.18);
+  color: #2dd4bf;
+  border: 1px solid #2dd4bf;
+  box-shadow: 0 0 10px rgba(45, 212, 191, 0.3);
+}
+
+.stream-status-tag.offline {
+  background: rgba(255, 255, 255, 0.05);
+  color: #64748b;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Stream Card Content */
+.stream-card-body {
+  background: rgba(3, 5, 6, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.stream-current-title {
+  font-size: 0.82rem;
+  color: #cbd5e1;
+  margin-bottom: 8px;
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.stream-metrics-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+}
+
+.stream-metric-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stream-metric-label {
+  font-size: 0.65rem;
+  color: #64748b;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.stream-metric-val {
+  font-weight: 800;
+  color: #f1f5f9;
+}
+
+.stream-metric-val.highlight {
+  color: #2dd4bf;
+}
+
+/* Stream Card Action Buttons */
+.stream-card-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.stream-action-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #cbd5e1;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.stream-action-btn:hover {
+  background: rgba(25, 149, 128, 0.15);
+  border-color: #199580;
+  color: #2dd4bf;
+}
+
+.stream-action-btn.primary {
+  background: linear-gradient(135deg, rgba(25, 149, 128, 0.3), rgba(20, 184, 166, 0.2));
+  border-color: rgba(25, 149, 128, 0.4);
+  color: #2dd4bf;
+}
+
+.stream-action-btn.primary:hover {
+  background: linear-gradient(135deg, rgba(25, 149, 128, 0.5), rgba(20, 184, 166, 0.35));
+  box-shadow: 0 0 12px rgba(25, 149, 128, 0.3);
+}
+
+/* Real-Time Telemetry Feed Terminal */
+.stream-telemetry-terminal {
+  background: #030506;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 16px;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+.telemetry-terminal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.telemetry-terminal-title {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #199580;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.telemetry-log-lines {
+  max-height: 120px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.72rem;
+  color: #94a3b8;
+}
+
+.telemetry-line {
+  display: flex;
+  gap: 10px;
+}
+
+.telemetry-time {
+  color: #64748b;
+}
+
+.telemetry-event-tag {
+  color: #2dd4bf;
+  font-weight: 700;
+}

@@ -1,0 +1,259 @@
+/* =========================================================================
+   ELVOORIQ ENTERPRISE v5.0 - CHANNEL AUDIT MODAL STYLES
+   ========================================================================= */
+
+.audit-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.audit-modal-box {
+  background: #0d1113;
+  border: 1px solid rgba(25, 149, 128, 0.3);
+  border-radius: 18px;
+  width: 100%;
+  max-width: 760px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(25, 149, 128, 0.15);
+  color: #f1f5f9;
+  display: flex;
+  flex-direction: column;
+}
+
+.audit-modal-header {
+  padding: 20px 24px;
+  background: rgba(3, 5, 6, 0.7);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.audit-header-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #f8fafc;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.audit-header-sub {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  margin-top: 4px;
+}
+
+.audit-close-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.audit-close-btn:hover {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: #ef4444;
+  color: #f87171;
+}
+
+.audit-modal-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Score Summary Gauge Banner */
+.audit-gauge-banner {
+  background: linear-gradient(135deg, rgba(25, 149, 128, 0.15), rgba(3, 5, 6, 0.6));
+  border: 1px solid rgba(25, 149, 128, 0.35);
+  border-radius: 14px;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gauge-left-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.gauge-score-pill {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #2dd4bf;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 20px rgba(45, 212, 191, 0.4);
+}
+
+.gauge-score-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: #94a3b8;
+  letter-spacing: 0.05em;
+}
+
+/* Metrics Grid */
+.audit-metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 640px) {
+  .audit-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.audit-metric-card {
+  background: rgba(3, 5, 6, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.metric-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.metric-label-title {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #e2e8f0;
+}
+
+.metric-score-display {
+  font-size: 0.9rem;
+  font-weight: 900;
+  color: #2dd4bf;
+}
+
+.metric-range-slider {
+  width: 100%;
+  accent-color: #199580;
+  cursor: pointer;
+}
+
+/* Inputs & Blueprint Textarea */
+.audit-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.audit-input-label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+}
+
+.audit-textarea {
+  background: #030506;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 0.85rem;
+  color: #f1f5f9;
+  outline: none;
+  min-height: 80px;
+  resize: vertical;
+  line-height: 1.5;
+  transition: border-color 0.2s;
+}
+
+.audit-textarea:focus {
+  border-color: #199580;
+  box-shadow: 0 0 12px rgba(25, 149, 128, 0.2);
+}
+
+/* Prior Audits History Accordion */
+.prior-audits-section {
+  background: rgba(3, 5, 6, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.prior-audits-title {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #199580;
+  margin-bottom: 12px;
+}
+
+.prior-audit-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  margin-bottom: 6px;
+  font-size: 0.78rem;
+}
+
+/* Modal Actions */
+.audit-modal-footer {
+  padding: 18px 24px;
+  background: rgba(3, 5, 6, 0.7);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.audit-submit-btn {
+  background: linear-gradient(135deg, #199580, #0d9488);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 24px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(25, 149, 128, 0.3);
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.audit-submit-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #14b8a6, #199580);
+  box-shadow: 0 0 25px rgba(25, 149, 128, 0.5);
+  transform: translateY(-1px);
+}
+
+.audit-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

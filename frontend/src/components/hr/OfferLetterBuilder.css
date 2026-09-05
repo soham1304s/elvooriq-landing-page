@@ -1,0 +1,311 @@
+/* OfferLetterBuilder.css - ELVOORIQ Dark & Teal Styling */
+
+.olb-container {
+  width: 100%;
+  background: rgba(13, 17, 19, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(25, 149, 128, 0.2);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  color: #f1f5f9;
+}
+
+.olb-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.olb-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #199580;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+
+.olb-desc {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin: 4px 0 0 0;
+}
+
+.olb-badge {
+  background: rgba(25, 149, 128, 0.12);
+  border: 1px solid rgba(25, 149, 128, 0.35);
+  color: #199580;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 4px 12px;
+  border-radius: 9999px;
+}
+
+.olb-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 1024px) {
+  .olb-grid {
+    grid-template-columns: 7fr 5fr;
+  }
+}
+
+.olb-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.olb-field-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .olb-field-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.olb-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.olb-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.olb-input {
+  width: 100%;
+  background: rgba(3, 5, 6, 0.85);
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  color: #f8fafc;
+  outline: none;
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+
+.olb-input:focus {
+  border-color: #199580;
+  box-shadow: 0 0 0 1px #199580;
+}
+
+.olb-tiers-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.olb-tier-btn {
+  background: rgba(3, 5, 6, 0.7);
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  padding: 10px 12px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #94a3b8;
+}
+
+.olb-tier-btn:hover {
+  border-color: #334155;
+  color: #e2e8f0;
+}
+
+.olb-tier-btn.active {
+  background: rgba(25, 149, 128, 0.15);
+  border-color: #199580;
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(25, 149, 128, 0.2);
+}
+
+.olb-tier-name {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.olb-tier-sub {
+  font-size: 0.65rem;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.olb-submit-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #199580, #137766);
+  border: none;
+  border-radius: 10px;
+  padding: 14px;
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 0 20px rgba(25, 149, 128, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.olb-submit-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #178a76, #116b5c);
+  transform: translateY(-1px);
+}
+
+.olb-submit-btn:disabled {
+  background: #1e293b;
+  color: #64748b;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Staging Column */
+.olb-logs-panel {
+  background: rgba(3, 5, 6, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.olb-logs-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #1e293b;
+  margin-bottom: 16px;
+}
+
+.olb-logs-header h4 {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.olb-success-box {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 0.78rem;
+  color: #34d399;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.olb-path-box {
+  background: #090d0f;
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+.olb-path-box .path-label {
+  font-size: 0.65rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.olb-path-box .path-val {
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: #e2e8f0;
+  background: #030506;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #1e293b;
+  word-break: break-all;
+}
+
+.olb-btn-download {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  background: #199580;
+  color: #ffffff;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  box-shadow: 0 0 15px rgba(25, 149, 128, 0.3);
+  transition: all 0.2s;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+}
+
+.olb-btn-download:hover {
+  background: #15806c;
+}
+
+.olb-link-copy-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.olb-btn-copy {
+  background: #1e293b;
+  border: 1px solid #334155;
+  color: #f1f5f9;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s;
+}
+
+.olb-btn-copy:hover {
+  background: #334155;
+}

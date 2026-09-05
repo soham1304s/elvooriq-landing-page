@@ -1,0 +1,12 @@
+const express = require('express');
+const router = express.Router();
+const authController = require('../controllers/authController');
+const authorize = require('../middlewares/rbac');
+
+router.post('/start', authController.startSession);
+router.post('/save-progress', authController.saveProgress);
+router.post('/register', authController.register);
+router.post('/login', authController.login);
+router.get('/me', authorize(), authController.getMe);
+
+module.exports = router;

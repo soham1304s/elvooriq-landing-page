@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Environment variables and secrets (CRITICAL: NEVER COMMIT)
+.env
+.env*
+*.env
+*.env.*
+*.local
+!.env.example
+
+# Build and coverage
+dist/
+coverage/
+
+# Database data and embedded engine
+.pgdata/
+.embedded-postgres/
+*.sqlite
+*.db
+
+# Logs
+*.log
+logs/
+
+# Local scratchpads & verification scripts in backend root
+/test_*.js
+/test*.js
+/test_*.pdf
+/tiny.png
+/dummy.png

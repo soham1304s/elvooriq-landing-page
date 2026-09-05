@@ -1,0 +1,371 @@
+/* =========================================================================
+   EMPLOYEE TASK PROGRESS SLIDER & ROUTINE CHECK-IN (VANILLA CSS)
+   Obsidian Glassmorphism & High-Precision Telemetry Theme
+   ========================================================================= */
+
+.progress-slider-container {
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(13, 17, 19, 0.95);
+  border: 1px solid rgba(25, 149, 128, 0.25);
+  border-radius: 14px;
+  padding: 20px;
+  color: #f1f5f9;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-slider-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #199580, #2dd4bf, transparent);
+}
+
+/* Header Section */
+.slider-task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.slider-task-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.milestone-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(25, 149, 128, 0.12);
+  border: 1px solid rgba(25, 149, 128, 0.3);
+  color: #2dd4bf;
+  margin-bottom: 8px;
+}
+
+.slider-task-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.3px;
+  margin: 0 0 6px 0;
+  line-height: 1.35;
+}
+
+.slider-task-deadline {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  font-family: monospace;
+}
+
+.slider-task-deadline .clock-icon {
+  color: #fbbf24;
+}
+
+.completion-hero-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+}
+
+.completion-percentage-tag {
+  font-size: 1.15rem;
+  font-weight: 800;
+  font-family: monospace;
+  color: #2dd4bf;
+  background: rgba(45, 212, 191, 0.1);
+  border: 1px solid rgba(45, 212, 191, 0.3);
+  padding: 6px 12px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(45, 212, 191, 0.15);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.completion-percentage-tag.delivered {
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.4);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.25);
+}
+
+.completion-status-sub {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+/* Form Styles */
+.progress-slider-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 18px;
+}
+
+/* Slider Section */
+.slider-control-card {
+  background: rgba(3, 5, 6, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.slider-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.slider-section-label {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
+.slider-live-value {
+  font-size: 1rem;
+  font-weight: 800;
+  font-family: monospace;
+  color: #2dd4bf;
+  text-shadow: 0 0 10px rgba(45, 212, 191, 0.4);
+}
+
+.slider-track-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.slider-limit-label {
+  font-size: 0.76rem;
+  font-family: monospace;
+  font-weight: 700;
+  color: #64748b;
+  min-width: 32px;
+}
+
+.slider-limit-label.max {
+  color: #2dd4bf;
+  text-align: right;
+}
+
+/* Custom Range Input */
+.custom-progress-slider {
+  flex: 1;
+  height: 8px;
+  border-radius: 6px;
+  appearance: none;
+  outline: none;
+  background: #1e293b;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.custom-progress-slider::-webkit-slider-runnable-track {
+  height: 8px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #0d9488, #2dd4bf);
+}
+
+.custom-progress-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 3px solid #199580;
+  box-shadow: 0 0 14px rgba(45, 212, 191, 0.8), 0 2px 6px rgba(0, 0, 0, 0.4);
+  cursor: grab;
+  margin-top: -7px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.custom-progress-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 20px rgba(45, 212, 191, 1);
+}
+
+.custom-progress-slider::-webkit-slider-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.05);
+}
+
+/* Quick Preset Chips */
+.slider-presets-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.preset-chip {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  color: #94a3b8;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: monospace;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.preset-chip:hover {
+  background: rgba(25, 149, 128, 0.18);
+  border-color: rgba(25, 149, 128, 0.4);
+  color: #2dd4bf;
+  transform: translateY(-1px);
+}
+
+.preset-chip.active {
+  background: rgba(25, 149, 128, 0.3);
+  border-color: #2dd4bf;
+  color: #ffffff;
+  box-shadow: 0 0 10px rgba(45, 212, 191, 0.25);
+}
+
+/* Inputs Row: Hours Spent and Blockers */
+.form-dual-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 14px;
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .form-dual-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.form-field-group label {
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #94a3b8;
+  display: block;
+}
+
+.form-field-group input,
+.form-field-group textarea {
+  width: 100% !important;
+  box-sizing: border-box !important;
+  background: #030506 !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  border-radius: 8px !important;
+  padding: 10px 14px !important;
+  color: #f8fafc !important;
+  font-size: 0.88rem !important;
+  outline: none !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+  font-family: inherit;
+  display: block !important;
+}
+
+.form-field-group input:focus,
+.form-field-group textarea:focus {
+  border-color: #199580 !important;
+  box-shadow: 0 0 0 3px rgba(25, 149, 128, 0.2), 0 0 12px rgba(25, 149, 128, 0.3) !important;
+}
+
+.form-field-group textarea {
+  resize: vertical;
+  min-height: 85px;
+  line-height: 1.5;
+}
+
+/* Submit Action Button */
+.submit-routine-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #137766, #199580);
+  border: 1px solid rgba(45, 212, 191, 0.4);
+  color: #ffffff;
+  padding: 13px 20px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 18px rgba(25, 149, 128, 0.35);
+  margin-top: 6px;
+}
+
+.submit-routine-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(25, 149, 128, 0.55);
+  background: linear-gradient(135deg, #168a76, #1cb59b);
+}
+
+.submit-routine-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Feedback Banners */
+.feedback-banner {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.feedback-banner.success {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #34d399;
+}
+
+.feedback-banner.error {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #f87171;
+}

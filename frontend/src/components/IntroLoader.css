@@ -1,0 +1,514 @@
+/* ==========================================================================
+   ELVOORIQ ULTRA-LUXURY COSMIC INTRO LOADER STYLES
+   ========================================================================== */
+
+.intro-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at 50% 45%, #0d121f 0%, #06080e 60%, #030407 100%);
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* --- Dynamic Cosmic Constellation Background --- */
+.intro-stars-canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.intro-star {
+  position: absolute;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.9);
+  animation: starTwinkle ease-in-out infinite alternate;
+}
+
+@keyframes starTwinkle {
+  0% { transform: scale(0.6); opacity: 0.2; }
+  50% { transform: scale(1.2); opacity: 0.95; }
+  100% { transform: scale(0.8); opacity: 0.35; }
+}
+
+/* --- Cyber Grid Matrix --- */
+.intro-cyber-grid {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(229, 193, 88, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 245, 155, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(circle at 50% 50%, black 25%, transparent 75%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 25%, transparent 75%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* --- Cosmic Nebula Auras --- */
+.intro-nebula-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(90px);
+  z-index: 2;
+}
+
+.gold-nebula {
+  width: 520px;
+  height: 520px;
+  top: 40%;
+  left: 48%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(229, 193, 88, 0.2) 0%, rgba(212, 175, 55, 0.06) 50%, transparent 75%);
+  animation: nebulaBreathe 5s ease-in-out infinite alternate;
+}
+
+.emerald-nebula {
+  width: 600px;
+  height: 600px;
+  top: 48%;
+  left: 52%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(0, 245, 155, 0.18) 0%, rgba(25, 149, 128, 0.05) 50%, transparent 80%);
+  animation: nebulaBreathe 6s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes nebulaBreathe {
+  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.6; }
+  100% { transform: translate(-50%, -50%) scale(1.18); opacity: 1; }
+}
+
+/* --- Main Center Hologram Stage --- */
+.intro-center-stage {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease-out;
+  transform-style: preserve-3d;
+  width: 100%;
+  max-width: 680px;
+  padding: 0 20px;
+}
+
+/* --- Holographic Gyroscope Orbit Rings Container --- */
+.hologram-rings-box {
+  position: relative;
+  width: 440px;
+  height: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hologram-energy-pulse {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 245, 155, 0.25) 0%, rgba(229, 193, 88, 0.15) 45%, transparent 70%);
+  pointer-events: none;
+  z-index: 3;
+  filter: blur(20px);
+  animation: energyPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes energyPulse {
+  0% { transform: scale(0.85); opacity: 0.5; }
+  100% { transform: scale(1.15); opacity: 0.9; }
+}
+
+.hologram-svg-rings {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+/* Ring Animations */
+.ring-astrolabe-outer {
+  transform-origin: 230px 230px;
+  animation: spinAstrolabe 40s linear infinite;
+}
+
+.ring-emerald-counter {
+  transform-origin: 230px 230px;
+  animation: spinRingReverse 16s linear infinite;
+}
+
+.ring-gold-clockwise {
+  transform-origin: 230px 230px;
+  animation: spinRingForward 9s linear infinite;
+}
+
+.ring-cyan-orbit {
+  transform-origin: 230px 230px;
+  animation: spinRingForward 5.5s linear infinite;
+}
+
+.ring-core-pulse {
+  transform-origin: 230px 230px;
+  animation: corePulse 2.4s ease-in-out infinite alternate;
+}
+
+@keyframes spinAstrolabe {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes spinRingForward {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes spinRingReverse {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes corePulse {
+  0% { transform: scale(0.94); opacity: 0.5; }
+  100% { transform: scale(1.06); opacity: 0.95; }
+}
+
+/* Audio Waveform Equalizer Ticks */
+.ring-waveform-bars {
+  transform-origin: 230px 230px;
+}
+
+.wave-tick-0 { animation: wavePulse 1.2s ease-in-out infinite alternate; }
+.wave-tick-1 { animation: wavePulse 0.9s ease-in-out infinite alternate-reverse; }
+.wave-tick-2 { animation: wavePulse 1.4s ease-in-out infinite alternate; }
+.wave-tick-3 { animation: wavePulse 1.1s ease-in-out infinite alternate-reverse; }
+
+@keyframes wavePulse {
+  0% { stroke-width: 1.5px; opacity: 0.4; }
+  100% { stroke-width: 2.8px; opacity: 1; }
+}
+
+/* --- Floating Emblem Showcase with High-Gloss Sheen --- */
+.emblem-showcase-wrapper {
+  position: relative;
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  height: 220px;
+}
+
+.emblem-ambient-corona {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(229, 193, 88, 0.35) 0%, rgba(0, 245, 155, 0.25) 45%, transparent 70%);
+  filter: blur(28px);
+  animation: coronaBreathe 3s ease-in-out infinite alternate;
+}
+
+@keyframes coronaBreathe {
+  0% { transform: scale(0.88); opacity: 0.6; }
+  100% { transform: scale(1.15); opacity: 1; }
+}
+
+.emblem-image-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 16px;
+  animation: levitateEmblem 3.2s ease-in-out infinite alternate;
+}
+
+@keyframes levitateEmblem {
+  0% { transform: translateY(0px) scale(1); }
+  100% { transform: translateY(-7px) scale(1.03); }
+}
+
+.intro-luxury-emblem {
+  width: 190px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 28px rgba(229, 193, 88, 0.45)) drop-shadow(0 0 14px rgba(0, 245, 155, 0.35));
+  position: relative;
+  z-index: 2;
+}
+
+/* Prismatic Metallic Laser Sheen */
+.emblem-laser-sheen {
+  position: absolute;
+  top: -20%;
+  left: -80%;
+  width: 60%;
+  height: 140%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 35%,
+    rgba(255, 255, 255, 0.75) 50%,
+    rgba(229, 193, 88, 0.5) 60%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  pointer-events: none;
+  z-index: 3;
+  animation: sweepSheen 2.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes sweepSheen {
+  0% { left: -100%; opacity: 0; }
+  25% { opacity: 0.9; }
+  60% { left: 160%; opacity: 0.9; }
+  100% { left: 160%; opacity: 0; }
+}
+
+/* --- Dynamic Telemetry & Branding HUD --- */
+.intro-hud-terminal {
+  position: relative;
+  z-index: 12;
+  width: 100%;
+  max-width: 480px;
+  margin-top: -10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hud-stage-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(229, 193, 88, 0.35);
+  box-shadow: 0 0 16px rgba(229, 193, 88, 0.12);
+  border-radius: 9999px;
+  font-family: monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #FFE57F;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  backdrop-filter: blur(12px);
+}
+
+.beacon-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00F59B;
+  box-shadow: 0 0 10px #00F59B;
+  animation: beaconPulse 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes beaconPulse {
+  0% { transform: scale(0.8); opacity: 0.4; }
+  100% { transform: scale(1.3); opacity: 1; }
+}
+
+.hud-status-headline {
+  font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin: 0 0 6px 0;
+  min-height: 28px;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
+}
+
+.hud-telemetry-detail {
+  font-family: monospace;
+  font-size: 0.76rem;
+  color: #94A3B8;
+  letter-spacing: 1px;
+  margin: 0 0 22px 0;
+  min-height: 20px;
+}
+
+/* Segmented Luxury Progress Gauge */
+.hud-progress-block {
+  width: 100%;
+  background: rgba(11, 15, 25, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 14px 18px;
+  backdrop-filter: blur(16px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hud-progress-track {
+  position: relative;
+  width: 100%;
+  height: 7px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 9999px;
+  overflow: visible;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hud-progress-fill {
+  position: relative;
+  height: 100%;
+  background: linear-gradient(90deg, #00F59B 0%, #10B981 40%, #E5C158 85%, #FFE57F 100%);
+  border-radius: 9999px;
+  transition: width 0.08s linear;
+  box-shadow: 0 0 16px rgba(0, 245, 155, 0.6), 0 0 8px rgba(229, 193, 88, 0.7);
+}
+
+/* Incandescent Leading Spark */
+.hud-fill-head-spark {
+  position: absolute;
+  right: -4px;
+  top: -3.5px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  box-shadow: 
+    0 0 12px #FFFFFF,
+    0 0 20px #FFE57F,
+    0 0 30px #00F59B;
+  animation: sparkPulse 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes sparkPulse {
+  0% { transform: scale(0.85); }
+  100% { transform: scale(1.2); }
+}
+
+/* Calibration Markers */
+.track-segment-marker {
+  position: absolute;
+  top: -2px;
+  width: 1.5px;
+  height: 11px;
+  background: rgba(255, 255, 255, 0.25);
+  pointer-events: none;
+}
+
+.hud-stats-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.hud-sys-stat {
+  font-family: monospace;
+  font-size: 0.72rem;
+  color: #64748B;
+  letter-spacing: 1px;
+}
+
+.hud-percentage-metric {
+  font-family: monospace;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #FFE57F;
+  letter-spacing: 2px;
+  text-shadow: 0 0 14px rgba(229, 193, 88, 0.6);
+}
+
+/* --- Floating Skip Button --- */
+.intro-skip-button {
+  position: absolute;
+  bottom: 34px;
+  z-index: 20;
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #CBD5E1;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  cursor: pointer;
+  backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.skip-kbd {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #FFE57F;
+}
+
+.intro-skip-button:hover {
+  background: rgba(0, 245, 155, 0.12);
+  border-color: rgba(0, 245, 155, 0.5);
+  color: #FFFFFF;
+  box-shadow: 0 0 20px rgba(0, 245, 155, 0.3);
+  transform: translateY(-2px);
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+  .hologram-rings-box {
+    width: 320px;
+    height: 320px;
+  }
+  
+  .intro-luxury-emblem {
+    width: 140px;
+  }
+  
+  .emblem-showcase-wrapper {
+    width: 160px;
+    height: 160px;
+  }
+
+  .hud-status-headline {
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+  }
+
+  .hud-telemetry-detail {
+    font-size: 0.68rem;
+  }
+
+  .hud-progress-block {
+    padding: 12px 14px;
+  }
+
+  .hud-percentage-metric {
+    font-size: 0.85rem;
+  }
+
+  .intro-skip-button {
+    bottom: 24px;
+    padding: 6px 14px;
+    font-size: 0.72rem;
+  }
+}

@@ -1,0 +1,470 @@
+.hero-visual-wrapper {
+  position: relative;
+  width: 100%;
+  height: 540px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+  pointer-events: auto;
+}
+
+/* Atmospheric ambient orbs */
+.visual-ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  pointer-events: none;
+  opacity: 0.55;
+  z-index: 1;
+}
+
+.orb-emerald {
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(0, 245, 155, 0.35) 0%, transparent 70%);
+  top: 10%;
+  right: 15%;
+}
+
+.orb-sapphire {
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.25) 0%, transparent 70%);
+  bottom: 15%;
+  left: 10%;
+}
+
+.orb-violet {
+  width: 240px;
+  height: 240px;
+  background: radial-gradient(circle, rgba(157, 78, 221, 0.2) 0%, transparent 70%);
+  top: 40%;
+  right: 40%;
+}
+
+/* 3D Core Container */
+.visual-core-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+  z-index: 5;
+}
+
+/* Orbital SVG Box */
+.orbital-svg-box {
+  position: relative;
+  width: 440px;
+  height: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orbital-svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 0 20px rgba(0, 245, 155, 0.15));
+}
+
+/* Central Node */
+.hologram-central-node {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.central-pulse-disc {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 245, 155, 0.25) 0%, rgba(3, 7, 18, 0.8) 75%);
+  border: 1.5px solid rgba(0, 245, 155, 0.6);
+  box-shadow: 0 0 35px rgba(0, 245, 155, 0.35), inset 0 0 20px rgba(0, 245, 155, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.central-sparkle-icon {
+  color: #00f59b;
+  filter: drop-shadow(0 0 8px #00f59b);
+}
+
+.core-label {
+  font-family: 'Inter', monospace;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #00f59b;
+  text-shadow: 0 0 10px rgba(0, 245, 155, 0.5);
+  text-transform: uppercase;
+}
+
+/* Generic Floating Card */
+.float-card {
+  position: absolute;
+  background: rgba(11, 15, 25, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 16px 20px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  z-index: 10;
+}
+
+.float-card:hover {
+  border-color: rgba(0, 245, 155, 0.4);
+  box-shadow: 0 20px 45px rgba(0, 245, 155, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: scale(1.03) !important;
+}
+
+/* Card 1: Stream Ingest */
+.card-stream-ingest {
+  top: 15px;
+  left: -20px;
+  width: 250px;
+}
+
+.card-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.live-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #f87171;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.live-dot-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ef4444;
+  box-shadow: 0 0 8px #ef4444;
+  animation: pulse-dot 1.5s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: 0.4; }
+}
+
+.live-icon {
+  color: #ef4444;
+}
+
+.bitrate-tag {
+  font-size: 0.72rem;
+  font-family: monospace;
+  font-weight: 600;
+  color: #00e5ff;
+  background: rgba(0, 229, 255, 0.1);
+  padding: 2px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 229, 255, 0.25);
+}
+
+.soundwave-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 28px;
+  margin: 10px 0;
+  padding: 0 4px;
+}
+
+.soundwave-bar {
+  flex: 1;
+  background: linear-gradient(180deg, #00f59b 0%, #0284c7 100%);
+  border-radius: 3px;
+  display: block;
+}
+
+.card-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.74rem;
+}
+
+.metric-muted {
+  color: #9ca3af;
+}
+
+.metric-highlight {
+  color: #00f59b;
+  font-family: monospace;
+  font-weight: 600;
+}
+
+/* Card 2: Growth Stat */
+.card-growth-stat {
+  top: 40px;
+  right: -25px;
+  width: 255px;
+}
+
+.growth-creator-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.creator-thumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #00f59b;
+  box-shadow: 0 0 10px rgba(0, 245, 155, 0.3);
+}
+
+.creator-meta {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.creator-title-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.creator-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.verified-check {
+  color: #00f59b;
+}
+
+.creator-sub {
+  font-size: 0.7rem;
+  color: #9ca3af;
+}
+
+.multiplier-badge {
+  background: linear-gradient(135deg, rgba(0, 245, 155, 0.2), rgba(0, 229, 255, 0.2));
+  border: 1px solid rgba(0, 245, 155, 0.5);
+  color: #00f59b;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 8px;
+}
+
+.sparkline-container {
+  width: 100%;
+  height: 38px;
+  margin: 6px 0;
+}
+
+.sparkline-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.growth-footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.growth-label {
+  font-size: 0.72rem;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.growth-value {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #00f59b;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* Card 3: Brand Deal Escrow */
+.card-brand-deal {
+  bottom: 30px;
+  right: -10px;
+  width: 250px;
+}
+
+.deal-header-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.deal-icon-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: rgba(229, 193, 88, 0.15);
+  border: 1px solid rgba(229, 193, 88, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deal-icon {
+  color: #E5C158;
+}
+
+.deal-title-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.deal-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.deal-status {
+  font-size: 0.66rem;
+  color: #E5C158;
+  letter-spacing: 0.04em;
+}
+
+.deal-amount-box {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.deal-amount {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.deal-period {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #9ca3af;
+  letter-spacing: 0.08em;
+}
+
+/* Card 4: Performance Chip */
+.card-performance-chip {
+  bottom: 45px;
+  left: -25px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 14px;
+}
+
+.chip-icon-box {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(0, 245, 155, 0.15);
+  border: 1px solid rgba(0, 245, 155, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00f59b;
+}
+
+.chip-text-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.chip-number {
+  font-family: monospace;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #00f59b;
+  line-height: 1.1;
+}
+
+.chip-label {
+  font-size: 0.68rem;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+/* Responsiveness */
+@media (max-width: 1200px) {
+  .hero-visual-wrapper {
+    height: 480px;
+  }
+  .orbital-svg-box {
+    width: 380px;
+    height: 380px;
+  }
+  .card-stream-ingest {
+    width: 220px;
+    left: 0;
+  }
+  .card-growth-stat {
+    width: 230px;
+    right: 0;
+  }
+  .card-brand-deal {
+    width: 220px;
+    right: 0;
+  }
+  .card-performance-chip {
+    left: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-visual-wrapper {
+    margin: 2rem auto 0;
+    max-width: 500px;
+    height: 440px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-visual-wrapper {
+    height: 380px;
+    transform: scale(0.85);
+  }
+}

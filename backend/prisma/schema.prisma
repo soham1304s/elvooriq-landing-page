@@ -1,0 +1,838 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-1.0.x", "rhel-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String   @id @default(uuid())
+  email      String   @unique
+  password   String
+  fullName   String
+  whatsapp   String?
+  platform   String?
+  age        Int?
+  country    String?
+  experience String?
+  socialUrl  String?
+  bio        String?
+  role             String   @default("CREATOR") // "ADMIN", "EMPLOYEE", "CREATOR"
+  
+  // Security Gates (Manual Enablement)
+  status           String   @default("PENDING") // "PENDING", "ACTIVE", "INACTIVE", "SUSPENDED"
+  isEnabled        Boolean  @default(false)     // Set manually by Root Admin
+
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  
+  // Relations for Live Streaming
+  youtubeConnection YouTubeConnection?
+  streamingSettings CreatorStreamingSetting?
+  liveSessions      LiveSession[]
+  scheduledStreams  ScheduledStream[]
+
+  // Enterprise Relationships
+  employmentRecord  EmploymentRecord?
+  workspaceMembers  WorkspaceMember[]
+  assignedTasks     Task[]                 @relation("TaskAssignee")
+  createdTasks      Task[]                 @relation("TaskCreator")
+  workLogs          DailyWorkLog[]
+  assignedLeads     Lead[]                 @relation("AgentLeads")
+
+  // Financial Tracking (v4.0)
+  disbursements     PayrollDisbursement[]
+  ledgers           PayrollLedger[]
+  
+  // Security Telemetry (v4.0)
+  securityEvents    SecurityEvents[]
+  anomalies         SecurityAnomaly[]
+
+  // Platform & Live Operations (v5.0)
+  platformId        String?                @unique // User's unique identification on streaming platforms
+  streamLogs        StreamLog[]            @relation("CreatorStreamLogs")
+  auditsConducted   ChannelAudit[]         @relation("AgentAudits")
+  auditsReceived    ChannelAudit[]         @relation("CreatorAudits")
+  interactions      LeadInteraction[]      @relation("AgentInteractions")
+  revenueSplits     RevenueSplit[]         @relation("UserRevenueSplits")
+
+  // Multi-Tenant Franchising & Compliance (v6.0)
+  tenantId          String?
+  tenant            Tenant?                @relation(fields: [tenantId], references: [id], onDelete: SetNull)
+  auditionsReviewed AuditionTape[]         @relation("AgentAuditionReviews")
+  creatorCampaigns  SponsorshipCampaign[]  @relation("CreatorCampaigns")
+  managedCampaigns  SponsorshipCampaign[]  @relation("ManagerCampaigns")
+  legalContracts    LegalContract[]        @relation("SigneeContracts")
+  preparedContracts LegalContract[]        @relation("PreparerContracts")
+  digitalSignatures DigitalSignature[]     @relation("UserSignatures")
+
+  // Onboarding & Legal Compliance Schema Extensions (v7.0)
+  generatedOffers   OfferLetter[]          @relation("HROfferLetters")
+  receivedOffer     OfferLetter?           @relation("CandidateOfferLetter")
+  complianceDocs    OnboardingDocument[]   @relation("UserComplianceDocs")
+
+  // Real-Time Creator Case Studies & GitHub Portfolio Integration (v9.5)
+  caseStudy         CreatorCaseStudy?
+  githubProfile     GithubProfile?
+}
+
+model AuthenticationSession {
+  id          String   @id @default(uuid())
+  sessionId   String   @unique
+  flowType    String
+  currentStep String
+  progress    Int      @default(0)
+  answers     String?  @default("{}")
+  ipAddress   String?
+  userAgent   String?
+  status      String   @default("active")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model YouTubeConnection {
+  id           String   @id @default(uuid())
+  userId       String   @unique
+  accessToken  String
+  refreshToken String?
+  channelId    String?
+  channelTitle String?
+  connectedAt  DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model CreatorStreamingSetting {
+  id                String   @id @default(uuid())
+  userId            String   @unique
+  rtmpUrl           String?
+  streamKey         String?
+  latencyMode       String   @default("normal") // normal, low, ultra_low
+  resolution        String   @default("1080p")
+  fps               Int      @default(60)
+  autoStart         Boolean  @default(false)
+  autoStop          Boolean  @default(false)
+  saveRecordings    Boolean  @default(true)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model LiveSession {
+  id              String   @id @default(uuid())
+  userId          String
+  title           String
+  description     String?
+  category        String?
+  visibility      String   @default("public")
+  youtubeBroadcastId String?
+  youtubeStreamId String?
+  status          String   @default("created") // created, starting, live, ending, ended, error
+  startTime       DateTime?
+  endTime         DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  analytics       LiveAnalytics[]
+  recordings      LiveRecording[]
+  events          LiveEvent[]
+}
+
+model LiveAnalytics {
+  id              String   @id @default(uuid())
+  sessionId       String
+  timestamp       DateTime @default(now())
+  viewers         Int      @default(0)
+  likes           Int      @default(0)
+  bitrate         Float?
+  fps             Float?
+  droppedFrames   Int?
+  cpuUsage        Float?
+  memoryUsage     Float?
+  session         LiveSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+}
+
+model LiveRecording {
+  id              String   @id @default(uuid())
+  sessionId       String
+  url             String
+  duration        Int?
+  size            BigInt?
+  resolution      String?
+  createdAt       DateTime @default(now())
+  session         LiveSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+}
+
+model LiveEvent {
+  id              String   @id @default(uuid())
+  sessionId       String
+  eventType       String   // e.g., 'started', 'paused', 'resumed', 'stopped', 'error', 'warning'
+  payload         String?
+  createdAt       DateTime @default(now())
+  session         LiveSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+}
+
+model ScheduledStream {
+  id              String   @id @default(uuid())
+  userId          String
+  title           String
+  description     String?
+  scheduledFor    DateTime
+  youtubeBroadcastId String?
+  status          String   @default("scheduled")
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// =========================================================================
+// Real-Time Live Streaming Operations & Webhook Monitoring (v5.0)
+// =========================================================================
+
+model StreamLog {
+  id            String    @id @default(uuid())
+  creatorId     String
+  platform      String    // "Twitch", "Bigo", "YouTube"
+  streamTitle   String?
+  startedAt     DateTime
+  endedAt       DateTime?
+  durationMin   Float     @default(0.0)
+  peakViewers   Int       @default(0)
+  avgViewers    Float     @default(0.0)
+  isLive        Boolean   @default(true)
+  historicalKey String?   // Unique stream execution ID from target platform
+
+  // Relations
+  creator       User      @relation("CreatorStreamLogs", fields: [creatorId], references: [id], onDelete: Cascade)
+}
+
+model FeaturedVideo {
+  id              String   @id @default(uuid())
+  youtubeUrl      String
+  title           String?
+  isActive        Boolean  @default(true)
+  updatedAt       DateTime @updatedAt
+}
+
+model FeaturedCreator {
+  id        String   @id @default(uuid())
+  name      String
+  handle    String
+  followers String
+  category  String?
+  imageUrl  String
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model FeaturedTalent {
+  id        String   @id @default(uuid())
+  name      String
+  handle    String
+  category  String
+  platform  String
+  followers String
+  badges    String?  @default("[]") // JSON string of labels like 'Forbes 30U30'
+  imageUrl  String
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PartnerRequest {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  subject   String
+  message   String
+  status    String   @default("pending") // pending, reviewed, accepted, rejected
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// =========================================================================
+// Enterprise ERP & Collaborative Workspace Models
+// =========================================================================
+
+model Workspace {
+  id          String            @id @default(uuid())
+  name        String
+  description String?
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+
+  // Relationships
+  tenantId    String?
+  tenant      Tenant?           @relation(fields: [tenantId], references: [id], onDelete: SetNull)
+  members     WorkspaceMember[]
+  leads       Lead[]            @relation("WorkspaceLeads")
+  tasks       Task[]            @relation("WorkspaceTasks")
+}
+
+model WorkspaceMember {
+  id          String    @id @default(uuid())
+  workspaceId String
+  userId      String
+  role        String    @default("MEMBER") // "LEAD", "MEMBER", "OBSERVER"
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  // Relations
+  workspace   Workspace @relation(fields: [workspaceId], references: [id], onDelete: Cascade)
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([workspaceId, userId])
+}
+
+model EmploymentRecord {
+  id              String    @id @default(uuid())
+  userId          String    @unique
+  jobTitle        String
+  department      String    @default("TALENT_MANAGEMENT")
+  employmentType  String    @default("FULL_TIME") // "FULL_TIME", "PART_TIME", "CONTRACT"
+  status          String    @default("ACTIVE")    // "ACTIVE", "SUSPENDED", "TERMINATED"
+  baseSalary      Float     @default(0.0)
+  currency        String    @default("INR")
+  contractUrl     String?   // External signed agreement reference
+  
+  // Offer Letter Automated Parsing Telemetry
+  onboardingMethod String   @default("MANUAL")    // "MANUAL", "PARSED_OFFER"
+  rawExtractedValue String?                        // Raw extracted text string (e.g. "INR 45,000 per month")
+  extractedCurrency String   @default("INR")       // Original currency matched
+  matchedSnippet    String?                        // Context sentence isolated during parsing
+  offerLetterText  String?  // Saved OCR/parsed text for validation logs
+  parsedAt         DateTime?
+
+  startDate       DateTime  @default(now())
+  endDate         DateTime?
+
+  // Relations
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Task {
+  id                       String         @id @default(uuid())
+  title                    String
+  description              String?
+  status                   String         @default("TODO") // "BACKLOG", "TODO", "IN_PROGRESS", "REVIEW", "DONE"
+  priority                 String         @default("MEDIUM") // "LOW", "MEDIUM", "HIGH", "CRITICAL"
+  
+  // Performance and Progress Tracking
+  progressPercent          Int            @default(0)      // Employee slider feedback: 0 - 100
+  dueDate                  DateTime?                       // Deadline/Timeline
+  isDeliveredOnTime        Boolean        @default(false)  // True if marked DONE prior to dueDate
+  deliveredAt              DateTime?                       // Exact submission date/time
+  
+  // Notification Telemetry Locks
+  overdueNotificationSent  Boolean        @default(false)  // Avoid repeated overdue text alerts
+  deliveryNotificationSent Boolean        @default(false)  // Avoid repeated on-time completion text alerts
+
+  creatorId                String
+  assigneeId               String?
+  workspaceId              String?
+  createdAt                DateTime       @default(now())
+  updatedAt                DateTime       @updatedAt
+
+  // Relations
+  creator                  User           @relation("TaskCreator", fields: [creatorId], references: [id])
+  assignee                 User?          @relation("TaskAssignee", fields: [assigneeId], references: [id], onDelete: SetNull)
+  workspace                Workspace?     @relation("WorkspaceTasks", fields: [workspaceId], references: [id], onDelete: SetNull)
+  workLogs                 DailyWorkLog[] @relation("TaskWorkLogs")
+}
+
+model DailyWorkLog {
+  id             String    @id @default(uuid())
+  userId         String
+  taskId         String?
+  hoursSpent     Float
+  summary        String
+  blockers       String?
+  progressValue  Int       @default(0)      // Snapshots task's progress percentage at this check-in
+  logDate        DateTime  @default(now())
+  createdAt      DateTime  @default(now())
+
+  // Relations
+  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  task           Task?     @relation("TaskWorkLogs", fields: [taskId], references: [id], onDelete: SetNull)
+}
+
+model Lead {
+  id          String     @id @default(uuid())
+  fullName    String
+  email       String     @unique
+  whatsapp    String?
+  platform    String?    // E.g., "YouTube", "TikTok", "Instagram", "Twitch"
+  socialUrl   String?
+  followers   Int        @default(0)
+  score       Int        @default(0) // Calculated priority score (0 - 100)
+  status      String     @default("NEW") // "NEW", "CONTACTED", "INTERVIEWED", "SIGNED", "REJECTED"
+  agentId     String?    // Assigned Employee
+  workspaceId String?    // Assigned Workspace upon onboarding approval
+  notes       String?    // Interaction notes from Employee
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  // Relations
+  agent        User?             @relation("AgentLeads", fields: [agentId], references: [id], onDelete: SetNull)
+  workspace    Workspace?        @relation("WorkspaceLeads", fields: [workspaceId], references: [id], onDelete: SetNull)
+  interactions LeadInteraction[] @relation("LeadInteractions")
+  history      LeadHistory[]     @relation("LeadStateHistory")
+  auditionTape AuditionTape?
+}
+
+// =========================================================================
+// Financial & Payroll Ledger Models (v4.0)
+// =========================================================================
+
+model PayrollLedger {
+  id               String                 @id @default(uuid())
+  userId           String
+  billingPeriod    String                 // e.g., "September 2026"
+  baseSalary       Float
+  allowances       Float                  @default(0.0)
+  deductions       Float                  @default(0.0)
+  netPay           Float
+  currency         String                 @default("INR")
+  approvalStatus   String                 @default("DRAFT") // "DRAFT", "APPROVED", "DISBURSED"
+  approvedById     String?
+  createdAt        DateTime               @default(now())
+  updatedAt        DateTime               @updatedAt
+
+  // Relations
+  user             User                   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  disbursement     PayrollDisbursement?
+}
+
+model PayrollDisbursement {
+  id             String        @id @default(uuid())
+  ledgerId       String        @unique
+  userId         String
+  paidAmount     Float
+  currency       String        @default("INR")
+  transactionId  String        @unique // Bank/Gateway processing sequence ID
+  paymentMethod  String        @default("BANK_TRANSFER")
+  disbursedAt    DateTime      @default(now())
+
+  // Relations
+  ledger         PayrollLedger @relation(fields: [ledgerId], references: [id], onDelete: Cascade)
+  user           User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// =========================================================================
+// Lead Fail-Safe Queue (v4.0)
+// =========================================================================
+
+model LeadQueue {
+  id            String    @id @default(uuid())
+  leadId        String    @unique
+  enqueueReason String?   // e.g. "ALL_AGENTS_OVERLOADED", "NO_ACTIVE_AGENTS"
+  expireAt      DateTime  // Countdown redistribution limit timestamp
+  createdAt     DateTime  @default(now())
+}
+
+// =========================================================================
+// Hardened Security Telemetry (v4.0)
+// =========================================================================
+
+model SecurityAnomaly {
+  id            String   @id @default(uuid())
+  userId        String
+  severity      String   @default("MEDIUM") // "LOW", "MEDIUM", "HIGH", "CRITICAL"
+  ipAddress     String
+  deviceAgent   String
+  locationInfo  String
+  triggerReason String
+  resolved      Boolean  @default(false)
+  createdAt     DateTime @default(now())
+
+  // Relations
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model SecurityEvents {
+  id        String   @id @default(uuid())
+  userId    String?
+  eventType String
+  timestamp DateTime @default(now())
+  ip        String?
+  device    String?
+  country   String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// =========================================================================
+// Creator Commissions, Splits & Platform Ledger Sync (v5.0)
+// =========================================================================
+
+model RevenueSplit {
+  id              String    @id @default(uuid())
+  userId          String    // The Creator / Streamer receiving the commission payout
+  platform        String    // "TikTok", "Twitch", "Bigo", "YouTube"
+  billingCycle    String    // e.g., "September-2026"
+  grossRevenue    Float
+  agencyCut       Float     // Calculated dynamic fee based on percentage
+  creatorCut      Float     // Remainder paid out to streamer
+  agentBonus      Float     @default(0.0) // Percentage bonus directed to assigned Agent
+  commissionRate  Float     @default(30.0) // Percentage cut of the agency
+  isSyncedToPay   Boolean   @default(false)
+  transactionId   String?   @unique
+  createdAt       DateTime  @default(now())
+
+  // Relations
+  user            User      @relation("UserRevenueSplits", fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// =========================================================================
+// Omnichannel CRM Lead Messaging & Interaction History (v5.0)
+// =========================================================================
+
+model LeadInteraction {
+  id            String    @id @default(uuid())
+  leadId        String
+  agentId       String
+  channel       String    // "WHATSAPP", "SMS", "EMAIL"
+  direction     String    // "INBOUND", "OUTBOUND"
+  messageText   String
+  templateName  String?   // Tracks if pre-approved template was used
+  deliveryStatus String   @default("SENT") // "SENT", "DELIVERED", "READ", "FAILED"
+  createdAt     DateTime  @default(now())
+
+  // Relations
+  lead          Lead      @relation("LeadInteractions", fields: [leadId], references: [id], onDelete: Cascade)
+  agent         User      @relation("AgentInteractions", fields: [agentId], references: [id], onDelete: Cascade)
+}
+
+model LeadHistory {
+  id          String    @id @default(uuid())
+  leadId      String
+  oldStatus   String
+  newStatus   String
+  updatedById String
+  note        String?
+  changedAt   DateTime  @default(now())
+
+  // Relations
+  lead        Lead      @relation("LeadStateHistory", fields: [leadId], references: [id], onDelete: Cascade)
+}
+
+// =========================================================================
+// Creator Coaching, Evaluations & Channel Audits (v5.0)
+// =========================================================================
+
+model ChannelAudit {
+  id                  String    @id @default(uuid())
+  creatorId           String    // Creator evaluated
+  agentId             String    // Employee conducting audit
+  auditDate           DateTime  @default(now())
+  
+  // Numerical Scoring Metrics (0 to 10 points per metric)
+  videoQuality        Int       @default(0)
+  audioClarity        Int       @default(0)
+  engagementRate      Int       @default(0)
+  brandingOverlay     Int       @default(0)
+  scheduleAdherence   Int       @default(0)
+  
+  overallAuditScore   Float     @default(0.0) // Automatically computed average
+  qualitativeComments String
+  actionPlan          String    // Clear actionable training blueprint for the creator
+  
+  // Relations
+  creator             User      @relation("CreatorAudits", fields: [creatorId], references: [id], onDelete: Cascade)
+  agent               User      @relation("AgentAudits", fields: [agentId], references: [id], onDelete: Cascade)
+}
+
+// =========================================================================
+// Enterprise Multi-Tenant Franchising & Regional Guilds (v6.0)
+// =========================================================================
+
+model Tenant {
+  id          String                @id @default(uuid())
+  name        String
+  code        String                @unique // e.g., "IN_GUILD", "US_GUILD", "EU_GUILD", "APAC_GUILD"
+  region      String                // "IN", "US", "EU", "APAC"
+  status      String                @default("ACTIVE") // "ACTIVE", "SUSPENDED"
+  currency    String                @default("USD")
+  createdAt   DateTime              @default(now())
+  updatedAt   DateTime              @updatedAt
+
+  // Relations
+  users       User[]
+  workspaces  Workspace[]
+  campaigns   SponsorshipCampaign[]
+}
+
+// =========================================================================
+// Pre-Screening Audition Analysis Engine (v6.0 - Wireframe B)
+// =========================================================================
+
+model AuditionTape {
+  id              String    @id @default(uuid())
+  leadId          String    @unique
+  fileUrl         String
+  transcript      String?
+  durationSec     Float     @default(0.0)
+  wordsPerMinute  Float     @default(0.0)
+  cadenceScore    Float     @default(0.0) // Cadence/pacing score (0 - 100)
+  energyLevel     Float     @default(0.0) // Vocal energy (0 - 100)
+  confidenceScore Float     @default(0.0) // Aggregate confidence (0 - 100)
+  keywordsMatched String?   @default("[]") // JSON string of detected keywords
+  aiSummary       String?
+  status          String    @default("PENDING") // "PENDING", "APPROVED", "REJECTED"
+  reviewerId      String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  // Relations
+  lead            Lead      @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  reviewer        User?     @relation("AgentAuditionReviews", fields: [reviewerId], references: [id], onDelete: SetNull)
+}
+
+// =========================================================================
+// Dynamic Legal Contract Lifecycle & Digital Signatures (v6.0)
+// =========================================================================
+
+model LegalContract {
+  id                String            @id @default(uuid())
+  contractNumber    String            @unique
+  signeeId          String?           // User ID or candidate lead ID
+  signeeName        String
+  signeeEmail       String
+  jobTitle          String
+  country           String            @default("IN") // "IN", "US", "GB", etc.
+  taxForm           String            @default("Form-16") // "Form-16", "W-9", "W-8BEN"
+  taxWithholdingPct Float             @default(10.0)
+  baseSalary        Float             @default(0.0)
+  currency          String            @default("INR")
+  contractContent   String            // Formatted legal agreement text
+  status            String            @default("DRAFT") // "DRAFT", "SENT", "SIGNED", "REJECTED"
+  preparerId        String?
+  createdAt         DateTime          @default(now())
+  signedAt          DateTime?
+
+  // Relations
+  signee            User?             @relation("SigneeContracts", fields: [signeeId], references: [id], onDelete: SetNull)
+  preparer          User?             @relation("PreparerContracts", fields: [preparerId], references: [id], onDelete: SetNull)
+  signature         DigitalSignature?
+  taxDeclaration    TaxDeclaration?
+}
+
+model DigitalSignature {
+  id             String        @id @default(uuid())
+  contractId     String        @unique
+  signerId       String?
+  signerName     String
+  signatureImage String        // Base64 image or signature drawing path
+  sha256Checksum String        // SHA-256 hash of contractContent + signerName + timestamp
+  ipAddress      String?
+  userAgent      String?
+  signedAt       DateTime      @default(now())
+
+  // Relations
+  contract       LegalContract @relation(fields: [contractId], references: [id], onDelete: Cascade)
+  signer         User?         @relation("UserSignatures", fields: [signerId], references: [id], onDelete: SetNull)
+}
+
+model TaxDeclaration {
+  id              String        @id @default(uuid())
+  contractId      String        @unique
+  taxFormType     String        // "Form-16", "W-9", "W-8BEN"
+  taxIdNumber     String        // Encrypted PAN, SSN, EIN
+  jurisdiction    String
+  withholdingRate Float
+  isExempt        Boolean       @default(false)
+  createdAt       DateTime      @default(now())
+
+  // Relations
+  contract        LegalContract @relation(fields: [contractId], references: [id], onDelete: Cascade)
+}
+
+// =========================================================================
+// B2B Sponsorships & Escrow Settlement Engine (v6.0 - Wireframe A)
+// =========================================================================
+
+model SponsorshipCampaign {
+  id            String              @id @default(uuid())
+  brandName     String
+  campaignTitle String
+  creatorId     String              // Creator performing deliverable
+  managerId     String?             // Supervising Agent (earns 5% bonus)
+  tenantId      String?             // Regional Guild franchise
+  totalEscrow   Float               // Total budget held in escrow
+  currency      String              @default("USD")
+  status        String              @default("ACTIVE") // "ACTIVE", "COMPLETED", "DISPUTED", "CANCELLED"
+  startDate     DateTime            @default(now())
+  endDate       DateTime?
+  createdAt     DateTime            @default(now())
+  updatedAt     DateTime            @updatedAt
+
+  // Relations
+  creator       User                @relation("CreatorCampaigns", fields: [creatorId], references: [id], onDelete: Cascade)
+  manager       User?               @relation("ManagerCampaigns", fields: [managerId], references: [id], onDelete: SetNull)
+  tenant        Tenant?             @relation(fields: [tenantId], references: [id], onDelete: SetNull)
+  milestones    CampaignMilestone[]
+}
+
+model CampaignMilestone {
+  id             String              @id @default(uuid())
+  campaignId     String
+  title          String
+  description    String?
+  deliverableUrl String?             // YouTube / TikTok link verified by HR/Agent
+  escrowAmount   Float               // Amount locked for this deliverable
+  creatorPayout  Float               // 75%
+  agencyCut      Float               // 20%
+  agentBonus     Float               // 5%
+  status         String              @default("PENDING") // "PENDING", "SUBMITTED", "APPROVED", "REJECTED"
+  proofMetrics   String?             @default("{}") // JSON: view counts, engagement
+  submittedAt    DateTime?
+  resolvedAt     DateTime?
+  transactionRef String?
+
+  // Relations
+  campaign       SponsorshipCampaign @relation(fields: [campaignId], references: [id], onDelete: Cascade)
+}
+
+// =========================================================================
+// Field-Level Security Audit Trail (v6.0)
+// =========================================================================
+
+model SecurityAuditTrail {
+  id             String   @id @default(uuid())
+  action         String   // "ESCROW_RELEASE", "CONTRACT_SIGNED", "TENANT_SWITCH", "FIELD_DECRYPT"
+  actorId        String?
+  targetResource String
+  ipAddress      String?
+  userAgent      String?
+  metadata       String?  @default("{}") // JSON string
+  timestamp      DateTime @default(now())
+}
+
+// =========================================================================
+// Dynamic Offer Letter Generation & Onboarding Compliance (v7.0)
+// =========================================================================
+
+model OfferLetter {
+  id                String       @id @default(uuid())
+  candidateId       String       @unique                     // Tied to the newly created User record
+  hrId              String                                   // HR who issued the contract
+  
+  // Custom Variables Captured
+  jobTitle          String
+  compensationBasis String       // "SALARY", "STIPEND", "UNPAID"
+  amount            Float        @default(0.0)
+  startDate         DateTime
+  endDate           DateTime?    // Nullable for permanent positions
+  
+  // PDF Storage Telemetry
+  pdfUrl            String                                   // Access path for download
+  status            String       @default("SENT")            // "SENT", "DOWNLOADED", "SIGNED", "REJECTED"
+  signedAt          DateTime?
+  signatureHash     String?                                  // Cryptographic signature link
+  
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+
+  // Relations
+  candidate         User         @relation("CandidateOfferLetter", fields: [candidateId], references: [id], onDelete: Cascade)
+  hr                User         @relation("HROfferLetters", fields: [hrId], references: [id])
+}
+
+model OnboardingDocument {
+  id                String       @id @default(uuid())
+  userId            String                                   // Target new hire
+  documentType      String       // "ID_PROOF", "DEGREE_CERTIFICATE", "EXPERIENCE_LETTER", "BANK_PROOF", "NDA", "TAX_FORM"
+  documentName      String                                   // Uploaded filename
+  fileUrl           String                                   // Storage URL
+  status            String       @default("PENDING")         // "PENDING", "VERIFIED", "REJECTED"
+  rejectionReason   String?      // Notes on why HR flagged the document
+  verifiedAt        DateTime?
+  
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+
+  // Relations
+  user              User         @relation("UserComplianceDocs", fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, documentType]) // Protect against duplicate document entries
+}
+
+// =========================================================================
+// Real-Time Creator Case Studies & Growth Benchmarks (v9.5)
+// =========================================================================
+
+model CreatorCaseStudy {
+  id                String   @id @default(uuid())
+  userId            String   @unique
+  nicheCategory     String   // e.g. "LIFESTYLE", "GAMING", "FASHION"
+  durationMonths    Int      @default(12)
+  growthMultiplier  Float    @default(1.0) // e.g. 44.0
+  pullQuote         String
+  detailedNarrative String?
+
+  // "Before" Benchmarks
+  followersBefore   Int      @default(0)
+  revenueBefore     Float    @default(0.0)
+  brandDealsBefore  Int      @default(0)
+  statusBefore      String   // e.g. "Struggling Part-Time Creator"
+  detailsBefore     String
+
+  // "After" Benchmarks (Synced with Active Platform APIs)
+  followersAfter    Int      @default(0)
+  revenueAfter      Float    @default(0.0)
+  brandDealsAfter   Int      @default(0)
+  statusAfter       String   // e.g. "Full-Time Multi-Platform Icon"
+  detailsAfter      String
+
+  // Relations
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// =========================================================================
+// Real-Time GitHub Portfolio Integration Models (v9.5)
+// =========================================================================
+
+model GithubProfile {
+  id               String             @id @default(uuid())
+  userId           String             @unique
+  username         String             @unique
+  avatarUrl        String
+  publicReposCount Int                @default(0)
+  totalStars       Int                @default(0)
+  totalForks       Int                @default(0)
+  primaryLanguages String             // JSON string of language distributions
+  accessToken      String?            // Encrypted GitHub OAuth Token
+  lastSyncedAt     DateTime           @default(now())
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+
+  // Relations
+  user             User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  repositories     GithubRepository[]
+}
+
+model GithubRepository {
+  id               String         @id @default(uuid())
+  profileId        String
+  name             String
+  description      String?
+  repoUrl          String
+  stars            Int            @default(0)
+  forks            Int            @default(0)
+  watchers         Int            @default(0)
+  language         String?        // Primary language used
+  repoLanguages    String?        // Full languages breakdown JSON (e.g. {"JS": 60, "Go": 40})
+  commitsCount     Int            @default(0)
+  openIssues       Int            @default(0)
+  wriiScore        Float          @default(0.0) // Weighted Repository Influence Index
+  isFeatured       Boolean        @default(false)
+  lastUpdated      DateTime
+
+  // Relations
+  profile          GithubProfile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+}
+
+

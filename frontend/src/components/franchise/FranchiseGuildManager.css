@@ -1,0 +1,339 @@
+.franchise-manager-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: calc(100vh - 100px);
+  background: radial-gradient(circle at 50% 10%, rgba(25, 149, 128, 0.05) 0%, rgba(5, 8, 10, 0.98) 90%);
+  color: #f1f5f9;
+  overflow-y: auto;
+  padding: 16px 20px;
+  box-sizing: border-box;
+}
+
+.franchise-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.franchise-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.franchise-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(25, 149, 128, 0.3), rgba(45, 212, 191, 0.15));
+  border: 1px solid rgba(45, 212, 191, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2dd4bf;
+}
+
+.franchise-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.franchise-title {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin: 0;
+  color: #ffffff;
+}
+
+.franchise-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  padding: 2px 8px;
+  background: rgba(45, 212, 191, 0.12);
+  border: 1px solid rgba(45, 212, 191, 0.3);
+  color: #2dd4bf;
+  border-radius: 4px;
+}
+
+.franchise-subtitle {
+  font-size: 11.5px;
+  color: #94a3b8;
+  margin: 2px 0 0;
+}
+
+.franchise-header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.franchise-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+.franchise-btn.secondary {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: #e2e8f0;
+}
+
+.franchise-btn.primary {
+  background: linear-gradient(135deg, #199580, #0d9488);
+  border-color: rgba(45, 212, 191, 0.4);
+  color: #ffffff;
+}
+
+/* Scope Bar */
+.guild-scope-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: rgba(13, 18, 24, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  margin-bottom: 16px;
+  overflow-x: auto;
+}
+
+.scope-label {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+.scope-pills {
+  display: flex;
+  gap: 6px;
+}
+
+.scope-pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+
+.scope-pill.active {
+  background: rgba(45, 212, 191, 0.15);
+  border-color: rgba(45, 212, 191, 0.4);
+  color: #2dd4bf;
+}
+
+/* Guild Cards Grid */
+.guilds-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+.guild-card {
+  background: rgba(12, 18, 24, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: all 0.2s;
+}
+
+.guild-card:hover {
+  border-color: rgba(45, 212, 191, 0.25);
+  transform: translateY(-2px);
+}
+
+.guild-card.suspended {
+  border-color: rgba(239, 68, 68, 0.3);
+  background: rgba(20, 10, 12, 0.6);
+}
+
+.guild-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.guild-meta-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.guild-region-tag {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #199580, #2dd4bf);
+  color: #030506;
+  font-size: 13px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.guild-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.guild-code-text {
+  font-size: 10.5px;
+  color: #94a3b8;
+  font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;
+}
+
+.guild-status-badge {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.4px;
+}
+
+.guild-status-badge.ACTIVE {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.guild-status-badge.SUSPENDED {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.guild-metrics-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 10px 12px;
+  background: rgba(2, 5, 8, 0.5);
+  border-radius: 6px;
+}
+
+.guild-metric {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.metric-icon {
+  color: #2dd4bf;
+}
+
+.metric-val {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.metric-lbl {
+  display: block;
+  font-size: 9.5px;
+  color: #94a3b8;
+}
+
+.guild-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.created-text {
+  font-size: 10px;
+  color: #64748b;
+}
+
+.toggle-status-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 10.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  border: 1px solid transparent;
+}
+
+.toggle-status-btn.lock {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.25);
+  color: #f87171;
+}
+
+.toggle-status-btn.lock:hover {
+  background: rgba(239, 68, 68, 0.2);
+}
+
+.toggle-status-btn.unlock {
+  background: rgba(34, 197, 94, 0.12);
+  border-color: rgba(34, 197, 94, 0.25);
+  color: #4ade80;
+}
+
+.toggle-status-btn.unlock:hover {
+  background: rgba(34, 197, 94, 0.2);
+}
+
+/* Modal */
+.franchise-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(3, 5, 8, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.franchise-modal-box {
+  width: 100%;
+  max-width: 440px;
+  background: #090e13;
+  border: 1px solid rgba(45, 212, 191, 0.3);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.franchise-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 14px;
+}

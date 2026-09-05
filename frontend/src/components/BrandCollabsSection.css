@@ -1,0 +1,209 @@
+.brand-collabs-section {
+  background-color: #f8f9fa; /* Light background */
+  color: #1f2937;
+  padding: 8rem 0;
+  border-top-left-radius: 4rem;
+  border-top-right-radius: 4rem;
+  margin-top: -2rem; /* Overlap the dark section */
+  position: relative;
+  z-index: 60;
+}
+
+.brand-collabs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* Header */
+.brand-collabs-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.section-header-center {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section-line {
+  width: 40px;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.section-subtitle {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--color-primary);
+}
+
+.brand-collabs-title {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  line-height: 1.1;
+  font-weight: 600;
+  color: #111827;
+}
+
+.brand-collabs-title .title-highlight {
+  color: var(--color-primary);
+}
+
+.brand-collabs-desc {
+  font-size: 1.1rem;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* Brands Marquee */
+.brands-marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+  padding: 2rem 0;
+  position: relative;
+  /* Add subtle mask gradient for fade-in/fade-out at edges */
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.brands-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: scroll-brands 30s linear infinite;
+}
+
+.brands-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.brands-marquee-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 4rem;
+  padding-right: 4rem; /* Match the gap for a seamless loop */
+}
+
+@keyframes scroll-brands {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.brand-name {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.15); /* Muted/faded look */
+  transition: color 0.3s ease;
+  cursor: default;
+  white-space: nowrap; /* Ensure brand names don't wrap */
+}
+
+.brand-name:hover {
+  color: rgba(0, 0, 0, 0.3); /* Slightly darker on hover */
+}
+
+/* Campaign Grid */
+.campaign-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.campaign-card {
+  background-color: #f3f4f6; /* Slightly darker than main bg */
+  border-radius: 1.5rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.campaign-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+}
+
+.campaign-image-wrapper {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
+.campaign-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.campaign-card:hover .campaign-image {
+  transform: scale(1.05);
+}
+
+.campaign-content {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.campaign-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
+}
+
+.campaign-desc {
+  font-size: 0.95rem;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .campaign-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .brand-collabs-section {
+    padding: 5rem 0;
+  }
+  
+  .brand-collabs-title {
+    font-size: 2.5rem;
+  }
+
+  .campaign-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .brands-list {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-collabs-title {
+    font-size: 2rem;
+  }
+  
+  .brand-collabs-desc {
+    font-size: 1rem;
+  }
+}

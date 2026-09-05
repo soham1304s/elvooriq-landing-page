@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+:root {
+  color-scheme: dark;
+  
+  /* Primary Brand Neon Emeralds */
+  --color-primary: #189380;          /* Deep Emerald Teal (Core Accent) */
+  --color-primary-hover: #137767;    /* Darkened Emerald Hover */
+  --color-neon-emerald: #00C988;     /* Bright Cyber Emerald */
+  --color-electric-mint: #00E599;    /* Luminous Mint (Pulsing details) */
+  
+  /* Accent Hues */
+  --color-sapphire: #0284C7;         /* Deep Sky Sapphire */
+  --color-purple-royal: #8A2BE2;     /* Electric Indigo / Purple Accent */
+  --color-purple-neon: #9D4EDD;      /* Luminous Violet */
+  --color-gold-accent: #E5C158;      /* Warm Luxury Gold (Map pins & verified badges) */
+  
+  /* Cosmic Dark Mode Foundations */
+  --color-bg-space: #07080a;         /* Deep Cosmic Obsidian (Base Canvas) */
+  --color-bg-dark: #121212;
+  --color-bg-darker: #0b0c0e;        /* Ultra Dark Matte Obsidian */
+  --color-bg-portal: #030506;        /* Deep Glassmorphic Portal Base */
+  
+  /* Editorial Light Mode (Asymmetric About Section) */
+  --color-light-bg: #F8F9FA;         /* Clean Editorial Off-White */
+  --color-light-card: #FFFFFF;       /* Pure White Feature Cards */
+  --color-light-muted: #F3F4F6;      /* Subtle Neutral Container */
+  --color-light-text-title: #111827; /* Deep Charcoal Title */
+  --color-light-text-body: #4B5563;  /* Slate Neutral Body */
+  
+  /* Typography Colors & Fonts */
+  --color-text-main: #FFFFFF;        /* Crisp White */
+  --color-text-muted: #A3A3A3;       /* Balanced Gray */
+  --color-text-dim: #6B7280;         /* Low-contrast Secondary Gray */
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
+  
+  /* Borders, Glows & Translucent Glass */
+  --color-border: rgba(255, 255, 255, 0.04);
+  --color-border-emerald: rgba(24, 147, 128, 0.15);
+  --glass-bg: rgba(11, 12, 14, 0.65);
+  --glass-blur: blur(16px);
+  --neon-glow: drop-shadow(0 0 12px rgba(0, 201, 136, 0.35));
+}
+
+/* Universal Webkit/Blink/Gecko dark autofill fix to prevent white-on-white text */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #0c1219 inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  caret-color: #199580 !important;
+  border-color: rgba(25, 149, 128, 0.4) !important;
+  color: #ffffff !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-darker);
+  color: var(--color-text-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.25rem;
+    /* Slightly tighter padding on mobile */
+  }
+}
+
+/* Animations */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}

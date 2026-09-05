@@ -1,0 +1,59 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Environment variables and secrets (CRITICAL: NEVER COMMIT)
+.env
+.env*
+*.env
+*.env.*
+*.local
+.env.local
+.env.*.local
+!.env.example
+
+# AI Agents and IDE metadata
+.agents/
+.claude/
+.codex/
+.gemini/
+.idea/
+.vscode/
+
+# Build output
+dist/
+dist-ssr/
+build/
+.vercel/
+
+# Embedded Postgres & Database data
+.embedded-postgres/
+.pgdata/
+*.sqlite
+*.db
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.neon
+
+# Local scratchpads & test artifacts in backend root
+backend/test_*.js
+backend/test*.js
+backend/test_*.pdf
+backend/tiny.png
+backend/dummy.png
+run.md

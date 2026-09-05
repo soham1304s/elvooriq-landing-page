@@ -1,0 +1,405 @@
+.dp-section {
+  position: relative;
+  background-color: #0b1f1a;
+  color: white;
+  padding: 8rem 0;
+  border-top-left-radius: 48px;
+  border-top-right-radius: 48px;
+  margin-top: -48px;
+  z-index: 3;
+  box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Background Ambient Glow */
+.dp-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 500px;
+  background: radial-gradient(circle at top, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dp-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Header Area */
+.dp-header-area {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.dp-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #a7f3d0;
+  margin-bottom: 1.5rem;
+}
+
+.dp-line {
+  width: 40px;
+  height: 1px;
+  background-color: #a7f3d0;
+}
+
+.dp-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  line-height: 1.2;
+  margin: 0;
+  color: white;
+}
+
+.dp-highlight {
+  color: #34d399;
+}
+
+/* Centered Master Card */
+.dp-master-card {
+  background: rgba(16, 185, 129, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 32px;
+  padding: 2.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+/* Card Header */
+.dp-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.dp-card-header-left {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.dp-card-icon-box {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #34d399;
+}
+
+.dp-card-title-group h3 {
+  font-size: 1.5rem;
+  margin: 0 0 0.25rem 0;
+  font-weight: 600;
+  color: white;
+}
+
+.dp-card-title-group p {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.dp-status.supported {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+  padding: 0.5rem 1rem;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dp-status .dp-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #ef4444;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #ef4444;
+}
+
+/* Visual Asset Container */
+.dp-visual-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  border-radius: 24px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  background: #0f172a;
+}
+
+.dp-visual-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+}
+
+.dp-visual-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.dp-live-badge {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  padding: 0.5rem 1rem;
+  border-radius: 99px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fca5a5;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.dp-live-badge .dp-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #ef4444;
+  border-radius: 50%;
+}
+
+.dp-viewers-badge {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  padding: 0.5rem 1rem;
+  border-radius: 99px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Audio Waveform Mock */
+.dp-waveform {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 4px;
+  height: 30px;
+  padding: 0 2rem;
+}
+
+.dp-wave-bar {
+  width: 6px;
+  background-color: rgba(52, 211, 153, 0.8);
+  border-radius: 4px;
+  animation: waveform-bounce infinite alternate;
+}
+
+@keyframes waveform-bounce {
+  0% { height: 10%; }
+  100% { height: 100%; }
+}
+
+/* Horizontal Platform Tabs */
+.dp-horizontal-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.dp-horizontal-tab {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 1.25rem 1.5rem;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dp-horizontal-tab:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dp-horizontal-tab.active {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #a7f3d0;
+}
+
+.dp-tab-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dp-tab-arrow {
+  color: #64748b;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.dp-horizontal-tab.active .dp-tab-arrow {
+  color: #34d399;
+  transform: translateX(4px);
+}
+
+/* Feature Grid */
+.dp-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.dp-feature-pill {
+  background: rgba(16, 185, 129, 0.05);
+  border: 1px solid rgba(16, 185, 129, 0.1);
+  padding: 1rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: #d1d5db;
+  transition: all 0.3s ease;
+}
+
+.dp-feature-pill:hover {
+  background: rgba(16, 185, 129, 0.1);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.dp-feature-pill svg {
+  color: #34d399;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .dp-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .dp-title {
+    font-size: 2.5rem;
+  }
+  .dp-master-card {
+    padding: 1.5rem;
+  }
+  .dp-horizontal-tabs {
+    flex-direction: column;
+  }
+  .dp-features-grid {
+    grid-template-columns: 1fr;
+  }
+  .dp-visual-container {
+    height: 250px;
+  }
+}
+
+/* Coming Soon Modal */
+.cs-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(10, 10, 12, 0.85);
+  backdrop-filter: blur(16px);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.cs-modal-content {
+  background: rgba(16, 185, 129, 0.05);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 24px;
+  padding: 4rem 3rem;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 0 40px rgba(16, 185, 129, 0.05);
+}
+
+.cs-modal-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cs-modal-close:hover {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+  transform: rotate(90deg);
+}
+
+.cs-modal-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: white;
+  margin: 0;
+  background: linear-gradient(135deg, #ffffff 0%, #a7f3d0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
