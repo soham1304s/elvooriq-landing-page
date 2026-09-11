@@ -1,49 +1,144 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
-:root {
+:root,
+[data-theme='dark'] {
   color-scheme: dark;
-  
-  /* Primary Brand Neon Emeralds */
-  --color-primary: #189380;          /* Deep Emerald Teal (Core Accent) */
-  --color-primary-hover: #137767;    /* Darkened Emerald Hover */
-  --color-neon-emerald: #00C988;     /* Bright Cyber Emerald */
-  --color-electric-mint: #00E599;    /* Luminous Mint (Pulsing details) */
-  
-  /* Accent Hues */
-  --color-sapphire: #0284C7;         /* Deep Sky Sapphire */
-  --color-purple-royal: #8A2BE2;     /* Electric Indigo / Purple Accent */
-  --color-purple-neon: #9D4EDD;      /* Luminous Violet */
-  --color-gold-accent: #E5C158;      /* Warm Luxury Gold (Map pins & verified badges) */
-  
-  /* Cosmic Dark Mode Foundations */
-  --color-bg-space: #07080a;         /* Deep Cosmic Obsidian (Base Canvas) */
-  --color-bg-dark: #121212;
-  --color-bg-darker: #0b0c0e;        /* Ultra Dark Matte Obsidian */
-  --color-bg-portal: #030506;        /* Deep Glassmorphic Portal Base */
-  
-  /* Editorial Light Mode (Asymmetric About Section) */
-  --color-light-bg: #F8F9FA;         /* Clean Editorial Off-White */
-  --color-light-card: #FFFFFF;       /* Pure White Feature Cards */
-  --color-light-muted: #F3F4F6;      /* Subtle Neutral Container */
-  --color-light-text-title: #111827; /* Deep Charcoal Title */
-  --color-light-text-body: #4B5563;  /* Slate Neutral Body */
-  
-  /* Typography Colors & Fonts */
-  --color-text-main: #FFFFFF;        /* Crisp White */
-  --color-text-muted: #A3A3A3;       /* Balanced Gray */
-  --color-text-dim: #6B7280;         /* Low-contrast Secondary Gray */
-  --font-serif: 'Playfair Display', serif;
-  --font-sans: 'Inter', sans-serif;
-  
-  /* Borders, Glows & Translucent Glass */
-  --color-border: rgba(255, 255, 255, 0.04);
-  --color-border-emerald: rgba(24, 147, 128, 0.15);
-  --glass-bg: rgba(11, 12, 14, 0.65);
+
+  /* Primary Accent: Luxury Gold Gradient (#D4AF37 -> #F5C542) */
+  --color-primary: #D4AF37;
+  /* Classic Warm Gold */
+  --color-primary-hover: #F5C542;
+  /* Luminous Radiant Gold */
+  --color-gold-start: #D4AF37;
+  --color-gold-end: #F5C542;
+  --color-gold-gradient: linear-gradient(135deg, #D4AF37 0%, #F5C542 100%);
+  --color-gold-gradient-hover: linear-gradient(135deg, #F5C542 0%, #D4AF37 100%);
+  --color-gold-accent: #D4AF37;
+  --color-gold-glow: rgba(212, 175, 55, 0.25);
+  --color-gold-soft: rgba(212, 175, 55, 0.15);
+  --color-gold-tint: rgba(212, 175, 55, 0.08);
+
+  /* Foundations: Near-Black & Warm Dark Charcoal */
+  --color-bg-base: #0A0A0A;
+  /* Canvas Background (near-black, easy on eyes) */
+  --color-bg-space: #0A0A0A;
+  /* Primary Background Foundation */
+  --color-bg-darker: #0A0A0A;
+  /* Section Base */
+  --color-bg-portal: #0A0A0A;
+  --color-bg-card: #141414;
+  /* Secondary Background / Cards */
+  --color-bg-card-warm: #1A1512;
+  /* Warm Charcoal Accent Surface */
+  --color-bg-dark: #141414;
+
+  /* Premium Typography System */
+  --color-text-main: #F5F5F0;
+  /* Primary Text (warm off-white) */
+  --color-text-primary: #F5F5F0;
+  --color-text-muted: #A8A29A;
+  /* Secondary / Muted Text */
+  --color-text-dim: #78716C;
+  /* Low-contrast Subtle Text */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  --font-script: 'Caveat', cursive;
+
+  /* Growth & Success Metrics (Sparingly for +44x, revenue tags) */
+  --color-success: #4ADE80;
+  /* Vibrant Growth Green */
+  --color-growth: #4ADE80;
+  --color-growth-bg: rgba(74, 222, 128, 0.12);
+  --color-growth-border: rgba(74, 222, 128, 0.35);
+  --color-alert: #EF5B5B;
+
+  /* Borders, Dividers & Luxury Glows */
+  --color-border: #2A2520;
+  /* Warm Brown-Charcoal Border */
+  --color-border-subtle: #2A2520;
+  --color-border-glow: 0 0 12px rgba(212, 175, 55, 0.12);
+  --color-border-gold: rgba(212, 175, 55, 0.3);
+  --glass-bg: rgba(26, 21, 18, 0.75);
+  --glass-bg-card: rgba(20, 20, 20, 0.85);
   --glass-blur: blur(16px);
-  --neon-glow: drop-shadow(0 0 12px rgba(0, 201, 136, 0.35));
+  --neon-glow: drop-shadow(0 0 14px rgba(212, 175, 55, 0.3));
+  --shadow-card: 0 16px 36px rgba(0, 0, 0, 0.7);
+  --shadow-elevated: 0 24px 50px rgba(0, 0, 0, 0.85);
 }
 
-/* Universal Webkit/Blink/Gecko dark autofill fix to prevent white-on-white text */
+/* ======================================================== */
+/* LIGHT THEME: ELVOORIQ — Premium Ivory × Gold Palette    */
+/* ======================================================== */
+[data-theme='light'] {
+  color-scheme: light;
+
+  /* Primary Accent: Luxury Gold (#C99524 -> #F4C95D) */
+  --color-primary: #C99524;
+  /* Luxury Gold */
+  --color-primary-hover: #F4C95D;
+  /* Champagne Gold */
+  --color-gold-start: #C99524;
+  --color-gold-end: #F4C95D;
+  --color-gold-gradient: linear-gradient(135deg, #C99524 0%, #F4C95D 100%);
+  --color-gold-gradient-hover: linear-gradient(135deg, #F4C95D 0%, #C99524 100%);
+  --color-gold-accent: #C99524;
+  --color-gold-glow: rgba(201, 149, 36, 0.22);
+  --color-gold-soft: #F8E7B0;
+  /* Pale Gold */
+  --color-gold-tint: #FFF5D6;
+  /* Warm Yellow */
+
+  /* Foundations: Warm Ivory & Soft Cream */
+  --color-bg-base: #FCFAF5;
+  /* Warm Ivory */
+  --color-bg-space: #FCFAF5;
+  /* Main Background */
+  --color-bg-darker: #F7F2E8;
+  /* Soft Cream */
+  --color-bg-portal: #FCFAF5;
+  --color-bg-card: #FFFFFF;
+  /* Pure Surface White */
+  --color-bg-card-warm: #F7F2E8;
+  /* Soft Cream */
+  --color-bg-dark: #F7F2E8;
+
+  /* Typography: Deep Navy/Charcoal & Slate */
+  --color-text-main: #111827;
+  /* Deep Navy/Charcoal */
+  --color-text-primary: #111827;
+  --color-text-muted: #526070;
+  /* Slate */
+  --color-text-dim: #8B8A83;
+  /* Warm Gray */
+
+  /* Growth & Success: Deep Emerald */
+  --color-success: #087F5B;
+  /* Deep Emerald */
+  --color-growth: #087F5B;
+  --color-growth-bg: #E4F5ED;
+  /* Mint Tint */
+  --color-growth-border: rgba(8, 127, 91, 0.35);
+
+  /* Live / Alert: Coral Red */
+  --color-alert: #EF5B5B;
+  /* Coral Red */
+
+  /* Borders, Dividers & Luxury Glows: Soft Gold/Gray */
+  --color-border: #E9DFCA;
+  /* Soft Gold/Gray */
+  --color-border-subtle: #E9DFCA;
+  --color-border-glow: 0 0 14px rgba(201, 149, 36, 0.16);
+  --color-border-gold: rgba(201, 149, 36, 0.35);
+  --glass-bg: rgba(252, 250, 245, 0.9);
+  --glass-bg-card: rgba(255, 255, 255, 0.94);
+  --glass-blur: blur(16px);
+  --neon-glow: drop-shadow(0 0 10px rgba(201, 149, 36, 0.22));
+  --shadow-card: 0 10px 30px rgba(17, 24, 39, 0.05), 0 1px 3px rgba(17, 24, 39, 0.03);
+  --shadow-elevated: 0 18px 45px rgba(201, 149, 36, 0.1), 0 4px 12px rgba(17, 24, 39, 0.05);
+}
+
+/* Universal Webkit/Blink/Gecko dark autofill fix */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -52,12 +147,26 @@ textarea:-webkit-autofill,
 textarea:-webkit-autofill:hover,
 textarea:-webkit-autofill:focus,
 select:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 1000px #0c1219 inset !important;
-  -webkit-text-fill-color: #ffffff !important;
-  caret-color: #199580 !important;
-  border-color: rgba(25, 149, 128, 0.4) !important;
-  color: #ffffff !important;
+  -webkit-box-shadow: 0 0 0 1000px #141414 inset !important;
+  -webkit-text-fill-color: #F5F5F0 !important;
+  caret-color: #D4AF37 !important;
+  border-color: rgba(212, 175, 55, 0.4) !important;
+  color: #F5F5F0 !important;
   transition: background-color 5000s ease-in-out 0s;
+}
+
+[data-theme='light'] input:-webkit-autofill,
+[data-theme='light'] input:-webkit-autofill:hover,
+[data-theme='light'] input:-webkit-autofill:focus,
+[data-theme='light'] textarea:-webkit-autofill,
+[data-theme='light'] textarea:-webkit-autofill:hover,
+[data-theme='light'] textarea:-webkit-autofill:focus,
+[data-theme='light'] select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #FFFFFF inset !important;
+  -webkit-text-fill-color: #111827 !important;
+  caret-color: #C99524 !important;
+  border-color: rgba(201, 149, 36, 0.4) !important;
+  color: #111827 !important;
 }
 
 * {
@@ -68,12 +177,13 @@ select:-webkit-autofill {
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--color-bg-darker);
+  background-color: var(--color-bg-base);
   color: var(--color-text-main);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 a {
@@ -97,8 +207,37 @@ button {
 @media (max-width: 768px) {
   .container {
     padding: 0 1.25rem;
-    /* Slightly tighter padding on mobile */
   }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-base, #0A0A0A);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border, #2A2520);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary, #D4AF37);
+}
+
+[data-theme='light'] ::-webkit-scrollbar-track {
+  background: #FCFAF5;
+}
+
+[data-theme='light'] ::-webkit-scrollbar-thumb {
+  background: #E9DFCA;
+}
+
+[data-theme='light'] ::-webkit-scrollbar-thumb:hover {
+  background: #C99524;
 }
 
 /* Animations */
@@ -128,4 +267,50 @@ button {
 
 .delay-300 {
   animation-delay: 300ms;
+}
+
+/* Floating Replay Intro Pill */
+.replay-intro-pill {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 88;
+  background: rgba(18, 18, 18, 0.88);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  color: #FFE57F;
+  padding: 7px 14px;
+  border-radius: 9999px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+[data-theme='light'] .replay-intro-pill {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(201, 149, 36, 0.4);
+  color: #926E17;
+  box-shadow: 0 4px 16px rgba(17, 24, 39, 0.1);
+}
+
+.replay-intro-pill:hover {
+  border-color: #D4AF37;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(212, 175, 55, 0.3);
+}
+
+@media (max-width: 600px) {
+  .replay-intro-pill {
+    bottom: 1.1rem;
+    right: 1.1rem;
+    padding: 6px 11px;
+    font-size: 0.68rem;
+    letter-spacing: 0.5px;
+  }
 }

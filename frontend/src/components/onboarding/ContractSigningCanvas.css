@@ -20,7 +20,7 @@
   background: #090e13;
   border: 1px solid rgba(45, 212, 191, 0.3);
   border-radius: 12px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 25px rgba(25, 149, 128, 0.2);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 25px rgba(212, 175, 55, 0.2);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -45,12 +45,12 @@
   width: 36px;
   height: 36px;
   border-radius: 8px;
-  background: linear-gradient(135deg, rgba(25, 149, 128, 0.3), rgba(45, 212, 191, 0.1));
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), rgba(45, 212, 191, 0.1));
   border: 1px solid rgba(45, 212, 191, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #2dd4bf;
+  color: #F5C542;
 }
 
 .modal-title {
@@ -116,7 +116,7 @@
   padding: 2px 8px;
   border-radius: 4px;
   background: rgba(45, 212, 191, 0.15);
-  color: #2dd4bf;
+  color: #F5C542;
   border: 1px solid rgba(45, 212, 191, 0.3);
 }
 
@@ -168,7 +168,7 @@
 }
 
 .spin-lock {
-  color: #2dd4bf;
+  color: #F5C542;
   animation: pulse 1.5s infinite;
 }
 
@@ -207,7 +207,7 @@
 
 .sub-tag {
   font-size: 9px;
-  color: #2dd4bf;
+  color: #F5C542;
   background: rgba(45, 212, 191, 0.1);
   padding: 1px 5px;
   border-radius: 3px;
@@ -225,7 +225,7 @@
 }
 
 .legal-text-input:focus {
-  border-color: #2dd4bf;
+  border-color: #F5C542;
 }
 
 .canvas-wrapper {
@@ -299,7 +299,7 @@
 
 .consent-box {
   margin-top: 2px;
-  accent-color: #2dd4bf;
+  accent-color: #F5C542;
 }
 
 .consent-text {
@@ -324,14 +324,14 @@
   gap: 8px;
   padding: 10px;
   border-radius: 6px;
-  background: linear-gradient(135deg, #199580, #0d9488);
+  background: linear-gradient(135deg, #D4AF37, #F5C542);
   border: 1px solid rgba(45, 212, 191, 0.4);
   color: #ffffff;
   font-size: 12.5px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s;
-  box-shadow: 0 4px 15px rgba(25, 149, 128, 0.3);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
   margin-top: auto;
 }
 
@@ -362,16 +362,16 @@
   height: 72px;
   border-radius: 50%;
   background: rgba(45, 212, 191, 0.15);
-  border: 2px solid #2dd4bf;
+  border: 2px solid #F5C542;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #2dd4bf;
+  color: #F5C542;
   margin-bottom: 16px;
   animation: pulse 2s infinite;
 }
 
-.success-title {
+.signing-success-overlay .success-title {
   font-size: 18px;
   font-weight: 800;
   letter-spacing: 0.5px;
@@ -379,7 +379,7 @@
   margin: 0 0 6px;
 }
 
-.success-desc {
+.signing-success-overlay .success-desc {
   font-size: 13px;
   color: #94a3b8;
   max-width: 500px;
@@ -416,7 +416,7 @@
 }
 
 .checksum-highlight {
-  color: #2dd4bf;
+  color: #F5C542;
   font-size: 10px;
   max-width: 320px;
   overflow: hidden;
@@ -443,8 +443,8 @@
   gap: 6px;
   padding: 8px 20px;
   border-radius: 6px;
-  background: #2dd4bf;
-  color: #030506;
+  background: #F5C542;
+  color: #0A0A0A;
   font-size: 13px;
   font-weight: 700;
   border: none;

@@ -282,7 +282,7 @@ export default function LeadOutreachChat({ initialLeadId, onClose }) {
             <div className="omni-messages-stream">
               {messages.length === 0 ? (
                 <div className="omni-empty-stream">
-                  <Sparkles size={28} style={{ color: '#199580', margin: '0 auto 10px' }} />
+                  <Sparkles size={28} style={{ color: '#D4AF37', margin: '0 auto 10px' }} />
                   <p>No communication logs recorded yet for <strong>{lead.fullName}</strong>.</p>
                   <p style={{ fontSize: '0.75rem', marginTop: '6px' }}>Select an outreach template on the right and dispatch via WhatsApp, SMS or Email.</p>
                 </div>
@@ -299,7 +299,7 @@ export default function LeadOutreachChat({ initialLeadId, onClose }) {
                         <span>•</span>
                         <span>{new Date(m.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                         <span>•</span>
-                        <span style={{ color: isOutbound ? '#2dd4bf' : '#94a3b8' }}>
+                        <span style={{ color: isOutbound ? '#F5C542' : '#94a3b8' }}>
                           {m.deliveryStatus || 'SENT'}
                         </span>
                       </div>
@@ -312,7 +312,7 @@ export default function LeadOutreachChat({ initialLeadId, onClose }) {
             {/* Bottom Input Dock */}
             <div className="omni-input-dock">
               {actionNotice && (
-                <div style={{ fontSize: '0.72rem', color: '#2dd4bf', background: 'rgba(25,149,128,0.1)', padding: '4px 8px', borderRadius: '4px' }}>
+                <div style={{ fontSize: '0.72rem', color: '#F5C542', background: 'rgba(212, 175, 55,0.1)', padding: '4px 8px', borderRadius: '4px' }}>
                   ✓ {actionNotice}
                 </div>
               )}
@@ -324,7 +324,7 @@ export default function LeadOutreachChat({ initialLeadId, onClose }) {
               />
               <div className="omni-input-actions">
                 <span className="omni-target-channel-badge">
-                  Channel: <strong style={{ color: '#2dd4bf' }}>{channel}</strong>
+                  Channel: <strong style={{ color: '#F5C542' }}>{channel}</strong>
                 </span>
 
                 <button 
@@ -402,7 +402,7 @@ export default function LeadOutreachChat({ initialLeadId, onClose }) {
               </div>
               <div className="omni-summary-row">
                 <span className="omni-summary-label">Calculated Score:</span>
-                <span className="omni-summary-val" style={{ color: '#2dd4bf' }}>{lead.score || 70}/100</span>
+                <span className="omni-summary-val" style={{ color: '#F5C542' }}>{lead.score || 70}/100</span>
               </div>
               <div className="omni-summary-row">
                 <span className="omni-summary-label">Current Stage:</span>

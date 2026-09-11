@@ -21,12 +21,17 @@ const SuccessStoriesSection = () => {
           if (data.success && data.caseStudies && data.caseStudies.length > 0) {
             // Merge with local fallback images and strategies
             const merged = data.caseStudies.map((cs, idx) => {
-              const fallback = fallbackStories[idx] || fallbackStories[0];
+              const fallback = fallbackStories.find(f => 
+                (cs.name && f.name.toLowerCase().includes(cs.name.toLowerCase().split(' ')[0])) ||
+                (cs.id && f.id === cs.id)
+              ) || fallbackStories[idx] || fallbackStories[0];
               return {
                 ...fallback,
                 ...cs,
                 id: cs.id || fallback.id,
-                image: fallback.image
+                category: cs.nicheCategory || cs.category || fallback.category,
+                image: fallback.image,
+                objectPosition: fallback.objectPosition || '50% 15%'
               };
             });
             setStories(merged);
@@ -113,7 +118,12 @@ const SuccessStoriesSection = () => {
                 onClick={() => setIsModalOpen(true)}
                 style={{ cursor: 'pointer' }}
               >
-                <img src={activeStory.image} alt={activeStory.name} className="success-image" />
+                <img 
+                  src={activeStory.image} 
+                  alt={activeStory.name} 
+                  className="success-image" 
+                  style={{ objectPosition: activeStory.objectPosition || '50% 15%' }}
+                />
                 <div className="journey-badge">{activeStory.journey}</div>
               </motion.div>
             </AnimatePresence>

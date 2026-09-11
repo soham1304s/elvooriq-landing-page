@@ -8,10 +8,10 @@ export default function GithubRepositoryCard({ repo, index = 0 }) {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.08 }}
-      className="group relative bg-[#0b0c0e]/80 hover:bg-[#121619] border border-white/5 hover:border-[#00C988]/40 rounded-xl p-4 transition-all duration-300 backdrop-blur-md shadow-lg flex flex-col justify-between"
+      className="group relative bg-[#141414]/90 hover:bg-[#1A1512] border border-[#2A2520] hover:border-[#D4AF37]/50 rounded-xl p-4 transition-all duration-300 backdrop-blur-md shadow-lg flex flex-col justify-between"
       style={{
-        background: 'rgba(11, 12, 14, 0.75)',
-        border: '1px solid rgba(255, 255, 255, 0.06)',
+        background: '#141414',
+        border: '1px solid #2A2520',
         borderRadius: '0.85rem',
         padding: '1.25rem',
         display: 'flex',
@@ -24,13 +24,13 @@ export default function GithubRepositoryCard({ repo, index = 0 }) {
       <div>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.5rem', gap: '0.5rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', minWidth: 0 }}>
-            <Code2 size={16} color="#00C988" style={{ flexShrink: 0 }} />
+            <Code2 size={16} color="#D4AF37" style={{ flexShrink: 0 }} />
             <a
               href={repo.repoUrl}
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                color: '#FFFFFF',
+                color: '#F5F5F0',
                 fontWeight: 600,
                 fontSize: '0.95rem',
                 textDecoration: 'none',
@@ -38,78 +38,77 @@ export default function GithubRepositoryCard({ repo, index = 0 }) {
                 textOverflow: 'ellipsis',
                 whiteSpace: 'nowrap'
               }}
-              title={repo.name}
             >
-              {repo.name}
+              {repo.repoName}
             </a>
           </div>
-
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', flexShrink: 0 }}>
-            {repo.isFeatured && (
-              <span
-                style={{
-                  background: 'rgba(0, 201, 136, 0.15)',
-                  border: '1px solid rgba(0, 201, 136, 0.3)',
-                  color: '#00E599',
-                  fontSize: '0.65rem',
-                  fontWeight: 700,
-                  padding: '2px 6px',
-                  borderRadius: '9999px',
-                  letterSpacing: '0.05em'
-                }}
-              >
-                FEATURED
-              </span>
-            )}
+          {repo.isPinned && (
             <span
               style={{
-                background: 'rgba(2, 132, 199, 0.15)',
-                border: '1px solid rgba(2, 132, 199, 0.3)',
-                color: '#38bdf8',
-                fontSize: '0.7rem',
-                fontFamily: 'monospace',
+                fontSize: '0.65rem',
                 fontWeight: 700,
-                padding: '2px 8px',
-                borderRadius: '9999px',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '3px'
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase',
+                background: 'rgba(212, 175, 55, 0.15)',
+                color: '#F5C542',
+                border: '1px solid rgba(212, 175, 55, 0.3)',
+                padding: '2px 6px',
+                borderRadius: '4px'
               }}
-              title="Weighted Repository Influence Index"
             >
-              <Sparkles size={10} /> {Number(repo.wriiScore || 0).toFixed(1)}
+              Featured
             </span>
-          </div>
+          )}
         </div>
 
         <p
           style={{
-            color: '#94a3b8',
             fontSize: '0.8rem',
-            lineHeight: 1.45,
-            marginBottom: '0.75rem',
+            color: '#A8A29A',
+            lineHeight: 1.4,
+            margin: '0 0 0.75rem 0',
             display: '-webkit-box',
             WebkitLineClamp: 2,
             WebkitBoxOrient: 'vertical',
             overflow: 'hidden'
           }}
         >
-          {repo.description || 'Verified software engineering repository.'}
+          {repo.description || 'Enterprise platform automation repository.'}
         </p>
+
+        {repo.topics && repo.topics.length > 0 && (
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem', marginBottom: '0.5rem' }}>
+            {repo.topics.slice(0, 4).map((topic, i) => (
+              <span
+                key={i}
+                style={{
+                  fontSize: '0.65rem',
+                  padding: '2px 8px',
+                  borderRadius: '12px',
+                  background: 'rgba(212, 175, 55, 0.08)',
+                  color: '#D4AF37',
+                  border: '1px solid rgba(212, 175, 55, 0.2)'
+                }}
+              >
+                #{topic}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '0.75rem', borderTop: '1px solid rgba(255, 255, 255, 0.05)', fontSize: '0.75rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: '0.75rem', borderTop: '1px solid #2A2520', fontSize: '0.75rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
           {repo.language && (
-            <span style={{ color: '#00C988', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}>
-              <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#00C988' }}></span>
+            <span style={{ color: '#D4AF37', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <span style={{ width: '6px', height: '6px', borderRadius: '50%', backgroundColor: '#D4AF37' }}></span>
               {repo.language}
             </span>
           )}
           <span style={{ color: '#fbbf24', display: 'flex', alignItems: 'center', gap: '3px' }}>
             <Star size={12} fill="#fbbf24" /> {repo.stars}
           </span>
-          <span style={{ color: '#94a3b8', display: 'flex', alignItems: 'center', gap: '3px' }}>
+          <span style={{ color: '#A8A29A', display: 'flex', alignItems: 'center', gap: '3px' }}>
             <GitFork size={12} /> {repo.forks}
           </span>
           {repo.openIssues > 0 && (
@@ -124,15 +123,15 @@ export default function GithubRepositoryCard({ repo, index = 0 }) {
           target="_blank"
           rel="noopener noreferrer"
           style={{
-            color: '#64748b',
+            color: '#A8A29A',
             display: 'inline-flex',
             alignItems: 'center',
             gap: '3px',
             textDecoration: 'none',
             transition: 'color 0.2s ease'
           }}
-          onMouseEnter={(e) => (e.currentTarget.style.color = '#00C988')}
-          onMouseLeave={(e) => (e.currentTarget.style.color = '#64748b')}
+          onMouseEnter={(e) => (e.currentTarget.style.color = '#F5C542')}
+          onMouseLeave={(e) => (e.currentTarget.style.color = '#A8A29A')}
         >
           View <ExternalLink size={12} />
         </a>

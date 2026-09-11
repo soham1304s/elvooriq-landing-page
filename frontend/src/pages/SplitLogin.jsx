@@ -56,11 +56,20 @@ const SplitLogin = () => {
 
       if (response.data.success) {
         localStorage.setItem('elvooriq_token', response.data.token);
+        if (response.data.sessionId) {
+          localStorage.setItem('elvooriq_session_id', response.data.sessionId);
+        }
+        if (response.data.loginTime) {
+          localStorage.setItem('elvooriq_login_time', response.data.loginTime);
+        }
+        if (response.data.user) {
+          localStorage.setItem('elvooriq_user', JSON.stringify(response.data.user));
+        }
         
         // Emit success event
-        if (sessionId) {
+        if (sessionId || response.data.sessionId) {
           socket.emit('auth:success', {
-            sessionId,
+            sessionId: response.data.sessionId || sessionId,
             flowType: 'login'
           });
         }
@@ -147,7 +156,7 @@ const SplitLogin = () => {
             transition={{ duration: 0.5 }}
           >
             <div className="sl-mobile-logo">
-              <img src={logoImg} alt="ELVOORIQ Logo" style={{ height: '64px' }} />
+              <img src={logoImg} alt="ELVOORIQ Logo" style={{ height: '84px' }} />
             </div>
             <h2 className="sl-form-title">Welcome back</h2>
             <p className="sl-form-subtitle">Sign in to your creator account</p>

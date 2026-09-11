@@ -7,7 +7,7 @@
   width: 100%;
   box-sizing: border-box;
   background: rgba(13, 17, 19, 0.95);
-  border: 1px solid rgba(25, 149, 128, 0.25);
+  border: 1px solid rgba(212, 175, 55, 0.25);
   border-radius: 14px;
   padding: 20px;
   color: #f1f5f9;
@@ -23,7 +23,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #199580, #2dd4bf, transparent);
+  background: linear-gradient(90deg, transparent, #D4AF37, #F5C542, transparent);
 }
 
 /* Header Section */
@@ -50,9 +50,9 @@
   text-transform: uppercase;
   padding: 4px 10px;
   border-radius: 6px;
-  background: rgba(25, 149, 128, 0.12);
-  border: 1px solid rgba(25, 149, 128, 0.3);
-  color: #2dd4bf;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: #F5C542;
   margin-bottom: 8px;
 }
 
@@ -90,7 +90,7 @@
   font-size: 1.15rem;
   font-weight: 800;
   font-family: monospace;
-  color: #2dd4bf;
+  color: #F5C542;
   background: rgba(45, 212, 191, 0.1);
   border: 1px solid rgba(45, 212, 191, 0.3);
   padding: 6px 12px;
@@ -154,7 +154,7 @@
   font-size: 1rem;
   font-weight: 800;
   font-family: monospace;
-  color: #2dd4bf;
+  color: #F5C542;
   text-shadow: 0 0 10px rgba(45, 212, 191, 0.4);
 }
 
@@ -173,7 +173,7 @@
 }
 
 .slider-limit-label.max {
-  color: #2dd4bf;
+  color: #F5C542;
   text-align: right;
 }
 
@@ -193,7 +193,7 @@
 .custom-progress-slider::-webkit-slider-runnable-track {
   height: 8px;
   border-radius: 6px;
-  background: linear-gradient(90deg, #0d9488, #2dd4bf);
+  background: linear-gradient(90deg, #0d9488, #F5C542);
 }
 
 .custom-progress-slider::-webkit-slider-thumb {
@@ -202,7 +202,7 @@
   height: 22px;
   border-radius: 50%;
   background: #ffffff;
-  border: 3px solid #199580;
+  border: 3px solid #D4AF37;
   box-shadow: 0 0 14px rgba(45, 212, 191, 0.8), 0 2px 6px rgba(0, 0, 0, 0.4);
   cursor: grab;
   margin-top: -7px;
@@ -241,15 +241,15 @@
 }
 
 .preset-chip:hover {
-  background: rgba(25, 149, 128, 0.18);
-  border-color: rgba(25, 149, 128, 0.4);
-  color: #2dd4bf;
+  background: rgba(212, 175, 55, 0.18);
+  border-color: rgba(212, 175, 55, 0.4);
+  color: #F5C542;
   transform: translateY(-1px);
 }
 
 .preset-chip.active {
-  background: rgba(25, 149, 128, 0.3);
-  border-color: #2dd4bf;
+  background: rgba(212, 175, 55, 0.3);
+  border-color: #F5C542;
   color: #ffffff;
   box-shadow: 0 0 10px rgba(45, 212, 191, 0.25);
 }
@@ -288,7 +288,7 @@
 .form-field-group textarea {
   width: 100% !important;
   box-sizing: border-box !important;
-  background: #030506 !important;
+  background: #0A0A0A !important;
   border: 1px solid rgba(255, 255, 255, 0.14) !important;
   border-radius: 8px !important;
   padding: 10px 14px !important;
@@ -302,8 +302,8 @@
 
 .form-field-group input:focus,
 .form-field-group textarea:focus {
-  border-color: #199580 !important;
-  box-shadow: 0 0 0 3px rgba(25, 149, 128, 0.2), 0 0 12px rgba(25, 149, 128, 0.3) !important;
+  border-color: #D4AF37 !important;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2), 0 0 12px rgba(212, 175, 55, 0.3) !important;
 }
 
 .form-field-group textarea {
@@ -319,7 +319,7 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: linear-gradient(135deg, #137766, #199580);
+  background: linear-gradient(135deg, #D4AF37, #F5C542);
   border: 1px solid rgba(45, 212, 191, 0.4);
   color: #ffffff;
   padding: 13px 20px;
@@ -330,13 +330,13 @@
   text-transform: uppercase;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 18px rgba(25, 149, 128, 0.35);
+  box-shadow: 0 4px 18px rgba(212, 175, 55, 0.35);
   margin-top: 6px;
 }
 
 .submit-routine-btn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(25, 149, 128, 0.55);
+  box-shadow: 0 6px 24px rgba(212, 175, 55, 0.55);
   background: linear-gradient(135deg, #168a76, #1cb59b);
 }
 

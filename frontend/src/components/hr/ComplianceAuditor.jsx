@@ -134,7 +134,7 @@ export default function ComplianceAuditor({ refreshSignal }) {
           <button
             onClick={fetchCandidates}
             disabled={loading}
-            style={{ padding: '8px 12px', background: '#030506', border: '1px solid #1e293b', color: '#cbd5e1', borderRadius: '8px', cursor: 'pointer' }}
+            style={{ padding: '8px 12px', background: '#0A0A0A', border: '1px solid #1e293b', color: '#cbd5e1', borderRadius: '8px', cursor: 'pointer' }}
             title="Refresh list"
           >
             <RefreshCw size={14} className={loading ? 'animate-spin' : ''} />
@@ -149,10 +149,10 @@ export default function ComplianceAuditor({ refreshSignal }) {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            style={{ marginBottom: '20px', padding: '16px 20px', borderRadius: '12px', background: 'linear-gradient(135deg, rgba(25, 149, 128, 0.2), rgba(16, 185, 129, 0.15))', border: '1px solid rgba(25, 149, 128, 0.5)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px' }}
+            style={{ marginBottom: '20px', padding: '16px 20px', borderRadius: '12px', background: 'linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(16, 185, 129, 0.15))', border: '1px solid rgba(212, 175, 55, 0.5)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px' }}
           >
             <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-              <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(25, 149, 128, 0.25)', border: '1px solid #199580', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#5eead4' }}>
+              <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(212, 175, 55, 0.25)', border: '1px solid #D4AF37', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#5eead4' }}>
                 <Sparkles size={20} />
               </div>
               <div>
@@ -184,7 +184,7 @@ export default function ComplianceAuditor({ refreshSignal }) {
       {/* Candidates List */}
       {loading ? (
         <div style={{ textAlign: 'center', padding: '64px 0', color: '#64748b' }}>
-          <div style={{ width: '32px', height: '32px', border: '3px solid rgba(25, 149, 128, 0.3)', borderTopColor: '#199580', borderRadius: '50%', animation: 'spin 1s linear infinite', margin: '0 auto 12px' }} />
+          <div style={{ width: '32px', height: '32px', border: '3px solid rgba(212, 175, 55, 0.3)', borderTopColor: '#D4AF37', borderRadius: '50%', animation: 'spin 1s linear infinite', margin: '0 auto 12px' }} />
           <p style={{ fontSize: '0.78rem' }}>Loading compliance audit rosters...</p>
         </div>
       ) : filteredCandidates.length === 0 ? (
@@ -236,7 +236,7 @@ export default function ComplianceAuditor({ refreshSignal }) {
                       <p>
                         <span>{candidate.email}</span>
                         {candidate.offerLetter?.jobTitle && (
-                          <span style={{ color: '#199580', fontWeight: 600 }}> • {candidate.offerLetter.jobTitle}</span>
+                          <span style={{ color: '#D4AF37', fontWeight: 600 }}> • {candidate.offerLetter.jobTitle}</span>
                         )}
                       </p>
                     </div>
@@ -276,10 +276,10 @@ export default function ComplianceAuditor({ refreshSignal }) {
                     >
                       {/* Offer Letter Overview */}
                       {candidate.offerLetter && (
-                        <div style={{ padding: '14px 18px', background: '#030506', border: '1px solid #1e293b', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
+                        <div style={{ padding: '14px 18px', background: '#0A0A0A', border: '1px solid #1e293b', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
                           <div>
                             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                              <FileText size={15} style={{ color: '#199580' }} />
+                              <FileText size={15} style={{ color: '#D4AF37' }} />
                               <strong style={{ fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Appointment Offer Letter</strong>
                               <span style={{ padding: '2px 8px', borderRadius: '4px', fontSize: '0.65rem', fontWeight: 800, background: isOfferSigned ? 'rgba(16, 185, 129, 0.2)' : '#1e293b', color: isOfferSigned ? '#34d399' : '#94a3b8' }}>
                                 {candidate.offerLetter.status}
@@ -307,7 +307,7 @@ export default function ComplianceAuditor({ refreshSignal }) {
                               href={`/onboard/${candidate.id}`}
                               target="_blank"
                               rel="noopener noreferrer"
-                              style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '6px 12px', background: 'rgba(25, 149, 128, 0.15)', border: '1px solid rgba(25, 149, 128, 0.4)', color: '#199580', borderRadius: '6px', fontSize: '0.72rem', fontWeight: 700, textDecoration: 'none' }}
+                              style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '6px 12px', background: 'rgba(212, 175, 55, 0.15)', border: '1px solid rgba(212, 175, 55, 0.4)', color: '#D4AF37', borderRadius: '6px', fontSize: '0.72rem', fontWeight: 700, textDecoration: 'none' }}
                             >
                               Open Portal Link
                             </a>
@@ -318,7 +318,7 @@ export default function ComplianceAuditor({ refreshSignal }) {
                       {/* 6 Required Compliance Documents Checklist */}
                       <div>
                         <h5 style={{ margin: '0 0 12px 0', fontSize: '0.72rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.8px', color: '#94a3b8', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                          <ShieldCheck size={14} style={{ color: '#199580' }} />
+                          <ShieldCheck size={14} style={{ color: '#D4AF37' }} />
                           6-Point Compliance Document Audit & Verification
                         </h5>
 
@@ -361,7 +361,7 @@ export default function ComplianceAuditor({ refreshSignal }) {
                                         href={`${API_URL}${doc.fileUrl}`}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        style={{ color: '#199580', fontWeight: 700, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px' }}
+                                        style={{ color: '#D4AF37', fontWeight: 700, textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px' }}
                                       >
                                         <ExternalLink size={11} /> Open File
                                       </a>
@@ -434,7 +434,7 @@ export default function ComplianceAuditor({ refreshSignal }) {
                 value={rejectModalData.reason}
                 onChange={(e) => setRejectModalData({ ...rejectModalData, reason: e.target.value })}
                 placeholder="e.g. Document image is expired or cropped. Please re-upload a clear copy."
-                style={{ width: '100%', background: '#030506', border: '1px solid #1e293b', borderRadius: '8px', padding: '10px 12px', fontSize: '0.78rem', color: '#f8fafc', outline: 'none', marginBottom: '16px', boxSizing: 'border-box' }}
+                style={{ width: '100%', background: '#0A0A0A', border: '1px solid #1e293b', borderRadius: '8px', padding: '10px 12px', fontSize: '0.78rem', color: '#f8fafc', outline: 'none', marginBottom: '16px', boxSizing: 'border-box' }}
               />
 
               <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>

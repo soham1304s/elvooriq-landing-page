@@ -80,7 +80,7 @@ export default function ContractSigningCanvas({ candidate, onClose, onSignedSucc
     const y = clientY - rect.top;
     ctx.beginPath();
     ctx.moveTo(x, y);
-    ctx.strokeStyle = '#2dd4bf';
+    ctx.strokeStyle = '#F5C542';
     ctx.lineWidth = 2.5;
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
@@ -136,7 +136,7 @@ export default function ContractSigningCanvas({ candidate, onClose, onSignedSucc
       canvas.height = 100;
       const ctx = canvas.getContext('2d');
       ctx.font = 'italic 32px "Brush Script MT", cursive, sans-serif';
-      ctx.fillStyle = '#2dd4bf';
+      ctx.fillStyle = '#F5C542';
       ctx.fillText(signerName || 'Digital Signature', 30, 60);
       signatureImage = canvas.toDataURL('image/png');
     }

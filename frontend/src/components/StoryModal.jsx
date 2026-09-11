@@ -131,7 +131,12 @@ const StoryModal = ({ story, totalStories, currentIndex, onClose, onPrev, onNext
           {/* Creator Hero Header */}
           <div className="story-hero">
             <div className="story-hero-image-wrapper">
-              <img src={story.image} alt={story.name} className="story-hero-image" />
+              <img 
+                src={story.image} 
+                alt={story.name} 
+                className="story-hero-image" 
+                style={{ objectPosition: story.objectPosition || '50% 15%' }}
+              />
               <span className="story-journey-pill">{story.journey}</span>
             </div>
             <div className="story-hero-details">

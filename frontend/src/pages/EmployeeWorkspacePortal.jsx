@@ -44,6 +44,8 @@ import AuditionPreScreeningDesk from '../components/auditions/AuditionPreScreeni
 import ContractSigningCanvas from '../components/onboarding/ContractSigningCanvas';
 import LiveKanbanBoard from '../components/workspace/LiveKanbanBoard';
 import logoImg from '../assets/logo.png';
+import { performLogout } from '../utils/authSession';
+import SessionTelemetryWidget from '../components/SessionTelemetryWidget';
 import './EmployeeWorkspacePortal.css';
 
 const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? '' : 'http://localhost:5000');
@@ -356,9 +358,7 @@ const EmployeeWorkspacePortal = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('elvooriq_token');
-    localStorage.removeItem('elvooriq_user');
-    navigate('/login');
+    performLogout('AGENT_LOGOUT');
   };
 
   const activeWs = workspaces.find(w => w.id === activeWorkspaceId) || workspaces[0];
@@ -415,6 +415,8 @@ const EmployeeWorkspacePortal = () => {
             <Sliders size={14} />
             <span>{viewMode === 'comfortable' ? 'Comfortable Mode' : 'Compact Mode'}</span>
           </button>
+
+          <SessionTelemetryWidget />
 
           <div className="agent-profile-pill">
             <div className="agent-avatar">

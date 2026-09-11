@@ -228,16 +228,16 @@ const ContactPage = () => {
               <div style={{ display: 'flex', gap: '16px', marginBottom: '20px' }}>
                 <div className="card-icon" style={{ width: '44px', height: '44px', marginBottom: 0 }}><Mail size={20} /></div>
                 <div>
-                  <h4 style={{ color: '#FFF', fontWeight: 600, fontSize: '0.9rem' }}>Direct Email</h4>
-                  <a href="mailto:support@elvooriq.com" style={{ color: '#00f59b', fontSize: '0.88rem', textDecoration: 'none' }}>support@elvooriq.com</a>
+                  <h4 style={{ color: '#F5F5F0', fontWeight: 600, fontSize: '0.9rem' }}>Direct Email</h4>
+                  <a href="mailto:support@elvooriq.com" style={{ color: '#D4AF37', fontSize: '0.88rem', textDecoration: 'none' }}>support@elvooriq.com</a>
                 </div>
               </div>
 
               <div style={{ display: 'flex', gap: '16px' }}>
                 <div className="card-icon" style={{ width: '44px', height: '44px', marginBottom: 0 }}><Phone size={20} /></div>
                 <div>
-                  <h4 style={{ color: '#FFF', fontWeight: 600, fontSize: '0.9rem' }}>Agency Hotline</h4>
-                  <p style={{ color: '#A0A0B0', fontSize: '0.88rem' }}>+1 (800) 555-ELVOORIQ</p>
+                  <h4 style={{ color: '#F5F5F0', fontWeight: 600, fontSize: '0.9rem' }}>Agency Hotline</h4>
+                  <p style={{ color: '#A8A29A', fontSize: '0.88rem' }}>+1 (800) 555-ELVOORIQ</p>
                 </div>
               </div>
 
@@ -247,7 +247,7 @@ const ContactPage = () => {
                 <div className="map-pin-container">
                   <div className="map-pin-pulse"></div>
                   <div className="map-pin">
-                    <MapPin size={18} fill="#E5C158" color="#E5C158" />
+                    <MapPin size={18} fill="#D4AF37" color="#D4AF37" />
                   </div>
                 </div>
                 <div className="map-tooltip">
@@ -270,18 +270,18 @@ const ContactPage = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="glass-card"
-              style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', textDecoration: 'none', padding: '20px 24px', border: '1px solid rgba(0,245,155,0.25)', background: 'rgba(0,245,155,0.05)' }}
+              style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', textDecoration: 'none', padding: '20px 24px', border: '1px solid #2A2520', background: '#141414', boxShadow: '0 0 15px rgba(212, 175, 55, 0.08)' }}
             >
               <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'rgba(0,245,155,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#00f59b' }}>
+                <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: 'rgba(212, 175, 55, 0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#D4AF37' }}>
                   <Phone size={20} />
                 </div>
                 <div>
-                  <h4 style={{ color: '#FFF', fontSize: '0.95rem', fontWeight: 700, margin: 0 }}>Instant WhatsApp Desk</h4>
-                  <p style={{ color: '#00f59b', fontSize: '0.8rem', margin: '2px 0 0' }}>+91 7665761616 • Typically replies instantly</p>
+                  <h4 style={{ color: '#F5F5F0', fontSize: '0.95rem', fontWeight: 700, margin: 0 }}>Instant WhatsApp Desk</h4>
+                  <p style={{ color: '#A8A29A', fontSize: '0.8rem', margin: '2px 0 0' }}>+91 7665761616 • Typically replies instantly</p>
                 </div>
               </div>
-              <span style={{ color: '#00f59b', fontWeight: 700, fontSize: '0.85rem' }}>Chat Now →</span>
+              <span style={{ color: '#F5C542', fontWeight: 700, fontSize: '0.85rem' }}>Chat Now →</span>
             </a>
 
           </div>
@@ -302,23 +302,23 @@ const ContactPage = () => {
                       transition={{ duration: 0.4 }}
                       style={{ width: '100%' }}
                     >
-                      <Loader2 size={54} className="animate-spin" style={{ color: '#10b981', margin: '0 auto 20px' }} />
-                      <h3 className="card-title" style={{ fontSize: '1.5rem', color: '#10b981' }}>Live Review In Progress</h3>
+                      <Loader2 size={54} className="animate-spin" style={{ color: '#D4AF37', margin: '0 auto 20px' }} />
+                      <h3 className="card-title" style={{ fontSize: '1.5rem', color: '#D4AF37' }}>Live Review In Progress</h3>
                       <p className="card-desc" style={{ maxWidth: '400px', margin: '12px auto' }}>
                         Your request is pending review by the ELVOORIQ administrative team. Updates will sync automatically.
                       </p>
 
-                      <div style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '16px', marginTop: '24px', textAlign: 'left' }}>
-                        <span style={{ fontSize: '0.7rem', color: '#6B7280', display: 'block', marginBottom: '4px', letterSpacing: '1px' }}>TICKET ID</span>
-                        <code style={{ fontSize: '0.8rem', color: '#10b981', background: 'rgba(16, 185, 129, 0.05)', padding: '2px 6px', borderRadius: '4px' }}>{requestId}</code>
+                      <div style={{ background: '#141414', border: '1px solid #2A2520', borderRadius: '12px', padding: '16px', marginTop: '24px', textAlign: 'left' }}>
+                        <span style={{ fontSize: '0.7rem', color: '#A8A29A', display: 'block', marginBottom: '4px', letterSpacing: '1px' }}>TICKET ID</span>
+                        <code style={{ fontSize: '0.8rem', color: '#D4AF37', background: 'rgba(212, 175, 55, 0.1)', padding: '2px 6px', borderRadius: '4px' }}>{requestId}</code>
 
                         <div style={{ display: 'grid', gridTemplateColumns: '80px 1fr', gap: '8px', marginTop: '12px', fontSize: '0.85rem' }}>
-                          <span style={{ color: '#8C9BA5' }}>Partner:</span>
-                          <span style={{ color: '#FFF', fontWeight: 500 }}>{formData.name}</span>
-                          <span style={{ color: '#8C9BA5' }}>Subject:</span>
-                          <span style={{ color: '#FFF' }}>{formData.subject}</span>
-                          <span style={{ color: '#8C9BA5' }}>Status:</span>
-                          <span style={{ color: '#eab308', fontWeight: 'bold' }}>PENDING</span>
+                          <span style={{ color: '#A8A29A' }}>Partner:</span>
+                          <span style={{ color: '#F5F5F0', fontWeight: 500 }}>{formData.name}</span>
+                          <span style={{ color: '#A8A29A' }}>Subject:</span>
+                          <span style={{ color: '#F5F5F0' }}>{formData.subject}</span>
+                          <span style={{ color: '#A8A29A' }}>Status:</span>
+                          <span style={{ color: '#F5C542', fontWeight: 'bold' }}>PENDING</span>
                         </div>
                       </div>
                     </motion.div>
@@ -333,24 +333,24 @@ const ContactPage = () => {
                       transition={{ type: 'spring', damping: 15 }}
                       style={{ width: '100%' }}
                     >
-                      <div style={{ background: 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(16, 185, 129, 0.2)', width: '70px', height: '70px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
-                        <CheckCircle2 size={36} color="#10b981" />
+                      <div style={{ background: 'rgba(74, 222, 128, 0.12)', border: '1px solid rgba(74, 222, 128, 0.3)', width: '70px', height: '70px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
+                        <CheckCircle2 size={36} color="#4ADE80" />
                       </div>
-                      <h4 style={{ textTransform: 'uppercase', color: '#10b981', letterSpacing: '2px', fontSize: '0.75rem', fontWeight: 700, marginBottom: '6px' }}>PARTNERSHIP ACCEPTED</h4>
-                      <h1 style={{ fontSize: '2.4rem', fontWeight: 800, background: 'linear-gradient(135deg, #FFF 0%, #10b981 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', marginBottom: '14px', letterSpacing: '-0.5px' }}>Coming Soon</h1>
-                      <p className="card-desc" style={{ maxWidth: '400px', margin: '0 auto 20px', color: '#A0A0B0', fontSize: '0.9rem', lineHeight: '1.5' }}>
+                      <h4 style={{ textTransform: 'uppercase', color: '#4ADE80', letterSpacing: '2px', fontSize: '0.75rem', fontWeight: 700, marginBottom: '6px' }}>PARTNERSHIP ACCEPTED</h4>
+                      <h1 style={{ fontSize: '2.4rem', fontWeight: 800, background: 'linear-gradient(135deg, #F5F5F0 0%, #D4AF37 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', marginBottom: '14px', letterSpacing: '-0.5px' }}>Coming Soon</h1>
+                      <p className="card-desc" style={{ maxWidth: '400px', margin: '0 auto 20px', color: '#A8A29A', fontSize: '0.9rem', lineHeight: '1.5' }}>
                         Welcome to the ELVOORIQ ecosystem! Your request has been approved. We are finalizing your brand dashboard and creator engagement workspace.
                       </p>
 
                       {/* Interactive Progress List */}
-                      <div style={{ background: 'rgba(255,255,255,0.01)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '12px', padding: '16px', textAlign: 'left', margin: '0 auto 20px', maxWidth: '380px' }}>
+                      <div style={{ background: '#141414', border: '1px solid #2A2520', borderRadius: '12px', padding: '16px', textAlign: 'left', margin: '0 auto 20px', maxWidth: '380px' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-                          <CheckCircle2 size={16} color="#10b981" />
-                          <span style={{ fontSize: '0.8rem', color: '#FFF', fontWeight: 500 }}>Step 1: Partner Request Approved</span>
+                          <CheckCircle2 size={16} color="#4ADE80" />
+                          <span style={{ fontSize: '0.8rem', color: '#F5F5F0', fontWeight: 500 }}>Step 1: Partner Request Approved</span>
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-                          <Loader2 size={16} className="animate-spin" style={{ color: '#10b981' }} />
-                          <span style={{ fontSize: '0.8rem', color: '#FFF', fontWeight: 500 }}>Step 2: Workspace Provisioning</span>
+                          <Loader2 size={16} className="animate-spin" style={{ color: '#D4AF37' }} />
+                          <span style={{ fontSize: '0.8rem', color: '#F5F5F0', fontWeight: 500 }}>Step 2: Workspace Provisioning</span>
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', opacity: 0.3 }}>
                           <div style={{ width: '16px', height: '16px', borderRadius: '50%', background: 'rgba(255,255,255,0.1)' }}></div>

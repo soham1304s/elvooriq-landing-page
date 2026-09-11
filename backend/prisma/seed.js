@@ -6,7 +6,7 @@ async function main() {
   console.log('🌱 Seeding database with Enterprise Master Blueprint data...');
 
   // 1. Root Administrator Accounts
-  const defaultAdminPass = process.env.INITIAL_ADMIN_PASSWORD || 'AdminDefaultSecret123!';
+  const defaultAdminPass = process.env.INITIAL_ADMIN_PASSWORD || 'EnterpriseRosterGate2026!';
   const rootPassword = await bcrypt.hash(defaultAdminPass, 12);
 
   const rootAdmin = await prisma.user.upsert({
@@ -52,42 +52,126 @@ async function main() {
     }
   });
 
-  // 2. Certified Featured Creators Roster (suggestion.md 3.1)
+  // 2. Certified Featured Creators Roster
   const certifiedCreators = [
     {
-      name: 'Aishwarya Harishankar',
-      handle: '@aishwaryaharishankar',
+      name: 'Komal Pandey',
+      handle: '@komalpandeyofficial',
+      followers: '1.9M',
+      category: 'Fashion & Styling',
+      imageUrl: '/creators/komal_pandey.webp'
+    },
+    {
+      name: 'Kritika Khurana',
+      handle: '@thatbohogirl',
+      followers: '1.8M',
+      category: 'Fashion & Travel',
+      imageUrl: '/creators/kritika_khurana_festive.webp'
+    },
+    {
+      name: 'Aashika Bhatia',
+      handle: '@aashikabhatia',
+      followers: '5.7M',
+      category: 'Lifestyle & Acting',
+      imageUrl: '/creators/aashika_bhatia.webp'
+    },
+    {
+      name: 'Mrunal Panchal',
+      handle: '@mrunu',
+      followers: '4.8M',
+      category: 'Beauty & Creative Art',
+      imageUrl: '/creators/mrunal_panchal.webp'
+    },
+    {
+      name: 'Shruti Arjun Anand',
+      handle: '@shrutiarjunanand',
+      followers: '2.3M',
+      category: 'Entertainment & Comedy',
+      imageUrl: '/creators/shruti_arjun_anand.webp'
+    },
+    {
+      name: 'Jhanvi Bhatia',
+      handle: '@jhanvibhatia',
+      followers: '1.4M',
+      category: 'Dance & Lifestyle',
+      imageUrl: '/creators/jhanvi_bhatia.webp'
+    },
+    {
+      name: 'Malvika Sitlani',
+      handle: '@malvikasitlaniofficial',
+      followers: '1.2M',
+      category: 'Beauty & Wellness',
+      imageUrl: '/creators/malvika_sitlani.webp'
+    },
+    {
+      name: 'Sejal Kumar',
+      handle: '@sejalkumar1195',
+      followers: '1.1M',
+      category: 'Music & Vlogging',
+      imageUrl: '/creators/sejal_kumar.webp'
+    },
+    {
+      name: 'Somya Gupta',
+      handle: '@thesastheory',
+      followers: '950K',
+      category: 'Aesthetic Fashion',
+      imageUrl: '/creators/somya_gupta.webp'
+    },
+    {
+      name: 'Riya Sharma',
+      handle: '@riyasharma.live',
+      followers: '1.6M',
+      category: 'Glamour & Lifestyle',
+      imageUrl: '/creators/creator_1.webp'
+    },
+    {
+      name: 'Radhika Seth',
+      handle: '@radhikasethh',
+      followers: '1.5M',
+      category: 'Luxury & Couture',
+      imageUrl: '/creators/creator_2.webp'
+    },
+    {
+      name: 'Tanya Khanijow',
+      handle: '@tanyakhanijow',
       followers: '1.3M',
-      category: 'Lifestyle, Fashion & Luxury Brand Ambassador',
-      imageUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop'
+      category: 'Travel & Culture',
+      imageUrl: '/creators/creator_3.webp'
     },
     {
-      name: 'Jyoti Rai',
-      handle: '@jyoti._.2k6',
-      followers: '50K',
-      category: 'Interactive Live Streaming & Esports',
-      imageUrl: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=800&auto=format&fit=crop'
+      name: 'Shreya Jain',
+      handle: '@shreyajain26',
+      followers: '1.1M',
+      category: 'Heritage & Style',
+      imageUrl: '/creators/creator_4.webp'
     },
     {
-      name: 'Sunita Bera',
-      handle: '@sunitabera9710',
-      followers: '30K',
-      category: 'Technical Gaming, Hardware Reviewer',
-      imageUrl: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop'
+      name: 'Meghna Kaur',
+      handle: '@shetroublemaker',
+      followers: '1.4M',
+      category: 'Urban Fashion',
+      imageUrl: '/creators/creator_5.webp'
     },
     {
-      name: 'Ayndrila',
-      handle: '@andyycandyy',
-      followers: '30K',
-      category: 'High-Fashion & Beauty Content Creator',
-      imageUrl: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?q=80&w=800&auto=format&fit=crop'
+      name: 'Roshni Chopra',
+      handle: '@roshnichopra',
+      followers: '920K',
+      category: 'Wellness & Living',
+      imageUrl: '/creators/creator_6.webp'
     },
     {
-      name: 'Soumili',
-      handle: '@.diaries_of_mili.',
-      followers: '50K',
-      category: 'Travel Vlogging & Cultural Storytelling',
-      imageUrl: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?q=80&w=800&auto=format&fit=crop'
+      name: 'Diipa Khosla',
+      handle: '@diipakhosla',
+      followers: '2.1M',
+      category: 'Global Fashion',
+      imageUrl: '/creators/creator_7.webp'
+    },
+    {
+      name: 'Ananya Roy',
+      handle: '@ananyaroy.official',
+      followers: '880K',
+      category: 'Bridal & Couture',
+      imageUrl: '/creators/kritika_khurana.webp'
     }
   ];
 
@@ -237,6 +321,51 @@ async function main() {
     });
   }
   console.log(`[SEED] Success! ${caseStudiesData.length} certified case studies seeded into database.`);
+
+  // 4. Featured Masterclass Videos (Learning Center)
+  await prisma.featuredVideo.deleteMany({});
+  const masterclassVideos = [
+    {
+      youtubeUrl: 'https://youtu.be/HBYkbqACOBg',
+      title: 'The Creator-to-Brand-Face Transition: Building High-Ticket Equity',
+      isActive: true
+    },
+    {
+      youtubeUrl: 'https://youtu.be/i8GoqRYutJk',
+      title: 'Studio-Grade Transcoding & Multi-RTMP Live Streaming Setup',
+      isActive: true
+    },
+    {
+      youtubeUrl: 'https://youtu.be/ZXwpWEbAmd0',
+      title: '10 Live Streaming Rules to Double Superchats & Viewer Watch Time',
+      isActive: true
+    },
+    {
+      youtubeUrl: 'https://youtu.be/JDJRpgkmP4s',
+      title: 'Contract Safeguarding & Negotiating 6-Figure Brand Deals',
+      isActive: true
+    },
+    {
+      youtubeUrl: 'https://youtu.be/WIDcjJkZInI',
+      title: 'New Creator Onboarding: Essential Gear, Lighting & Audio',
+      isActive: true
+    },
+    {
+      youtubeUrl: 'https://youtu.be/AQh2eC5H3tc',
+      title: 'Audience Retention: The 15-Second Hook & Story Pacing Formula',
+      isActive: true
+    },
+    {
+      youtubeUrl: 'https://youtu.be/KLBIVfHgD4o',
+      title: 'Building Your D2C Brand: Turning Followers into Equity',
+      isActive: true
+    }
+  ];
+
+  for (const video of masterclassVideos) {
+    await prisma.featuredVideo.create({ data: video });
+  }
+  console.log(`[SEED] Success! ${masterclassVideos.length} masterclass videos seeded into Learning Center.`);
 
   console.log('✅ Enterprise Master Blueprint database seeding complete.');
 }

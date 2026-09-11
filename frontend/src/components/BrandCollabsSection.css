@@ -1,12 +1,13 @@
 .brand-collabs-section {
-  background-color: #f8f9fa; /* Light background */
-  color: #1f2937;
+  background-color: var(--color-bg-base, #0A0A0A);
+  color: var(--color-text-main, #F5F5F0);
   padding: 8rem 0;
   border-top-left-radius: 4rem;
   border-top-right-radius: 4rem;
-  margin-top: -2rem; /* Overlap the dark section */
+  margin-top: -2rem;
   position: relative;
   z-index: 60;
+  border-top: 1px solid var(--color-border, #2A2520);
 }
 
 .brand-collabs-container {
@@ -34,15 +35,15 @@
 
 .section-line {
   width: 40px;
-  height: 1px;
-  background-color: rgba(0, 0, 0, 0.2);
+  height: 2px;
+  background-color: var(--color-primary, #D4AF37);
 }
 
 .section-subtitle {
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.15em;
-  color: var(--color-primary);
+  color: var(--color-primary, #D4AF37);
 }
 
 .brand-collabs-title {
@@ -50,16 +51,16 @@
   font-size: 3.5rem;
   line-height: 1.1;
   font-weight: 600;
-  color: #111827;
+  color: var(--color-text-main, #F5F5F0);
 }
 
 .brand-collabs-title .title-highlight {
-  color: var(--color-primary);
+  color: var(--color-primary, #D4AF37);
 }
 
 .brand-collabs-desc {
   font-size: 1.1rem;
-  color: #6b7280;
+  color: var(--color-text-muted, #A8A29A);
   line-height: 1.6;
 }
 
@@ -69,7 +70,6 @@
   overflow: hidden;
   padding: 2rem 0;
   position: relative;
-  /* Add subtle mask gradient for fade-in/fade-out at edges */
   mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
   -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
@@ -89,7 +89,7 @@
   align-items: center;
   justify-content: space-around;
   gap: 4rem;
-  padding-right: 4rem; /* Match the gap for a seamless loop */
+  padding-right: 4rem;
 }
 
 @keyframes scroll-brands {
@@ -105,14 +105,26 @@
   font-family: var(--font-serif);
   font-size: 1.75rem;
   font-weight: 600;
-  color: rgba(0, 0, 0, 0.15); /* Muted/faded look */
-  transition: color 0.3s ease;
+  color: var(--color-text-dim, #78716C);
+  opacity: 0.45;
+  transition: all 0.3s ease;
   cursor: default;
-  white-space: nowrap; /* Ensure brand names don't wrap */
+  white-space: nowrap;
 }
 
 .brand-name:hover {
-  color: rgba(0, 0, 0, 0.3); /* Slightly darker on hover */
+  color: var(--color-primary, #D4AF37);
+  opacity: 1;
+}
+
+[data-theme='light'] .brand-name {
+  color: #8B8A83;
+  opacity: 0.65;
+}
+
+[data-theme='light'] .brand-name:hover {
+  color: #C99524;
+  opacity: 1;
 }
 
 /* Campaign Grid */
@@ -123,17 +135,31 @@
 }
 
 .campaign-card {
-  background-color: #f3f4f6; /* Slightly darker than main bg */
+  background-color: var(--color-bg-card, #141414);
+  border: 1px solid var(--color-border, #2A2520);
   border-radius: 1.5rem;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), var(--color-border-glow);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .campaign-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+  border-color: rgba(212, 175, 55, 0.45);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 20px rgba(212, 175, 55, 0.15);
+}
+
+[data-theme='light'] .campaign-card {
+  background-color: #FFFFFF;
+  border-color: var(--color-border, #E9DFCA);
+  box-shadow: 0 10px 25px rgba(17, 24, 39, 0.05);
+}
+
+[data-theme='light'] .campaign-card:hover {
+  border-color: var(--color-primary, #C99524);
+  box-shadow: 0 16px 36px rgba(201, 149, 36, 0.14);
 }
 
 .campaign-image-wrapper {
@@ -164,12 +190,12 @@
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.1em;
-  color: var(--color-primary);
+  color: var(--color-primary, #D4AF37);
 }
 
 .campaign-desc {
   font-size: 0.95rem;
-  color: #4b5563;
+  color: var(--color-text-muted, #A8A29A);
   line-height: 1.5;
 }
 

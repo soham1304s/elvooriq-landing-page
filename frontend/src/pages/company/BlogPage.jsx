@@ -33,7 +33,7 @@ const BlogPage = () => {
               transition={{ delay: idx * 0.1 }}
             >
               <div className="card-icon"><BookOpen size={28} /></div>
-              <p style={{ color: '#00C988', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px' }}>
+              <p style={{ color: '#D4AF37', fontSize: '0.85rem', fontWeight: 600, marginBottom: '6px' }}>
                 <Tag size={12} style={{ display: 'inline', marginRight: '4px' }} /> {item.category} • <Calendar size={12} style={{ display: 'inline', marginRight: '4px' }} /> {item.date}
               </p>
               <h3 className="card-title">{item.title}</h3>

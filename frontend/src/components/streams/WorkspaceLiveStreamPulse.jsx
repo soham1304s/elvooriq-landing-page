@@ -224,7 +224,7 @@ export default function WorkspaceLiveStreamPulse({ workspaceId, onOpenAudit, onO
 
         <div className="stream-pulse-kpi-bar">
           <div className="stream-kpi-badge">
-            <Radio size={13} style={{ color: '#2dd4bf' }} />
+            <Radio size={13} style={{ color: '#F5C542' }} />
             <span>Active Live Streams:</span>
             <span className="stream-kpi-val">{totalLiveCount}</span>
           </div>
@@ -281,7 +281,7 @@ export default function WorkspaceLiveStreamPulse({ workspaceId, onOpenAudit, onO
                       <div className="stream-creator-name">
                         {c.fullName}
                         {c.isLive && (
-                          <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', background: '#2dd4bf', boxShadow: '0 0 8px #2dd4bf' }} />
+                          <span style={{ display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', background: '#F5C542', boxShadow: '0 0 8px #F5C542' }} />
                         )}
                       </div>
                       <span className={`stream-platform-pill ${platClass}`}>
@@ -313,7 +313,7 @@ export default function WorkspaceLiveStreamPulse({ workspaceId, onOpenAudit, onO
                       </div>
                       <div className="stream-metric-item">
                         <span className="stream-metric-label">Status</span>
-                        <span className="stream-metric-val" style={{ color: c.isLive ? '#2dd4bf' : '#94a3b8' }}>
+                        <span className="stream-metric-val" style={{ color: c.isLive ? '#F5C542' : '#94a3b8' }}>
                           {c.isLive ? 'Streaming' : 'Standby'}
                         </span>
                       </div>
@@ -346,7 +346,7 @@ export default function WorkspaceLiveStreamPulse({ workspaceId, onOpenAudit, onO
                     onClick={() => handleSimulateWebhook(c, c.isLive ? 'stop' : 'start')}
                     title="Simulate external Twitch/Bigo webhook"
                   >
-                    <Zap size={11} style={{ color: '#2dd4bf' }} />
+                    <Zap size={11} style={{ color: '#F5C542' }} />
                     {c.isLive ? 'Trigger Webhook: Stream Offline' : 'Trigger Webhook: Stream Online'}
                   </button>
                 </div>

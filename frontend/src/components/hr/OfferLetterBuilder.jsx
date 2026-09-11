@@ -111,7 +111,7 @@ export default function OfferLetterBuilder({ onOfferCreated }) {
           <div className="olb-field-row">
             <div className="olb-field-group">
               <label className="olb-label">
-                <User size={13} style={{ color: '#199580' }} /> Candidate Full Name *
+                <User size={13} style={{ color: '#D4AF37' }} /> Candidate Full Name *
               </label>
               <input
                 type="text"
@@ -125,7 +125,7 @@ export default function OfferLetterBuilder({ onOfferCreated }) {
             </div>
             <div className="olb-field-group">
               <label className="olb-label">
-                <Mail size={13} style={{ color: '#199580' }} /> Email Address *
+                <Mail size={13} style={{ color: '#D4AF37' }} /> Email Address *
               </label>
               <input
                 type="email"
@@ -142,7 +142,7 @@ export default function OfferLetterBuilder({ onOfferCreated }) {
           <div className="olb-field-row">
             <div className="olb-field-group">
               <label className="olb-label">
-                <Phone size={13} style={{ color: '#199580' }} /> WhatsApp / Phone Number
+                <Phone size={13} style={{ color: '#D4AF37' }} /> WhatsApp / Phone Number
               </label>
               <input
                 type="text"
@@ -155,7 +155,7 @@ export default function OfferLetterBuilder({ onOfferCreated }) {
             </div>
             <div className="olb-field-group">
               <label className="olb-label">
-                <Briefcase size={13} style={{ color: '#199580' }} /> Target Position Designation *
+                <Briefcase size={13} style={{ color: '#D4AF37' }} /> Target Position Designation *
               </label>
               <input
                 type="text"
@@ -196,7 +196,7 @@ export default function OfferLetterBuilder({ onOfferCreated }) {
           {formData.compensationBasis !== 'UNPAID' && (
             <div className="olb-field-group">
               <label className="olb-label">
-                <DollarSign size={13} style={{ color: '#199580' }} /> Compensation Amount (INR / Month) *
+                <DollarSign size={13} style={{ color: '#D4AF37' }} /> Compensation Amount (INR / Month) *
               </label>
               <input
                 type="number"
@@ -214,7 +214,7 @@ export default function OfferLetterBuilder({ onOfferCreated }) {
           <div className="olb-field-row">
             <div className="olb-field-group">
               <label className="olb-label">
-                <Calendar size={13} style={{ color: '#199580' }} /> Effective Start Date *
+                <Calendar size={13} style={{ color: '#D4AF37' }} /> Effective Start Date *
               </label>
               <input
                 type="date"
@@ -264,7 +264,7 @@ export default function OfferLetterBuilder({ onOfferCreated }) {
           <div>
             <div className="olb-logs-header">
               <h4>
-                <FileText size={14} style={{ color: '#199580' }} />
+                <FileText size={14} style={{ color: '#D4AF37' }} />
                 Generated Contract Asset Logs
               </h4>
               <span style={{ fontSize: '0.65rem', color: '#64748b', fontFamily: 'monospace' }}>EVQ-OL-ENGINE</span>

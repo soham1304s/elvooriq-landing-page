@@ -73,8 +73,8 @@ export default function CreatorTechnicalPortfolio({ userId }) {
 
   if (loading) {
     return (
-      <div style={{ width: '100%', height: '12rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#94a3b8' }}>
-        <RefreshCw size={24} className="animate-spin" style={{ marginRight: '0.5rem', color: '#00C988' }} /> Loading technical portfolios...
+      <div style={{ width: '100%', height: '12rem', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#A8A29A' }}>
+        <RefreshCw size={24} className="animate-spin" style={{ marginRight: '0.5rem', color: '#D4AF37' }} /> Loading technical portfolios...
       </div>
     );
   }
@@ -83,21 +83,21 @@ export default function CreatorTechnicalPortfolio({ userId }) {
     <div
       style={{
         width: '100%',
-        backgroundColor: 'rgba(13, 17, 19, 0.4)',
-        border: '1px solid rgba(255, 255, 255, 0.08)',
+        backgroundColor: '#141414',
+        border: '1px solid #2A2520',
         borderRadius: '1rem',
         padding: '1.5rem',
         backdropFilter: 'blur(16px)',
-        color: '#f1f5f9',
+        color: '#F5F5F0',
         margin: '1.5rem 0'
       }}
     >
       <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '1.5rem' }}>
         <div>
-          <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#FFFFFF', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <Code size={20} color="#00C988" /> Linked Software Portfolios
+          <h3 style={{ fontSize: '1.15rem', fontWeight: 700, color: '#F5F5F0', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <Code size={20} color="#D4AF37" /> Linked Software Portfolios
           </h3>
-          <p style={{ fontSize: '0.8rem', color: '#94a3b8', marginTop: '0.2rem' }}>
+          <p style={{ fontSize: '0.8rem', color: '#A8A29A', marginTop: '0.2rem' }}>
             Verified software repositories ranked dynamically by Weighted Repository Influence Index (WRII).
           </p>
         </div>
@@ -133,13 +133,13 @@ export default function CreatorTechnicalPortfolio({ userId }) {
               alignItems: 'center',
               gap: '0.4rem',
               padding: '0.5rem 1rem',
-              backgroundColor: '#199580',
+              backgroundColor: '#D4AF37',
               color: '#FFFFFF',
               fontWeight: 600,
               borderRadius: '0.5rem',
               fontSize: '0.75rem',
               cursor: syncing ? 'not-allowed' : 'pointer',
-              boxShadow: '0 0 15px rgba(25, 149, 128, 0.25)'
+              boxShadow: '0 0 15px rgba(212, 175, 55, 0.25)'
             }}
           >
             <RefreshCw size={12} className={syncing ? 'animate-spin' : ''} />
@@ -174,12 +174,13 @@ export default function CreatorTechnicalPortfolio({ userId }) {
               disabled={syncing || !usernameInput.trim()}
               style={{
                 padding: '0.5rem 1rem',
-                background: '#00C988',
-                color: '#000000',
-                fontWeight: 600,
+                background: 'linear-gradient(135deg, #D4AF37, #F5C542)',
+                color: '#0A0A0A',
+                fontWeight: 700,
                 borderRadius: '0.5rem',
                 fontSize: '0.75rem',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                border: 'none'
               }}
             >
               Connect & Sync
@@ -194,24 +195,24 @@ export default function CreatorTechnicalPortfolio({ userId }) {
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
             gap: '1rem',
-            backgroundColor: 'rgba(7, 8, 10, 0.5)',
+            backgroundColor: '#1A1512',
             padding: '1rem',
-            border: '1px solid rgba(255, 255, 255, 0.05)',
+            border: '1px solid #2A2520',
             borderRadius: '0.75rem',
             marginBottom: '1.5rem',
             textAlign: 'center'
           }}
         >
           <div>
-            <span style={{ display: 'block', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700, color: '#64748b' }}>
+            <span style={{ display: 'block', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700, color: '#A8A29A' }}>
               Repositories
             </span>
-            <span style={{ fontSize: '1.15rem', fontWeight: 700, fontFamily: 'monospace', color: '#FFFFFF' }}>
+            <span style={{ fontSize: '1.15rem', fontWeight: 700, fontFamily: 'monospace', color: '#F5F5F0' }}>
               {profile.publicReposCount}
             </span>
           </div>
           <div>
-            <span style={{ display: 'block', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700, color: '#64748b' }}>
+            <span style={{ display: 'block', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700, color: '#A8A29A' }}>
               Stars Accumulated
             </span>
             <span style={{ fontSize: '1.15rem', fontWeight: 700, fontFamily: 'monospace', color: '#fbbf24' }}>
@@ -219,10 +220,10 @@ export default function CreatorTechnicalPortfolio({ userId }) {
             </span>
           </div>
           <div>
-            <span style={{ display: 'block', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700, color: '#64748b' }}>
+            <span style={{ display: 'block', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 700, color: '#A8A29A' }}>
               Forks
             </span>
-            <span style={{ fontSize: '1.15rem', fontWeight: 700, fontFamily: 'monospace', color: '#00C988' }}>
+            <span style={{ fontSize: '1.15rem', fontWeight: 700, fontFamily: 'monospace', color: '#D4AF37' }}>
               {profile.totalForks}
             </span>
           </div>

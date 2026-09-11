@@ -40,16 +40,17 @@ const IntroLoader = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
-  // Generate deterministic stars for cosmic space
+  // Generate deterministic stars for cosmic space matching landing page stardust
   const stars = useMemo(() => {
-    return Array.from({ length: 48 }).map((_, i) => ({
+    return Array.from({ length: 54 }).map((_, i) => ({
       id: i,
       x: (i * 37) % 100,
       y: (i * 61) % 100,
       size: (i % 3) + 1.2,
       opacity: 0.2 + ((i % 5) * 0.15),
       duration: 2 + (i % 4) * 1.2,
-      delay: (i % 6) * 0.5
+      delay: (i % 6) * 0.5,
+      isGold: i % 2 === 0
     }));
   }, []);
 
@@ -143,6 +144,8 @@ const IntroLoader = ({ onComplete }) => {
               width: `${star.size}px`,
               height: `${star.size}px`,
               opacity: star.opacity,
+              background: star.isGold ? '#FFE57F' : '#FFFFFF',
+              boxShadow: star.isGold ? '0 0 8px rgba(255, 229, 127, 0.75)' : '0 0 6px rgba(255, 255, 255, 0.85)',
               animationDuration: `${star.duration}s`,
               animationDelay: `${star.delay}s`
             }}
@@ -153,9 +156,9 @@ const IntroLoader = ({ onComplete }) => {
       {/* Cyber Grid & Perspective Horizon */}
       <div className="intro-cyber-grid" />
 
-      {/* Dual Cosmic Ambient Nebula Glows */}
+      {/* Dual Cosmic Ambient Nebula Glows - Landing Page Gold & Warm Amber */}
       <div className="intro-nebula-glow gold-nebula" />
-      <div className="intro-nebula-glow emerald-nebula" />
+      <div className="intro-nebula-glow amber-nebula" />
 
       {/* Main Center Hologram Stage with 3D Mouse Parallax */}
       <div 
@@ -177,15 +180,16 @@ const IntroLoader = ({ onComplete }) => {
                 <stop offset="100%" stopColor="#B38728" stopOpacity="0.2" />
               </linearGradient>
 
-              <linearGradient id="emeraldStreamGrad" x1="0%" y1="100%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#00F59B" stopOpacity="0.95" />
-                <stop offset="60%" stopColor="#00C988" stopOpacity="0.6" />
-                <stop offset="100%" stopColor="#007A55" stopOpacity="0.1" />
+              <linearGradient id="amberStreamGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#F5C542" stopOpacity="0.95" />
+                <stop offset="60%" stopColor="#D4AF37" stopOpacity="0.65" />
+                <stop offset="100%" stopColor="#2A2520" stopOpacity="0.1" />
               </linearGradient>
 
-              <linearGradient id="cyanArcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#00E5FF" stopOpacity="0.9" />
-                <stop offset="100%" stopColor="#00F59B" stopOpacity="0.1" />
+              <linearGradient id="champagneArcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="#FFF2B2" stopOpacity="0.95" />
+                <stop offset="60%" stopColor="#D4AF37" stopOpacity="0.5" />
+                <stop offset="100%" stopColor="#D4AF37" stopOpacity="0.1" />
               </linearGradient>
 
               <filter id="hologramGlow" x="-30%" y="-30%" width="160%" height="160%">
@@ -201,7 +205,7 @@ const IntroLoader = ({ onComplete }) => {
                 cy="230"
                 r="210"
                 fill="none"
-                stroke="rgba(229, 193, 88, 0.22)"
+                stroke="rgba(229, 193, 88, 0.25)"
                 strokeWidth="1.5"
                 strokeDasharray="6 14 3 14"
               />
@@ -212,17 +216,17 @@ const IntroLoader = ({ onComplete }) => {
               <polygon points="436,230 440,233 444,230 440,227" fill="#FFE57F" filter="url(#hologramGlow)" />
             </g>
 
-            {/* Ring 2: Segmented Neon Emerald Laser Ring (Radius 175) */}
+            {/* Ring 2: Segmented Radiant Amber Laser Ring (Radius 175) */}
             <circle
               cx="230"
               cy="230"
               r="175"
               fill="none"
-              stroke="url(#emeraldStreamGrad)"
+              stroke="url(#amberStreamGrad)"
               strokeWidth="2.5"
               strokeDasharray="45 20 85 20"
               filter="url(#hologramGlow)"
-              className="ring-emerald-counter"
+              className="ring-amber-counter"
             />
 
             {/* Ring 3: Fast Gold Comet Tracer Ring (Radius 145) */}
@@ -238,17 +242,17 @@ const IntroLoader = ({ onComplete }) => {
               className="ring-gold-clockwise"
             />
 
-            {/* Ring 4: Inner Cyan High-Speed Gyro Ring (Radius 118) */}
+            {/* Ring 4: Inner Champagne High-Speed Gyro Ring (Radius 118) */}
             <circle
               cx="230"
               cy="230"
               r="118"
               fill="none"
-              stroke="url(#cyanArcGrad)"
+              stroke="url(#champagneArcGrad)"
               strokeWidth="2"
               strokeDasharray="30 15 60 15"
               filter="url(#hologramGlow)"
-              className="ring-cyan-orbit"
+              className="ring-champagne-orbit"
             />
 
             {/* Ring 5: Radiating Audio Waveform Ingest Ticks (Radius 96) */}
@@ -260,7 +264,7 @@ const IntroLoader = ({ onComplete }) => {
                   y1="134"
                   x2="230"
                   y2={134 - ((bar.id % 4) + 1) * 3}
-                  stroke={bar.id % 2 === 0 ? '#00F59B' : '#E5C158'}
+                  stroke={bar.id % 2 === 0 ? '#D4AF37' : '#F5C542'}
                   strokeWidth="1.8"
                   strokeLinecap="round"
                   transform={`rotate(${bar.angle} 230 230)`}
@@ -270,12 +274,12 @@ const IntroLoader = ({ onComplete }) => {
               ))}
             </g>
 
-            {/* Inner Core Pulsing Energy Halo */}
+            {/* Inner Core Pulsing Golden Halo */}
             <circle
               cx="230"
               cy="230"
               r="82"
-              fill="rgba(0, 245, 155, 0.04)"
+              fill="rgba(212, 175, 55, 0.05)"
               stroke="rgba(229, 193, 88, 0.35)"
               strokeWidth="1.5"
               className="ring-core-pulse"
@@ -353,11 +357,11 @@ const IntroLoader = ({ onComplete }) => {
 
             {/* Numerical & System Stats Row */}
             <div className="hud-stats-row">
-              <span className="hud-sys-stat">CORE: <strong style={{ color: '#00F59B' }}>ONLINE</strong></span>
+              <span className="hud-sys-stat">CORE: <strong style={{ color: '#4ADE80' }}>ONLINE</strong></span>
               <span className="hud-percentage-metric">
                 [ {String(progress).padStart(3, '0')}% ]
               </span>
-              <span className="hud-sys-stat">SLA: <strong style={{ color: '#E5C158' }}>99.98%</strong></span>
+              <span className="hud-sys-stat">SLA: <strong style={{ color: '#F5C542' }}>99.98%</strong></span>
             </div>
           </div>
         </div>

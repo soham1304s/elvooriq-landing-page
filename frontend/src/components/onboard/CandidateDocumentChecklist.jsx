@@ -116,7 +116,7 @@ export default function CandidateDocumentChecklist({ userId, onDocumentUpdated }
 
         <div style={{ background: '#020405', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '8px', padding: '6px 12px', fontSize: '0.72rem', fontFamily: 'monospace' }}>
           <span style={{ color: '#64748b' }}>Vault Status: </span>
-          <span style={{ fontWeight: 800, color: verifiedCount === 6 ? '#34d399' : '#199580' }}>
+          <span style={{ fontWeight: 800, color: verifiedCount === 6 ? '#34d399' : '#D4AF37' }}>
             {verifiedCount}/6 Verified
           </span>
         </div>
@@ -158,7 +158,7 @@ export default function CandidateDocumentChecklist({ userId, onDocumentUpdated }
                 
                 {state.documentName && (
                   <p className="doc-file-tag">
-                    <FileText size={11} style={{ color: '#199580' }} />
+                    <FileText size={11} style={{ color: '#D4AF37' }} />
                     <span>File: {state.documentName}</span>
                   </p>
                 )}

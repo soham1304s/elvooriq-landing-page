@@ -5,7 +5,7 @@
   background: rgba(13, 17, 19, 0.9);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(25, 149, 128, 0.2);
+  border: 1px solid rgba(212, 175, 55, 0.2);
   border-radius: 16px;
   padding: 24px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -25,7 +25,7 @@
 .olb-title {
   font-size: 1.25rem;
   font-weight: 800;
-  color: #199580;
+  color: #D4AF37;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -39,9 +39,9 @@
 }
 
 .olb-badge {
-  background: rgba(25, 149, 128, 0.12);
-  border: 1px solid rgba(25, 149, 128, 0.35);
-  color: #199580;
+  background: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  color: #D4AF37;
   font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -109,8 +109,8 @@
 }
 
 .olb-input:focus {
-  border-color: #199580;
-  box-shadow: 0 0 0 1px #199580;
+  border-color: #D4AF37;
+  box-shadow: 0 0 0 1px #D4AF37;
 }
 
 .olb-tiers-grid {
@@ -136,10 +136,10 @@
 }
 
 .olb-tier-btn.active {
-  background: rgba(25, 149, 128, 0.15);
-  border-color: #199580;
+  background: rgba(212, 175, 55, 0.15);
+  border-color: #D4AF37;
   color: #ffffff;
-  box-shadow: 0 0 15px rgba(25, 149, 128, 0.2);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
 }
 
 .olb-tier-name {
@@ -157,7 +157,7 @@
 
 .olb-submit-btn {
   width: 100%;
-  background: linear-gradient(135deg, #199580, #137766);
+  background: linear-gradient(135deg, #D4AF37, #D4AF37);
   border: none;
   border-radius: 10px;
   padding: 14px;
@@ -168,7 +168,7 @@
   letter-spacing: 0.8px;
   cursor: pointer;
   transition: all 0.2s;
-  box-shadow: 0 0 20px rgba(25, 149, 128, 0.35);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -254,7 +254,7 @@
   font-family: monospace;
   font-size: 0.75rem;
   color: #e2e8f0;
-  background: #030506;
+  background: #0A0A0A;
   padding: 8px;
   border-radius: 6px;
   border: 1px solid #1e293b;
@@ -267,7 +267,7 @@
   justify-content: center;
   gap: 8px;
   width: 100%;
-  background: #199580;
+  background: #D4AF37;
   color: #ffffff;
   padding: 12px;
   border-radius: 8px;
@@ -276,7 +276,7 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   text-decoration: none;
-  box-shadow: 0 0 15px rgba(25, 149, 128, 0.3);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
   transition: all 0.2s;
   box-sizing: border-box;
   margin-bottom: 12px;

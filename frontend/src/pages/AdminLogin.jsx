@@ -76,8 +76,8 @@ const AdminLogin = () => {
         <div className="admin-login-header">
           <h2><img src={logoImg} alt="ELVOORIQ Logo" style={{ height: '72px' }} /></h2>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', marginTop: '8px' }}>
-            <ShieldCheck size={16} color="#199580" />
-            <span style={{ fontSize: '11px', letterSpacing: '2px', textTransform: 'uppercase', color: '#199580', fontWeight: 'bold' }}>
+            <ShieldCheck size={16} color="#D4AF37" />
+            <span style={{ fontSize: '11px', letterSpacing: '2px', textTransform: 'uppercase', color: '#D4AF37', fontWeight: 'bold' }}>
               Enterprise Admin Gate
             </span>
           </div>
@@ -118,7 +118,7 @@ const AdminLogin = () => {
               type="email" 
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="root.admin@elvooriq.com"
+              placeholder="admin@elvooriq.com"
               required 
             />
           </div>
@@ -145,7 +145,7 @@ const AdminLogin = () => {
           <div className="security-telemetry-badge-card" style={{
             marginTop: '20px',
             background: 'rgba(3, 5, 6, 0.75)',
-            border: '1px solid rgba(25, 149, 128, 0.25)',
+            border: '1px solid rgba(212, 175, 55, 0.25)',
             borderRadius: '10px',
             padding: '12px 16px',
             fontSize: '11px',
@@ -154,7 +154,7 @@ const AdminLogin = () => {
             textAlign: 'left'
           }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '6px' }}>
-              <span style={{ color: '#2dd4bf', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <span style={{ color: '#F5C542', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '6px' }}>
                 <ShieldCheck size={14} /> SECURITY STATUS: ACTIVE
               </span>
               <span style={{ color: '#38bdf8', fontSize: '10px', background: 'rgba(56, 189, 248, 0.1)', padding: '2px 6px', borderRadius: '4px' }}>

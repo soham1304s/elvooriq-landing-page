@@ -17,13 +17,13 @@
 
 .audit-modal-box {
   background: #0d1113;
-  border: 1px solid rgba(25, 149, 128, 0.3);
+  border: 1px solid rgba(212, 175, 55, 0.3);
   border-radius: 18px;
   width: 100%;
   max-width: 760px;
   max-height: 90vh;
   overflow-y: auto;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(25, 149, 128, 0.15);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(212, 175, 55, 0.15);
   color: #f1f5f9;
   display: flex;
   flex-direction: column;
@@ -79,8 +79,8 @@
 
 /* Score Summary Gauge Banner */
 .audit-gauge-banner {
-  background: linear-gradient(135deg, rgba(25, 149, 128, 0.15), rgba(3, 5, 6, 0.6));
-  border: 1px solid rgba(25, 149, 128, 0.35);
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(3, 5, 6, 0.6));
+  border: 1px solid rgba(212, 175, 55, 0.35);
   border-radius: 14px;
   padding: 16px 20px;
   display: flex;
@@ -97,7 +97,7 @@
 .gauge-score-pill {
   font-size: 2.2rem;
   font-weight: 900;
-  color: #2dd4bf;
+  color: #F5C542;
   letter-spacing: -0.02em;
   text-shadow: 0 0 20px rgba(45, 212, 191, 0.4);
 }
@@ -148,12 +148,12 @@
 .metric-score-display {
   font-size: 0.9rem;
   font-weight: 900;
-  color: #2dd4bf;
+  color: #F5C542;
 }
 
 .metric-range-slider {
   width: 100%;
-  accent-color: #199580;
+  accent-color: #D4AF37;
   cursor: pointer;
 }
 
@@ -173,7 +173,7 @@
 }
 
 .audit-textarea {
-  background: #030506;
+  background: #0A0A0A;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   padding: 12px;
@@ -187,8 +187,8 @@
 }
 
 .audit-textarea:focus {
-  border-color: #199580;
-  box-shadow: 0 0 12px rgba(25, 149, 128, 0.2);
+  border-color: #D4AF37;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
 }
 
 /* Prior Audits History Accordion */
@@ -203,7 +203,7 @@
   font-size: 0.8rem;
   font-weight: 800;
   text-transform: uppercase;
-  color: #199580;
+  color: #D4AF37;
   margin-bottom: 12px;
 }
 
@@ -230,7 +230,7 @@
 }
 
 .audit-submit-btn {
-  background: linear-gradient(135deg, #199580, #0d9488);
+  background: linear-gradient(135deg, #D4AF37, #F5C542);
   color: #ffffff;
   border: none;
   border-radius: 10px;
@@ -240,7 +240,7 @@
   letter-spacing: 0.05em;
   text-transform: uppercase;
   cursor: pointer;
-  box-shadow: 0 0 15px rgba(25, 149, 128, 0.3);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
   transition: all 0.2s;
   display: flex;
   align-items: center;
@@ -248,8 +248,8 @@
 }
 
 .audit-submit-btn:hover:not(:disabled) {
-  background: linear-gradient(135deg, #14b8a6, #199580);
-  box-shadow: 0 0 25px rgba(25, 149, 128, 0.5);
+  background: linear-gradient(135deg, #D4AF37, #F5C542);
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
   transform: translateY(-1px);
 }
 

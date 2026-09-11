@@ -1,14 +1,13 @@
 .journal-section {
-  background-color: #f6f4f0;
-  /* Warm light background */
-  color: #1f2937;
+  background-color: var(--color-bg-base);
+  color: var(--color-text-main);
   padding: 8rem 0;
   border-top-left-radius: 4rem;
   border-top-right-radius: 4rem;
   margin-top: -2rem;
-  /* Overlap the dark section */
   position: relative;
   z-index: 80;
+  border-top: 1px solid var(--color-border);
 }
 
 .journal-container {
@@ -31,32 +30,37 @@
   line-height: 1.1;
   font-weight: 600;
   margin-top: 1rem;
-  color: #111827;
+  color: var(--color-text-main);
 }
 
 .journal-title .title-highlight {
-  color: var(--color-primary);
+  color: var(--color-primary-hover);
+  text-shadow: 0 0 25px rgba(212, 175, 55, 0.25);
 }
 
 .all-articles-link {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: transparent;
-  border: none;
-  color: rgba(0, 0, 0, 0.4);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
   font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  transition: color 0.3s ease, transform 0.3s ease;
+  padding: 0.65rem 1.4rem;
+  border-radius: 2rem;
+  transition: all 0.3s ease;
   margin-bottom: 0.5rem;
-  /* Optical alignment with the baseline of the large text */
 }
 
 .all-articles-link:hover {
-  color: var(--color-primary);
+  background: var(--color-bg-card-warm);
+  color: var(--color-primary-hover);
+  border-color: var(--color-border-glow);
   transform: translateX(3px);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
 }
 
 /* Article Grid */
@@ -69,16 +73,28 @@
 .article-card {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
   cursor: pointer;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 1.5rem;
+  padding: 1.25rem;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.article-card:hover {
+  border-color: var(--color-border-glow);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(212, 175, 55, 0.12);
 }
 
 /* Thumbnail */
 .article-image-wrapper {
   width: 100%;
   aspect-ratio: 16/10;
-  border-radius: 1.5rem;
+  border-radius: 1rem;
   overflow: hidden;
+  border: 1px solid var(--color-border);
 }
 
 .article-image {
@@ -97,31 +113,33 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  flex: 1;
 }
 
 .article-category {
-  background-color: rgba(24, 147, 128, 0.1);
-  color: var(--color-primary);
+  background-color: rgba(212, 175, 55, 0.1);
+  color: var(--color-primary-hover);
+  border: 1px solid rgba(212, 175, 55, 0.25);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.05em;
-  padding: 0.4rem 0.8rem;
+  padding: 0.35rem 0.75rem;
   border-radius: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
 }
 
 .article-title {
   font-family: var(--font-serif);
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   font-weight: 600;
-  color: #111827;
+  color: var(--color-text-main);
   line-height: 1.4;
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
   transition: color 0.3s ease;
 }
 
 .article-card:hover .article-title {
-  color: var(--color-primary);
+  color: var(--color-primary-hover);
 }
 
 /* Metadata */
@@ -130,13 +148,16 @@
   align-items: center;
   gap: 0.75rem;
   font-size: 0.8rem;
-  color: #9ca3af;
+  color: var(--color-text-muted);
   margin-top: auto;
-  /* Push to bottom if titles vary in height */
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  width: 100%;
 }
 
 .meta-dot {
   font-size: 0.5rem;
+  color: var(--color-border);
 }
 
 .article-read-time {
@@ -147,7 +168,6 @@
 
 .clock-icon {
   margin-top: -1px;
-  /* Optical alignment */
 }
 
 /* Responsive */

@@ -39,13 +39,15 @@ import PrivacyPolicyPage from './pages/legal/PrivacyPolicyPage';
 import TermsOfServicePage from './pages/legal/TermsOfServicePage';
 
 import WhatsAppButton from './components/WhatsAppButton';
+import { ThemeProvider } from './context/ThemeContext';
 import './App.css';
 
 function App() {
   return (
-    <Router>
-      <div className="app-container">
-        <WhatsAppButton />
+    <ThemeProvider>
+      <Router>
+        <div className="app-container">
+          <WhatsAppButton />
         <Routes>
           {/* Main Pages */}
           <Route path="/" element={<LandingPage />} />
@@ -109,7 +111,8 @@ function App() {
           <Route path="/terms-of-service" element={<TermsOfServicePage />} />
         </Routes>
       </div>
-    </Router>
+      </Router>
+    </ThemeProvider>
   );
 }
 

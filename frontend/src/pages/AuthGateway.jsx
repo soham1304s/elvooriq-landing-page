@@ -48,8 +48,10 @@ const AuthGateway = () => {
   const [showCredentialsHelper, setShowCredentialsHelper] = useState(false);
 
   // Handle successful login and role-based routing
-  const handleAuthSuccess = (token, user) => {
+  const handleAuthSuccess = (token, user, data = {}) => {
     localStorage.setItem('elvooriq_token', token);
+    if (data.sessionId) localStorage.setItem('elvooriq_session_id', data.sessionId);
+    if (data.loginTime) localStorage.setItem('elvooriq_login_time', data.loginTime);
     localStorage.setItem('elvooriq_user', JSON.stringify(user));
     localStorage.setItem('elvooriq_admin_auth', user.role === 'ADMIN' ? 'true' : 'false');
 
@@ -92,7 +94,7 @@ const AuthGateway = () => {
 
       if (res.status === 403 && data.code === 'ACCOUNT_PENDING_APPROVAL') {
         // Section 1.2: Dual-Status Administrative Gatekeeper Warning
-        setPendingApprovalNotice(data.message || 'Your account is pending administrator activation. Please contact Root Admin (root.admin@elvooriq.com) for clearance.');
+        setPendingApprovalNotice(data.message || 'Your account is pending administrator activation. Please contact administration (support@elvooriq.com) for clearance.');
         return;
       }
 
@@ -102,7 +104,7 @@ const AuthGateway = () => {
       }
 
       if (res.ok && data.success && data.token) {
-        handleAuthSuccess(data.token, data.user);
+        handleAuthSuccess(data.token, data.user, data);
       } else {
         setErrorMessage(data.message || 'Invalid credentials. Please verify your email and password.');
       }
@@ -185,7 +187,7 @@ const AuthGateway = () => {
             <img 
               src={logoImg} 
               alt="ELVOORIQ Logo" 
-              style={{ height: '76px', width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 0 16px rgba(229, 193, 88, 0.35)) drop-shadow(0 0 8px rgba(0, 245, 155, 0.2))' }} 
+              style={{ height: '96px', width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 0 20px rgba(229, 193, 88, 0.45)) drop-shadow(0 0 10px rgba(0, 245, 155, 0.25))' }} 
             />
           </Link>
           <div className="enterprise-badge">
@@ -226,8 +228,8 @@ const AuthGateway = () => {
               <h4>Administrative Clearance Required (Status: PENDING)</h4>
               <p>{pendingApprovalNotice}</p>
               <div className="banner-action-line">
-                <span>Root Administrator Clearance:</span>
-                <code>root.admin@elvooriq.com</code>
+                <span>Contact Operations Support:</span>
+                <code>support@elvooriq.com</code>
               </div>
             </div>
           </motion.div>
@@ -282,7 +284,7 @@ const AuthGateway = () => {
                         <Mail size={18} className="input-icon" />
                         <input 
                           type="email" 
-                          placeholder="e.g. root.admin@elvooriq.com" 
+                          placeholder="you@example.com" 
                           value={loginEmail}
                           onChange={(e) => setLoginEmail(e.target.value)}
                           required
@@ -445,10 +447,10 @@ const AuthGateway = () => {
               </div>
 
               {/* Zero-Bypass Production Cryptographic Security Notice */}
-              <div className="root-admin-notice" style={{ borderColor: 'rgba(25, 149, 128, 0.3)' }}>
+              <div className="root-admin-notice" style={{ borderColor: 'rgba(212, 175, 55, 0.3)' }}>
                 <div className="notice-head" style={{ cursor: 'default' }}>
-                  <ShieldCheck size={16} color="#199580" />
-                  <span style={{ color: '#2dd4bf', fontWeight: 600 }}>Zero-Mock Production Security Gate</span>
+                  <ShieldCheck size={16} color="#D4AF37" />
+                  <span style={{ color: '#F5C542', fontWeight: 600 }}>Zero-Mock Production Security Gate</span>
                 </div>
                 <div style={{ padding: '10px 14px', fontSize: '11px', color: '#94a3b8', lineHeight: '1.4' }}>
                   Sandbox demo bypasses and mock state arrays have been permanently decommissioned. All sessions authenticate against verified database records.

@@ -89,7 +89,7 @@ export default function CandidateOnboardingPortal() {
     const y = clientY - rect.top;
     ctx.beginPath();
     ctx.moveTo(x, y);
-    ctx.strokeStyle = '#199580';
+    ctx.strokeStyle = '#D4AF37';
     ctx.lineWidth = 2.5;
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
@@ -177,7 +177,7 @@ export default function CandidateOnboardingPortal() {
     return (
       <div className="onboard-page-wrapper" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <div style={{ textAlign: 'center', padding: '40px' }}>
-          <div style={{ width: '40px', height: '40px', border: '3px solid rgba(25, 149, 128, 0.3)', borderTopColor: '#199580', borderRadius: '50%', animation: 'spin 1s linear infinite', margin: '0 auto 16px' }} />
+          <div style={{ width: '40px', height: '40px', border: '3px solid rgba(212, 175, 55, 0.3)', borderTopColor: '#D4AF37', borderRadius: '50%', animation: 'spin 1s linear infinite', margin: '0 auto 16px' }} />
           <p style={{ fontSize: '0.85rem', color: '#94a3b8' }}>Connecting to Onboarding Compliance Portal...</p>
         </div>
       </div>
@@ -265,7 +265,7 @@ export default function CandidateOnboardingPortal() {
                 </div>
               </div>
 
-              <Link to="/workspace-portal" className="btn-launch-workspace" style={{ background: '#34d399', color: '#030506' }}>
+              <Link to="/workspace-portal" className="btn-launch-workspace" style={{ background: 'linear-gradient(135deg, #D4AF37, #F5C542)', color: '#0A0A0A', fontWeight: '700' }}>
                 <span>Launch Employee Workspace</span>
                 <ArrowRight size={14} />
               </Link>
@@ -343,7 +343,7 @@ export default function CandidateOnboardingPortal() {
             <div className="signature-section">
               <div className="signature-section-header">
                 <label className="signature-label">
-                  <FileSignature size={14} style={{ color: '#199580' }} />
+                  <FileSignature size={14} style={{ color: '#D4AF37' }} />
                   <span>Draw Your Legal Sign-Off</span>
                 </label>
                 {!isOfferSigned && hasDrawn && (

@@ -35,7 +35,7 @@
 }
 
 .ca-title-icon {
-  color: #199580;
+  color: #D4AF37;
 }
 
 .ca-desc {
@@ -57,7 +57,7 @@
 }
 
 .ca-search-input:focus {
-  border-color: #199580;
+  border-color: #D4AF37;
 }
 
 .ca-candidates-list {
@@ -79,8 +79,8 @@
 }
 
 .ca-candidate-card.expanded {
-  border-color: rgba(25, 149, 128, 0.4);
-  box-shadow: 0 0 25px rgba(25, 149, 128, 0.08);
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.08);
 }
 
 .ca-card-summary {
@@ -171,7 +171,7 @@
 }
 
 .ca-doc-card {
-  background: #030506;
+  background: #0A0A0A;
   border: 1px solid #1e293b;
   border-radius: 10px;
   padding: 14px;

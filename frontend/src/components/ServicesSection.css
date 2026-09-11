@@ -1,15 +1,13 @@
 .services-section {
-  background-color: #f8f9fa;
-  /* Light background, matching About section */
-  color: #1f2937;
+  background-color: var(--color-bg-base, #0A0A0A);
+  color: var(--color-text-main, #F5F5F0);
   padding: 6rem 0 8rem 0;
   border-top-left-radius: 4rem;
   border-top-right-radius: 4rem;
   margin-top: -2rem;
-  /* Overlap previous section slightly if needed, or just tight fit */
-
   position: relative;
   z-index: 20;
+  border-top: 1px solid var(--color-border, #2A2520);
 }
 
 .services-container {
@@ -30,11 +28,11 @@
   font-size: 3.5rem;
   line-height: 1.1;
   font-weight: 600;
-  color: #111827;
+  color: var(--color-text-main, #F5F5F0);
 }
 
 .services-title .title-highlight {
-  color: var(--color-primary);
+  color: var(--color-primary, #D4AF37);
 }
 
 /* Grid */
@@ -45,30 +43,31 @@
 }
 
 .service-card {
-  background-color: white;
+  background-color: var(--color-bg-card, #141414);
+  border: 1px solid var(--color-border, #2A2520);
   border-radius: 1.5rem;
   padding: 2.5rem;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), var(--color-border-glow);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   height: 100%;
   cursor: pointer;
 }
 
 .service-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border-color: rgba(212, 175, 55, 0.45);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.85), 0 0 20px rgba(212, 175, 55, 0.18);
 }
 
 .service-icon-wrapper {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background-color: rgba(24, 147, 128, 0.1);
-  /* Light green background */
-  color: var(--color-primary);
-  /* Dark green icon */
+  background-color: rgba(212, 175, 55, 0.12);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  color: var(--color-primary, #D4AF37);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,17 +78,16 @@
   font-family: var(--font-serif);
   font-size: 1.25rem;
   font-weight: 700;
-  color: #111827;
+  color: var(--color-text-main, #F5F5F0);
   margin-bottom: 1rem;
 }
 
 .service-card-desc {
   font-size: 0.9rem;
-  color: #6b7280;
+  color: var(--color-text-muted, #A8A29A);
   line-height: 1.6;
   margin-bottom: 2rem;
   flex-grow: 1;
-  /* Pushes the 'Read More' to the bottom */
 }
 
 .service-read-more {
@@ -98,7 +96,7 @@
   gap: 0.5rem;
   font-size: 0.85rem;
   font-weight: 600;
-  color: #9ca3af;
+  color: var(--color-text-muted, #A8A29A);
   text-decoration: none;
   background: transparent;
   border: none;
@@ -111,7 +109,7 @@
 }
 
 .service-read-more:hover {
-  color: var(--color-primary);
+  color: var(--color-primary, #D4AF37);
 }
 
 .arrow-icon {
@@ -122,7 +120,6 @@
 .service-card:hover .arrow-icon {
   transform: translateX(4px);
 }
-
 
 /* Responsive */
 @media (max-width: 1024px) {
@@ -141,19 +138,14 @@
   .services-title {
     font-size: 2.5rem;
   }
-
-  .services-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
 }
 
 @media (max-width: 480px) {
-  .services-title {
-    font-size: 2rem;
+  .services-grid {
+    grid-template-columns: 1fr;
   }
 
-  .service-card {
-    padding: 1.5rem;
+  .services-title {
+    font-size: 2rem;
   }
 }

@@ -3,7 +3,7 @@
   flex-direction: column;
   height: 100%;
   max-height: calc(100vh - 90px);
-  background: radial-gradient(circle at 10% 20%, rgba(25, 149, 128, 0.05) 0%, rgba(5, 8, 10, 0.98) 90%);
+  background: radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.05) 0%, rgba(5, 8, 10, 0.98) 90%);
   color: #f1f5f9;
   overflow: hidden;
   box-sizing: border-box;
@@ -31,12 +31,12 @@
   width: 38px;
   height: 38px;
   border-radius: 10px;
-  background: linear-gradient(135deg, rgba(25, 149, 128, 0.3) 0%, rgba(45, 212, 191, 0.15) 100%);
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.3) 0%, rgba(45, 212, 191, 0.15) 100%);
   border: 1px solid rgba(45, 212, 191, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #2dd4bf;
+  color: #F5C542;
 }
 
 .audition-headline-row {
@@ -60,7 +60,7 @@
   padding: 2px 8px;
   background: rgba(45, 212, 191, 0.12);
   border: 1px solid rgba(45, 212, 191, 0.25);
-  color: #2dd4bf;
+  color: #F5C542;
   border-radius: 4px;
 }
 
@@ -157,7 +157,7 @@
 .filter-tab-pill.active {
   background: rgba(45, 212, 191, 0.15);
   border-color: rgba(45, 212, 191, 0.3);
-  color: #2dd4bf;
+  color: #F5C542;
 }
 
 .candidate-list-scroll {
@@ -184,9 +184,9 @@
 }
 
 .candidate-tape-card.selected {
-  background: rgba(25, 149, 128, 0.12);
+  background: rgba(212, 175, 55, 0.12);
   border-color: rgba(45, 212, 191, 0.45);
-  box-shadow: 0 0 15px rgba(25, 149, 128, 0.15);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
 }
 
 .candidate-card-top {
@@ -199,7 +199,7 @@
   width: 28px;
   height: 28px;
   border-radius: 6px;
-  background: linear-gradient(135deg, #199580 0%, #0d9488 100%);
+  background: linear-gradient(135deg, #D4AF37 0%, #0d9488 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -283,7 +283,7 @@
 
 .confidence-pill.high {
   background: rgba(45, 212, 191, 0.15);
-  color: #2dd4bf;
+  color: #F5C542;
 }
 
 .confidence-pill.medium {
@@ -341,8 +341,8 @@
   width: 36px;
   height: 36px;
   border-radius: 8px;
-  background: linear-gradient(135deg, #199580, #2dd4bf);
-  color: #030506;
+  background: linear-gradient(135deg, #D4AF37, #F5C542);
+  color: #0A0A0A;
   font-size: 15px;
   font-weight: 800;
   display: flex;
@@ -378,7 +378,7 @@
 .reanalyze-btn {
   background: rgba(45, 212, 191, 0.12);
   border: 1px solid rgba(45, 212, 191, 0.35);
-  color: #2dd4bf;
+  color: #F5C542;
 }
 
 .reanalyze-btn:hover:not(:disabled) {
@@ -422,7 +422,7 @@
 
 .tape-icon {
   margin-bottom: 6px;
-  color: #2dd4bf;
+  color: #F5C542;
   opacity: 0.8;
 }
 
@@ -454,8 +454,8 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: #2dd4bf;
-  color: #030506;
+  background: #F5C542;
+  color: #0A0A0A;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -477,7 +477,7 @@
 
 .equalizer-bar {
   width: 5px;
-  background: linear-gradient(to top, #199580, #2dd4bf);
+  background: linear-gradient(to top, #D4AF37, #F5C542);
   border-radius: 2px;
   transition: height 0.15s ease-in-out;
 }
@@ -485,7 +485,7 @@
 .live-vocal-tag {
   font-size: 10px;
   font-weight: 700;
-  color: #2dd4bf;
+  color: #F5C542;
   display: flex;
   align-items: center;
   gap: 4px;
@@ -509,7 +509,7 @@
 }
 
 .metric-hud-card.highlight {
-  background: rgba(25, 149, 128, 0.08);
+  background: rgba(212, 175, 55, 0.08);
   border-color: rgba(45, 212, 191, 0.3);
 }
 
@@ -537,7 +537,7 @@
 
 .hud-target-pill.accent {
   background: rgba(45, 212, 191, 0.15);
-  color: #2dd4bf;
+  color: #F5C542;
 }
 
 .hud-score-row {
@@ -555,7 +555,7 @@
 }
 
 .hud-big-metric.accent {
-  color: #2dd4bf;
+  color: #F5C542;
 }
 
 .hud-metric-unit {
@@ -565,7 +565,7 @@
 }
 
 .hud-metric-unit.accent {
-  color: #2dd4bf;
+  color: #F5C542;
 }
 
 .hud-progress-track {
@@ -584,15 +584,15 @@
 }
 
 .hud-progress-fill.wpm {
-  background: linear-gradient(90deg, #38bdf8, #2dd4bf);
+  background: linear-gradient(90deg, #38bdf8, #F5C542);
 }
 
 .hud-progress-fill.energy {
-  background: linear-gradient(90deg, #199580, #f59e0b);
+  background: linear-gradient(90deg, #D4AF37, #f59e0b);
 }
 
 .hud-progress-fill.confidence {
-  background: linear-gradient(90deg, #199580, #2dd4bf);
+  background: linear-gradient(90deg, #D4AF37, #F5C542);
 }
 
 .hud-evaluation-note {
@@ -602,7 +602,7 @@
 }
 
 .hud-evaluation-note.accent {
-  color: #2dd4bf;
+  color: #F5C542;
   font-weight: 600;
 }
 
@@ -622,7 +622,7 @@
 }
 
 .report-shield-icon {
-  color: #2dd4bf;
+  color: #F5C542;
 }
 
 .ai-report-header h4 {
@@ -641,7 +641,7 @@
   background: rgba(2, 4, 6, 0.4);
   padding: 8px 12px;
   border-radius: 6px;
-  border-left: 3px solid #2dd4bf;
+  border-left: 3px solid #F5C542;
   font-family: 'SF Mono', Menlo, Monaco, Consolas, monospace;
 }
 
@@ -673,7 +673,7 @@
 }
 
 .kw-count {
-  color: #2dd4bf;
+  color: #F5C542;
 }
 
 /* Decision Action Bar */
@@ -728,10 +728,10 @@
 }
 
 .contract-btn {
-  background: linear-gradient(135deg, #199580 0%, #0d9488 100%);
+  background: linear-gradient(135deg, #D4AF37 0%, #0d9488 100%);
   color: #ffffff;
   border-color: rgba(45, 212, 191, 0.4);
-  box-shadow: 0 0 12px rgba(25, 149, 128, 0.3);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
 }
 
 .contract-btn:hover {

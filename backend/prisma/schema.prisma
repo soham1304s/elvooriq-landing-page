@@ -4,8 +4,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {
@@ -77,6 +78,38 @@ model User {
   // Real-Time Creator Case Studies & GitHub Portfolio Integration (v9.5)
   caseStudy         CreatorCaseStudy?
   githubProfile     GithubProfile?
+
+  // Creator Profile & Identity (v10.0)
+  handle            String?                @unique
+  avatarUrl         String?
+  bannerUrl         String?
+  niche             String?
+  isVerified        Boolean                @default(false)
+
+  // Account Session & Login/Logout Tracking (v10.0)
+  lastLoginAt       DateTime?
+  lastLogoutAt      DateTime?
+  totalLoginCount   Int                    @default(0)
+  totalTimeSpentSec Int                    @default(0)
+  currentSessionId  String?
+
+  // Relations for User Sessions & Audit Logs (v10.0)
+  sessions          UserSession[]
+  activityLogs      UserActivityLog[]
+
+  // Creation Platform & Monetization Relations (v10.0)
+  creations         Creation[]
+  membershipTiers   CreatorMembershipTier[]
+  subscribers       CreatorSubscription[]  @relation("CreatorSubscribers")
+  subscriptions     CreatorSubscription[]  @relation("UserSubscriptions")
+  tipsReceived      CreatorTip[]           @relation("CreatorTipsReceived")
+  tipsSent          CreatorTip[]           @relation("UserTipsSent")
+  creationLikes     CreationLike[]
+  creationComments  CreationComment[]
+  creationBookmarks CreationBookmark[]
+  followers         CreatorFollow[]        @relation("CreatorFollowers")
+  following         CreatorFollow[]        @relation("UserFollowing")
+  dailyAnalytics    CreatorDailyAnalytics[]
 }
 
 model AuthenticationSession {
@@ -833,6 +866,273 @@ model GithubRepository {
 
   // Relations
   profile          GithubProfile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+}
+
+// =========================================================================
+// User Session Lifecycle & Login / Logout Time Telemetry (v10.0)
+// =========================================================================
+
+model UserSession {
+  id              String            @id @default(uuid())
+  sessionId       String            @unique
+  userId          String
+  tokenHash       String?
+  loginAt         DateTime          @default(now())
+  logoutAt        DateTime?
+  durationSeconds Int?              // Seconds active (calculated on logout: logoutAt - loginAt)
+  ipAddress       String?
+  userAgent       String?
+  deviceType      String?           // "DESKTOP", "MOBILE", "TABLET", "UNKNOWN"
+  browser         String?
+  os              String?
+  country         String?
+  city            String?
+  status          String            @default("ACTIVE") // "ACTIVE", "LOGGED_OUT", "EXPIRED", "REVOKED"
+  logoutReason    String?           // "USER_ACTION", "SESSION_TIMEOUT", "ADMIN_REVOKED"
+  lastActiveAt    DateTime          @default(now())
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+
+  // Relations
+  user            User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  activityLogs    UserActivityLog[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([loginAt])
+}
+
+model UserActivityLog {
+  id           String       @id @default(uuid())
+  userId       String?
+  sessionId    String?
+  action       String       // "SIGN_UP", "LOGIN", "LOGOUT", "CREATION_CREATE", "CREATION_PUBLISH", "PROFILE_UPDATE"
+  resourceType String?      // "USER", "SESSION", "CREATION", "SUBSCRIPTION", etc.
+  resourceId   String?
+  details      String?      @default("{}") // JSON payload of metadata
+  ipAddress    String?
+  userAgent    String?
+  createdAt    DateTime     @default(now())
+
+  // Relations
+  user         User?        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  session      UserSession? @relation(fields: [sessionId], references: [sessionId], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([action])
+  @@index([createdAt])
+}
+
+// =========================================================================
+// Creation Platform Content Engine (v10.0)
+// =========================================================================
+
+model Creation {
+  id            String             @id @default(uuid())
+  creatorId     String
+  title         String
+  slug          String             @unique
+  summary       String?
+  content       String?            // Markdown or Rich Text body
+  contentType   String             @default("VIDEO") // "VIDEO", "AUDIO", "ARTICLE", "ARTWORK", "LIVESTREAM", "CODE", "DIGITAL_ASSET"
+  mediaUrl      String?
+  thumbnailUrl  String?
+  previewUrl    String?
+  status        String             @default("DRAFT") // "DRAFT", "SCHEDULED", "PUBLISHED", "ARCHIVED"
+  visibility    String             @default("PUBLIC") // "PUBLIC", "MEMBERS_ONLY", "PREMIUM_TIER", "PRIVATE"
+  category      String             @default("GENERAL") // "GAMING", "TECH", "LIFESTYLE", "MUSIC", "DESIGN", "FINANCE", etc.
+  tags          String?            @default("[]") // JSON string array of tags
+  viewCount     Int                @default(0)
+  likeCount     Int                @default(0)
+  commentCount  Int                @default(0)
+  downloadCount Int                @default(0)
+  scheduledAt   DateTime?
+  publishedAt   DateTime?
+  createdAt     DateTime           @default(now())
+  updatedAt     DateTime           @updatedAt
+
+  // Relations
+  creator       User               @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+  assets        CreationAsset[]
+  likes         CreationLike[]
+  comments      CreationComment[]
+  bookmarks     CreationBookmark[]
+  tips          CreatorTip[]
+
+  @@index([creatorId])
+  @@index([status])
+  @@index([contentType])
+  @@index([category])
+}
+
+model CreationAsset {
+  id            String    @id @default(uuid())
+  creationId    String
+  fileName      String
+  fileUrl       String
+  fileType      String    // "VIDEO", "AUDIO", "IMAGE", "DOCUMENT", "ARCHIVE"
+  mimeType      String?
+  fileSizeBytes BigInt?
+  durationSec   Float?
+  aspectRatio   String?
+  createdAt     DateTime  @default(now())
+
+  // Relations
+  creation      Creation  @relation(fields: [creationId], references: [id], onDelete: Cascade)
+
+  @@index([creationId])
+}
+
+// =========================================================================
+// Creator Economy, Subscriptions & Micro-Tipping (v10.0)
+// =========================================================================
+
+model CreatorMembershipTier {
+  id            String                @id @default(uuid())
+  creatorId     String
+  tierName      String                // e.g. "Bronze Patron", "VIP Backstage"
+  description   String?
+  price         Float
+  currency      String                @default("INR")
+  interval      String                @default("MONTHLY") // "MONTHLY", "YEARLY"
+  perks         String?               @default("[]") // JSON array of perks
+  badgeIcon     String?
+  isActive      Boolean               @default(true)
+  createdAt     DateTime              @default(now())
+  updatedAt     DateTime              @updatedAt
+
+  // Relations
+  creator       User                  @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+  subscriptions CreatorSubscription[]
+
+  @@index([creatorId])
+}
+
+model CreatorSubscription {
+  id                 String                @id @default(uuid())
+  subscriberId       String
+  creatorId          String
+  tierId             String
+  status             String                @default("ACTIVE") // "ACTIVE", "PAST_DUE", "CANCELLED"
+  currentPeriodStart DateTime              @default(now())
+  currentPeriodEnd   DateTime
+  cancelAtPeriodEnd  Boolean               @default(false)
+  createdAt          DateTime              @default(now())
+  updatedAt          DateTime              @updatedAt
+
+  // Relations
+  subscriber         User                  @relation("UserSubscriptions", fields: [subscriberId], references: [id], onDelete: Cascade)
+  creator            User                  @relation("CreatorSubscribers", fields: [creatorId], references: [id], onDelete: Cascade)
+  tier               CreatorMembershipTier @relation(fields: [tierId], references: [id], onDelete: Cascade)
+
+  @@unique([subscriberId, tierId])
+  @@index([creatorId])
+}
+
+model CreatorTip {
+  id             String    @id @default(uuid())
+  senderId       String?
+  creatorId      String
+  creationId     String?
+  amount         Float
+  currency       String    @default("INR")
+  message        String?
+  paymentStatus  String    @default("SUCCESS") // "SUCCESS", "PENDING", "FAILED"
+  transactionRef String    @unique
+  createdAt      DateTime  @default(now())
+
+  // Relations
+  sender         User?     @relation("UserTipsSent", fields: [senderId], references: [id], onDelete: SetNull)
+  creator        User      @relation("CreatorTipsReceived", fields: [creatorId], references: [id], onDelete: Cascade)
+  creation       Creation? @relation(fields: [creationId], references: [id], onDelete: SetNull)
+
+  @@index([creatorId])
+}
+
+// =========================================================================
+// Creator Community, Social Interactions & Follows (v10.0)
+// =========================================================================
+
+model CreationLike {
+  id         String   @id @default(uuid())
+  creationId String
+  userId     String
+  createdAt  DateTime @default(now())
+
+  // Relations
+  creation   Creation @relation(fields: [creationId], references: [id], onDelete: Cascade)
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([creationId, userId])
+  @@index([creationId])
+  @@index([userId])
+}
+
+model CreationComment {
+  id         String            @id @default(uuid())
+  creationId String
+  userId     String
+  parentId   String?
+  content    String
+  createdAt  DateTime          @default(now())
+  updatedAt  DateTime          @updatedAt
+
+  // Relations
+  creation   Creation          @relation(fields: [creationId], references: [id], onDelete: Cascade)
+  user       User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  parent     CreationComment?  @relation("CommentReplies", fields: [parentId], references: [id], onDelete: Cascade)
+  replies    CreationComment[] @relation("CommentReplies")
+
+  @@index([creationId])
+  @@index([userId])
+}
+
+model CreationBookmark {
+  id         String   @id @default(uuid())
+  creationId String
+  userId     String
+  createdAt  DateTime @default(now())
+
+  // Relations
+  creation   Creation @relation(fields: [creationId], references: [id], onDelete: Cascade)
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([creationId, userId])
+  @@index([creationId])
+  @@index([userId])
+}
+
+model CreatorFollow {
+  id         String   @id @default(uuid())
+  followerId String
+  creatorId  String
+  createdAt  DateTime @default(now())
+
+  // Relations
+  follower   User     @relation("UserFollowing", fields: [followerId], references: [id], onDelete: Cascade)
+  creator    User     @relation("CreatorFollowers", fields: [creatorId], references: [id], onDelete: Cascade)
+
+  @@unique([followerId, creatorId])
+  @@index([followerId])
+  @@index([creatorId])
+}
+
+model CreatorDailyAnalytics {
+  id               String   @id @default(uuid())
+  creatorId        String
+  date             DateTime @db.Date
+  totalViews       Int      @default(0)
+  uniqueVisitors   Int      @default(0)
+  watchTimeMinutes Float    @default(0.0)
+  newFollowers     Int      @default(0)
+  grossRevenue     Float    @default(0.0)
+  createdAt        DateTime @default(now())
+
+  // Relations
+  creator          User     @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+
+  @@unique([creatorId, date])
+  @@index([creatorId])
 }
 
 

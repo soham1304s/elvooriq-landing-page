@@ -19,28 +19,28 @@ const TermsOfServicePage = () => {
         <div className="glass-card" style={{ padding: '40px' }}>
           
           <section style={{ marginBottom: '32px' }}>
-            <h2 className="card-title" style={{ fontSize: '1.5rem', color: '#00C988' }}>1. Acceptance of Terms</h2>
+            <h2 className="card-title" style={{ fontSize: '1.5rem', color: '#D4AF37' }}>1. Acceptance of Terms</h2>
             <p className="card-desc">
               By accessing ELVOORIQ web services, mobile application, or signing talent management agreements, you agree to comply with and be bound by these Terms of Service and all applicable streaming platform guidelines.
             </p>
           </section>
 
           <section style={{ marginBottom: '32px' }}>
-            <h2 className="card-title" style={{ fontSize: '1.5rem', color: '#00C988' }}>2. Creator Intellectual Property</h2>
+            <h2 className="card-title" style={{ fontSize: '1.5rem', color: '#D4AF37' }}>2. Creator Intellectual Property</h2>
             <p className="card-desc">
               Creators retain 100% ownership of all broadcast content, video recordings, branding assets, and personal likeness. ELVOORIQ receives a limited license strictly to manage, promote, and pitch campaigns on your behalf.
             </p>
           </section>
 
           <section style={{ marginBottom: '32px' }}>
-            <h2 className="card-title" style={{ fontSize: '1.5rem', color: '#00C988' }}>3. Code of Conduct</h2>
+            <h2 className="card-title" style={{ fontSize: '1.5rem', color: '#D4AF37' }}>3. Code of Conduct</h2>
             <p className="card-desc">
               ELVOORIQ is built on empowerment, safety, and mutual respect. We maintain a zero-tolerance policy against hate speech, harassment, copyright infringement, or fraudulent viewer inflation.
             </p>
           </section>
 
           <section>
-            <h2 className="card-title" style={{ fontSize: '1.5rem', color: '#00C988' }}>4. Termination & Account Status</h2>
+            <h2 className="card-title" style={{ fontSize: '1.5rem', color: '#D4AF37' }}>4. Termination & Account Status</h2>
             <p className="card-desc">
               Users or agency partners may terminate their platform account at any time pursuant to individual service tier agreements.
             </p>

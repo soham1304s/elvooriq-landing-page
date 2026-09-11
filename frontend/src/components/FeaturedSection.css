@@ -1,12 +1,13 @@
 .featured-section {
-  background-color: #f8f9fa; /* Light background */
-  color: #1f2937;
+  background-color: var(--color-bg-base, #0A0A0A);
+  color: var(--color-text-main, #F5F5F0);
   padding: 8rem 0;
   border-top-left-radius: 4rem;
   border-top-right-radius: 4rem;
-  margin-top: -2rem; /* Overlap the green section */
+  margin-top: -2rem;
   position: relative;
   z-index: 40;
+  border-top: 1px solid var(--color-border, #2A2520);
 }
 
 .featured-container {
@@ -28,12 +29,12 @@
   font-size: 3.5rem;
   line-height: 1.1;
   font-weight: 600;
-  color: #111827;
+  color: var(--color-text-main, #F5F5F0);
   margin-top: 1rem;
 }
 
 .featured-title .title-highlight {
-  color: var(--color-primary);
+  color: var(--color-primary, #D4AF37);
 }
 
 .view-all-link {
@@ -42,14 +43,14 @@
   gap: 0.5rem;
   font-size: 0.95rem;
   font-weight: 600;
-  color: #6b7280;
+  color: var(--color-text-muted, #A8A29A);
   text-decoration: none;
   transition: color 0.3s ease;
   padding-bottom: 0.5rem;
 }
 
 .view-all-link:hover {
-  color: var(--color-primary);
+  color: var(--color-primary-hover, #F5C542);
 }
 
 .view-all-link .arrow-icon {
@@ -72,13 +73,28 @@
   height: 500px;
   border-radius: 1.5rem;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+  background: var(--color-bg-card, #141414);
+  border: 1px solid var(--color-border, #2A2520);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), var(--color-border-glow);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 }
 
 .featured-card:hover {
   transform: translateY(-10px);
+  border-color: rgba(212, 175, 55, 0.45);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), 0 0 20px rgba(212, 175, 55, 0.15);
+}
+
+[data-theme='light'] .featured-card {
+  background: #FFFFFF;
+  border-color: var(--color-border, #E9DFCA);
+  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.06);
+}
+
+[data-theme='light'] .featured-card:hover {
+  border-color: var(--color-primary, #C99524);
+  box-shadow: 0 16px 36px rgba(201, 149, 36, 0.15);
 }
 
 .featured-card-img {

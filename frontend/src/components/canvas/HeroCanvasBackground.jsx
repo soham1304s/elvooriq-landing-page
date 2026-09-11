@@ -43,16 +43,17 @@ export default function HeroCanvasBackground() {
     window.addEventListener('mousemove', handleMouseMove);
 
     const renderLoop = () => {
-      ctx.fillStyle = '#07080a';
-      ctx.fillRect(0, 0, width, height);
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      ctx.clearRect(0, 0, width, height);
 
       mouse.x += (mouse.tx - mouse.x) * 0.08;
       mouse.y += (mouse.ty - mouse.y) * 0.08;
 
-      // 1. Draw Static Isometric Tech Grid
-      ctx.strokeStyle = 'rgba(24, 147, 128, 0.03)';
+      // 1. Draw Subtle Geometric Grid
+      const gridStroke = isLight ? 'rgba(201, 149, 36, 0.04)' : 'rgba(212, 175, 55, 0.03)';
+      ctx.strokeStyle = gridStroke;
       ctx.lineWidth = 1;
-      const gridSize = 80;
+      const gridSize = 90;
       for (let x = 0; x < width; x += gridSize) {
         ctx.beginPath();
         ctx.moveTo(x, 0);
@@ -66,27 +67,21 @@ export default function HeroCanvasBackground() {
         ctx.stroke();
       }
 
-      // 2. Render Chromatic Orbs
+      // 2. Render Soft Floating Radial Glow
       const time = Date.now() * 0.0006;
       const orbX = width / 2 + Math.sin(time) * 200;
       const orbY = height / 3 + Math.cos(time) * 100;
       const grad1 = ctx.createRadialGradient(orbX, orbY, 10, orbX, orbY, 480);
-      grad1.addColorStop(0, 'rgba(0, 201, 136, 0.12)');
-      grad1.addColorStop(1, 'rgba(7, 8, 10, 0)');
+      const orbAlpha = isLight ? '0.07' : '0.10';
+      grad1.addColorStop(0, isLight ? `rgba(201, 149, 36, ${orbAlpha})` : `rgba(212, 175, 55, ${orbAlpha})`);
+      grad1.addColorStop(1, 'rgba(0, 0, 0, 0)');
       ctx.fillStyle = grad1;
       ctx.beginPath();
       ctx.arc(orbX, orbY, 480, 0, Math.PI * 2);
       ctx.fill();
 
-      const grad2 = ctx.createRadialGradient(mouse.x, mouse.y, 10, mouse.x, mouse.y, 350);
-      grad2.addColorStop(0, 'rgba(2, 132, 199, 0.10)');
-      grad2.addColorStop(1, 'rgba(7, 8, 10, 0)');
-      ctx.fillStyle = grad2;
-      ctx.beginPath();
-      ctx.arc(mouse.x, mouse.y, 350, 0, Math.PI * 2);
-      ctx.fill();
-
-      // 3. Render Drift Starfield Nodes
+      // 3. Render Drift Starfield Nodes & Connections
+      const goldRgb = isLight ? '201, 149, 36' : '212, 175, 55';
       particles.forEach((p) => {
         p.x += p.vx;
         p.y += p.vy;
@@ -99,7 +94,7 @@ export default function HeroCanvasBackground() {
         p.alpha += Math.sin(Date.now() * p.pulseSpeed) * 0.005;
         p.alpha = Math.max(0.08, Math.min(0.65, p.alpha));
 
-        ctx.fillStyle = `rgba(0, 229, 153, ${p.alpha})`;
+        ctx.fillStyle = `rgba(${goldRgb}, ${p.alpha})`;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
         ctx.fill();
@@ -108,8 +103,8 @@ export default function HeroCanvasBackground() {
         const dy = mouse.y - p.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < 180) {
-          ctx.strokeStyle = `rgba(0, 229, 153, ${(1 - dist / 180) * 0.09})`;
-          ctx.lineWidth = 0.5;
+          ctx.strokeStyle = `rgba(${goldRgb}, ${(1 - dist / 180) * 0.12})`;
+          ctx.lineWidth = 0.6;
           ctx.beginPath();
           ctx.moveTo(p.x, p.y);
           ctx.lineTo(mouse.x, mouse.y);

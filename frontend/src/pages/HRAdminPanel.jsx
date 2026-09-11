@@ -41,6 +41,8 @@ import ComplianceAuditor from '../components/hr/ComplianceAuditor';
 import SponsorshipCampaigns from '../components/hr/SponsorshipCampaigns';
 import FranchiseGuildManager from '../components/franchise/FranchiseGuildManager';
 import logoImg from '../assets/logo.png';
+import { performLogout } from '../utils/authSession';
+import SessionTelemetryWidget from '../components/SessionTelemetryWidget';
 import './HRAdminPanel.css';
 
 const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? '' : 'http://localhost:5000');
@@ -749,10 +751,7 @@ const HRAdminPanel = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('elvooriq_token');
-    localStorage.removeItem('elvooriq_user');
-    localStorage.removeItem('elvooriq_admin_auth');
-    navigate('/login');
+    performLogout('ADMIN_LOGOUT');
   };
 
   // Dynamic Metrics
@@ -803,7 +802,8 @@ const HRAdminPanel = () => {
           </div>
         </div>
 
-        <div className="header-right">
+        <div className="header-right" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <SessionTelemetryWidget />
           <button className="workspace-switch-btn" onClick={() => navigate('/workspace-portal')}>
             <Briefcase size={15} />
             <span>Agent Portal</span>
@@ -1120,7 +1120,7 @@ const HRAdminPanel = () => {
 
               <div className="offer-ingestion-grid">
                 {/* Form: Assign and Dispatch */}
-                <div className="ingestion-form-card" style={{ background: 'rgba(13, 17, 19, 0.85)', border: '1px solid rgba(25, 149, 128, 0.15)' }}>
+                <div className="ingestion-form-card" style={{ background: 'rgba(13, 17, 19, 0.85)', border: '1px solid rgba(212, 175, 55, 0.15)' }}>
                   <div className="card-header-iconic">
                     <Briefcase size={22} className="teal-icon" />
                     <h3>Dispatch Operational Task</h3>
@@ -1141,7 +1141,7 @@ const HRAdminPanel = () => {
                         onChange={(e) => setTaskForm({ ...taskForm, title: e.target.value })}
                         placeholder="e.g. Complete Overdue Overland Contract"
                         className="std-input"
-                        style={{ width: '100%', background: '#030506', borderColor: '#334155', color: '#f8fafc', padding: '10px', borderRadius: '6px' }}
+                        style={{ width: '100%', background: '#0A0A0A', borderColor: '#334155', color: '#f8fafc', padding: '10px', borderRadius: '6px' }}
                         required
                       />
                     </div>
@@ -1153,7 +1153,7 @@ const HRAdminPanel = () => {
                         onChange={(e) => setTaskForm({ ...taskForm, description: e.target.value })}
                         placeholder="Review social metrics, contract deliverables, and platform data..."
                         rows="3"
-                        style={{ width: '100%', background: '#030506', borderColor: '#334155', color: '#f8fafc', padding: '10px', borderRadius: '6px', resize: 'none' }}
+                        style={{ width: '100%', background: '#0A0A0A', borderColor: '#334155', color: '#f8fafc', padding: '10px', borderRadius: '6px', resize: 'none' }}
                       />
                     </div>
 
@@ -1164,7 +1164,7 @@ const HRAdminPanel = () => {
                           value={taskForm.priority}
                           onChange={(e) => setTaskForm({ ...taskForm, priority: e.target.value })}
                           className="std-select"
-                          style={{ width: '100%', background: '#030506', borderColor: '#334155', color: '#f8fafc', padding: '10px', borderRadius: '6px' }}
+                          style={{ width: '100%', background: '#0A0A0A', borderColor: '#334155', color: '#f8fafc', padding: '10px', borderRadius: '6px' }}
                         >
                           <option value="LOW">Low</option>
                           <option value="MEDIUM">Medium</option>
@@ -1179,7 +1179,7 @@ const HRAdminPanel = () => {
                           type="datetime-local" 
                           value={taskForm.dueDate}
                           onChange={(e) => setTaskForm({ ...taskForm, dueDate: e.target.value })}
-                          style={{ width: '100%', background: '#030506', borderColor: '#334155', color: '#f8fafc', padding: '10px', borderRadius: '6px' }}
+                          style={{ width: '100%', background: '#0A0A0A', borderColor: '#334155', color: '#f8fafc', padding: '10px', borderRadius: '6px' }}
                         />
                       </div>
                     </div>
@@ -1190,7 +1190,7 @@ const HRAdminPanel = () => {
                         value={taskForm.assigneeId}
                         onChange={(e) => setTaskForm({ ...taskForm, assigneeId: e.target.value })}
                         className="std-select"
-                        style={{ width: '100%', background: '#030506', borderColor: '#334155', color: '#f8fafc', padding: '10px', borderRadius: '6px' }}
+                        style={{ width: '100%', background: '#0A0A0A', borderColor: '#334155', color: '#f8fafc', padding: '10px', borderRadius: '6px' }}
                         required
                       >
                         <option value="">Select From Active Staff (Verified)...</option>
@@ -1214,7 +1214,7 @@ const HRAdminPanel = () => {
                 </div>
 
                 {/* Assigned Milestones Monitor */}
-                <div className="ingestion-preview-card" style={{ background: 'rgba(13, 17, 19, 0.85)', border: '1px solid rgba(25, 149, 128, 0.15)' }}>
+                <div className="ingestion-preview-card" style={{ background: 'rgba(13, 17, 19, 0.85)', border: '1px solid rgba(212, 175, 55, 0.15)' }}>
                   <div className="card-header-iconic">
                     <Clock size={22} className="teal-icon" />
                     <h3>Active Assigned Milestones ({tasks.length})</h3>
@@ -1227,7 +1227,7 @@ const HRAdminPanel = () => {
                       </p>
                     ) : (
                       tasks.map(t => (
-                        <div key={t.id} style={{ background: '#030506', border: '1px solid #1e293b', borderRadius: '8px', padding: '12px' }}>
+                        <div key={t.id} style={{ background: '#0A0A0A', border: '1px solid #1e293b', borderRadius: '8px', padding: '12px' }}>
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '6px' }}>
                             <span style={{ fontWeight: 'bold', fontSize: '13px', color: '#f8fafc' }}>{t.title}</span>
                             <span style={{
@@ -1235,15 +1235,15 @@ const HRAdminPanel = () => {
                               fontWeight: 'bold',
                               padding: '2px 8px',
                               borderRadius: '4px',
-                              background: t.status === 'DONE' ? 'rgba(16, 185, 129, 0.15)' : 'rgba(25, 149, 128, 0.15)',
-                              color: t.status === 'DONE' ? '#34d399' : '#199580'
+                              background: t.status === 'DONE' ? 'rgba(74, 222, 128, 0.15)' : 'rgba(212, 175, 55, 0.15)',
+                              color: t.status === 'DONE' ? '#4ADE80' : '#D4AF37'
                             }}>
                               {t.status}
                             </span>
                           </div>
                           <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: '#94a3b8' }}>
                             <span>Assignee: <strong style={{ color: '#e2e8f0' }}>{t.assignee?.fullName || 'Staff'}</strong></span>
-                            <span>Progress: <strong style={{ color: '#199580' }}>{t.progressPercent || 0}%</strong></span>
+                            <span>Progress: <strong style={{ color: '#D4AF37' }}>{t.progressPercent || 0}%</strong></span>
                           </div>
                           {t.dueDate && (
                             <div style={{ fontSize: '10px', color: '#64748b', marginTop: '4px' }}>
@@ -1268,13 +1268,13 @@ const HRAdminPanel = () => {
               transition={{ duration: 0.3 }}
             >
               {/* v7.0 Sub-Tab Navigator */}
-              <div className="flex items-center gap-2 p-1.5 bg-[#030506] border border-slate-800 rounded-xl max-w-2xl">
+              <div className="flex items-center gap-2 p-1.5 bg-[#0A0A0A] border border-[#2A2520] rounded-xl max-w-2xl">
                 <button
                   type="button"
                   onClick={() => setOnboardingSubTab('generator')}
                   className={`flex-1 py-2.5 px-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 ${
                     onboardingSubTab === 'generator'
-                      ? 'bg-[#199580] text-white shadow-[0_0_15px_rgba(25,149,128,0.3)]'
+                      ? 'bg-gradient-to-r from-[#D4AF37] to-[#F5C542] text-black shadow-[0_0_15px_rgba(212,175,55,0.3)]'
                       : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
@@ -1287,7 +1287,7 @@ const HRAdminPanel = () => {
                   onClick={() => setOnboardingSubTab('compliance')}
                   className={`flex-1 py-2.5 px-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 ${
                     onboardingSubTab === 'compliance'
-                      ? 'bg-[#199580] text-white shadow-[0_0_15px_rgba(25,149,128,0.3)]'
+                      ? 'bg-gradient-to-r from-[#D4AF37] to-[#F5C542] text-black shadow-[0_0_15px_rgba(212,175,55,0.3)]'
                       : 'text-slate-400 hover:text-slate-200'
                   }`}
                 >
@@ -1609,7 +1609,7 @@ const HRAdminPanel = () => {
               </div>
 
               {payrollActionMsg && (
-                <div style={{ background: 'rgba(25, 149, 128, 0.15)', border: '1px solid rgba(25, 149, 128, 0.35)', color: '#2dd4bf', padding: '10px 16px', borderRadius: '8px', fontSize: '0.85rem', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div style={{ background: 'rgba(212, 175, 55, 0.15)', border: '1px solid rgba(212, 175, 55, 0.35)', color: '#F5C542', padding: '10px 16px', borderRadius: '8px', fontSize: '0.85rem', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <CheckCircle size={16} />
                   <span>{payrollActionMsg}</span>
                 </div>
@@ -1622,9 +1622,9 @@ const HRAdminPanel = () => {
                     key={filterState}
                     onClick={() => setPayrollFilter(filterState)}
                     style={{
-                      background: payrollFilter === filterState ? 'rgba(25, 149, 128, 0.25)' : 'rgba(255, 255, 255, 0.05)',
-                      border: payrollFilter === filterState ? '1px solid #199580' : '1px solid rgba(255, 255, 255, 0.1)',
-                      color: payrollFilter === filterState ? '#2dd4bf' : '#94a3b8',
+                      background: payrollFilter === filterState ? 'rgba(212, 175, 55, 0.18)' : 'rgba(255, 255, 255, 0.05)',
+                      border: payrollFilter === filterState ? '1px solid #D4AF37' : '1px solid #2A2520',
+                      color: payrollFilter === filterState ? '#F5C542' : '#A8A29A',
                       padding: '6px 14px',
                       borderRadius: '6px',
                       fontSize: '0.78rem',
@@ -1717,7 +1717,7 @@ const HRAdminPanel = () => {
                                   <span style={{ color: '#f87171', fontWeight: '600' }}>- ₹{ledger.deductions?.toLocaleString()}</span>
                                 </td>
                                 <td>
-                                  <div style={{ fontSize: '0.92rem', fontWeight: '800', color: '#2dd4bf', fontFamily: 'monospace' }}>
+                                  <div style={{ fontSize: '0.92rem', fontWeight: '800', color: '#F5C542', fontFamily: 'monospace' }}>
                                     ₹{ledger.netSalary?.toLocaleString()}
                                   </div>
                                 </td>
@@ -1950,7 +1950,7 @@ const HRAdminPanel = () => {
               </div>
 
               {queueActionMsg && (
-                <div style={{ background: 'rgba(25, 149, 128, 0.15)', border: '1px solid rgba(25, 149, 128, 0.35)', color: '#2dd4bf', padding: '10px 16px', borderRadius: '8px', fontSize: '0.85rem', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <div style={{ background: 'rgba(212, 175, 55, 0.15)', border: '1px solid rgba(212, 175, 55, 0.35)', color: '#F5C542', padding: '10px 16px', borderRadius: '8px', fontSize: '0.85rem', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <CheckCircle size={16} />
                   <span>{queueActionMsg}</span>
                 </div>
@@ -2229,7 +2229,7 @@ const HRAdminPanel = () => {
               </div>
 
               {splitSyncNotice && (
-                <div style={{ background: 'rgba(25, 149, 128, 0.15)', border: '1px solid rgba(25, 149, 128, 0.35)', color: '#2dd4bf', padding: '10px 16px', borderRadius: '8px', fontSize: '0.85rem' }}>
+                <div style={{ background: 'rgba(212, 175, 55, 0.15)', border: '1px solid rgba(212, 175, 55, 0.35)', color: '#F5C542', padding: '10px 16px', borderRadius: '8px', fontSize: '0.85rem' }}>
                   ✓ {splitSyncNotice}
                 </div>
               )}
@@ -2265,7 +2265,7 @@ const HRAdminPanel = () => {
                   <button 
                     type="button" 
                     onClick={handleGenerateSampleCSV}
-                    style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', color: '#2dd4bf', padding: '6px 12px', borderRadius: '6px', fontSize: '0.75rem', fontWeight: 700, cursor: 'pointer' }}
+                    style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.12)', color: '#F5C542', padding: '6px 12px', borderRadius: '6px', fontSize: '0.75rem', fontWeight: 700, cursor: 'pointer' }}
                   >
                     📄 Attach Sample Platform Statement CSV
                   </button>
@@ -2301,7 +2301,7 @@ const HRAdminPanel = () => {
                     className="commission-dropzone"
                     onClick={() => document.getElementById('splitCsvInput').click()}
                   >
-                    <UploadCloud size={32} style={{ color: '#199580' }} />
+                    <UploadCloud size={32} style={{ color: '#D4AF37' }} />
                     <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#f1f5f9' }}>
                       {splitCsvFile ? `Selected: ${splitCsvFile.name} (${(splitCsvFile.size / 1024).toFixed(1)} KB)` : 'Click to Browse Platform Statement CSV or Drag & Drop'}
                     </div>
@@ -2335,8 +2335,8 @@ const HRAdminPanel = () => {
 
                 {/* Ingest Execution Result Banner */}
                 {splitIngestResult && (
-                  <div style={{ background: 'rgba(25,149,128,0.12)', border: '1px solid #199580', borderRadius: '10px', padding: '16px' }}>
-                    <div style={{ fontWeight: 800, color: '#2dd4bf', marginBottom: '6px' }}>
+                  <div style={{ background: 'rgba(212, 175, 55, 0.1)', border: '1px solid #2A2520', boxShadow: '0 0 15px rgba(212, 175, 55, 0.1)', borderRadius: '10px', padding: '16px' }}>
+                    <div style={{ fontWeight: 800, color: '#4ADE80', marginBottom: '6px' }}>
                       ✓ {splitIngestResult.message}
                     </div>
                     <div style={{ fontSize: '0.78rem', color: '#94a3b8' }}>
@@ -2389,7 +2389,7 @@ const HRAdminPanel = () => {
                             <td style={{ fontWeight: 800, color: '#f1f5f9' }}>
                               ${(s.grossRevenue || 0).toLocaleString()}
                             </td>
-                            <td style={{ color: '#2dd4bf', fontWeight: 700 }}>
+                            <td style={{ color: '#F5C542', fontWeight: 700 }}>
                               ${(s.agencyCut || 0).toLocaleString()}
                             </td>
                             <td style={{ color: '#34d399', fontWeight: 700 }}>
@@ -2574,7 +2574,7 @@ const HRAdminPanel = () => {
               </div>
               <div style={{ background: 'rgba(255,255,255,0.04)', padding: '12px', borderRadius: '8px', marginBottom: '16px', border: '1px solid rgba(255,255,255,0.08)' }}>
                 <div style={{ fontSize: '0.74rem', color: '#94a3b8', letterSpacing: '0.5px' }}>CALCULATED NET PAYABLE:</div>
-                <div style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#2dd4bf', fontFamily: 'monospace', marginTop: '4px' }}>
+                <div style={{ fontSize: '1.25rem', fontWeight: 'bold', color: '#F5C542', fontFamily: 'monospace', marginTop: '4px' }}>
                   ₹{(Math.max(0, Number(targetAdjustLedger.baseSalary) + Number(adjustAllowances) - Number(adjustDeductions))).toLocaleString()}
                 </div>
               </div>

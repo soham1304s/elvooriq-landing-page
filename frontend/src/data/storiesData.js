@@ -1,6 +1,8 @@
 import aishwaryaImg from '../assets/5.png';
-import sunitaImg from '../assets/7.png';
-import jyotiImg from '../assets/8.png';
+import jyotiImg from '../assets/7.png';
+
+// Sunita Bera is an authentic gaming & live streamer
+const sunitaImg = '/creators/ishita_verma.png';
 
 export const storiesDetails = [
   {
@@ -10,6 +12,7 @@ export const storiesDetails = [
     category: 'LIFESTYLE CREATOR',
     journey: '18 Months Journey',
     image: aishwaryaImg,
+    objectPosition: '50% 14%',
     badge: '44x REVENUE EXPANSION',
     before: {
       followers: '8.2K',
@@ -53,61 +56,13 @@ export const storiesDetails = [
     ]
   },
   {
-    id: 'sunita',
-    name: 'Sunita Bera',
-    handle: '@sunitabera_live',
-    category: 'GAMING & LIVE STREAMER',
-    journey: '12 Months Journey',
-    image: sunitaImg,
-    badge: '18x SUPERCHAT & VIEWER GROWTH',
-    before: {
-      followers: '22K',
-      revenue: '₹850/mo',
-      brandDeals: '1',
-      status: 'Solo Broadcast Streamer',
-      details: 'Single platform streaming, frequent technical latency, inconsistent schedule, under-monetized viewer chat.'
-    },
-    after: {
-      followers: '890K',
-      revenue: '₹15,200/mo',
-      brandDeals: '9',
-      status: 'Tier-1 Esports & Gaming Icon',
-      details: 'Simulcasting to 3 platforms, studio-grade transcoding, exclusive tech sponsorships with Razer and Asus ROG.'
-    },
-    quote: "The live ops and transcoding optimization doubled my watch time in 90 days. I went from playing games to owning a media network.",
-    summary: 'Sunita Bera scaled into a tier-1 esports and simulcast creator with studio-grade transcoding and exclusive tech sponsorships.',
-    challenge: 'Single platform streaming, frequent technical latency, inconsistent schedule, under-monetized viewer chat.',
-    strategy: [
-      {
-        iconName: 'Zap',
-        title: 'Studio Transcoding & Multi-RTMP',
-        description: 'Simulcasting across YouTube, Twitch, and Bigo Live with 99.98% stream uptime SLA.'
-      },
-      {
-        iconName: 'Crown',
-        title: 'Tier-1 Hardware Sponsorships',
-        description: 'Negotiated multi-platform gear partnerships with Razer and Asus ROG.'
-      },
-      {
-        iconName: 'TrendingUp',
-        title: 'Superchat Gamification',
-        description: 'Dynamic interactive stream overlays producing a 4.2x superchat lift.'
-      }
-    ],
-    milestones: [
-      'Scaled to 890K global followers across 3 platforms',
-      'Maintained 99.98% broadcast uptime',
-      'Signed exclusive partnerships with Razer & Asus ROG',
-      '18x increase in recurring superchat & monthly payout'
-    ]
-  },
-  {
     id: 'jyoti',
     name: 'Jyoti Roy',
     handle: '@jyotiroy_official',
     category: 'FASHION & BEAUTY INFLUENCER',
     journey: '14 Months Journey',
     image: jyotiImg,
+    objectPosition: '50% 16%',
     badge: '25x BRAND PIPELINE',
     before: {
       followers: '45K',
@@ -148,6 +103,56 @@ export const storiesDetails = [
       'Signed multi-year retainers with LVMH & Sephora',
       'Secured 16 international luxury brand deals',
       'Launched proprietary ethical cosmetics line'
+    ]
+  },
+  {
+    id: 'sunita',
+    name: 'Sunita Bera',
+    handle: '@sunitabera_live',
+    category: 'GAMING & LIVE STREAMER',
+    journey: '12 Months Journey',
+    image: sunitaImg,
+    objectPosition: '50% 25%',
+    badge: '18x SUPERCHAT & VIEWER GROWTH',
+    before: {
+      followers: '22K',
+      revenue: '₹850/mo',
+      brandDeals: '1',
+      status: 'Solo Broadcast Streamer',
+      details: 'Single platform streaming, frequent technical latency, inconsistent schedule, under-monetized viewer chat.'
+    },
+    after: {
+      followers: '890K',
+      revenue: '₹15,200/mo',
+      brandDeals: '9',
+      status: 'Tier-1 Esports & Gaming Icon',
+      details: 'Simulcasting to 3 platforms, studio-grade transcoding, exclusive tech sponsorships with Razer and Asus ROG.'
+    },
+    quote: "The live ops and transcoding optimization doubled my watch time in 90 days. I went from playing games to owning a media network.",
+    summary: 'Sunita Bera scaled into a tier-1 esports and simulcast creator with studio-grade transcoding and exclusive tech sponsorships.',
+    challenge: 'Single platform streaming, frequent technical latency, inconsistent schedule, under-monetized viewer chat.',
+    strategy: [
+      {
+        iconName: 'Zap',
+        title: 'Studio Transcoding & Multi-RTMP',
+        description: 'Simulcasting across YouTube, Twitch, and Bigo Live with 99.98% stream uptime SLA.'
+      },
+      {
+        iconName: 'Crown',
+        title: 'Tier-1 Hardware Sponsorships',
+        description: 'Negotiated multi-platform gear partnerships with Razer and Asus ROG.'
+      },
+      {
+        iconName: 'TrendingUp',
+        title: 'Superchat Gamification',
+        description: 'Dynamic interactive stream overlays producing a 4.2x superchat lift.'
+      }
+    ],
+    milestones: [
+      'Scaled to 890K global followers across 3 platforms',
+      'Maintained 99.98% broadcast uptime',
+      'Signed exclusive partnerships with Razer & Asus ROG',
+      '18x increase in recurring superchat & monthly payout'
     ]
   }
 ];

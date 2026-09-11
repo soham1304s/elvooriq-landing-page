@@ -17,13 +17,13 @@
 
 .forecast-modal-box {
   background: #0d1113;
-  border: 1px solid rgba(25, 149, 128, 0.35);
+  border: 1px solid rgba(212, 175, 55, 0.35);
   border-radius: 18px;
   width: 100%;
   max-width: 780px;
   max-height: 90vh;
   overflow-y: auto;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(25, 149, 128, 0.15);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(212, 175, 55, 0.15);
   color: #f1f5f9;
   display: flex;
   flex-direction: column;
@@ -90,8 +90,8 @@
 }
 
 .tier-hero-breakout {
-  background: radial-gradient(circle at top left, rgba(25, 149, 128, 0.25), rgba(3, 5, 6, 0.8));
-  border-color: #2dd4bf;
+  background: radial-gradient(circle at top left, rgba(212, 175, 55, 0.25), rgba(3, 5, 6, 0.8));
+  border-color: #F5C542;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(45, 212, 191, 0.25);
 }
 
@@ -129,7 +129,7 @@
   font-size: 1.8rem;
   font-weight: 900;
   letter-spacing: -0.02em;
-  color: #2dd4bf;
+  color: #F5C542;
 }
 
 .tier-slope-label {
@@ -184,7 +184,7 @@
   font-size: 0.85rem;
   font-weight: 800;
   text-transform: uppercase;
-  color: #199580;
+  color: #D4AF37;
   letter-spacing: 0.05em;
   display: flex;
   align-items: center;
@@ -198,8 +198,8 @@
 }
 
 .forecast-projection-card {
-  background: rgba(25, 149, 128, 0.06);
-  border: 1px solid rgba(25, 149, 128, 0.2);
+  background: rgba(212, 175, 55, 0.06);
+  border: 1px solid rgba(212, 175, 55, 0.2);
   border-radius: 10px;
   padding: 12px 10px;
   text-align: center;
@@ -218,7 +218,7 @@
 .proj-viewers-val {
   font-size: 1.25rem;
   font-weight: 900;
-  color: #2dd4bf;
+  color: #F5C542;
 }
 
 .proj-duration-tag {
@@ -241,7 +241,7 @@
 }
 
 .seed-streams-btn {
-  background: linear-gradient(135deg, #199580, #0d9488);
+  background: linear-gradient(135deg, #D4AF37, #F5C542);
   color: #ffffff;
   border: none;
   border-radius: 8px;
@@ -251,12 +251,12 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   cursor: pointer;
-  box-shadow: 0 0 15px rgba(25, 149, 128, 0.3);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
   transition: all 0.2s;
 }
 
 .seed-streams-btn:hover {
-  background: linear-gradient(135deg, #14b8a6, #199580);
-  box-shadow: 0 0 25px rgba(25, 149, 128, 0.5);
+  background: linear-gradient(135deg, #D4AF37, #F5C542);
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
   transform: translateY(-1px);
 }

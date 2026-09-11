@@ -124,12 +124,23 @@ const SplitRegister = () => {
     try {
       const response = await axios.post(`${API_URL}/api/auth/register`, formData);
       if (response.data.success) {
-        localStorage.setItem('elvooriq_token', response.data.token);
+        if (response.data.token) {
+          localStorage.setItem('elvooriq_token', response.data.token);
+        }
+        if (response.data.sessionId) {
+          localStorage.setItem('elvooriq_session_id', response.data.sessionId);
+        }
+        if (response.data.loginTime) {
+          localStorage.setItem('elvooriq_login_time', response.data.loginTime);
+        }
+        if (response.data.user) {
+          localStorage.setItem('elvooriq_user', JSON.stringify(response.data.user));
+        }
         
         // Emit success event
-        if (sessionId) {
+        if (sessionId || response.data.sessionId) {
           socket.emit('auth:success', {
-            sessionId,
+            sessionId: response.data.sessionId || sessionId,
             flowType: 'register'
           });
         }

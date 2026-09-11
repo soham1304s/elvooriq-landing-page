@@ -19,11 +19,11 @@ const PrivacyPolicyPage = () => {
         <div className="glass-card" style={{ padding: '40px' }}>
           
           <section style={{ marginBottom: '32px' }}>
-            <h2 className="card-title" style={{ fontSize: '1.5rem', color: '#00C988' }}>1. Information We Collect</h2>
+            <h2 className="card-title" style={{ fontSize: '1.5rem', color: '#D4AF37' }}>1. Information We Collect</h2>
             <p className="card-desc" style={{ marginBottom: '12px' }}>
               We collect information you provide directly to us when registering an account, filling out session forms, linking YouTube API credentials, or connecting streaming hardware:
             </p>
-            <ul style={{ color: '#A0A0B0', paddingLeft: '20px', lineHeight: '1.8' }}>
+            <ul style={{ color: '#A8A29A', paddingLeft: '20px', lineHeight: '1.8' }}>
               <li>Account credentials (Full Name, Email Address, Password, Country, WhatsApp)</li>
               <li>Streaming channel metrics (Subscriber count, live concurrent viewers, watch hours)</li>
               <li>YouTube OAuth 2.0 connection tokens for stream management</li>
@@ -31,21 +31,21 @@ const PrivacyPolicyPage = () => {
           </section>
 
           <section style={{ marginBottom: '32px' }}>
-            <h2 className="card-title" style={{ fontSize: '1.5rem', color: '#00C988' }}>2. How We Protect Your Data</h2>
+            <h2 className="card-title" style={{ fontSize: '1.5rem', color: '#D4AF37' }}>2. How We Protect Your Data</h2>
             <p className="card-desc">
               All account information and streaming API tokens are encrypted in transit via SSL/TLS and at rest using AES-256 database encryption. We never sell creator personal data or channel tokens to third-party advertisers.
             </p>
           </section>
 
           <section style={{ marginBottom: '32px' }}>
-            <h2 className="card-title" style={{ fontSize: '1.5rem', color: '#00C988' }}>3. Third-Party Services</h2>
+            <h2 className="card-title" style={{ fontSize: '1.5rem', color: '#D4AF37' }}>3. Third-Party Services</h2>
             <p className="card-desc">
               Our platform integrates with official API services including Google YouTube API Services, Twitch API, and PostgreSQL data infrastructure. By using ELVOORIQ, users agree to be bound by the Google Terms of Service and Privacy Policy.
             </p>
           </section>
 
           <section>
-            <h2 className="card-title" style={{ fontSize: '1.5rem', color: '#00C988' }}>4. Your Rights & Data Deletion</h2>
+            <h2 className="card-title" style={{ fontSize: '1.5rem', color: '#D4AF37' }}>4. Your Rights & Data Deletion</h2>
             <p className="card-desc">
               Creators have full rights to request complete data deletion or export their session records at any time by contacting privacy@elvooriq.com.
             </p>

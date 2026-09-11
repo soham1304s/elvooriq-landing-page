@@ -35,7 +35,7 @@ const CareersPage = () => {
             >
               <div className="card-icon"><Briefcase size={28} /></div>
               <h3 className="card-title">{item.title}</h3>
-              <p style={{ color: '#00C988', fontSize: '0.85rem', fontWeight: 600, marginBottom: '8px' }}>
+              <p style={{ color: '#D4AF37', fontSize: '0.85rem', fontWeight: 600, marginBottom: '8px' }}>
                 <MapPin size={14} style={{ display: 'inline', marginRight: '4px' }} /> {item.location} • {item.type}
               </p>
               <p className="card-desc">{item.desc}</p>

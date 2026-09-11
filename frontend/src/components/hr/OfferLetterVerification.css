@@ -1,29 +1,29 @@
 /* OfferLetterVerification.css - Enterprise PDF Ingestion & NLP Studio */
 
 :root {
-  --ol-primary: #199580;
-  --ol-primary-glow: rgba(25, 149, 128, 0.4);
-  --ol-primary-soft: rgba(25, 149, 128, 0.12);
+  --ol-primary: #D4AF37;
+  --ol-primary-glow: rgba(212, 175, 55, 0.4);
+  --ol-primary-soft: rgba(212, 175, 55, 0.12);
   --ol-cyan: #06b6d4;
   --ol-emerald: #10b981;
   --ol-amber: #f59e0b;
   --ol-red: #ef4444;
-  --ol-bg-dark: #030506;
+  --ol-bg-dark: #0A0A0A;
   --ol-card-bg: rgba(13, 17, 19, 0.88);
   --ol-border: rgba(255, 255, 255, 0.08);
-  --ol-border-hover: rgba(25, 149, 128, 0.4);
+  --ol-border-hover: rgba(212, 175, 55, 0.4);
 }
 
 /* Container Studio Card */
 .offer-studio-container {
   width: 100%;
   background: var(--ol-card-bg);
-  border: 1px solid rgba(25, 149, 128, 0.22);
+  border: 1px solid rgba(212, 175, 55, 0.22);
   border-radius: 16px;
   padding: 28px;
   color: #f1f5f9;
   backdrop-filter: blur(16px);
-  box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.7), 0 0 25px rgba(25, 149, 128, 0.08);
+  box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.7), 0 0 25px rgba(212, 175, 55, 0.08);
   position: relative;
   overflow: hidden;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -31,8 +31,8 @@
 }
 
 .offer-studio-container:hover {
-  border-color: rgba(25, 149, 128, 0.35);
-  box-shadow: 0 16px 48px -10px rgba(0, 0, 0, 0.8), 0 0 35px rgba(25, 149, 128, 0.14);
+  border-color: rgba(212, 175, 55, 0.35);
+  box-shadow: 0 16px 48px -10px rgba(0, 0, 0, 0.8), 0 0 35px rgba(212, 175, 55, 0.14);
 }
 
 /* Top ambient light streak */
@@ -43,7 +43,7 @@
   left: 10%;
   right: 10%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(25, 149, 128, 0.7), rgba(6, 182, 212, 0.6), transparent);
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.7), rgba(6, 182, 212, 0.6), transparent);
   pointer-events: none;
 }
 
@@ -67,13 +67,13 @@
   width: 38px;
   height: 38px;
   border-radius: 10px;
-  background: linear-gradient(135deg, rgba(25, 149, 128, 0.2), rgba(6, 182, 212, 0.1));
-  border: 1px solid rgba(25, 149, 128, 0.35);
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(6, 182, 212, 0.1));
+  border: 1px solid rgba(212, 175, 55, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #199580;
-  box-shadow: 0 0 12px rgba(25, 149, 128, 0.2);
+  color: #D4AF37;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
 }
 
 .offer-studio-title {
@@ -94,9 +94,9 @@
   letter-spacing: 1px;
   padding: 3px 8px;
   border-radius: 6px;
-  background: rgba(25, 149, 128, 0.15);
-  border: 1px solid rgba(25, 149, 128, 0.35);
-  color: #2dd4bf;
+  background: rgba(212, 175, 55, 0.15);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  color: #F5C542;
 }
 
 .offer-studio-target-pill {
@@ -131,15 +131,15 @@
 }
 
 .offer-dropzone:hover {
-  border-color: rgba(25, 149, 128, 0.5);
-  background: rgba(25, 149, 128, 0.03);
-  box-shadow: 0 0 30px rgba(25, 149, 128, 0.08);
+  border-color: rgba(212, 175, 55, 0.5);
+  background: rgba(212, 175, 55, 0.03);
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.08);
 }
 
 .offer-dropzone.drag-active {
-  border-color: #199580;
-  background: rgba(25, 149, 128, 0.08);
-  box-shadow: 0 0 35px rgba(25, 149, 128, 0.22);
+  border-color: #D4AF37;
+  background: rgba(212, 175, 55, 0.08);
+  box-shadow: 0 0 35px rgba(212, 175, 55, 0.22);
   transform: scale(1.005);
 }
 
@@ -168,7 +168,7 @@
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  border: 1px solid rgba(25, 149, 128, 0.3);
+  border: 1px solid rgba(212, 175, 55, 0.3);
   animation: radarPulse 3s infinite cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -180,13 +180,13 @@
   width: 56px;
   height: 56px;
   border-radius: 14px;
-  background: linear-gradient(135deg, rgba(25, 149, 128, 0.25), rgba(6, 182, 212, 0.15));
-  border: 1px solid rgba(25, 149, 128, 0.4);
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(6, 182, 212, 0.15));
+  border: 1px solid rgba(212, 175, 55, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #2dd4bf;
-  box-shadow: 0 0 20px rgba(25, 149, 128, 0.25);
+  color: #F5C542;
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
   animation: floatDoc 4s ease-in-out infinite;
   z-index: 2;
 }
@@ -199,7 +199,7 @@
 }
 
 .offer-dropzone-title .accent-browse {
-  color: #199580;
+  color: #D4AF37;
   text-decoration: underline;
   text-underline-offset: 4px;
   font-weight: 700;
@@ -216,7 +216,7 @@
   max-width: 520px;
   margin: 0 auto;
   background: rgba(13, 17, 19, 0.95);
-  border: 1px solid rgba(25, 149, 128, 0.3);
+  border: 1px solid rgba(212, 175, 55, 0.3);
   border-radius: 12px;
   padding: 16px 20px;
   display: flex;
@@ -305,8 +305,8 @@
 }
 
 .offer-parse-btn {
-  background: linear-gradient(135deg, #199580 0%, #116b5b 100%);
-  border: 1px solid rgba(25, 149, 128, 0.5);
+  background: linear-gradient(135deg, #D4AF37 0%, #116b5b 100%);
+  border: 1px solid rgba(212, 175, 55, 0.5);
   color: #ffffff;
   padding: 12px 28px;
   border-radius: 10px;
@@ -318,13 +318,13 @@
   align-items: center;
   gap: 10px;
   cursor: pointer;
-  box-shadow: 0 0 20px rgba(25, 149, 128, 0.35);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.35);
   transition: all 0.25s ease;
 }
 
 .offer-parse-btn:hover:not(:disabled) {
   background: linear-gradient(135deg, #20bfa5 0%, #15806c 100%);
-  box-shadow: 0 0 30px rgba(25, 149, 128, 0.5);
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
   transform: translateY(-2px);
 }
 
@@ -336,13 +336,13 @@
 /* Scanner Animation State */
 .offer-scanner-box {
   background: rgba(3, 5, 6, 0.95);
-  border: 1px solid rgba(25, 149, 128, 0.4);
+  border: 1px solid rgba(212, 175, 55, 0.4);
   border-radius: 14px;
   padding: 36px 24px;
   text-align: center;
   position: relative;
   overflow: hidden;
-  box-shadow: inset 0 0 40px rgba(25, 149, 128, 0.08);
+  box-shadow: inset 0 0 40px rgba(212, 175, 55, 0.08);
 }
 
 /* Laser sweep beam */
@@ -353,8 +353,8 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, transparent, #06b6d4, #199580, #34d399, transparent);
-  box-shadow: 0 0 15px #06b6d4, 0 0 30px #199580;
+  background: linear-gradient(90deg, transparent, #06b6d4, #D4AF37, #34d399, transparent);
+  box-shadow: 0 0 15px #06b6d4, 0 0 30px #D4AF37;
   animation: laserScan 2.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
@@ -363,14 +363,14 @@
   height: 52px;
   margin: 0 auto 16px;
   border-radius: 50%;
-  border: 3px solid rgba(25, 149, 128, 0.2);
-  border-top-color: #199580;
+  border: 3px solid rgba(212, 175, 55, 0.2);
+  border-top-color: #D4AF37;
   border-right-color: #06b6d4;
   animation: spinSlow 1s linear infinite;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #199580;
+  color: #D4AF37;
 }
 
 .scanner-title {
@@ -399,9 +399,9 @@
   font-size: 0.68rem;
   padding: 3px 10px;
   border-radius: 20px;
-  background: rgba(25, 149, 128, 0.1);
-  border: 1px solid rgba(25, 149, 128, 0.25);
-  color: #2dd4bf;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  color: #F5C542;
   font-family: monospace;
   animation: pulseTag 1.5s ease-in-out infinite alternate;
 }
@@ -463,8 +463,8 @@
 
 .snippet-terminal-box {
   background: #020304;
-  border: 1px solid rgba(25, 149, 128, 0.2);
-  border-left: 3px solid #199580;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-left: 3px solid #D4AF37;
   border-radius: 8px;
   padding: 16px;
   font-family: 'Fira Code', 'Courier New', monospace;
@@ -478,7 +478,7 @@
 }
 
 .snippet-terminal-box mark {
-  background: rgba(25, 149, 128, 0.35);
+  background: rgba(212, 175, 55, 0.35);
   color: #5eead4;
   padding: 1px 4px;
   border-radius: 3px;
@@ -570,9 +570,9 @@
 }
 
 .offer-text-input:focus {
-  border-color: #199580;
+  border-color: #D4AF37;
   background: rgba(13, 17, 19, 0.95);
-  box-shadow: 0 0 15px rgba(25, 149, 128, 0.25);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
 }
 
 .offer-grid-two {
@@ -596,8 +596,8 @@
 }
 
 .offer-select-input:focus {
-  border-color: #199580;
-  box-shadow: 0 0 15px rgba(25, 149, 128, 0.25);
+  border-color: #D4AF37;
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.25);
 }
 
 .offer-form-btn-row {
@@ -629,7 +629,7 @@
 
 .offer-commit-btn {
   flex: 1.4;
-  background: linear-gradient(135deg, #199580 0%, #10b981 100%);
+  background: linear-gradient(135deg, #D4AF37 0%, #10b981 100%);
   border: none;
   color: #ffffff;
   padding: 10px 18px;
@@ -643,12 +643,12 @@
   justify-content: center;
   gap: 8px;
   cursor: pointer;
-  box-shadow: 0 0 16px rgba(25, 149, 128, 0.3);
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.3);
   transition: all 0.2s ease;
 }
 
 .offer-commit-btn:hover {
-  box-shadow: 0 0 25px rgba(25, 149, 128, 0.5);
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
   transform: translateY(-1px);
 }
 
@@ -724,12 +724,12 @@
 
 @keyframes pulseTag {
   from {
-    border-color: rgba(25, 149, 128, 0.25);
-    box-shadow: 0 0 5px rgba(25, 149, 128, 0.1);
+    border-color: rgba(212, 175, 55, 0.25);
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.1);
   }
   to {
-    border-color: rgba(25, 149, 128, 0.6);
-    box-shadow: 0 0 12px rgba(25, 149, 128, 0.3);
+    border-color: rgba(212, 175, 55, 0.6);
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
   }
 }
 

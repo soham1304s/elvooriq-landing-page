@@ -102,7 +102,7 @@ export default function ChannelAuditModal({ creator, onClose, onAuditSubmitted }
         <div className="audit-modal-header">
           <div>
             <div className="audit-header-title">
-              <Award size={20} style={{ color: '#2dd4bf' }} />
+              <Award size={20} style={{ color: '#F5C542' }} />
               Creator Channel Coaching & Audit
             </div>
             <div className="audit-header-sub">
@@ -115,7 +115,7 @@ export default function ChannelAuditModal({ creator, onClose, onAuditSubmitted }
         {/* Content */}
         <form onSubmit={handleSubmit} className="audit-modal-content">
           {successNotice && (
-            <div style={{ background: 'rgba(25,149,128,0.2)', border: '1px solid #199580', color: '#2dd4bf', padding: '12px 16px', borderRadius: '10px', fontSize: '0.85rem' }}>
+            <div style={{ background: 'rgba(212, 175, 55,0.2)', border: '1px solid #D4AF37', color: '#F5C542', padding: '12px 16px', borderRadius: '10px', fontSize: '0.85rem' }}>
               ✓ {successNotice}
             </div>
           )}

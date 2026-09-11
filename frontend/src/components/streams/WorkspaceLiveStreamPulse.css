@@ -17,7 +17,7 @@
   flex-wrap: wrap;
   gap: 12px;
   background: rgba(13, 17, 19, 0.75);
-  border: 1px solid rgba(25, 149, 128, 0.2);
+  border: 1px solid rgba(212, 175, 55, 0.2);
   border-radius: 14px;
   padding: 16px 20px;
   backdrop-filter: blur(12px);
@@ -38,7 +38,7 @@
 .stream-live-indicator-core {
   width: 10px;
   height: 10px;
-  background: #2dd4bf;
+  background: #F5C542;
   border-radius: 50%;
   position: absolute;
   top: 2px;
@@ -88,7 +88,7 @@
 }
 
 .stream-kpi-val {
-  color: #2dd4bf;
+  color: #F5C542;
   font-weight: 800;
 }
 
@@ -112,15 +112,15 @@
 }
 
 .stream-filter-btn:hover {
-  border-color: #199580;
+  border-color: #D4AF37;
   color: #f1f5f9;
 }
 
 .stream-filter-btn.active {
-  background: rgba(25, 149, 128, 0.2);
-  border-color: #199580;
-  color: #2dd4bf;
-  box-shadow: 0 0 12px rgba(25, 149, 128, 0.2);
+  background: rgba(212, 175, 55, 0.2);
+  border-color: #D4AF37;
+  color: #F5C542;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.2);
 }
 
 /* Monitoring Grid */
@@ -145,8 +145,8 @@
 
 .stream-monitor-card.is-live {
   border-color: rgba(45, 212, 191, 0.4);
-  background: radial-gradient(circle at top right, rgba(25, 149, 128, 0.12), rgba(13, 17, 19, 0.9));
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(25, 149, 128, 0.15);
+  background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.12), rgba(13, 17, 19, 0.9));
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.15);
 }
 
 .stream-card-top {
@@ -210,8 +210,8 @@
 
 .stream-status-tag.live {
   background: rgba(45, 212, 191, 0.18);
-  color: #2dd4bf;
-  border: 1px solid #2dd4bf;
+  color: #F5C542;
+  border: 1px solid #F5C542;
   box-shadow: 0 0 10px rgba(45, 212, 191, 0.3);
 }
 
@@ -264,7 +264,7 @@
 }
 
 .stream-metric-val.highlight {
-  color: #2dd4bf;
+  color: #F5C542;
 }
 
 /* Stream Card Action Buttons */
@@ -291,25 +291,25 @@
 }
 
 .stream-action-btn:hover {
-  background: rgba(25, 149, 128, 0.15);
-  border-color: #199580;
-  color: #2dd4bf;
+  background: rgba(212, 175, 55, 0.15);
+  border-color: #D4AF37;
+  color: #F5C542;
 }
 
 .stream-action-btn.primary {
-  background: linear-gradient(135deg, rgba(25, 149, 128, 0.3), rgba(20, 184, 166, 0.2));
-  border-color: rgba(25, 149, 128, 0.4);
-  color: #2dd4bf;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), rgba(20, 184, 166, 0.2));
+  border-color: rgba(212, 175, 55, 0.4);
+  color: #F5C542;
 }
 
 .stream-action-btn.primary:hover {
-  background: linear-gradient(135deg, rgba(25, 149, 128, 0.5), rgba(20, 184, 166, 0.35));
-  box-shadow: 0 0 12px rgba(25, 149, 128, 0.3);
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.5), rgba(20, 184, 166, 0.35));
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
 }
 
 /* Real-Time Telemetry Feed Terminal */
 .stream-telemetry-terminal {
-  background: #030506;
+  background: #0A0A0A;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
   padding: 16px;
@@ -328,7 +328,7 @@
 .telemetry-terminal-title {
   font-size: 0.75rem;
   font-weight: 800;
-  color: #199580;
+  color: #D4AF37;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -356,6 +356,6 @@
 }
 
 .telemetry-event-tag {
-  color: #2dd4bf;
+  color: #F5C542;
   font-weight: 700;
 }

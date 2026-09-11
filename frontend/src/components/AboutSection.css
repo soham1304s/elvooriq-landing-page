@@ -1,15 +1,13 @@
 .about-section {
-  background-color: #f8f9fa;
-  /* Light off-white background */
-  color: #1f2937;
-  /* Dark gray text for light mode */
+  background-color: var(--color-bg-base, #0A0A0A);
+  color: var(--color-text-main, #F5F5F0);
   padding: 8rem 0;
   border-top-left-radius: 4rem;
   border-top-right-radius: 4rem;
   margin-top: -2rem;
-  /* Overlap previous section */
   position: relative;
   z-index: 20;
+  border-top: 1px solid var(--color-border, #2A2520);
 }
 
 .about-container {
@@ -31,7 +29,7 @@
   left: 0;
   width: 120px;
   height: 120px;
-  border: 1px solid rgba(24, 147, 128, 0.3);
+  border: 1px solid var(--color-border, #2A2520);
   border-radius: 50%;
   z-index: 1;
 }
@@ -42,23 +40,24 @@
   border-radius: 1.5rem;
   position: relative;
   z-index: 2;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 15px rgba(212, 175, 55, 0.1);
+  border: 1px solid var(--color-border, #2A2520);
 }
 
 .about-badge {
   position: absolute;
   top: 4rem;
   right: 0;
-  background-color: var(--color-primary);
-  color: white;
-  padding: 1rem;
+  background: var(--color-gold-gradient, linear-gradient(135deg, #D4AF37 0%, #F5C542 100%));
+  color: #0A0A0A;
+  padding: 1rem 1.25rem;
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   z-index: 3;
-  box-shadow: 0 10px 20px rgba(24, 147, 128, 0.3);
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.35);
   transform: translateX(30%);
 }
 
@@ -71,7 +70,7 @@
 
 .badge-text {
   font-size: 0.65rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.1em;
   margin-top: 0.25rem;
 }
@@ -83,10 +82,9 @@
   width: 50%;
   height: auto;
   border-radius: 1rem;
-  border: 8px solid #f8f9fa;
-  /* Matches section background to create a cutout effect */
+  border: 8px solid var(--color-bg-base, #0A0A0A);
   z-index: 4;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.85), var(--color-border-glow);
   transform: translateY(10%) translateX(20%);
 }
 
@@ -106,14 +104,14 @@
 .section-line {
   width: 40px;
   height: 2px;
-  background-color: var(--color-primary);
+  background-color: var(--color-primary, #D4AF37);
 }
 
 .section-subtitle {
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.15em;
-  color: var(--color-primary);
+  color: var(--color-primary, #D4AF37);
 }
 
 .about-title {
@@ -121,17 +119,17 @@
   font-size: 3.5rem;
   line-height: 1.1;
   font-weight: 600;
-  color: #111827;
+  color: var(--color-text-main, #F5F5F0);
   margin-bottom: 0.5rem;
 }
 
 .about-title .title-highlight {
-  color: var(--color-primary);
+  color: var(--color-primary, #D4AF37);
 }
 
 .about-paragraph {
   font-size: 1.1rem;
-  color: #4b5563;
+  color: var(--color-text-muted, #A8A29A);
   line-height: 1.6;
 }
 
@@ -145,14 +143,14 @@
 
 .block-mission,
 .block-vision {
-  background-color: #f3f4f6;
-  /* slightly darker than bg */
+  background-color: var(--color-bg-card-warm, #1A1512);
   padding: 1.5rem;
   border-radius: 0.75rem;
+  border: 1px solid var(--color-border, #2A2520);
 }
 
 .block-mission {
-  border-left: 4px solid var(--color-primary);
+  border-left: 4px solid var(--color-primary, #D4AF37);
 }
 
 .block-title {
@@ -163,16 +161,16 @@
 }
 
 .block-mission .block-title {
-  color: var(--color-primary);
+  color: var(--color-primary, #D4AF37);
 }
 
 .block-vision .block-title {
-  color: #6b7280;
+  color: var(--color-text-muted, #A8A29A);
 }
 
 .block-text {
   font-size: 0.95rem;
-  color: #374151;
+  color: var(--color-text-main, #F5F5F0);
   line-height: 1.5;
 }
 
@@ -185,10 +183,18 @@
 }
 
 .feature-card {
-  background-color: white;
+  background-color: var(--color-bg-card, #141414);
   padding: 1.5rem;
   border-radius: 0.75rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  border: 1px solid var(--color-border, #2A2520);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5), var(--color-border-glow);
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  border-color: rgba(212, 175, 55, 0.45);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), 0 0 16px rgba(212, 175, 55, 0.18);
 }
 
 .feature-header {
@@ -199,18 +205,18 @@
 }
 
 .feature-icon {
-  color: var(--color-primary);
+  color: var(--color-primary, #D4AF37);
 }
 
 .feature-title {
   font-size: 1rem;
   font-weight: 700;
-  color: #111827;
+  color: var(--color-text-main, #F5F5F0);
 }
 
 .feature-desc {
   font-size: 0.85rem;
-  color: #6b7280;
+  color: var(--color-text-muted, #A8A29A);
   line-height: 1.5;
 }
 

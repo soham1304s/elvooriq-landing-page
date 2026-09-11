@@ -82,39 +82,8 @@ function LandingPage() {
           onClick={handleReplayIntro}
           className="replay-intro-pill"
           title="Replay Opening Cosmic Sequence"
-          style={{
-            position: 'fixed',
-            bottom: '24px',
-            right: '24px',
-            zIndex: 88,
-            background: 'rgba(15, 23, 42, 0.75)',
-            border: '1px solid rgba(229, 193, 88, 0.35)',
-            color: '#FFE57F',
-            padding: '7px 14px',
-            borderRadius: '9999px',
-            fontSize: '0.74rem',
-            fontWeight: 700,
-            letterSpacing: '1px',
-            backdropFilter: 'blur(12px)',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '6px',
-            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.4)',
-            transition: 'all 0.3s ease'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.borderColor = '#00F59B';
-            e.currentTarget.style.transform = 'translateY(-2px)';
-            e.currentTarget.style.boxShadow = '0 6px 24px rgba(0, 245, 155, 0.25)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.borderColor = 'rgba(229, 193, 88, 0.35)';
-            e.currentTarget.style.transform = 'translateY(0)';
-            e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.4)';
-          }}
         >
-          <span style={{ color: '#00F59B' }}>✦</span> REPLAY INTRO
+          <span style={{ color: '#F5C542' }}>✦</span> REPLAY INTRO
         </button>
       )}
     </>

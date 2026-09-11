@@ -22,12 +22,17 @@ const CreatorStoriesPage = () => {
           const data = await res.json();
           if (data.success && data.caseStudies && data.caseStudies.length > 0) {
             const merged = data.caseStudies.map((cs, idx) => {
-              const fallback = fallbackStories[idx] || fallbackStories[0];
+              const fallback = fallbackStories.find(f => 
+                (cs.name && f.name.toLowerCase().includes(cs.name.toLowerCase().split(' ')[0])) ||
+                (cs.id && f.id === cs.id)
+              ) || fallbackStories[idx] || fallbackStories[0];
               return {
                 ...fallback,
                 ...cs,
                 id: cs.id || fallback.id,
-                image: fallback.image
+                category: cs.nicheCategory || cs.category || fallback.category,
+                image: fallback.image,
+                objectPosition: fallback.objectPosition || '50% 15%'
               };
             });
             setStories(merged);
@@ -40,17 +45,21 @@ const CreatorStoriesPage = () => {
     fetchStories();
   }, []);
 
-  const categories = ['ALL', 'LIFESTYLE', 'GAMING', 'TECH'];
+  const categories = ['ALL', 'LIFESTYLE', 'FASHION & BEAUTY', 'GAMING'];
 
   const filteredStories = selectedCategory === 'ALL'
     ? stories
-    : stories.filter(s => s.category?.toUpperCase().includes(selectedCategory));
+    : stories.filter(s => {
+        const cat = (s.category || '').toUpperCase();
+        if (selectedCategory === 'FASHION & BEAUTY') return cat.includes('FASHION') || cat.includes('BEAUTY');
+        return cat.includes(selectedCategory);
+      });
 
   return (
     <PageLayout>
       <div className="page-hero hero-creator-stories">
         <div className="page-hero-badge">
-          <Sparkles size={14} style={{ color: '#00f59b' }} />
+          <Sparkles size={14} style={{ color: '#D4AF37' }} />
           <span>CREATOR CASE STUDIES</span>
         </div>
         <h1 className="page-hero-title">
@@ -87,7 +96,12 @@ const CreatorStoriesPage = () => {
             >
               {/* Creator Card Image Header */}
               <div className="card-image-header">
-                <img src={story.image} alt={story.name} className="case-creator-image" />
+                <img 
+                  src={story.image} 
+                  alt={story.name} 
+                  className="case-creator-image" 
+                  style={{ objectPosition: story.objectPosition || '50% 15%' }}
+                />
                 <div className="card-image-gradient"></div>
                 <div className="card-badge-top">
                   <span className="case-journey-tag">{story.journey}</span>
@@ -139,7 +153,7 @@ const CreatorStoriesPage = () => {
         {/* Bottom CTA Banner */}
         <div className="cta-banner">
           <div className="cta-badge">
-            <Award size={14} style={{ color: '#00f59b' }} />
+            <Award size={14} style={{ color: '#D4AF37' }} />
             <span>JOIN THE TALENT ROSTER</span>
           </div>
           <h2 className="cta-title">Write Your Own Success Story</h2>

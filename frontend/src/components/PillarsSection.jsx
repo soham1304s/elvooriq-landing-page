@@ -2,15 +2,13 @@ import React from 'react';
 import { Users, Radio, GraduationCap, Handshake } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '../utils/animations';
-import pillar1Img from '../assets/3.png';
-import pillar3Img from '../assets/4.png';
 import './PillarsSection.css';
 
 const pillars = [
   {
     id: '01',
     title: 'Talent Management',
-    image: pillar1Img,
+    image: '/pillars/management.png',
     icon: <Users size={20} />
   },
   {
@@ -22,7 +20,7 @@ const pillars = [
   {
     id: '03',
     title: 'Creator Education',
-    image: pillar3Img,
+    image: '/pillars/education.png',
     icon: <GraduationCap size={20} />
   },
   {

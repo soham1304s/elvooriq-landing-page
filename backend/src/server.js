@@ -32,6 +32,7 @@ const offerLetterRoutes = require('./routes/offerLetterRoutes');
 const complianceRoutes = require('./routes/complianceRoutes');
 const githubRoutes = require('./routes/githubRoutes');
 const caseStudyRoutes = require('./routes/caseStudyRoutes');
+const creationRoutes = require('./routes/creationRoutes');
 const enterpriseSocket = require('./sockets/enterprise');
 const { initOverdueCron } = require('./cron/overdueCron');
 const { PrismaClient } = require('@prisma/client');
@@ -118,6 +119,7 @@ app.use('/api/candidate', offerLetterRoutes);
 app.use('/api/candidate', complianceRoutes);
 app.use('/api/github', githubRoutes);
 app.use('/api/case-studies', caseStudyRoutes);
+app.use('/api/creations', creationRoutes);
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
 // Socket.io Connection

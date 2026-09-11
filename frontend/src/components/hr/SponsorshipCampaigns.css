@@ -3,7 +3,7 @@
   flex-direction: column;
   height: 100%;
   max-height: calc(100vh - 100px);
-  background: radial-gradient(circle at 80% 10%, rgba(25, 149, 128, 0.05) 0%, rgba(5, 8, 10, 0.98) 90%);
+  background: radial-gradient(circle at 80% 10%, rgba(212, 175, 55, 0.05) 0%, rgba(5, 8, 10, 0.98) 90%);
   color: #f1f5f9;
   overflow-y: auto;
   padding: 16px 20px;
@@ -28,12 +28,12 @@
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: linear-gradient(135deg, rgba(25, 149, 128, 0.3) 0%, rgba(45, 212, 191, 0.15) 100%);
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.3) 0%, rgba(45, 212, 191, 0.15) 100%);
   border: 1px solid rgba(45, 212, 191, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #2dd4bf;
+  color: #F5C542;
 }
 
 .engine-title-row {
@@ -57,7 +57,7 @@
   padding: 2px 8px;
   background: rgba(45, 212, 191, 0.12);
   border: 1px solid rgba(45, 212, 191, 0.3);
-  color: #2dd4bf;
+  color: #F5C542;
   border-radius: 4px;
 }
 
@@ -96,10 +96,10 @@
 }
 
 .campaign-btn.primary {
-  background: linear-gradient(135deg, #199580, #0d9488);
+  background: linear-gradient(135deg, #D4AF37, #F5C542);
   border-color: rgba(45, 212, 191, 0.4);
   color: #ffffff;
-  box-shadow: 0 0 12px rgba(25, 149, 128, 0.25);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.25);
 }
 
 .campaign-btn.primary:hover {
@@ -168,7 +168,7 @@
 
 .stat-icon-wrapper.locked {
   background: rgba(45, 212, 191, 0.12);
-  color: #2dd4bf;
+  color: #F5C542;
   border: 1px solid rgba(45, 212, 191, 0.3);
 }
 
@@ -259,8 +259,8 @@
   width: 34px;
   height: 34px;
   border-radius: 8px;
-  background: linear-gradient(135deg, #199580, #2dd4bf);
-  color: #030506;
+  background: linear-gradient(135deg, #D4AF37, #F5C542);
+  color: #0A0A0A;
   font-size: 15px;
   font-weight: 800;
   display: flex;
@@ -309,7 +309,7 @@
 }
 
 .escrow-val {
-  color: #2dd4bf;
+  color: #F5C542;
   font-weight: 700;
 }
 
@@ -416,7 +416,7 @@
 }
 
 .split-line.creator {
-  color: #2dd4bf;
+  color: #F5C542;
 }
 
 .split-line.agency {
@@ -504,10 +504,10 @@
 }
 
 .resolve-btn.approve {
-  background: linear-gradient(135deg, #199580, #0d9488);
+  background: linear-gradient(135deg, #D4AF37, #F5C542);
   border-color: rgba(45, 212, 191, 0.4);
   color: #ffffff;
-  box-shadow: 0 0 10px rgba(25, 149, 128, 0.2);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
 }
 
 .resolve-btn.approve:hover {
@@ -594,7 +594,7 @@
 }
 
 .form-input:focus, .form-select:focus {
-  border-color: #2dd4bf;
+  border-color: #F5C542;
 }
 
 .modal-actions {
@@ -619,6 +619,6 @@
 }
 
 .modal-btn.submit {
-  background: #2dd4bf;
-  color: #030506;
+  background: #F5C542;
+  color: #0A0A0A;
 }

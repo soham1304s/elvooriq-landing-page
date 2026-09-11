@@ -84,7 +84,7 @@ export default function CreatorGrowthForecastModal({ creator, onClose }) {
         <div className="forecast-modal-header">
           <div>
             <div className="forecast-header-title">
-              <TrendingUp size={20} style={{ color: '#2dd4bf' }} />
+              <TrendingUp size={20} style={{ color: '#F5C542' }} />
               Predictive Creator Growth Analytics
             </div>
             <div className="forecast-header-sub">
@@ -108,8 +108,8 @@ export default function CreatorGrowthForecastModal({ creator, onClose }) {
                 <div>
                   <span className="tier-badge-pill" style={{
                     background: isBreakout ? 'rgba(45,212,191,0.2)' : 'rgba(96,165,250,0.2)',
-                    color: isBreakout ? '#2dd4bf' : '#60a5fa',
-                    border: `1px solid ${isBreakout ? '#2dd4bf' : '#60a5fa'}`
+                    color: isBreakout ? '#F5C542' : '#60a5fa',
+                    border: `1px solid ${isBreakout ? '#F5C542' : '#60a5fa'}`
                   }}>
                     Recommended Roster Assignment
                   </span>
@@ -133,7 +133,7 @@ export default function CreatorGrowthForecastModal({ creator, onClose }) {
                 </div>
                 <div className="forecast-kpi-box">
                   <span className="forecast-kpi-lbl">Trajectory Status</span>
-                  <span className="forecast-kpi-val" style={{ color: '#2dd4bf' }}>{forecastData.growthRateIndicator}</span>
+                  <span className="forecast-kpi-val" style={{ color: '#F5C542' }}>{forecastData.growthRateIndicator}</span>
                 </div>
                 <div className="forecast-kpi-box">
                   <span className="forecast-kpi-lbl">Forecasting Horizon</span>

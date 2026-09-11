@@ -310,7 +310,7 @@ export default function OfferLetterVerification({ userId, employeeName, onSyncCo
               <div>
                 <div className="snippet-panel-header">
                   <span className="snippet-panel-title">
-                    <FileCheck size={14} color="#199580" />
+                    <FileCheck size={14} color="#D4AF37" />
                     Forensic Contract Context
                   </span>
                   <span className="snippet-match-badge">
@@ -341,7 +341,7 @@ export default function OfferLetterVerification({ userId, employeeName, onSyncCo
 
               <div className="offer-field-group">
                 <label className="offer-field-label">
-                  <Briefcase size={12} color="#199580" />
+                  <Briefcase size={12} color="#D4AF37" />
                   Job Title / Official Designation
                 </label>
                 <div className="offer-input-wrapper">
@@ -359,7 +359,7 @@ export default function OfferLetterVerification({ userId, employeeName, onSyncCo
               <div className="offer-grid-two">
                 <div className="offer-field-group">
                   <label className="offer-field-label">
-                    <DollarSign size={12} color="#199580" />
+                    <DollarSign size={12} color="#D4AF37" />
                     Monthly Salary / Base
                   </label>
                   <div className="offer-input-wrapper">
@@ -391,7 +391,7 @@ export default function OfferLetterVerification({ userId, employeeName, onSyncCo
 
               <div className="offer-field-group">
                 <label className="offer-field-label">
-                  <Calendar size={12} color="#199580" />
+                  <Calendar size={12} color="#D4AF37" />
                   Effective Start Date
                 </label>
                 <div className="offer-input-wrapper">
