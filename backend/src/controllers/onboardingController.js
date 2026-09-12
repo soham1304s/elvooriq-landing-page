@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const pdf = require('pdf-parse');
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
@@ -92,8 +91,24 @@ const uploadAndParseOfferLetter = async (req, res) => {
     const dataBuffer = fs.readFileSync(req.file.path);
     
     // Parse PDF into raw string
-    const pdfData = await pdf(dataBuffer);
-    const extractedText = pdfData.text || '';
+    let extractedText = '';
+    try {
+      const pdfParseModule = require('pdf-parse');
+      if (typeof pdfParseModule === 'function') {
+        const pdfData = await pdfParseModule(dataBuffer);
+        extractedText = pdfData.text || '';
+      } else if (pdfParseModule.PDFParse) {
+        const parser = new pdfParseModule.PDFParse({ data: dataBuffer });
+        try {
+          const result = await parser.getText();
+          extractedText = result.text || '';
+        } finally {
+          if (typeof parser.destroy === 'function') await parser.destroy();
+        }
+      }
+    } catch (parseErr) {
+      console.warn('PDF parsing warning:', parseErr.message);
+    }
 
     // Run custom regex NLP engine
     const parsedData = parseOfferLetterText(extractedText);

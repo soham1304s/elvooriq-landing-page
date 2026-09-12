@@ -2,13 +2,13 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const pdfParseModule = require('pdf-parse');
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 const authorize = require('../middlewares/rbac');
 const { extractCompensationDetails } = require('../services/extractionEngine');
 
 async function parsePdfBuffer(buffer) {
+  const pdfParseModule = require('pdf-parse');
   if (typeof pdfParseModule === 'function') {
     return await pdfParseModule(buffer);
   }

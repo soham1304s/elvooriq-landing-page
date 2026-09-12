@@ -46,7 +46,11 @@ exports.addCreator = async (req, res) => {
     res.status(201).json({ success: true, creator: newCreator });
   } catch (error) {
     console.error('Error adding creator:', error);
-    require('fs').appendFileSync('error.log', new Date().toISOString() + ' ' + (error.stack || error) + '\n');
+    if (!process.env.VERCEL) {
+      try {
+        require('fs').appendFileSync('error.log', new Date().toISOString() + ' ' + (error.stack || error) + '\n');
+      } catch (_) {}
+    }
     res.status(500).json({ success: false, message: 'Server error', error: error.toString() });
   }
 };
