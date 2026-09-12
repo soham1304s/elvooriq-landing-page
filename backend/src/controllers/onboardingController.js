@@ -114,10 +114,12 @@ const uploadAndParseOfferLetter = async (req, res) => {
     const parsedData = parseOfferLetterText(extractedText);
 
     // Save PDF file permanently under workspace uploads and get path link
-    const uploadDir = path.join(__dirname, '../../uploads/contracts');
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir, { recursive: true });
-    }
+    const uploadDir = process.env.VERCEL ? '/tmp/uploads/contracts' : path.join(__dirname, '../../uploads/contracts');
+    try {
+      if (!fs.existsSync(uploadDir)) {
+        fs.mkdirSync(uploadDir, { recursive: true });
+      }
+    } catch (_) {}
     
     const permanentPath = path.join(uploadDir, `${targetUser.id}-offer-letter.pdf`);
     fs.copyFileSync(req.file.path, permanentPath);

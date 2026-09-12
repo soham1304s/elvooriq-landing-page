@@ -80,14 +80,20 @@ router.post('/generate-and-send', authorize(['ADMIN']), async (req, res) => {
     const pdfBuffer = await compileOfferPDF(offerPayload, candidateUser);
 
     // 3. Write PDF to static asset storage (for direct dashboard download)
-    const staticDir = path.join(__dirname, '../../uploads/offer-letters');
-    if (!fs.existsSync(staticDir)) {
-      fs.mkdirSync(staticDir, { recursive: true });
-    }
+    const staticDir = process.env.VERCEL ? '/tmp/uploads/offer-letters' : path.join(__dirname, '../../uploads/offer-letters');
+    try {
+      if (!fs.existsSync(staticDir)) {
+        fs.mkdirSync(staticDir, { recursive: true });
+      }
+    } catch (_) {}
 
     const fileName = `${candidateUser.id}-offer-letter.pdf`;
     const absolutePath = path.join(staticDir, fileName);
-    fs.writeFileSync(absolutePath, pdfBuffer);
+    try {
+      fs.writeFileSync(absolutePath, pdfBuffer);
+    } catch (writeErr) {
+      console.warn('PDF write notice:', writeErr.message);
+    }
     const pdfUrl = `/uploads/offer-letters/${fileName}`;
 
     // 4. Save or Update Offer Record in DB

@@ -10,10 +10,12 @@ const prisma = new PrismaClient();
 const REQUIRED_TYPES = ['ID_PROOF', 'DEGREE_CERTIFICATE', 'EXPERIENCE_LETTER', 'BANK_PROOF', 'NDA', 'TAX_FORM'];
 
 // Setup compliance file storage
-const complianceUploadDir = path.join(__dirname, '../../uploads/compliance-documents');
-if (!fs.existsSync(complianceUploadDir)) {
-  fs.mkdirSync(complianceUploadDir, { recursive: true });
-}
+const complianceUploadDir = process.env.VERCEL ? '/tmp/uploads/compliance-documents' : path.join(__dirname, '../../uploads/compliance-documents');
+try {
+  if (!fs.existsSync(complianceUploadDir)) {
+    fs.mkdirSync(complianceUploadDir, { recursive: true });
+  }
+} catch (_) {}
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {

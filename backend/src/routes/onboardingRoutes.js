@@ -10,10 +10,12 @@ const {
 } = require('../controllers/onboardingController');
 
 // Ensure temporary upload directory exists
-const tempUploadDir = path.join(__dirname, '../../uploads/temp');
-if (!fs.existsSync(tempUploadDir)) {
-  fs.mkdirSync(tempUploadDir, { recursive: true });
-}
+const tempUploadDir = process.env.VERCEL ? '/tmp/uploads/temp' : path.join(__dirname, '../../uploads/temp');
+try {
+  if (!fs.existsSync(tempUploadDir)) {
+    fs.mkdirSync(tempUploadDir, { recursive: true });
+  }
+} catch (_) {}
 
 // Multer configuration for PDF upload (max 15MB)
 const storage = multer.diskStorage({
