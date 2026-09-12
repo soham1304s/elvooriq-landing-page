@@ -9,7 +9,7 @@ const WhatsAppButton = () => {
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
   // Suppress customer floating widget on authenticated portals and operational consoles
-  const hiddenPaths = ['/workspace-portal', '/admin-panel', '/hr-panel', '/dashboard', '/admin/login'];
+  const hiddenPaths = ['/workspace-portal', '/admin-panel', '/hr-panel', '/admin/login'];
   if (hiddenPaths.some(p => location.pathname.startsWith(p))) {
     return null;
   }

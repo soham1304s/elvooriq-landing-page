@@ -4,7 +4,6 @@ import LandingPage from './pages/LandingPage';
 import SplitLogin from './pages/SplitLogin';
 import SplitRegister from './pages/SplitRegister';
 import AdminDashboard from './pages/AdminDashboard';
-import Dashboard from './pages/Dashboard';
 import AdminLogin from './pages/AdminLogin';
 import ProtectedRoute from './components/ProtectedRoute';
 import RoleRoute from './components/RoleRoute';
@@ -79,11 +78,7 @@ function App() {
           } />
 
           <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/dashboard" element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          } />
+          <Route path="/dashboard" element={<Navigate to="/" replace />} />
 
           {/* Platform Routes */}
           <Route path="/platform/live-streaming" element={<LiveStreamingPage />} />

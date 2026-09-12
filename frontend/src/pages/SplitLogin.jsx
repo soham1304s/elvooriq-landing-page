@@ -74,7 +74,13 @@ const SplitLogin = () => {
           });
         }
         
-        navigate('/dashboard');
+        if (response.data.user?.role === 'ADMIN') {
+          navigate('/admin-panel');
+        } else if (response.data.user?.role === 'EMPLOYEE') {
+          navigate('/workspace-portal');
+        } else {
+          navigate('/');
+        }
       }
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to authenticate. Please try again.');

@@ -39,7 +39,7 @@ const FlowEngine = () => {
     if (authSuccess) {
       // Redirect to dashboard after success animation
       const timer = setTimeout(() => {
-        navigate('/dashboard');
+        navigate('/');
       }, 3000);
       return () => clearTimeout(timer);
     }

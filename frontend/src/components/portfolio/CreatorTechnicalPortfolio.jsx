@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import GithubRepositoryCard from './GithubRepositoryCard';
 import { RefreshCw, Code, LayoutGrid } from 'lucide-react';
 
+const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.PROD ? '' : 'http://localhost:5000');
+
 export default function CreatorTechnicalPortfolio({ userId }) {
   const [profile, setProfile] = useState(null);
   const [repositories, setRepositories] = useState([]);
@@ -14,12 +16,22 @@ export default function CreatorTechnicalPortfolio({ userId }) {
 
   const fetchPortfolioData = async () => {
     try {
-      const targetUserId = userId || localStorage.getItem('elvooriq_userId');
+      let targetUserId = userId || localStorage.getItem('elvooriq_userId');
+      if (!targetUserId) {
+        try {
+          const userObj = JSON.parse(localStorage.getItem('elvooriq_user') || '{}');
+          targetUserId = userObj.id;
+        } catch (e) {
+          targetUserId = null;
+        }
+      }
+
       if (!targetUserId) {
         setLoading(false);
         return;
       }
-      const response = await fetch(`/api/github/portfolio/${targetUserId}`, {
+
+      const response = await fetch(`${API_URL}/api/github/portfolio/${targetUserId}`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('elvooriq_token')}`
         }
@@ -42,7 +54,7 @@ export default function CreatorTechnicalPortfolio({ userId }) {
     setSyncing(true);
     setError('');
     try {
-      const response = await fetch('/api/github/sync', {
+      const response = await fetch(`${API_URL}/api/github/sync`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

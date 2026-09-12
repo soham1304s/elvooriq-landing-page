@@ -124,6 +124,13 @@ const SplitRegister = () => {
     try {
       const response = await axios.post(`${API_URL}/api/auth/register`, formData);
       if (response.data.success) {
+        if (response.data.requiresApproval) {
+          navigate('/login', {
+            state: { message: response.data.message || 'Registration successful! Your account is pending admin approval.' }
+          });
+          return;
+        }
+
         if (response.data.token) {
           localStorage.setItem('elvooriq_token', response.data.token);
         }
@@ -135,6 +142,12 @@ const SplitRegister = () => {
         }
         if (response.data.user) {
           localStorage.setItem('elvooriq_user', JSON.stringify(response.data.user));
+          if (response.data.user.id) {
+            localStorage.setItem('elvooriq_userId', response.data.user.id);
+          }
+          if (response.data.user.role === 'ADMIN') {
+            localStorage.setItem('elvooriq_admin_auth', 'true');
+          }
         }
         
         // Emit success event
@@ -145,7 +158,7 @@ const SplitRegister = () => {
           });
         }
         
-        navigate('/dashboard');
+        navigate('/');
       }
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to register. Please try again.');

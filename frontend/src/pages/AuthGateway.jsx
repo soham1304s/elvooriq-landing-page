@@ -60,7 +60,7 @@ const AuthGateway = () => {
     } else if (user.role === 'EMPLOYEE') {
       navigate('/workspace-portal');
     } else {
-      navigate('/dashboard');
+      navigate('/');
     }
   };
 

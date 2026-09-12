@@ -45,7 +45,7 @@ const SuccessAnimation = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
       >
-        Redirecting to your dashboard...
+        Redirecting...
       </motion.p>
     </motion.div>
   );
