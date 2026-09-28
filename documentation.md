@@ -258,7 +258,7 @@ flowchart TD
     I --> J[Learning Center: Dynamic Real-Time Broadcast Showcase]
     J --> K[ELVOORIQ Journal: Editorial Thought Leadership & Modal Reader]
     K --> L[FAQ Section: Smooth Accordion Matrix]
-    L --> M[Contact Section: Lead Capture & Jaipur HQ Interactive Map]
+    L --> M[Contact Section: Lead Capture & Gurugram HQ Interactive Map]
     M --> N[Footer: Platform, Services & Corporate Sitemaps]
     N --> O[Floating Action: Pulse WhatsApp Concierge Widget]
 ```
@@ -701,7 +701,7 @@ flowchart TD
 - **Files:** `frontend/src/components/ContactSection.jsx`, `ContactSection.css`
 - **Role:** High-conversion contact form, direct communication links, and an interactive headquarters location pin.
 - **UI Architecture:**
-  - 2-column layout: Left column holds the contact form (`Full Name`, `Email`, `Subject`, `Message`, `Send Message`). Right column features WhatsApp, Email, Instagram direct touchpoint cards and an interactive dark grid map widget centered on Jaipur, Rajasthan.
+  - 2-column layout: Left column holds the contact form (`Full Name`, `Email`, `Subject`, `Message`, `Send Message`). Right column features WhatsApp, Email, Instagram direct touchpoint cards and an interactive dark grid map widget centered on Gurugram, Haryana.
 - **Verbatim Copywriting:**
   - **Section Subtitle:** `— CONTACT US`
   - **Headline:**
@@ -718,8 +718,8 @@ flowchart TD
     - **EMAIL:** `hello@elvooriq.com` (Subtext: *Within one business day*)
     - **INSTAGRAM:** `@elvooriq` (Subtext: *DM us anytime*)
   - **Headquarters Map Tooltip:**
-    - **Title:** `JAIPUR HEADQUARTERS`
-    - **Address:** `21, Mahapura, 200ft SEZ Road, Mahapura Rd, near Mahindra SEZ, Jaipur, Rajasthan 302026`
+    - **Title:** `GURUGRAM HEADQUARTERS`
+    - **Address:** `50-1, Vishwakarma Nagar, Sector 10A, Gurugram, Haryana 122001, India`
 
 ---
 
@@ -730,7 +730,7 @@ flowchart TD
 - **UI Architecture:**
   - Top brand row with `160px` logo graphic and mission statement.
   - 3-column navigation directory (`Platform`, `Services`, `Company`).
-  - Bottom legal row with Privacy Policy, Terms of Service, and Jaipur HQ marker.
+  - Bottom legal row with Privacy Policy, Terms of Service, and Gurugram HQ marker.
 - **Verbatim Copywriting & Link Directory:**
   - **Brand Mission:** *The premier talent management and live streaming platform built exclusively for women creators worldwide.*
   - **Social Links:** Instagram, Twitter, YouTube, LinkedIn.
@@ -755,7 +755,7 @@ flowchart TD
     - `Contact` → `/company/contact`
   - **Bottom Legal Bar:**
     - Links: `Privacy Policy` (`/privacy-policy`) | `Terms of Service` (`/terms-of-service`)
-    - Location Tag: `📍 Jaipur HQ, India`
+    - Location Tag: `📍 Gurugram HQ, India`
     - Copyright: `© 2026 ELVOORIQ. All rights reserved. Built for women who lead.`
 
 ---

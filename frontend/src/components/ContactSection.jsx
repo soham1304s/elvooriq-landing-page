@@ -135,11 +135,11 @@ const ContactSection = () => {
                   </div>
                   <div className="map-tooltip-text">
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px' }}>
-                      <span className="tooltip-title">JAIPUR HEADQUARTERS</span>
-                      <span style={{ fontSize: '0.7rem', color: '#E5C158', fontFamily: 'monospace', background: 'rgba(229,193,88,0.15)', padding: '2px 6px', borderRadius: '4px' }}>26.8242° N, 75.6425° E</span>
+                      <span className="tooltip-title">GURUGRAM HEADQUARTERS</span>
+                      <span style={{ fontSize: '0.7rem', color: '#E5C158', fontFamily: 'monospace', background: 'rgba(229,193,88,0.15)', padding: '2px 6px', borderRadius: '4px' }}>28.4504° N, 77.0097° E</span>
                     </div>
                     <span className="tooltip-sub">
-                      21, Mahapura, 200ft SEZ Road, Mahapura Rd, near Mahindra SEZ, Jaipur, Rajasthan 302026, India
+                      50-1, Vishwakarma Nagar, Sector 10A, Gurugram, Haryana 122001, India
                     </span>
                   </div>
                 </div>

@@ -32,8 +32,8 @@ const getAIResponse = (input) => {
   if (query.includes('fee') || query.includes('cost') || query.includes('price') || query.includes('free')) {
     return "Joining ELVOORIQ as a creator is 100% free! We only partner on transparent revenue share models for high-value brand sponsorships and talent management.";
   }
-  if (query.includes('contact') || query.includes('email') || query.includes('phone') || query.includes('location') || query.includes('address') || query.includes('headquarter') || query.includes('jaipur')) {
-    return "Our global headquarters is located at: 21, Mahapura, 200ft SEZ Road, Mahapura Rd, near Mahindra SEZ, Jaipur, Rajasthan 302026. You can also contact our team at support@elvooriq.com!";
+  if (query.includes('contact') || query.includes('email') || query.includes('phone') || query.includes('location') || query.includes('address') || query.includes('headquarter') || query.includes('jaipur') || query.includes('gurugram') || query.includes('gurgaon')) {
+    return "Our global headquarters is located at: 50-1, Vishwakarma Nagar, Sector 10A, Gurugram, Haryana 122001, India. You can also contact our team at support@elvooriq.com!";
   }
 
   return "ELVOORIQ is the premier talent management and live streaming platform built exclusively for women creators worldwide. Ask me about Creator Management, Brand Deals, Live Streaming, or Technical Support!";

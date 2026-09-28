@@ -93,8 +93,8 @@ const FooterSection = () => {
           <div className="footer-bottom-left">
             <Link to="/privacy-policy">Privacy Policy</Link>
             <Link to="/terms-of-service">Terms of Service</Link>
-            <span className="footer-location">
-              <MapPin size={14} className="location-icon" /> Jaipur HQ, India
+            <span className="footer-location" title="50-1, Vishwakarma Nagar, Sector 10A, Gurugram, Haryana 122001, India">
+              <MapPin size={14} className="location-icon" /> Gurugram HQ, India
             </span>
           </div>
 

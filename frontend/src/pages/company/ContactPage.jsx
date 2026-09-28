@@ -209,9 +209,9 @@ const ContactPage = () => {
             {/* Headquarters Information Card */}
             <div className="glass-card">
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px' }}>
-                <h3 className="card-title" style={{ fontSize: '1.5rem', margin: 0 }}>Jaipur Headquarters</h3>
+                <h3 className="card-title" style={{ fontSize: '1.5rem', margin: 0 }}>Gurugram Headquarters</h3>
                 <span style={{ fontSize: '0.72rem', color: '#E5C158', fontFamily: 'monospace', background: 'rgba(229,193,88,0.15)', border: '1px solid rgba(229,193,88,0.3)', padding: '3px 8px', borderRadius: '6px' }}>
-                  26.8242° N, 75.6425° E
+                  28.4504° N, 77.0097° E
                 </span>
               </div>
 
@@ -220,7 +220,7 @@ const ContactPage = () => {
                 <div>
                   <h4 style={{ color: '#FFF', fontWeight: 600, letterSpacing: '0.03em', fontSize: '0.9rem' }}>GLOBAL OPERATIONS HUB</h4>
                   <p style={{ color: '#CBD5E1', fontSize: '0.88rem', lineHeight: 1.5, marginTop: '4px' }}>
-                    21, Mahapura, 200ft SEZ Road, Mahapura Rd, near Mahindra SEZ, Jaipur, Rajasthan 302026, India
+                    50-1, Vishwakarma Nagar, Sector 10A, Gurugram, Haryana 122001, India
                   </p>
                 </div>
               </div>
@@ -256,8 +256,8 @@ const ContactPage = () => {
                       <MapPin size={20} className="hq-pin-icon" />
                     </div>
                     <div className="map-tooltip-text">
-                      <span className="tooltip-title">JAIPUR HQ SEZ FACILITY</span>
-                      <span className="tooltip-sub">Mahapura 200ft SEZ Road • 24/7 Transcoding NOC</span>
+                      <span className="tooltip-title">GURUGRAM HQ FACILITY</span>
+                      <span className="tooltip-sub">Sector 10A • 24/7 Transcoding NOC</span>
                     </div>
                   </div>
                 </div>
