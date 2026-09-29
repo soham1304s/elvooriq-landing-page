@@ -95,6 +95,10 @@ const HRAdminPanel = () => {
   // Delete User Profile State
   const [userToDelete, setUserToDelete] = useState(null);
   const [isDeletingUser, setIsDeletingUser] = useState(false);
+  const [selectedUserIds, setSelectedUserIds] = useState([]);
+  const [isBulkDeletingUsers, setIsBulkDeletingUsers] = useState(false);
+  const [isPurgingTestUsers, setIsPurgingTestUsers] = useState(false);
+  const [userRoleFilter, setUserRoleFilter] = useState('ALL');
 
   // v4.0 Financial Payroll Ledger State (Wireframe B)
   const currentMonthPeriod = new Date().toISOString().slice(0, 7); // e.g. "2026-03"
@@ -566,13 +570,164 @@ const HRAdminPanel = () => {
         setUserToDelete(null);
         fetchData();
       } else {
-        alert(data.message || 'Failed to delete user profile.');
+        alert(data.message || data.error || 'Failed to delete user profile.');
       }
     } catch (err) {
       console.error('Failed to delete user profile:', err);
       alert('Network error while deleting profile.');
     } finally {
       setIsDeletingUser(false);
+    }
+  };
+
+  // Toggle Single User Selection
+  const handleToggleSelectUser = (userId) => {
+    setSelectedUserIds(prev => 
+      prev.includes(userId) ? prev.filter(id => id !== userId) : [...prev, userId]
+    );
+  };
+
+  // Select / Deselect All Eligible Users
+  const handleSelectAllUsers = (eligibleUsers) => {
+    const selectable = eligibleUsers.filter(u => u.email !== 'root.admin@elvooriq.com').map(u => u.id);
+    if (selectedUserIds.length === selectable.length) {
+      setSelectedUserIds([]);
+    } else {
+      setSelectedUserIds(selectable);
+    }
+  };
+
+  // Bulk Delete Selected Users
+  const handleBulkDeleteUsers = async () => {
+    if (selectedUserIds.length === 0) return;
+    if (!window.confirm(`Permanently delete ${selectedUserIds.length} selected user profiles and their associated records? This action is irreversible.`)) return;
+
+    try {
+      setIsBulkDeletingUsers(true);
+      const res = await fetch(`${API_URL}/api/admin/users/bulk-delete`, {
+        method: 'POST',
+        headers: authHeaders,
+        body: JSON.stringify({ userIds: selectedUserIds })
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        setSelectedUserIds([]);
+        fetchData();
+        alert(data.message || `Successfully deleted selected profiles.`);
+      } else {
+        alert(data.message || 'Failed to bulk delete user profiles.');
+      }
+    } catch (err) {
+      console.error('Bulk deletion error:', err);
+      alert('Network error during bulk deletion.');
+    } finally {
+      setIsBulkDeletingUsers(false);
+    }
+  };
+
+  // Purge All Automated Test Accounts
+  const handlePurgeTestUsers = async () => {
+    if (!window.confirm('Purge all automated test accounts (e.g. Creator Studio Alpha, HTTP Creator, Neon Creator)? Real users and root admin will not be touched.')) return;
+
+    try {
+      setIsPurgingTestUsers(true);
+      const res = await fetch(`${API_URL}/api/admin/users/purge-test`, {
+        method: 'POST',
+        headers: authHeaders
+      });
+      const data = await res.json();
+      if (res.ok && data.success) {
+        fetchData();
+        alert(data.message || 'Test accounts purged successfully.');
+      } else {
+        alert(data.message || 'Failed to purge test accounts.');
+      }
+    } catch (err) {
+      console.error('Purge error:', err);
+      alert('Network error while purging test accounts.');
+    } finally {
+      setIsPurgingTestUsers(false);
+    }
+  };
+
+  // Delete Operational Task Milestone
+  const handleDeleteTask = async (taskId, taskTitle) => {
+    if (!window.confirm(`Are you sure you want to permanently delete task "${taskTitle}"?`)) return;
+    try {
+      const res = await fetch(`${API_URL}/api/tasks/${taskId}`, {
+        method: 'DELETE',
+        headers: authHeaders
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setTasks(prev => prev.filter(t => t.id !== taskId));
+      } else {
+        alert(data.message || 'Failed to delete task.');
+      }
+    } catch (err) {
+      console.error('Failed to delete task:', err);
+      alert('Network error while deleting task.');
+    }
+  };
+
+  // Delete Inbound Lead
+  const handleDeleteLead = async (leadId, leadName) => {
+    if (!window.confirm(`Are you sure you want to permanently delete lead "${leadName}"?`)) return;
+    try {
+      const res = await fetch(`${API_URL}/api/leads/${leadId}`, {
+        method: 'DELETE',
+        headers: authHeaders
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setLeads(prev => prev.filter(l => l.id !== leadId));
+        setLeadQueue(prev => prev.filter(q => q.leadId !== leadId));
+      } else {
+        alert(data.message || 'Failed to delete lead.');
+      }
+    } catch (err) {
+      console.error('Failed to delete lead:', err);
+      alert('Network error while deleting lead.');
+    }
+  };
+
+  // Delete Workspace Cluster
+  const handleDeleteWorkspace = async (workspaceId, workspaceName) => {
+    if (!window.confirm(`Are you sure you want to permanently delete workspace "${workspaceName}"? All associated member bindings will be unassigned.`)) return;
+    try {
+      const res = await fetch(`${API_URL}/api/workspaces/${workspaceId}`, {
+        method: 'DELETE',
+        headers: authHeaders
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setWorkspaces(prev => prev.filter(w => w.id !== workspaceId));
+      } else {
+        alert(data.message || 'Failed to delete workspace.');
+      }
+    } catch (err) {
+      console.error('Failed to delete workspace:', err);
+      alert('Network error while deleting workspace.');
+    }
+  };
+
+  // Delete Showcase Video
+  const handleDeleteVideo = async (videoId, videoTitle) => {
+    if (!window.confirm(`Are you sure you want to remove showcase video "${videoTitle || 'Platform Showcase'}"?`)) return;
+    try {
+      const res = await fetch(`${API_URL}/api/featured/videos/${videoId}`, {
+        method: 'DELETE',
+        headers: authHeaders
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setFeaturedVideos(prev => prev.filter(v => v.id !== videoId));
+      } else {
+        alert(data.message || 'Failed to remove showcase video.');
+      }
+    } catch (err) {
+      console.error('Failed to delete video:', err);
+      alert('Network error while deleting video.');
     }
   };
 
@@ -754,11 +909,33 @@ const HRAdminPanel = () => {
     performLogout('ADMIN_LOGOUT');
   };
 
-  // Dynamic Metrics
+  // Dynamic Metrics & Test Account Detection
+  const isTestUser = (u) => {
+    const emailLower = (u.email || '').toLowerCase();
+    const nameLower = (u.fullName || '').toLowerCase();
+    return u.email !== 'root.admin@elvooriq.com' && (
+      emailLower.includes('test') || 
+      emailLower.includes('neon') || 
+      emailLower.includes('http.creator') || 
+      nameLower.includes('creator studio alpha') || 
+      nameLower.includes('http creator') || 
+      nameLower.includes('neon creator')
+    );
+  };
+
   const activeAgentsCount = allUsers.filter(u => u.role === 'EMPLOYEE' && u.status === 'ACTIVE').length;
   const pendingApprovalsCount = allUsers.filter(u => u.status === 'PENDING').length;
   const openLeadsCount = leads.filter(l => !['SIGNED', 'REJECTED'].includes(l.status)).length;
   const activeWorkspacesCount = workspaces.length;
+  const testAccountsCount = allUsers.filter(isTestUser).length;
+
+  const filteredUsers = allUsers.filter(u => {
+    if (userRoleFilter === 'EMPLOYEE') return u.role === 'EMPLOYEE';
+    if (userRoleFilter === 'CREATOR') return u.role === 'CREATOR';
+    if (userRoleFilter === 'PENDING') return u.status === 'PENDING' || !u.isEnabled;
+    if (userRoleFilter === 'TEST') return isTestUser(u);
+    return true;
+  });
 
   return (
     <div className="hr-panel-container">
@@ -959,6 +1136,18 @@ const HRAdminPanel = () => {
                     <UploadCloud size={16} />
                     <span>Ingest PDF Offer</span>
                   </button>
+                  {testAccountsCount > 0 && (
+                    <button 
+                      className="btn-delete-account"
+                      onClick={handlePurgeTestUsers}
+                      disabled={isPurgingTestUsers}
+                      style={{ padding: '8px 14px', borderRadius: '8px', fontSize: '0.82rem', gap: '6px' }}
+                      title="Purge all automated mock & test accounts"
+                    >
+                      <Trash2 size={14} />
+                      <span>{isPurgingTestUsers ? 'Purging Test Users...' : `Purge Test Accounts (${testAccountsCount})`}</span>
+                    </button>
+                  )}
                   <button 
                     className="primary-action-btn"
                     onClick={() => setShowAddEmployeeModal(true)}
@@ -967,6 +1156,82 @@ const HRAdminPanel = () => {
                     <span>Onboard Personnel</span>
                   </button>
                 </div>
+              </div>
+
+              {/* Category Filter Pills & Bulk Action Bar */}
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap', gap: '10px' }}>
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                  {[
+                    { key: 'ALL', label: `All (${allUsers.length})` },
+                    { key: 'EMPLOYEE', label: `Employees (${allUsers.filter(u => u.role === 'EMPLOYEE').length})` },
+                    { key: 'CREATOR', label: `Creators (${allUsers.filter(u => u.role === 'CREATOR').length})` },
+                    { key: 'PENDING', label: `Pending (${pendingApprovalsCount})` },
+                    ...(testAccountsCount > 0 ? [{ key: 'TEST', label: `Test Accounts (${testAccountsCount})` }] : [])
+                  ].map(tab => (
+                    <button
+                      key={tab.key}
+                      type="button"
+                      onClick={() => setUserRoleFilter(tab.key)}
+                      style={{
+                        padding: '6px 14px',
+                        borderRadius: '20px',
+                        fontSize: '0.8rem',
+                        fontWeight: '600',
+                        cursor: 'pointer',
+                        border: '1px solid',
+                        background: userRoleFilter === tab.key ? '#D4AF37' : 'rgba(255,255,255,0.05)',
+                        borderColor: userRoleFilter === tab.key ? '#D4AF37' : '#334155',
+                        color: userRoleFilter === tab.key ? '#000' : '#cbd5e1'
+                      }}
+                    >
+                      {tab.label}
+                    </button>
+                  ))}
+                </div>
+
+                {selectedUserIds.length > 0 && (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{ fontSize: '0.82rem', color: '#fca5a5', fontWeight: 'bold' }}>
+                      {selectedUserIds.length} profile{selectedUserIds.length > 1 ? 's' : ''} selected
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setSelectedUserIds([])}
+                      style={{
+                        background: 'transparent',
+                        border: '1px solid #475569',
+                        color: '#94a3b8',
+                        padding: '5px 10px',
+                        borderRadius: '6px',
+                        fontSize: '0.78rem',
+                        cursor: 'pointer'
+                      }}
+                    >
+                      Deselect
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleBulkDeleteUsers}
+                      disabled={isBulkDeletingUsers}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '5px',
+                        background: '#e11d48',
+                        border: 'none',
+                        color: '#fff',
+                        padding: '6px 14px',
+                        borderRadius: '6px',
+                        fontSize: '0.8rem',
+                        fontWeight: '700',
+                        cursor: 'pointer'
+                      }}
+                    >
+                      <Trash2 size={13} />
+                      <span>{isBulkDeletingUsers ? 'Deleting...' : `Delete Selected (${selectedUserIds.length})`}</span>
+                    </button>
+                  </div>
+                )}
               </div>
 
               {pendingApprovalsCount > 0 && (
@@ -982,6 +1247,15 @@ const HRAdminPanel = () => {
                 <table className="enterprise-table">
                   <thead>
                     <tr>
+                      <th style={{ width: '40px', textAlign: 'center' }}>
+                        <input 
+                          type="checkbox"
+                          checked={filteredUsers.filter(u => u.email !== 'root.admin@elvooriq.com').length > 0 && selectedUserIds.length === filteredUsers.filter(u => u.email !== 'root.admin@elvooriq.com').length}
+                          onChange={() => handleSelectAllUsers(filteredUsers)}
+                          title="Select / Deselect all"
+                          style={{ cursor: 'pointer', accentColor: '#D4AF37' }}
+                        />
+                      </th>
                       <th>PERSONNEL</th>
                       <th>SYSTEM ROLE</th>
                       <th>JOB TITLE</th>
@@ -992,13 +1266,23 @@ const HRAdminPanel = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {allUsers.map(user => {
+                    {filteredUsers.map(user => {
                       const isPending = user.status === 'PENDING' || !user.isEnabled;
                       const isSuspended = user.status === 'SUSPENDED';
                       const empRecord = user.employmentRecord;
 
                       return (
                         <tr key={user.id} className={isPending ? 'row-pending' : ''}>
+                          <td style={{ textAlign: 'center' }}>
+                            {user.email !== 'root.admin@elvooriq.com' && (
+                              <input 
+                                type="checkbox"
+                                checked={selectedUserIds.includes(user.id)}
+                                onChange={() => handleToggleSelectUser(user.id)}
+                                style={{ cursor: 'pointer', accentColor: '#D4AF37' }}
+                              />
+                            )}
+                          </td>
                           <td>
                             <div className="personnel-profile">
                               <div className="avatar-circle">
@@ -1245,11 +1529,32 @@ const HRAdminPanel = () => {
                             <span>Assignee: <strong style={{ color: '#e2e8f0' }}>{t.assignee?.fullName || 'Staff'}</strong></span>
                             <span>Progress: <strong style={{ color: '#D4AF37' }}>{t.progressPercent || 0}%</strong></span>
                           </div>
-                          {t.dueDate && (
-                            <div style={{ fontSize: '10px', color: '#64748b', marginTop: '4px' }}>
-                              Deadline: {new Date(t.dueDate).toLocaleString()}
-                            </div>
-                          )}
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '6px', paddingTop: '6px', borderTop: '1px solid #1e293b' }}>
+                            <span style={{ fontSize: '10px', color: '#64748b' }}>
+                              {t.dueDate ? `Deadline: ${new Date(t.dueDate).toLocaleString()}` : 'No deadline set'}
+                            </span>
+                            <button
+                              type="button"
+                              onClick={() => handleDeleteTask(t.id, t.title)}
+                              title="Delete Milestone"
+                              style={{
+                                background: 'rgba(239, 68, 68, 0.1)',
+                                border: '1px solid rgba(239, 68, 68, 0.25)',
+                                color: '#f87171',
+                                padding: '3px 8px',
+                                borderRadius: '4px',
+                                cursor: 'pointer',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '4px',
+                                fontSize: '11px',
+                                fontWeight: '600'
+                              }}
+                            >
+                              <Trash2 size={11} />
+                              <span>Delete</span>
+                            </button>
+                          </div>
                         </div>
                       ))
                     )}
@@ -1861,13 +2166,35 @@ const HRAdminPanel = () => {
                       </div>
                     </div>
 
-                    <div className="cluster-card-footer">
+                    <div className="cluster-card-footer" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '8px' }}>
                       <button 
                         className="enter-cluster-btn"
                         onClick={() => navigate('/workspace-portal')}
+                        style={{ flex: 1 }}
                       >
                         <span>Open In Workspace Portal</span>
                         <ChevronRight size={15} />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleDeleteWorkspace(ws.id, ws.name)}
+                        title="Delete Workspace Cluster"
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '4px',
+                          background: 'rgba(239, 68, 68, 0.1)',
+                          border: '1px solid rgba(239, 68, 68, 0.3)',
+                          color: '#f87171',
+                          padding: '10px 14px',
+                          borderRadius: '8px',
+                          fontSize: '0.8rem',
+                          fontWeight: '600',
+                          cursor: 'pointer'
+                        }}
+                      >
+                        <Trash2 size={13} />
+                        <span>Delete</span>
                       </button>
                     </div>
                   </div>
@@ -2038,6 +2365,7 @@ const HRAdminPanel = () => {
                       <th>ASSIGNED AGENT</th>
                       <th>STATUS</th>
                       <th>NOTES</th>
+                      <th>ACTIONS</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -2093,6 +2421,18 @@ const HRAdminPanel = () => {
                               {lead.notes || 'No notes added.'}
                             </div>
                           </td>
+                          <td>
+                            <button
+                              type="button"
+                              onClick={() => handleDeleteLead(lead.id, lead.fullName)}
+                              title="Delete Lead"
+                              className="btn-delete-account"
+                              style={{ padding: '6px 10px', fontSize: '0.75rem', gap: '4px' }}
+                            >
+                              <Trash2 size={12} />
+                              <span>Delete</span>
+                            </button>
+                          </td>
                         </tr>
                       );
                     })}
@@ -2114,9 +2454,22 @@ const HRAdminPanel = () => {
                   <h2>REAL-TIME OPERATIONAL TELEMETRY FEED</h2>
                   <p>Real-time audit stream broadcasting Socket.IO state transitions, task progression, and agent actions.</p>
                 </div>
-                <div className="live-radar-badge">
-                  <span className="radar-blip" />
-                  <span>LISTENING ON SOCKET GATEWAY</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                  {telemetryLogs.length > 0 && (
+                    <button 
+                      type="button"
+                      className="secondary-action-btn"
+                      onClick={() => setTelemetryLogs([])}
+                      style={{ display: 'flex', alignItems: 'center', gap: '6px', padding: '6px 12px', fontSize: '0.8rem' }}
+                    >
+                      <Trash2 size={13} />
+                      <span>Clear Stream</span>
+                    </button>
+                  )}
+                  <div className="live-radar-badge">
+                    <span className="radar-blip" />
+                    <span>LISTENING ON SOCKET GATEWAY</span>
+                  </div>
                 </div>
               </div>
 
@@ -2187,15 +2540,40 @@ const HRAdminPanel = () => {
                 <div className="active-videos-list">
                   <h4>Currently Deployed Showcase Videos ({featuredVideos.length})</h4>
                   {featuredVideos.map(v => (
-                    <div key={v.id} className="video-item-card">
-                      <Video size={18} />
-                      <div className="video-info">
-                        <div className="video-title">{v.title || 'Platform Showcase'}</div>
-                        <a href={v.youtubeUrl} target="_blank" rel="noreferrer" className="video-link">
-                          {v.youtubeUrl} <ExternalLink size={12} />
-                        </a>
+                    <div key={v.id} className="video-item-card" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                        <Video size={18} />
+                        <div className="video-info">
+                          <div className="video-title">{v.title || 'Platform Showcase'}</div>
+                          <a href={v.youtubeUrl} target="_blank" rel="noreferrer" className="video-link">
+                            {v.youtubeUrl} <ExternalLink size={12} />
+                          </a>
+                        </div>
                       </div>
-                      <span className="active-status-badge">ACTIVE</span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                        <span className="active-status-badge">ACTIVE</span>
+                        <button
+                          type="button"
+                          onClick={() => handleDeleteVideo(v.id, v.title)}
+                          title="Remove Showcase Video"
+                          style={{
+                            background: 'rgba(239, 68, 68, 0.1)',
+                            border: '1px solid rgba(239, 68, 68, 0.3)',
+                            color: '#f87171',
+                            padding: '6px 12px',
+                            borderRadius: '6px',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '5px',
+                            fontSize: '0.78rem',
+                            fontWeight: '600'
+                          }}
+                        >
+                          <Trash2 size={13} />
+                          <span>Delete</span>
+                        </button>
+                      </div>
                     </div>
                   ))}
                 </div>

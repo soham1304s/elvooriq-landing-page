@@ -107,11 +107,27 @@ exports.deleteLead = async (req, res) => {
     const prisma = req.prisma;
     const { id } = req.params;
 
+    const lead = await prisma.lead.findUnique({ where: { id } });
+    if (!lead) {
+      return res.status(404).json({ success: false, message: 'Lead not found.' });
+    }
+
+    await prisma.leadQueue.deleteMany({ where: { leadId: id } });
     await prisma.lead.delete({ where: { id } });
+
+    if (req.io) {
+      req.io.to('admin_room').emit('telemetry:log', {
+        type: 'LEAD_DELETED',
+        message: `Lead "${lead.fullName}" deleted by Admin`,
+        timestamp: new Date().toISOString(),
+        meta: { leadId: id }
+      });
+    }
+
     res.json({ success: true, message: 'Lead deleted successfully' });
   } catch (err) {
     console.error('Error deleting lead:', err);
-    res.status(500).json({ success: false, message: 'Failed to delete lead' });
+    res.status(500).json({ success: false, message: 'Failed to delete lead', error: err.message });
   }
 };
 

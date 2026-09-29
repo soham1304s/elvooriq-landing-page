@@ -91,10 +91,14 @@ exports.removeFeaturedVideo = async (req, res) => {
 exports.removeFeaturedVideoById = async (req, res) => {
   try {
     const { id } = req.params;
-    await prisma.featuredVideo.updateMany({
-      where: { id, isActive: true },
-      data: { isActive: false }
-    });
+    try {
+      await prisma.featuredVideo.delete({ where: { id } });
+    } catch {
+      await prisma.featuredVideo.updateMany({
+        where: { id },
+        data: { isActive: false }
+      });
+    }
 
     const videos = await prisma.featuredVideo.findMany({
       where: { isActive: true },
@@ -105,7 +109,7 @@ exports.removeFeaturedVideoById = async (req, res) => {
       req.io.emit('landing:featured_videos_update', videos);
     }
 
-    res.json({ message: 'Featured video removed', videos });
+    res.json({ success: true, message: 'Featured video removed successfully', videos });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

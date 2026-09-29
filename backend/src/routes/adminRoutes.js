@@ -7,6 +7,8 @@ const authorize = require('../middlewares/rbac');
 router.get('/users', authorize(['ADMIN']), adminController.getAllUsers);
 router.put('/users/:id/activate', authorize(['ADMIN']), adminController.activateUser);
 router.delete('/users/:id', authorize(['ADMIN']), adminController.deleteUser);
+router.post('/users/bulk-delete', authorize(['ADMIN']), adminController.bulkDeleteUsers);
+router.post('/users/purge-test', authorize(['ADMIN']), adminController.purgeTestUsers);
 
 // Monthly Quality Performance Reports (EPS)
 router.get('/reports/monthly', authorize(['ADMIN']), adminController.getMonthlyReport);

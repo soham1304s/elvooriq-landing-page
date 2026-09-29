@@ -20,4 +20,7 @@ router.put('/tasks/:id/progress', authorize(['ADMIN', 'EMPLOYEE']), taskControll
 // Daily work log submissions
 router.post('/worklog', authorize(['ADMIN', 'EMPLOYEE']), taskController.submitWorkLog);
 
+// Delete task (Admin only)
+router.delete('/:id', authorize(['ADMIN']), taskController.deleteTask);
+
 module.exports = router;

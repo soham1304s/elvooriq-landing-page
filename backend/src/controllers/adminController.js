@@ -316,51 +316,39 @@ exports.deleteUser = async (req, res) => {
       return res.status(400).json({ success: false, message: 'Cannot delete your own active administrator profile.' });
     }
 
-    // Cascade delete relations in a transaction to prevent FK constraint violations
+    // Cascade delete relations in a transaction with extended timeout to prevent FK constraint violations and network timeouts
     await prisma.$transaction(async (tx) => {
-      // 1. Tasks & work logs
-      await tx.dailyWorkLog.deleteMany({ where: { userId: id } });
+      // 1. Remove daily work logs associated with user or user's tasks
+      await tx.dailyWorkLog.deleteMany({
+        where: {
+          OR: [
+            { userId: id },
+            { task: { OR: [{ assigneeId: id }, { creatorId: id }] } }
+          ]
+        }
+      });
+
+      // 2. Remove tasks assigned to or created by user (Task.creatorId has RESTRICT foreign key)
       await tx.task.deleteMany({ where: { OR: [{ assigneeId: id }, { creatorId: id }] } });
 
-      // 2. Financial tracking & employment
-      await tx.payrollDisbursement.deleteMany({ where: { userId: id } });
-      await tx.payrollLedger.deleteMany({ where: { userId: id } });
-      await tx.revenueSplit.deleteMany({ where: { userId: id } });
-      await tx.employmentRecord.deleteMany({ where: { userId: id } });
+      // 3. Handle OfferLetter.hrId (has RESTRICT foreign key)
+      const rootAdmin = await tx.user.findFirst({ where: { email: 'root.admin@elvooriq.com' } });
+      if (rootAdmin && rootAdmin.id !== id) {
+        await tx.offerLetter.updateMany({
+          where: { hrId: id },
+          data: { hrId: rootAdmin.id }
+        });
+      } else {
+        await tx.offerLetter.deleteMany({ where: { hrId: id } });
+      }
 
-      // 3. Workspace memberships
-      await tx.workspaceMember.deleteMany({ where: { userId: id } });
-
-      // 4. Leads & CRM
-      await tx.leadInteraction.deleteMany({ where: { agentId: id } });
-      await tx.auditionTape.deleteMany({ where: { reviewerId: id } });
-      await tx.lead.deleteMany({ where: { agentId: id } });
-
-      // 5. Compliance & Onboarding
-      await tx.onboardingDocument.deleteMany({ where: { userId: id } });
-      await tx.offerLetter.deleteMany({ where: { OR: [{ candidateId: id }, { hrId: id }] } });
-
-      // 6. Contracts & Sponsorships
-      await tx.digitalSignature.deleteMany({ where: { signerId: id } });
-      await tx.legalContract.deleteMany({ where: { OR: [{ signeeId: id }, { preparerId: id }] } });
-      await tx.campaignMilestone.deleteMany({ where: { campaign: { creatorId: id } } });
-      await tx.sponsorshipCampaign.deleteMany({ where: { OR: [{ creatorId: id }, { managerId: id }] } });
-      await tx.channelAudit.deleteMany({ where: { OR: [{ creatorId: id }, { agentId: id }] } });
-
-      // 7. Streaming & Telemetry
-      await tx.streamLog.deleteMany({ where: { creatorId: id } });
-      await tx.liveAnalytics.deleteMany({ where: { session: { userId: id } } });
-      await tx.liveRecording.deleteMany({ where: { session: { userId: id } } });
-      await tx.liveEvent.deleteMany({ where: { session: { userId: id } } });
-      await tx.liveSession.deleteMany({ where: { userId: id } });
-      await tx.scheduledStream.deleteMany({ where: { userId: id } });
-      await tx.creatorStreamingSetting.deleteMany({ where: { userId: id } });
-      await tx.youTubeConnection.deleteMany({ where: { userId: id } });
-      await tx.securityAnomaly.deleteMany({ where: { userId: id } });
-      await tx.securityEvents.deleteMany({ where: { userId: id } });
-
-      // 8. Delete user record
+      // 4. Delete user record
+      // PostgreSQL database-level ON DELETE CASCADE automatically purges all remaining dependent records
+      // (sessions, logs, streams, payroll, CRM, creations, media, and onboarding) in milliseconds
       await tx.user.delete({ where: { id } });
+    }, {
+      timeout: 30000,
+      maxWait: 10000
     });
 
     if (req.io) {
@@ -379,7 +367,169 @@ exports.deleteUser = async (req, res) => {
     });
   } catch (error) {
     console.error('Error deleting user profile:', error);
-    return res.status(500).json({ success: false, message: 'Failed to delete user profile', error: error.message });
+    return res.status(500).json({
+      success: false,
+      message: error.message ? `Failed to delete user profile: ${error.message}` : 'Failed to delete user profile',
+      error: error.message
+    });
+  }
+};
+
+// Bulk Delete Selected Users
+exports.bulkDeleteUsers = async (req, res) => {
+  try {
+    const prisma = req.prisma;
+    const { userIds } = req.body;
+
+    if (!Array.isArray(userIds) || userIds.length === 0) {
+      return res.status(400).json({ success: false, message: 'Please select at least one user to delete.' });
+    }
+
+    const rootAdmin = await prisma.user.findFirst({ where: { email: 'root.admin@elvooriq.com' } });
+
+    // Fetch valid target users (prevent deleting Root Admin or admin's own profile)
+    const targetUsers = await prisma.user.findMany({
+      where: {
+        id: { in: userIds },
+        email: { not: 'root.admin@elvooriq.com' },
+        ...(req.user?.id ? { id: { not: req.user.id } } : {})
+      }
+    });
+
+    if (targetUsers.length === 0) {
+      return res.status(400).json({ success: false, message: 'No eligible user profiles found to delete.' });
+    }
+
+    const deletedIds = [];
+    for (const target of targetUsers) {
+      const id = target.id;
+      try {
+        await prisma.$transaction(async (tx) => {
+          await tx.dailyWorkLog.deleteMany({
+            where: {
+              OR: [
+                { userId: id },
+                { task: { OR: [{ assigneeId: id }, { creatorId: id }] } }
+              ]
+            }
+          });
+          await tx.task.deleteMany({ where: { OR: [{ assigneeId: id }, { creatorId: id }] } });
+
+          if (rootAdmin && rootAdmin.id !== id) {
+            await tx.offerLetter.updateMany({
+              where: { hrId: id },
+              data: { hrId: rootAdmin.id }
+            });
+          } else {
+            await tx.offerLetter.deleteMany({ where: { hrId: id } });
+          }
+
+          await tx.user.delete({ where: { id } });
+        }, { timeout: 30000, maxWait: 10000 });
+
+        deletedIds.push(id);
+      } catch (userErr) {
+        console.error(`Failed to delete user ${id}:`, userErr);
+      }
+    }
+
+    if (req.io) {
+      req.io.to('admin_room').emit('telemetry:log', {
+        type: 'USERS_BULK_DELETED',
+        message: `Bulk deleted ${deletedIds.length} user profiles`,
+        timestamp: new Date().toISOString(),
+        meta: { count: deletedIds.length }
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: `Successfully deleted ${deletedIds.length} user profile(s).`,
+      deletedIds
+    });
+  } catch (error) {
+    console.error('Error during bulk deletion:', error);
+    return res.status(500).json({ success: false, message: 'Failed to bulk delete users', error: error.message });
+  }
+};
+
+// Purge Test / Automated Accounts
+exports.purgeTestUsers = async (req, res) => {
+  try {
+    const prisma = req.prisma;
+
+    // Find accounts matching automated or test naming conventions
+    const testUsers = await prisma.user.findMany({
+      where: {
+        email: { not: 'root.admin@elvooriq.com' },
+        OR: [
+          { email: { contains: 'test', mode: 'insensitive' } },
+          { email: { contains: 'creator.neon', mode: 'insensitive' } },
+          { email: { contains: 'http.creator', mode: 'insensitive' } },
+          { email: { contains: 'creator.test', mode: 'insensitive' } },
+          { fullName: { contains: 'Creator Studio Alpha', mode: 'insensitive' } },
+          { fullName: { contains: 'HTTP Creator', mode: 'insensitive' } },
+          { fullName: { contains: 'Neon Creator', mode: 'insensitive' } }
+        ]
+      }
+    });
+
+    if (testUsers.length === 0) {
+      return res.status(200).json({ success: true, message: 'No automated or test user profiles found in the database.', purgedCount: 0 });
+    }
+
+    const rootAdmin = await prisma.user.findFirst({ where: { email: 'root.admin@elvooriq.com' } });
+    const purgedIds = [];
+
+    for (const target of testUsers) {
+      const id = target.id;
+      try {
+        await prisma.$transaction(async (tx) => {
+          await tx.dailyWorkLog.deleteMany({
+            where: {
+              OR: [
+                { userId: id },
+                { task: { OR: [{ assigneeId: id }, { creatorId: id }] } }
+              ]
+            }
+          });
+          await tx.task.deleteMany({ where: { OR: [{ assigneeId: id }, { creatorId: id }] } });
+
+          if (rootAdmin && rootAdmin.id !== id) {
+            await tx.offerLetter.updateMany({
+              where: { hrId: id },
+              data: { hrId: rootAdmin.id }
+            });
+          } else {
+            await tx.offerLetter.deleteMany({ where: { hrId: id } });
+          }
+
+          await tx.user.delete({ where: { id } });
+        }, { timeout: 30000, maxWait: 10000 });
+
+        purgedIds.push(id);
+      } catch (err) {
+        console.error(`Failed to purge test user ${id}:`, err);
+      }
+    }
+
+    if (req.io) {
+      req.io.to('admin_room').emit('telemetry:log', {
+        type: 'TEST_USERS_PURGED',
+        message: `Purged ${purgedIds.length} automated test profiles`,
+        timestamp: new Date().toISOString(),
+        meta: { count: purgedIds.length }
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: `Successfully purged ${purgedIds.length} test accounts from database.`,
+      purgedCount: purgedIds.length
+    });
+  } catch (error) {
+    console.error('Error purging test accounts:', error);
+    return res.status(500).json({ success: false, message: 'Failed to purge test accounts', error: error.message });
   }
 };
 

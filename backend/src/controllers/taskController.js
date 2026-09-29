@@ -417,11 +417,45 @@ const submitWorkLog = async (req, res) => {
   }
 };
 
+const deleteTask = async (req, res) => {
+  try {
+    const prisma = req.prisma;
+    const { id } = req.params;
+
+    const task = await prisma.task.findUnique({ where: { id } });
+    if (!task) {
+      return res.status(404).json({ success: false, message: 'Task not found.' });
+    }
+
+    // Delete associated work logs to prevent orphan records
+    await prisma.dailyWorkLog.deleteMany({ where: { taskId: id } });
+    await prisma.task.delete({ where: { id } });
+
+    if (req.io) {
+      if (task.workspaceId) {
+        req.io.to(`workspace-${task.workspaceId}`).emit('task:deleted', { id });
+      }
+      req.io.to('admin_room').emit('telemetry:log', {
+        type: 'TASK_DELETED',
+        message: `Task "${task.title}" deleted by Admin`,
+        timestamp: new Date().toISOString(),
+        meta: { taskId: id }
+      });
+    }
+
+    res.json({ success: true, message: 'Task deleted successfully.' });
+  } catch (err) {
+    console.error('Error deleting task:', err);
+    res.status(500).json({ success: false, message: 'Failed to delete task', error: err.message });
+  }
+};
+
 module.exports = {
   createAndAssignTask,
   getTasks,
   createTask,
   updateTaskStatus,
   updateProgress,
-  submitWorkLog
+  submitWorkLog,
+  deleteTask
 };
